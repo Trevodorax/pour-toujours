@@ -314,8 +314,3 @@ main h1{
 
 /* DESKTOP MODIFICATIONS */
 
-@media (min-width: 900px){
-    main{
-        background-color: blue;
-    }
-}
