@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300&family=Major+Mono+Display&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+html,body {
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+
+body{
+    margin: 0;
+    font-family: 'Crimson Pro', serif;
+}
+
+p{
+    font-size: 2rem;
+}
+
+h1{
+    font-size: 3rem;
+}
+
+section{
+    margin-bottom: 200px;
+}
+
+/*
+HEADER
+AND
+FOOTER
+*/
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+header{
+    height : 150px;
+    width: 100%;
+    padding: 32px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #FFC7C7;
+}
+
+#wave{
+    width: 100vw;
+    height: 100px;
+    position: relative;
+    bottom: 5px;
+    z-index: 10;
+    background-image: url("../images/vagues_header.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+header img{
+    height: 100px;
+}
+
+footer{
+    height: 400px;
+    padding: 64px;
+    background-color: #FFC7C7;
+}
+
+footer nav{
+    height: 200px;
+    margin: 64px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: space-around;
+}
+
+footer a{
+    display: inline-block;
+    text-align: center;
+    width: 40vw;
+    color: black;
+}
+
+footer a:hover{
+    color: white;
+}
+
+hr{
+    color: white;
+}
+
+/*
+MAIN
+*/
+
+main{
+    width: 100%;
+    position: relative;
+    bottom: 100px;
+}
+
+#image_haut{
+    width: 100%;
+    height: 500px;
+    z-index: 5;
+    background-image: url("../images/accueil_1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+main h1{
+    text-align: center;
+}
+
+#accroches{
+    margin: 128px;
+}
+
+.accroche{
+    width: 100%;
+    margin: 64px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accroche p{
+    width: 40%;
+}
+
+.accroche div{
+    margin: 0 32px;
+}
+
+#gift_icon{
+    height: 80px;
+    width: 80px;
+    margin-right: 64px;
+    background-image: url("../images/gift_icon.svg");
+    background-size: cover;
+}
+
+#cursor_icon{
+    height: 80px;
+    width: 80px;
+    margin-left: 64px;
+    background-image: url("../images/cursor_icon.svg");
+    background-size: cover;
+}
+
+#accroche2 p{
+    text-align: right;
+}
+
+#register{
+    height: 96px;
+    width: 60vw;
+    display: block;
+    margin: 0 auto;
+    border: 0;
+    border-radius: 32px;
+    -webkit-border-radius: 32px;
+    -moz-border-radius: 32px;
+    -ms-border-radius: 32px;
+    -o-border-radius: 32px;
+    background-color: #CF697B;
+    color: #FDFDFD;
+    font-size: 40px;
+}
+
+#register:hover{
+    background-color: #ce4c63;
+}
+
+#explanation{
+    padding: 96px;
+}
+
+#explanation h1{
+    margin-bottom: 128px;
+}
+
+#explanation h2{
+    color: #5A5250;
+    text-align: center;
+    font-size: 3rem;
+    margin: 0;
+}
+
+#explanation > h2 > img{
+    height: 32px;
+}
+
+#explanation > h2:hover img{
+    height: 48px;
+}
+
+#prestataires_mieux_notes{
+    height: 320px;
+    width: 60vw;
+    margin: 128px auto;
+    background-color: #fff8f1;
+    border-radius: 64px;
+    -webkit-border-radius: 64px;
+    -moz-border-radius: 64px;
+    -ms-border-radius: 64px;
+    -o-border-radius: 64px;
+}
+
+#prestataires_images{
+    height: 240px;
+    display: flex;
+    overflow-x: scroll;
+}
+
+.prestataire_rond{
+    height: 160px;
+    min-width: 160px;
+    margin: 16px;
+    display: inline-block;
+    border-radius: 100%;
+    background-color: lightblue;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+
+    border : 1px black solid;
+}
+
+#actions_possibles{
+    width: 80vw;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+#actions_possibles h2{
+    display: inline;
+}
+
+.carte_action{
+    width: 25vw;
+    height: 240px;
+}
+
+.carte_action img{
+    height: 64px;
+    width: 64px;
+    display: block;
+    margin: 0 auto;
+}
+
+.carte_border{
+    margin-top: 16px;
+    border: #FFC7C7 2px solid;
+    border-radius: 32px;
+    -webkit-border-radius: 32px;
+    -moz-border-radius: 32px;
+    -ms-border-radius: 32px;
+    -o-border-radius: 32px;
+    padding: 32px;
+}
+
+.carte_border:hover{
+    background-color: #ffeaea;
+}
+
+#reviews{
+    padding: 0 64px;
+}
+
+#review_carousel{
+    width: 80vw;
+    height: 800px;
+    margin: 128px auto 0;
+    border-radius: 64px;
+    -webkit-border-radius: 64px;
+    -moz-border-radius: 64px;
+    -ms-border-radius: 64px;
+    -o-border-radius: 64px;
+    background-color: #fff8f1;
+}
+
+.wedding_picture{
+    background-image: url("../images/wedding_1.jpg");
+    width: 100%;
+    height: 300px;
+    border-top-left-radius: 64px;
+    border-top-right-radius: 64px;
+}
+
+.carousel_text{
+    padding: 64px 128px;
+    text-align: center;
+}
+
+.carousel_metadata{
+    margin-top: 128px;
+}
+
+#reviews a{
+    display: inline-block;
+    width: 100%;
+    color: #5A5250;
+    text-align: right;
+    font-size: 3rem;
+    text-decoration: underline;
+}
+
+/* DESKTOP MODIFICATIONS */
+
+@media (min-width: 900px){
+    main{
+        background-color: blue;
+    }
+}
