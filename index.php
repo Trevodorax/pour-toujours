@@ -28,17 +28,21 @@
             </div>
         </section>
         <section id="presentation">
-            <h2>Présentez-nous vos critères et choisissez parmi nos 230 talentueux partenaires !</h2>
-            <h3>Commencez dès maintenant&nbsp&nbsp <img src="images/go_icon.svg"></h3>
-            <div id="prestataires-mieux-notes">
-                <div id="prestataires-images">
-                    <?php
-                        for($i = 1; $i <= 5; $i += 1){
-                            echo "<div class='outer-circle'><img src='images/prestataires/prestataire$i.jpg'></div>";
-                        }
-                    ?>
+            <div id="presentation-banner">
+                <div id="presentation-text">
+                    <h2>Présentez-nous vos critères et choisissez parmi nos 230 talentueux partenaires !</h2>
+                    <h3>Commencez dès maintenant&nbsp&nbsp <img src="images/go_icon.svg"></h3>
                 </div>
-                <h3>Prestataires les mieux notés</h3>
+                <div id="prestataires-mieux-notes">
+                    <div id="prestataires-images">
+                        <?php
+                            for($i = 1; $i <= 5; $i += 1){
+                                echo "<div class='outer-circle'><img src='images/prestataires/prestataire$i.jpg'></div>";
+                            }
+                        ?>
+                    </div>
+                    <h3>Prestataires les mieux notés</h3>
+                </div>
             </div>
             <div id="actions-possibles">
                 <div>
@@ -55,6 +59,13 @@
                         <p>Votre liste d'invités</p>
                     </div>
                 </div>
+                <div class="mobile-hidden">
+                    <h3>Choisissez</h3>
+                    <div class="action-border">
+                        <img src="images/heart_picto.svg">
+                        <p>Maintenant ou plus tard avec l'option favoris</p>
+                    </div>
+                </div>
                 <div>
                     <h3>Discutez</h3>
                     <div class="action-border">
@@ -67,6 +78,7 @@
         </section>
         <section id="reviews">
             <h2>Découvrez les avis de la communauté !</h2>
+            <h3 class="mobile-hidden">Et leur expérience avec le site et ses partenaires</h3>
             <div id="reviews-carousel">
                 <div id="carousel-image"></div>
                 <div id="carousel-text">
