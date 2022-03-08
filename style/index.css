@@ -1,316 +1,348 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300&family=Major+Mono+Display&display=swap');
 
+
+
+/* ---------- GENERAL SETTINGS ---------- */
+
 *{
     box-sizing: border-box;
 }
 
-html,body {
-    text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    -moz-text-size-adjust: none;
-    -ms-text-size-adjust: none;
+body{
+    margin: none;
+}
+
+/* fonts */
+html{
+    font-size: 16px;
 }
 
 body{
-    margin: 0;
-    font-family: 'Crimson Pro', serif;
+    font-family: 'Crimson Pro';
+}
+
+h2{
+    margin: 16px 0;
+
+    text-align: center;
+    font-size: 1.7rem;
+}
+
+h3{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #706663;
 }
 
 p{
-    font-size: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #706663;
 }
 
-h1{
-    font-size: 3rem;
+
+
+
+/* ---------- PREMADE ELEMENTS ---------- */
+
+.outer-circle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius:100% ;
+    -webkit-border-radius:100% ;
+    -moz-border-radius:100% ;
+    -ms-border-radius:100% ;
+    -o-border-radius:100% ;
 }
 
-section{
-    margin-bottom: 200px;
+.outer-circle :first-child{
+    height: 90%;
+    width: 90%;
+
+    border-radius:100% ;
+    -webkit-border-radius:100% ;
+    -moz-border-radius:100% ;
+    -ms-border-radius:100% ;
+    -o-border-radius:100% ;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-/*
-HEADER
-AND
-FOOTER
-*/
 
-a{
-    color: inherit;
-    text-decoration: none;
+
+
+/* ---------- HEADER & FOOTER ---------- */
+
+#desktop-header{
+    display: none;
 }
 
 header{
-    height : 150px;
-    width: 100%;
-    padding: 32px;
+    height: 100px;
+    padding: 0 32px;
+
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+
     background-color: #FFC7C7;
 }
 
-#wave{
-    width: 100vw;
-    height: 100px;
-    position: relative;
-    bottom: 5px;
-    z-index: 10;
-    background-image: url("../images/vagues_header.svg");
+ /* header images */
+ header>div{
+    height: 60px;
+    width: 60px;
+
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-header img{
+#mobile-header :nth-child(1){
+    background-image: url('../images/burger_icon.svg');
+}
+
+#mobile-header :nth-child(2){
+    background-image: url('../images/pt_logo.svg');
+}
+
+#mobile-header :nth-child(3){
+    background-image: url('../images/profile_icon.svg');
+}
+
+/* header wave */
+#header-wave{
+    width: 100%;
     height: 100px;
+    margin-top: -2px; /* no space between header and wave */
+
+    background-image: url('../images/vagues_header.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
+/* footer */
 footer{
-    height: 400px;
-    padding: 64px;
-    background-color: #FFC7C7;
-}
+    height: 250px;
+    width: 100%;
 
-footer nav{
-    height: 200px;
-    margin: 64px 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: space-around;
+    padding: 16px;
+
+    background-color: #FFC7C7;
 }
 
 footer a{
     display: inline-block;
-    text-align: center;
-    width: 40vw;
-    color: black;
+    min-width: 49%;
+    color: #5A5250;
+    text-decoration: none;
+    font-size: 1rem;
 }
 
 footer a:hover{
     color: white;
 }
 
-hr{
-    color: white;
+footer a:nth-of-type(2n){
+    text-align: right;
 }
 
-/*
-MAIN
-*/
+
+
+
+
+/* ------------ MAIN ----------- */
 
 main{
-    width: 100%;
-    position: relative;
-    bottom: 100px;
+    padding: 0 8vw;
 }
 
-#image_haut{
-    width: 100%;
-    height: 500px;
-    z-index: 5;
-    background-image: url("../images/accueil_1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+section{
+    margin-bottom: 150px;
 }
 
-main h1{
-    text-align: center;
+/* --- FIRST SECTION --- */
+
+/* lil circle */
+#home-circle{
+    width: 40vw;
+    height: 40vw;
+    margin: 0 auto;
+
+    border: 2px solid #FEF4EA;
 }
 
-#accroches{
-    margin: 128px;
+#home-circle > div{
+    background-image: url('../images/home_circle.jpg');
 }
 
-.accroche{
-    width: 100%;
-    margin: 64px 0;
+/* text part */
+#home-text > div{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.accroche p{
-    width: 40%;
+#home-text img{
+    margin: 32px;
 }
 
-.accroche div{
-    margin: 0 32px;
+#home-text p{
+    width: 40vw;
 }
 
-#gift_icon{
-    height: 80px;
-    width: 80px;
-    margin-right: 64px;
-    background-image: url("../images/gift_icon.svg");
-    background-size: cover;
-}
-
-#cursor_icon{
-    height: 80px;
-    width: 80px;
-    margin-left: 64px;
-    background-image: url("../images/cursor_icon.svg");
-    background-size: cover;
-}
-
-#accroche2 p{
+#home-text div:nth-of-type(2n){
+    flex-direction: row-reverse;
     text-align: right;
 }
 
-#register{
-    height: 96px;
-    width: 60vw;
+#register-button{
+    width: 70vw;
+    height: 56px;
+    margin: 32px auto;
+
     display: block;
-    margin: 0 auto;
-    border: 0;
-    border-radius: 32px;
-    -webkit-border-radius: 32px;
-    -moz-border-radius: 32px;
-    -ms-border-radius: 32px;
-    -o-border-radius: 32px;
+    padding: 8px;
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
+    border: none;
+
     background-color: #CF697B;
+
+}
+
+#register-button > p{
     color: #FDFDFD;
-    font-size: 40px;
-}
-
-#register:hover{
-    background-color: #ce4c63;
-}
-
-#explanation{
-    padding: 96px;
-}
-
-#explanation h1{
-    margin-bottom: 128px;
-}
-
-#explanation h2{
-    color: #5A5250;
     text-align: center;
-    font-size: 3rem;
-    margin: 0;
+    margin: 0 auto;
 }
 
-#explanation > h2 > img{
-    height: 32px;
-}
 
-#explanation > h2:hover img{
-    height: 48px;
-}
 
-#prestataires_mieux_notes{
-    height: 320px;
-    width: 60vw;
-    margin: 128px auto;
-    background-color: #fff8f1;
-    border-radius: 64px;
-    -webkit-border-radius: 64px;
-    -moz-border-radius: 64px;
-    -ms-border-radius: 64px;
-    -o-border-radius: 64px;
-}
+/* --- SECOND SECTION --- */
+/* prestataires mieux notés */
+#prestataires-mieux-notes{
+    height: 152px;
+    width: 80%;
+    margin: 96px auto;
 
-#prestataires_images{
-    height: 240px;
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
+
+    background-color: #FEF4EA ;
+}
+#prestataires-images{
+    height: 120px;
     display: flex;
     overflow-x: scroll;
 }
 
-.prestataire_rond{
-    height: 160px;
-    min-width: 160px;
-    margin: 16px;
-    display: inline-block;
-    border-radius: 100%;
-    background-color: lightblue;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
-    -ms-border-radius: 100%;
-    -o-border-radius: 100%;
+#prestataires-images .outer-circle{
+    height: 88px;
+    width: 88px;
+    min-height: 88px;
+    min-width: 88px;
+    margin: 8px 8px;
 
-    border : 1px black solid;
+    border: 1px solid #5A5250;
 }
 
-#actions_possibles{
-    width: 80vw;
-    margin-left: auto;
+/* cartes actions */
+#actions-possibles{
     display: flex;
-    justify-content: space-around;
-    text-align: center;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#actions_possibles h2{
-    display: inline;
-}
-
-.carte_action{
+.action-border{
     width: 25vw;
-    height: 240px;
+    height: 25vw;
+
+    padding: 16px;
+
+    border-radius: 16px;
+    border: 2px solid #FFC7C7;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
 }
 
-.carte_action img{
-    height: 64px;
-    width: 64px;
+#actions-possibles h3{
+    display: block;
+}
+
+.action-border > p{
+    text-align: center;
+    font-size: 1rem;
+}
+
+.action-border > img{
     display: block;
     margin: 0 auto;
 }
 
-.carte_border{
-    margin-top: 16px;
-    border: #FFC7C7 2px solid;
-    border-radius: 32px;
-    -webkit-border-radius: 32px;
-    -moz-border-radius: 32px;
-    -ms-border-radius: 32px;
-    -o-border-radius: 32px;
-    padding: 32px;
-}
-
-.carte_border:hover{
-    background-color: #ffeaea;
-}
-
-#reviews{
-    padding: 0 64px;
-}
-
-#review_carousel{
-    width: 80vw;
-    height: 800px;
-    margin: 128px auto 0;
-    border-radius: 64px;
-    -webkit-border-radius: 64px;
-    -moz-border-radius: 64px;
-    -ms-border-radius: 64px;
-    -o-border-radius: 64px;
-    background-color: #fff8f1;
-}
-
-.wedding_picture{
-    background-image: url("../images/wedding_1.jpg");
+/* ----- THIRD SECTION ----- */
+/* carousel */
+#reviews-carousel{
     width: 100%;
-    height: 300px;
-    border-top-left-radius: 64px;
-    border-top-right-radius: 64px;
+    height: 440px;
+
+    border-radius:32px;
+    -webkit-border-radius:32px;
+    -moz-border-radius:32px;
+    -ms-border-radius:32px;
+    -o-border-radius:32px;
+    background-color: #FEF4EA;
 }
 
-.carousel_text{
-    padding: 64px 128px;
+#carousel-image{
+    height: 30%;
+
+    background-image: url('../images/prestataires/prestataire3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+}
+
+#carousel-text{
+    height: 70%;
+
+    padding: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     text-align: center;
 }
 
-.carousel_metadata{
-    margin-top: 128px;
+#carousel-text :last-child{
+    margin-top: auto;
 }
 
-#reviews a{
-    display: inline-block;
-    width: 100%;
-    color: #5A5250;
+#reviews > a{
+    width: 40%;
+    margin-left: auto;
+
+    padding: 16px;
+    display: block;
+
     text-align: right;
-    font-size: 3rem;
-    text-decoration: underline;
+    font-size: 1.5rem;
+    color: #998b88;
 }
 
-/* DESKTOP MODIFICATIONS */
-
+#reviews > a:hover{
+    color: #494341
+}
