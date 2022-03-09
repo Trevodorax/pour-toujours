@@ -82,10 +82,6 @@ p{
 
 /* ---------- HEADER & FOOTER ---------- */
 
-#desktop-header{
-    display: none;
-}
-
 header{
     height: 100px;
     padding: 0 32px;
@@ -117,6 +113,36 @@ header{
 #mobile-header :nth-child(3){
     background-image: url('../images/profile_icon.svg');
 }
+
+/* desktop header */
+@media screen and (min-width: 900px){
+    #mobile-header{
+        display: none;
+    }
+
+    #desktop-header{
+        display: flex;
+        width: 100%;
+    }
+
+    #desktop-header > *{
+        display: flex;
+    }
+
+    #desktop-header nav{
+        width: 50%;
+        margin-left: auto;
+
+        
+        display: flex;
+        justify-content: space-between;
+
+        color: white;
+    }
+}
+
+
+
 
 /* header wave */
 #header-wave{
@@ -213,6 +239,15 @@ section{
     width: 40vw;
 }
 
+#home-text div:hover{
+    padding: 0 16px;
+    transition: padding 500ms;
+    -webkit-transition: padding 500ms;
+    -moz-transition: padding 500ms;
+    -ms-transition: padding 500ms;
+    -o-transition: padding 500ms;
+}
+
 #home-text div:nth-of-type(2n){
     flex-direction: row-reverse;
     text-align: right;
@@ -234,6 +269,10 @@ section{
 
     background-color: #CF697B;
 
+}
+
+#register-button:hover{
+    background-color: #af5a6a;
 }
 
 #register-button > p{
