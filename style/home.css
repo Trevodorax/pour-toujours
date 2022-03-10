@@ -1,0 +1,293 @@
+/* --- FIRST SECTION --- */
+
+/* lil circle */
+#home-circle{
+    width: 40vw;
+    height: 40vw;
+    margin: 0 auto;
+
+    border: 2px solid #FEF4EA;
+}
+
+#home-circle > div{
+    background-image: url('../images/home_circle.jpg');
+}
+
+/* text part */
+#home-text > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#home-text img{
+    margin: 32px;
+}
+
+#home-text p{
+    width: 40vw;
+}
+
+#home-text div:hover{
+    padding: 0 16px;
+    transition: padding 500ms;
+    -webkit-transition: padding 500ms;
+    -moz-transition: padding 500ms;
+    -ms-transition: padding 500ms;
+    -o-transition: padding 500ms;
+}
+
+#home-text div:nth-of-type(2n){
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+@media screen and (min-width: 900px){
+    #call-to-action{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #home-circle{
+        width: 30vw;
+        height: 30vw;
+    }
+
+    #home-text{
+        width: 50%;
+    }
+
+    .big-red-button{
+        width: 30vw;
+    }
+
+    .big-red-button > p{
+        color: #FDFDFD;
+        width: 80%;
+        text-align: center;
+    }
+}
+
+
+
+/* --- SECOND SECTION --- */
+/* prestataires mieux notés */
+
+#presentation-text h3{
+    width: fit-content;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+#prestataires-mieux-notes{
+    height: 152px;
+    width: 80%;
+    margin: 96px auto;
+
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
+
+    background-color: #FEF4EA ;
+}
+
+#prestataires-images{
+    height: 120px;
+    display: flex;
+    overflow-x:scroll;
+    overflow-y: hidden;
+}
+
+#prestataires-images .outer-circle{
+    height: 88px;
+    width: 88px;
+    min-height: 88px;
+    min-width: 88px;
+    margin: 8px 8px;
+
+    border: 1px solid #5A5250;
+}
+
+@media screen and (min-width: 900px){
+    #presentation-banner{
+        display: flex;
+        align-items: center;
+    }
+
+    #presentation-text{
+        width: 45%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #presentation-text h3{
+        display: block;
+    }
+
+    #prestataires-mieux-notes{
+        width: 40%;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
+
+}
+
+/* cartes actions */
+#actions-possibles{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action-border{
+    width: 25vw;
+    height: 25vw;
+
+    padding: 16px;
+
+    border-radius: 16px;
+    border: 2px solid #FFC7C7;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
+}
+
+#actions-possibles h3{
+    display: block;
+}
+
+.action-border > p{
+    text-align: center;
+    font-size: 1rem;
+}
+
+.action-border > img{
+    display: block;
+    margin: 0 auto;
+}
+
+.action-border:hover{
+    background-color: #fff6f6;
+}
+
+@media screen and (min-width: 700px){
+    .action-border{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .action-border > img{
+        height: 56px;
+        width: 56px;
+        display: block;
+        margin: 0 auto;
+    }
+    .action-border > p{
+        text-align: center;
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 900px){
+    .action-border{
+        width: 20vw;
+        height: 20vw;
+    }
+}
+
+
+/* ----- THIRD SECTION ----- */
+/* carousel */
+#reviews-carousel{
+    width: 100%;
+    height: 440px;
+
+    border-radius:32px;
+    -webkit-border-radius:32px;
+    -moz-border-radius:32px;
+    -ms-border-radius:32px;
+    -o-border-radius:32px;
+    background-color: #FEF4EA;
+}
+
+#carousel-image{
+    height: 30%;
+
+    background-image: url('../images/prestataires/prestataire3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+}
+
+#carousel-text{
+    height: 70%;
+
+    padding: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    text-align: center;
+}
+
+#carousel-text :last-child{
+    margin-top: auto;
+}
+
+#reviews > a{
+    width: 40%;
+    margin-left: auto;
+
+    padding: 16px;
+    display: block;
+
+    text-align: right;
+    font-size: 1.5rem;
+    color: #998b88;
+}
+
+#reviews > a:hover{
+    color: #494341
+}
+
+@media screen and (min-width: 1100px){
+    #reviews>h2, #reviews>h3{
+        text-align: left;
+    }
+
+    #reviews>h3{
+        margin-bottom: 32px;
+    }
+
+    #reviews-carousel{
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+}
+
+    #carousel-text{
+        width: 45%;
+        padding: 32px;
+    }
+
+    #carousel-image{
+        width: 400px;
+        height: 300px;
+        margin: 32px;
+        border-radius: 16px;
+        -webkit-border-radius: 16px;
+        -moz-border-radius: 16px;
+        -ms-border-radius: 16px;
+        -o-border-radius: 16px;
+}
+}
