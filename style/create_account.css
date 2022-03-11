@@ -7,22 +7,6 @@ h2{
 
 /* ----- FORM ----- */
 /* simple inputs */
-form{
-    margin: 64px auto;
-    width: 90%;
-
-
-    display: flex;
-    flex-direction: column;
-    padding: 32px;
-
-    border-radius: 32px;
-    -webkit-border-radius: 32px;
-    -moz-border-radius: 32px;
-    -ms-border-radius: 32px;
-    -o-border-radius: 32px;
-    border: 1px solid #5A5250;
-}
 
 #validate-button{
     width: 90%;
@@ -34,18 +18,6 @@ form{
         width: 50%;
         margin: 64px 0;
     }
-}
-
-form input, form select{
-    margin: 8px 0;
-    height: 40px;
-
-    border-radius:8px;
-    -webkit-border-radius:8px;
-    -moz-border-radius:8px;
-    -ms-border-radius:8px;
-    -o-border-radius:8px;
-    border: 2px solid #dddddd
 }
 
 ::placeholder{

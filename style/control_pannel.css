@@ -1,0 +1,41 @@
+/* ----- GENERAL SETTINGS ----- */
+
+h2{
+    text-align: left
+}
+
+h3{
+    font-size: 1.5rem;
+}
+
+section{
+    margin-bottom: 64px;
+}
+
+p{
+    font-weight: 500;
+    color: #5A5250;
+}
+
+/* ----- TOP PART ----- */
+/* another fucking go button */
+#launch-QCM{
+    display: flex;
+    justify-content: space-around;
+    margin: 32px 0;
+}
+
+
+
+/* ----- MOBILE CONTROL NAV ----- */
+#nav-opener{
+    margin: 0 -8vw;
+
+    padding: 16px 0;
+
+    text-align: center;
+    background-image: url('../images/pannel_open.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}

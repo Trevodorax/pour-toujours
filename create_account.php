@@ -76,7 +76,7 @@
 
         <?php include('includes/footer.php'); ?>
 
-    <script src="scripts/index.js"></script>
-    <script src="scripts/create_account.js"></script>
+        <script src="scripts/index.js"></script>
+        <script src="scripts/create_account.js"></script>
     </body>
 </html>

@@ -88,7 +88,8 @@
 
     <?php include('includes/footer.php'); ?>
 
-    <script src="scripts/index.js"></script>
+        <script src="scripts/index.js"></script>
+        <script src="scripts/home.js"></script>
     </body>
 
 </html>
