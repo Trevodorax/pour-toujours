@@ -1,5 +1,4 @@
 /* ----- GENERAL SETTINGS ----- */
-
 h2{
     text-align: left
 }
@@ -19,7 +18,7 @@ p{
 
 /* ----- TOP PART ----- */
 /* another fucking go button */
-#launch-QCM{
+#launch-QCM a{
     display: flex;
     justify-content: space-around;
     margin: 32px 0;
@@ -31,7 +30,7 @@ p{
 
 /* basic nav settings */
 #nav-opener{
-    margin: -8px -8vw;
+    margin: -16px -8vw;
     width: 100vw;
 
     padding: 16px 0;
@@ -43,7 +42,7 @@ p{
     background-position: center;
 }
 
-#control-nav nav{
+#mobile-control-nav nav{
     width: 280px;
     margin: 0 auto;
     border: solid 3px #FFC7C7;
@@ -57,7 +56,7 @@ p{
     -o-transition: all .3s linear 0s;
 }
 
-#control-nav nav a{
+#mobile-control-nav nav a{
     display: block;
 
     padding: 12px 0;
@@ -69,9 +68,6 @@ p{
 }
 
 /* nav appears and disappears */
-#control-nav nav a:first-of-type{
-    padding-top: 0;
-}
 
 .mobile-nav-disappear{
     height: 0px;
@@ -80,11 +76,7 @@ p{
 
 /* for tablets or half PC screens */
 @media screen and (min-width: 600px){
-    #nav-opener{
-        margin-bottom: 0;
-    }
-
-    #control-nav nav a{
+    #mobile-control-nav nav a{
         padding: 24px 0;
     }
 
@@ -109,6 +101,14 @@ tr{
 tr :last-child{
     border-left: 2px solid #FFC7C7;
     padding-left: 24px;
+}
+
+
+/* ----- DESKTOP VERSION ----- */
+@media screen and (min-width: 1000px){
+    #mobile-control-nav{
+        display: none;
+    }
 }
 
 

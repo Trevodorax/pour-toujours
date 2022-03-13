@@ -12,13 +12,17 @@
                 <h2>Bonjour, Simon !</h2>
                 <p>Prêt à continuer l'aventure ?</p>
                 <br>
-                <p>Vous ne savez pas par où démarrer ?  Nous vous avons préparé un QCM justement fait pour ça !</p>
-                <a id="launch-QCM" href="#"><h3>Lancer le QCM<img src="images/go_icon.svg"></h3></a>
+                <div id="launch-QCM">
+                    <p>Vous ne savez pas par où démarrer ?  Nous vous avons préparé un QCM justement fait pour ça !</p>
+                    <a id="launch-QCM" href="#"><h3>Lancer le QCM<img src="images/go_icon.svg"></h3></a>
+                </div>
+
             </section>
 
-            <section id="control-nav">
+            <section id="mobile-control-nav">
                 <p id="nav-opener">Mon panneau de contrôle</p>
                 <nav>
+                    <br>
                     <a href="#">Vue générale sur mon mariage</a>
                     <a href="#">Mes messages privés</a>
                     <a href="#">Mon lieu de mariage</a>
