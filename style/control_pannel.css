@@ -1,4 +1,10 @@
 /* ----- GENERAL SETTINGS ----- */
+
+main{
+    display: flex;
+    flex-direction: column;
+}
+
 h2{
     text-align: left
 }
@@ -8,7 +14,7 @@ h3{
 }
 
 section{
-    margin-bottom: 64px;
+    margin: 64px 0;
 }
 
 p{
@@ -16,17 +22,128 @@ p{
     color: #5A5250;
 }
 
+
 /* ----- TOP PART ----- */
-/* another fucking go button */
+/* another fucking go button (should do a common class but meh) */
+#page-top{
+    margin-top: 80px;
+    width: 100%;
+
+    padding: 0 8vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+#time-left{
+    font-size: 2.5rem;
+    color: #5A5250;
+}
+
+#time-left img{
+    height: 80px;
+}
+
 #launch-QCM a{
     display: flex;
     justify-content: space-around;
     margin: 32px 0;
 }
 
+@media screen and (max-width: 700px){
+    #time-left{
+        display: none;
+    }
+}
+
+/* ----- DESKTOP NAVBAR ----- */
+/* general settings for the navbar */
+#desktop-control-nav{
+    position: absolute;
+    left: 0;
+    top: 250px;
+    width: 56px;
+}
+
+#desktop-control-nav a:first-of-type{
+    border-top-right-radius: 16px;
+}
+
+#desktop-control-nav a:last-of-type{
+    border-bottom-right-radius: 16px;
+}
+
+#desktop-control-nav a{
+    width: 60px;
+    height: 56px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+
+    background-color: #FFC7C7;
+}
+
+#desktop-control-nav img{
+    height: 32px;
+    width: 32px;
+    margin: 0 auto;
+
+    display: block;
+}
+
+/* selected item from navbar */
+#desktop-control-nav p{
+    display: none;
+
+    margin: auto 0;
+
+    color: white;
+    font-size: 1rem;
+}
+
+#desktop-control-nav a.active-nav-item{
+    width: 112px;
+
+    background-color: #CF697B;
+    border-radius:0 16px 16px 0;
+    -webkit-border-radius:0 16px 16px 0;
+    -moz-border-radius:0 16px 16px 0;
+    -ms-border-radius:0 16px 16px 0;
+    -o-border-radius:0 16px 16px 0;
+    transition: width 500ms;
+    -webkit-transition: width 500ms;
+    -moz-transition: width 500ms;
+    -ms-transition: width 500ms;
+    -o-transition: width 500ms;
+}
+
+#desktop-control-nav a.active-nav-item img{
+    display: none;
+}
+
+#desktop-control-nav a.active-nav-item p{
+    display: block;
+}
+
+@media screen and (max-width: 999px){
+    #desktop-control-nav{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    #page-top{
+        padding-left: 16vw;
+    }
+
+    main{
+        padding-left: 16vw;
+    }
+}
 
 
-/* ----- MOBILE CONTROL NAV ----- */
+/* ----- HOME PAGE ----- */
 
 /* basic nav settings */
 #nav-opener{
@@ -86,8 +203,8 @@ p{
 }
 
 
-/* ----- OVERALL VIEW ----- */
-/* setting the table */
+
+/* ----- table view ----- */
 table{
     width: 80%;
     font-weight: bold;
@@ -103,11 +220,24 @@ tr :last-child{
     padding-left: 24px;
 }
 
-
-/* ----- DESKTOP VERSION ----- */
+/* desktop settings */
 @media screen and (min-width: 1000px){
+    #home-main{
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
     #mobile-control-nav{
         display: none;
+    }
+
+    #launch-QCM{
+        width: 20%;
+    }
+
+    table{
+        width: 500px;
     }
 }
 
