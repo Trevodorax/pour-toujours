@@ -1,8 +1,18 @@
+<?php
+    $possible_pages = ["home", "messages"];
+    if(isset($_GET['page']) && in_array($_GET['page'], $possible_pages)){
+        $current_page = $_GET['page'];
+    }else{
+        header('location: control_pannel.php?page=home');
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <?php include('includes/common_head.php'); ?>
-        <link rel="stylesheet" href="style/control_pannel.css">
+        <link rel="stylesheet" href="style/control_pannel/control_pannel.css">
+        <link rel="stylesheet" href="style/control_pannel/<?=$current_page?>.css">
     </head>
     <body>
         <?php include('includes/header.php'); ?>
@@ -18,65 +28,17 @@
 
         <nav id="desktop-control-nav">
             <a href="#" class="active-nav-item"><img src="images/control_nav_pictos/picto_general.svg"><p>Mon&nbspmariage</p></a>
-            <a href="#"><img src="images/control_nav_pictos/picto_general.svg"><p>Mon&nbspmariage</p></a>
-            <a href="#"><img src="images/control_nav_pictos/picto_general.svg"><p>Mon&nbspmariage</p></a>
-            <a href="#"><img src="images/control_nav_pictos/picto_general.svg"><p>Mon&nbspmariage</p></a>
-            <a href="#"><img src="images/control_nav_pictos/picto_general.svg"><p>Mon&nbspmariage</p></a>
-            <a href="#"><img src="images/control_nav_pictos/picto_general.svg"><p>Mon&nbspmariage</p></a>
-            <a href="#"><img src="images/control_nav_pictos/picto_general.svg"><p>Mon&nbspmariage</p></a>
-            <a href="#"><img src="images/control_nav_pictos/picto_general.svg"><p>Mon&nbspmariage</p></a>
-            <a href="#"><img src="images/control_nav_pictos/picto_general.svg"><p>Mon&nbspmariage</p></a>
+            <a href="#"><img src="images/control_nav_pictos/picto_bulle.svg"><p>Mes&nbspmessages</p></a>
+            <a href="#"><img src="images/control_nav_pictos/picto_lieu.svg"><p>Lieu&nbspde&nbspmariage</p></a>
+            <a href="#"><img src="images/control_nav_pictos/picto_animation.svg"><p>Mon&nbspanimation</p></a>
+            <a href="#"><img src="images/control_nav_pictos/picto_photo.svg"><p>Mes&nbspphotos</p></a>
+            <a href="#"><img src="images/control_nav_pictos/pitco_repas.svg"><p>Mon&nbsprepas</p></a>
+            <a href="#"><img src="images/control_nav_pictos/picto_coeur.svg"><p>Mes&nbspfavoris</p></a>
+            <a href="#"><img src="images/control_nav_pictos/picto_invites.svg"><p>Mes&nbspinvités</p></a>
+            <a href="#"><img src="images/control_nav_pictos/picto_parametre.svg"><p>Paramètres</p></a>
         </nav>
 
-        <main id="home-main">
-            <section id="launch-QCM">
-                    <p>Vous ne savez pas par où démarrer ?  Nous vous avons préparé un QCM justement fait pour ça !</p>
-                    <a href="#"><h3>Lancer le QCM<img src="images/go_icon.svg"></h3></a>
-            </section>
-
-            <section id="mobile-control-nav">
-                <p id="nav-opener">Mon panneau de contrôle</p>
-                <nav>
-                    <br>
-                    <a href="#">Vue générale sur mon mariage</a>
-                    <a href="#">Mes messages privés</a>
-                    <a href="#">Mon lieu de mariage</a>
-                    <a href="#">Mon animation</a>
-                    <a href="#">Mes photos</a>
-                    <a href="#">Mon repas</a>
-                    <a href="#">Ma liste d'invités</a>
-                    <a href="#">Mes favoris</a>
-                    <a href="#">Mes paramètres</a>
-                </nav>
-            </section>
-
-            <section id="vue-generale">
-                <h2>Vue générale sur mon mariage</h2>
-                <p>Date : 28/05/22</p>
-                <table>
-                    <tr>
-                        <td>Mon lieu de mariage</td>
-                        <td>OK</td>
-                    </tr>
-                    <tr>
-                        <td>Mon animation</td>
-                        <td>OK</td>
-                    </tr>
-                    <tr>
-                        <td>Mes photos</td>
-                        <td>OK</td>
-                    </tr>
-                    <tr>
-                        <td>Mon repas</td>
-                        <td>Non défini</td>
-                    </tr>
-                    <tr>
-                        <td>Ma liste d'invités</td>
-                        <td>En cours</td>
-                    </tr>
-                </table>
-            </section>
-        </main>
+        <?php include('includes/control_pannel/'. $current_page . '.php'); ?>
 
         <?php include('includes/footer.php'); ?>
         <script src="scripts/index.js"></script>

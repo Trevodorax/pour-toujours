@@ -141,3 +141,61 @@ p{
         padding-left: 16vw;
     }
 }
+
+
+/* basic nav settings */
+#nav-opener{
+    margin: -16px -8vw;
+    width: 100vw;
+
+    padding: 16px 0;
+
+    text-align: center;
+    background-image: url('../../images/pannel_open.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#mobile-control-nav nav{
+    width: 280px;
+    margin: 0 auto;
+    border: solid 3px #FFC7C7;
+    border-top: 0;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    transition: all .3s linear 0s;
+    -webkit-transition: all .3s linear 0s;
+    -moz-transition: all .3s linear 0s;
+    -ms-transition: all .3s linear 0s;
+    -o-transition: all .3s linear 0s;
+}
+
+#mobile-control-nav nav a{
+    display: block;
+
+    padding: 12px 0;
+
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #5A5250;
+}
+
+/* nav appears and disappears */
+
+.mobile-nav-disappear{
+    height: 0px;
+    overflow-y: hidden;
+}
+
+/* for tablets or half PC screens */
+@media screen and (min-width: 600px){
+    #mobile-control-nav nav a{
+        padding: 24px 0;
+    }
+
+    .mobile-nav-disappear{
+        height: 8px;
+    }
+}
