@@ -15,23 +15,3 @@ tr :last-child{
     padding-left: 24px;
 }
 
-/* desktop settings */
-@media screen and (min-width: 1000px){
-    #home-main{
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    #mobile-control-nav{
-        display: none;
-    }
-
-    #launch-QCM{
-        width: 20%;
-    }
-
-    table{
-        width: 500px;
-    }
-}

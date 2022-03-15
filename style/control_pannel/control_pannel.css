@@ -26,12 +26,17 @@ p{
 /* ----- TOP PART ----- */
 /* another fucking go button (should do a common class but meh) */
 #page-top{
-    margin-top: 80px;
     width: 100%;
 
     padding: 0 8vw;
     display: flex;
     justify-content: space-between;
+}
+
+@media screen and (min-width: 900px){
+    #page-top{
+        margin-top: 80px;
+    }
 }
 
 #time-left{
@@ -197,5 +202,26 @@ p{
 
     .mobile-nav-disappear{
         height: 8px;
+    }
+}
+
+/* desktop settings */
+@media screen and (min-width: 1000px){
+    #home-main{
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #mobile-control-nav{
+        display: none;
+    }
+
+    #launch-QCM{
+        width: 20%;
+    }
+
+    table{
+        width: 500px;
     }
 }

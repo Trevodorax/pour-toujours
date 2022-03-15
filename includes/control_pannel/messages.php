@@ -14,9 +14,52 @@
             <a href="#">Mes paramètres</a>
         </nav>
     </section>
-    <h2>Vue générale sur mon mariage</h2>
+    <h2>Mes messages privés</h2>
     <section id="messages-list">
-
+        <a href="#">
+            <img src="images/message_pfp.jpg">
+            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+        </a>
+        <a href="#">
+            <img src="images/message_pfp.jpg">
+            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+        </a>
+        <a href="#">
+            <img src="images/message_pfp.jpg">
+            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+        </a>
+        <a href="#">
+            <img src="images/message_pfp.jpg">
+            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+        </a>
+        <a href="#">
+            <img src="images/message_pfp.jpg">
+            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+        </a>
+        <a href="#">
+            <img src="images/message_pfp.jpg">
+            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+        </a>
+        <a href="#">
+            <img src="images/message_pfp.jpg">
+            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+        </a>
+        <a href="#">
+            <img src="images/message_pfp.jpg">
+            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+        </a>
+        <a href="#">
+            <img src="images/message_pfp.jpg">
+            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+        </a>
+        <a href="#">
+            <img src="images/message_pfp.jpg">
+            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+        </a>
+        <a href="#">
+            <img src="images/message_pfp.jpg">
+            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+        </a>
     </section>
     <section id="messages-content">
 
