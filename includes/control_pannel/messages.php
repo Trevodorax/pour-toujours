@@ -15,53 +15,67 @@
         </nav>
     </section>
     <h2>Mes messages privés</h2>
-    <section id="messages-list">
-        <a href="#">
-            <img src="images/message_pfp.jpg">
-            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-        </a>
-        <a href="#">
-            <img src="images/message_pfp.jpg">
-            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-        </a>
-        <a href="#">
-            <img src="images/message_pfp.jpg">
-            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-        </a>
-        <a href="#">
-            <img src="images/message_pfp.jpg">
-            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-        </a>
-        <a href="#">
-            <img src="images/message_pfp.jpg">
-            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-        </a>
-        <a href="#">
-            <img src="images/message_pfp.jpg">
-            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-        </a>
-        <a href="#">
-            <img src="images/message_pfp.jpg">
-            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-        </a>
-        <a href="#">
-            <img src="images/message_pfp.jpg">
-            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-        </a>
-        <a href="#">
-            <img src="images/message_pfp.jpg">
-            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-        </a>
-        <a href="#">
-            <img src="images/message_pfp.jpg">
-            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-        </a>
-        <a href="#">
-            <img src="images/message_pfp.jpg">
-            <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-        </a>
-    </section>
-    <section id="messages-content">
-
-    </section>
+    <div class="message-page-content">
+        <section id="conversation">
+            <div class="from">Bienvenue Paul ! Toute l'équipe de PourToujours te souhaite  un mariage heureux. </div>
+            <div class="to">Merci à vous tous, mon ame-soeur, Simon, et moi-même sommes aux anges depuis que nous avons découverts votre site ! Vous êtes des génies.</div>
+            <div class="from">Vous n'avez encore rien vu.</div>
+            <div class="from">Bienvenue Paul ! Toute l'équipe de PourToujours te souhaite  un mariage heureux. </div>
+            <div class="to">Merci à vous tous, mon ame-soeur, Simon, et moi-même sommes aux anges depuis que nous avons découverts votre site ! Vous êtes des génies.</div>
+            <div class="from">Vous n'avez encore rien vu.</div>
+            <div class="from">Bienvenue Paul ! Toute l'équipe de PourToujours te souhaite  un mariage heureux. </div>
+            <div class="to">Merci à vous tous, mon ame-soeur, Simon, et moi-même sommes aux anges depuis que nous avons découverts votre site ! Vous êtes des génies.</div>
+            <div class="from">Vous n'avez encore rien vu !</div>
+            <form>
+                <input id="page-bottom" type="text" placeholder=" Votre message">
+            </form>
+        </section>
+        <section id="messages-list">
+            <a>
+                <img src="images/message_pfp.jpg">
+                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+            </a>
+            <a>
+                <img src="images/message_pfp.jpg">
+                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+            </a>
+            <a>
+                <img src="images/message_pfp.jpg">
+                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+            </a>
+            <a>
+                <img src="images/message_pfp.jpg">
+                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+            </a>
+            <a>
+                <img src="images/message_pfp.jpg">
+                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+            </a>
+            <a>
+                <img src="images/message_pfp.jpg">
+                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+            </a>
+            <a>
+                <img src="images/message_pfp.jpg">
+                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+            </a>
+            <a>
+                <img src="images/message_pfp.jpg">
+                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+            </a>
+            <a>
+                <img src="images/message_pfp.jpg">
+                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+            </a>
+            <a>
+                <img src="images/message_pfp.jpg">
+                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+            </a>
+            <a>
+                <img src="images/message_pfp.jpg">
+                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+            </a>
+        </section>
+        
+    </div>
 </main>

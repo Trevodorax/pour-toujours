@@ -153,6 +153,43 @@ form input, form select, form textarea{
     border: 2px solid #dddddd
 }
 
+/* cards */
+.grid-card{
+
+    display: flex;
+    width: 26%;
+    height: 128px;
+    margin-bottom: 64px ;
+
+    align-items: center;
+
+    border: 1px #FFC7C7 solid;
+    background-color: white;
+}
+
+.grid-card > img{
+    height: 128px;
+    width: 128px;
+}
+
+.grid-card > div{
+    width: 70%;
+    margin-right: 8px;
+    padding: 4px;
+
+    text-align: right;
+}
+
+.grid-card h4, .grid-card p{
+    font-size: 1.1rem;
+}
+
+@media screen and (max-width: 600px){
+    .grid-card{
+        width: 90%;
+    }
+}
+
 
 /* ---------- HEADER & FOOTER ---------- */
 

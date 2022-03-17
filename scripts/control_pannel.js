@@ -1,4 +1,4 @@
-/* ----- MAKE NAV APPEAR AND DISAPPEAR ON MOBILE ----- */
+/* make nave appear and disappear on mobile */
 document.getElementById('nav-opener').addEventListener('click', function(){
     document.querySelector('#mobile-control-nav nav').classList.toggle('mobile-nav-disappear');
 });

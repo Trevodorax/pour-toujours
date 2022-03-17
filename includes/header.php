@@ -9,10 +9,10 @@
         <img src="images/text_logo.svg">
     </div>
     <nav>
-        <a>FAQ</a>
-        <a>Prestataires</a>
-        <a>Accès pro</a>
-        <a>Se connecter</a>
+        <a href="FAQ.php">FAQ</a>
+        <a href="#">Prestataires</a>
+        <a href="create_account.php">Accès pro</a>
+        <a href="create_account.php">Se connecter</a>
     </nav>
 </header>
 <div id="header-wave"></div>

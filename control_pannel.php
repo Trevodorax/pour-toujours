@@ -1,5 +1,5 @@
 <?php
-    $possible_pages = ["home", "messages"];
+    $possible_pages = ["home", "messages", "grid"];
     if(isset($_GET['page']) && in_array($_GET['page'], $possible_pages)){
         $current_page = $_GET['page'];
     }else{

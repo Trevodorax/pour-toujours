@@ -1,0 +1,38 @@
+/* ----- GENRAL SETTINGS ----- */
+main > div{
+    margin-bottom: 128px;
+    background-color: #EEE;
+    padding: 16px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border: 1px solid #ffc7c7;
+}
+
+main > div a{
+    display: block;
+    margin: 16px 0;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px){
+    main > div h2 {
+        text-align: center;
+    }
+}
+
+/* ----- GRID CONTENT ----- */
+
+#grid-items{
+    overflow-y: scroll;
+
+    display: flex;
+    height: 300px;
+    margin: 32px 0;
+
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
