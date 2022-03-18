@@ -4,6 +4,7 @@
         exit;
     }
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,7 +27,7 @@
                     <p>En quelques clics, retrouvez tous les services dont vous avez besoin pour le jour J</p>
                     <img src="images/cursor_icon.svg">
                 </div>
-                <button class="big-red-button"><p>Inscription gratuite !</p></button>
+                <button class="big-red-button" onclick="location.href='create_account.php'"><p>Inscription gratuite !</p></button>
             </div>
         </section>
         <section id="presentation">

@@ -8,14 +8,15 @@
         <?php include('includes/header.php'); ?>
 
         <main>
-            <a class="user-form" onclick="switch_forms()" id="top-right-acces-pro" href="#">Accès pro</a>
-            <a class="pro-form" onclick="switch_forms()" id="top-right-acces-pro" href="#">Accès utilisateur</a>
-            <h2>Créer un compte</h2>
+            <a href="#">Accès pro</a>
+            <a href="#">Accès utilisateur</a>
+            <h2>Créer un compte<span class="user-form" onclick="switch_forms()" id="top-right-acces-pro">Accès pro</span><span class="pro-form" onclick="switch_forms()" id="top-right-acces-pro"r>Accès utilisateur</span></h2>
             <p>Saisissez vos informations pour continuer</p>
             <p class="pro-form">Vous pourrez présenter vos services en détail dans votre profil après vous être créer un compte.</p>
             <form>
                 <input type="text" name="f_name" class="required-input" placeholder=" Votre prénom">
 
+                
                 <input type="text" name="l_name" class="required-input" placeholder=" Votre nom">
 
                 <input class="pro-form" type="text" name="company_name" placeholder=" Nom de votre entreprise">
