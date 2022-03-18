@@ -205,7 +205,8 @@ header{
 }
 
  /* header images */
- header>div{
+ #mobile-header>a{
+    display: block;
     height: 60px;
     width: 60px;
 
@@ -249,6 +250,10 @@ header{
         justify-content: space-between;
 
         color: white;
+    }
+
+    #desktop-header>a>img{
+        height: 60px;
     }
 }
 

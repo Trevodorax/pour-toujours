@@ -1,3 +1,9 @@
+<?php
+    if(isset($_GET['status']) && $_GET['status'] == 'connected'){
+        header('location: control_pannel.php');
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>

@@ -28,14 +28,14 @@
 
         <nav id="desktop-control-nav">
             <a href="#" class="active-nav-item"><img src="images/control_nav_pictos/picto_general.svg"><p>Mon&nbspmariage</p></a>
-            <a href="#"><img src="images/control_nav_pictos/picto_bulle.svg"><p>Mes&nbspmessages</p></a>
-            <a href="#"><img src="images/control_nav_pictos/picto_lieu.svg"><p>Lieu&nbspde&nbspmariage</p></a>
-            <a href="#"><img src="images/control_nav_pictos/picto_animation.svg"><p>Mon&nbspanimation</p></a>
-            <a href="#"><img src="images/control_nav_pictos/picto_photo.svg"><p>Mes&nbspphotos</p></a>
-            <a href="#"><img src="images/control_nav_pictos/pitco_repas.svg"><p>Mon&nbsprepas</p></a>
-            <a href="#"><img src="images/control_nav_pictos/picto_coeur.svg"><p>Mes&nbspfavoris</p></a>
-            <a href="#"><img src="images/control_nav_pictos/picto_invites.svg"><p>Mes&nbspinvités</p></a>
-            <a href="#"><img src="images/control_nav_pictos/picto_parametre.svg"><p>Paramètres</p></a>
+            <a href="control_pannel.php?page=messages"><img src="images/control_nav_pictos/picto_bulle.svg"><p>Mes&nbspmessages</p></a>
+            <a href="control_pannel.php?page=lieu"><img src="images/control_nav_pictos/picto_lieu.svg"><p>Lieu&nbspde&nbspmariage</p></a>
+            <a href="control_pannel.php?page=animation"><img src="images/control_nav_pictos/picto_animation.svg"><p>Mon&nbspanimation</p></a>
+            <a href="control_pannel.php?page=photo"><img src="images/control_nav_pictos/picto_photo.svg"><p>Mes&nbspphotos</p></a>
+            <a href="control_pannel.php?page=repas"><img src="images/control_nav_pictos/pitco_repas.svg"><p>Mon&nbsprepas</p></a>
+            <a href="control_pannel.php?page=favoris"><img src="images/control_nav_pictos/picto_coeur.svg"><p>Mes&nbspfavoris</p></a>
+            <a href="control_pannel.php?page=invites"><img src="images/control_nav_pictos/picto_invites.svg"><p>Mes&nbspinvités</p></a>
+            <a href="control_pannel.php?page=parametres"><img src="images/control_nav_pictos/picto_parametre.svg"><p>Paramètres</p></a>
         </nav>
 
         <?php include('includes/control_pannel/'. $current_page . '.php'); ?>
