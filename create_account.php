@@ -16,7 +16,6 @@
             <form>
                 <input type="text" name="f_name" class="required-input" placeholder=" Votre prénom">
 
-                
                 <input type="text" name="l_name" class="required-input" placeholder=" Votre nom">
 
                 <input class="pro-form" type="text" name="company_name" placeholder=" Nom de votre entreprise">
