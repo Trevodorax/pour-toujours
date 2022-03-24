@@ -54,16 +54,20 @@
                     ?>
                 </select>
 
-                <select class="pro-form " id="secteur-activite">
+                <select class="pro-form " id="activite">
                     <?php
                         echo "<option disabled='disabled' selected='true'> --- Sélectionner un secteur d'activité ---</option>";
-                        $secteurs_options = ["Photographie", "Cuisine", "Décoration de salles", "Fleuriste"];
-                        foreach ($secteurs_options as $activite){
+                        $activite_options = ["Photographie", "Cuisine", "Décoration de salles", "Fleuriste"];
+                        foreach ($activite_options as $activite){
                             echo "<option value='$activite'>$activite</option>";
                         }
                     ?>
                 </select>
 
+                <div class="checkbox-line">
+                    <input type="checkbox" name="pro_access">
+                    <span>Créer un compte professionnel</span>
+                </div>
                 <div class="checkbox-line">
                     <input class="must-check" type="checkbox" name="certified_adult">
                     <span>J'accepte la politique de confidentialité du site. Je certifie avoir 18 ans révolus.</span>
