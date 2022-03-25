@@ -15,7 +15,7 @@
             <p class="pro-form">Vous pourrez présenter vos services en détail dans votre profil après vous être créer un compte.</p>
             <form method="post" action ="check_sign_up.php">
                 <input type="text" name="c_name" class="required-input" placeholder=" Votre nom complet">
-                
+
                 <input type="text" name="f_name" class="required-input" placeholder=" Votre nom préféré">
 
                 <input class="date_input" type="date" name="b_date" class="required-input" placeholder=" Votre date de naissance">
