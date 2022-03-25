@@ -153,6 +153,10 @@ form input, form select, form textarea{
     border: 2px solid #dddddd
 }
 
+.date_input{
+    padding-left: 6px;
+}
+
 /* cards */
 .grid-card{
 
