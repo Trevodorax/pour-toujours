@@ -13,6 +13,12 @@
     margin: 0;
 }
 
+@media screen and (max-width: 800px){
+    .message-page-content{
+        flex-direction: column;
+    }
+}
+
 
 /* ----- MESSAGES LIST ----- */
 #messages-list{
@@ -55,6 +61,12 @@
     font-weight: 600;
 }
 
+@media screen and (max-width: 800px){
+    #messages-list{
+        width: 100%;
+    }
+}
+
 
 
 /* ----- CONVERSATION ----- */
@@ -69,9 +81,9 @@
     overflow-y: scroll;
 }
 
-@media screen and (min-width: 800px){
+@media screen and (max-width: 800px){
     #conversation{
-        width: 55%;
+        width: 100%;
     }
 }
 

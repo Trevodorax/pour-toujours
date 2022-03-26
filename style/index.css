@@ -11,6 +11,10 @@ body{
     margin: 0;
 }
 
+.pouf{
+    display: none;
+}
+
 /* fonts */
 html{
     font-size: 16px;
@@ -45,9 +49,7 @@ a{
     text-decoration: none;
 }
 
-.pouf{
-    display: none;
-}
+
 
 
 
@@ -206,6 +208,11 @@ header{
     align-items: center;
 
     background-color: #FFC7C7;
+}
+
+header a:hover{
+    color: #ffffff;
+    text-decoration: underline;
 }
 
  /* header images */
