@@ -1,4 +1,96 @@
+/* ----- GENERAL SETTINGS ----- */
+
+section{
+    margin-top: 64px;
+}
+
+h2{
+    text-align: left;
+}
+
+h3{
+    margin-left: -16px;
+    margin-bottom: 16px;
+
+    text-align: left;
+
+    font-size: 1.6rem;
+    font-weight: normal;
+}
+
+h4{
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+}
+
+p{
+    margin-bottom: 8px;
+    color: #aaa;
+    font-weight: normal;
+}
+
+
+
+/* ----- PAGE TOP ----- */
+
 h2 img{
-    width: 16px;
-    margin-left: 8px;
+    height: 20px;
+    margin-left: 24px;
+}
+
+
+
+/* ----- PROFILE INFORMATIONS ----- */
+#profile{
+    display: flex;
+    justify-content: space-between;
+}
+#profile > img{
+    height: 300px;
+    width: 200px;
+
+    object-fit : cover;
+}
+
+
+
+/* ----- SERVICES ----- */
+#services > div{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#services > div > div{
+    width: 100%;
+    margin-bottom: 64px;
+}
+
+@media screen and (min-width: 700px){
+    #services > div > div{
+        width: 44%;
+        margin: 3%;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    #services > div > div{
+        width: 25%;
+        margin: 3%
+    }
+}
+
+
+/* ----- CLIENTS ----- */
+table{
+    width: 100%;
+
+    text-align: center;
+}
+
+th{
+    background-color: #ddd;
+}
+
+td{
+    background-color: #eee;
 }

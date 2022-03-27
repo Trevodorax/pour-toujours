@@ -24,35 +24,39 @@
             </section>
             <section id="services">
                 <h3>Vos services</h3>
-                <div class="service-card">
-                    <h4>Photos mariage</h4>
-                    <p>Tarif : 20€/h</p>
-                    <p>Description : Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <div>
+                    <div class="service-card">
+                        <h4>Photos mariage</h4>
+                        <p>Tarif : 20€/h</p>
+                        <p>Description : Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Photos mariage</h4>
+                        <p>Tarif : 20€/h</p>
+                        <p>Description : Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Photos mariage</h4>
+                        <p>Tarif : 20€/h</p>
+                        <p>Description : Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Photos mariage</h4>
+                        <p>Tarif : 20€/h</p>
+                        <p>Description : Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h4>Photos mariage</h4>
-                    <p>Tarif : 20€/h</p>
-                    <p>Description : Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-                <div class="service-card">
-                    <h4>Photos mariage</h4>
-                    <p>Tarif : 20€/h</p>
-                    <p>Description : Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-                <div class="service-card">
-                    <h4>Photos mariage</h4>
-                    <p>Tarif : 20€/h</p>
-                    <p>Description : Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
+                
             </section>
             <section id="clients">
+                <h3>Vos clients</h3>
                 <table>
                     <tr>
                         <th>Nom complet</th>
                         <th>Date du mariage</th>
                         <th>Service</th>
                         <th>Adresse email</th>
-                        <th>Messages</th>
+                        <th></th>
                     </tr>
                     <tr>
                         <td>Fredo Sananos</td>
