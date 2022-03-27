@@ -1,0 +1,36 @@
+main{
+    padding: 0;
+}
+
+#page-top{
+    display: flex;
+    justify-content: space-between;
+}
+
+#page-top img{
+    width: 16px;
+    margin-left: 4px;
+}
+
+.presta-card{
+    display: flex;
+    height: 200px;
+    width: 90%;
+    margin: 32px auto;
+}
+
+.presta-card > img{
+    width: 40%;
+    height: 100%;
+    margin-right: 16px;
+}
+
+.presta-card h4{
+    color: #ADA9A8;
+    font-size: 1.1rem;
+}
+
+.presta-card p{
+    color: #ADA9A8;
+    font-size: 1rem;
+}
