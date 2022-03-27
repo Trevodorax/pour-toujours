@@ -6,6 +6,11 @@ a{
     text-decoration: underline;
 }
 
+footer{
+    position: fixed;
+    bottom: 0;
+}
+
 #forgot_pwd{
     font-size: 1rem;
 }
@@ -25,3 +30,11 @@ a{
     font-size: 1rem;
     text-align: center;
 }
+
+@media screen and (min-width: 1000px){
+    form{
+        width: 50%;
+        margin: 64px auto;
+    }
+}
+
