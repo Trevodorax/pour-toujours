@@ -46,7 +46,6 @@
                         <p>Description : Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                 </div>
-                
             </section>
             <section id="clients">
                 <h3>Vos clients</h3>
@@ -87,6 +86,43 @@
                         <td><img src="images/presta_contact_icon.svg"></td>
                     </tr>
                 </table>
+            </section>
+
+            <h3>Avis sur ce prestataire</h3>
+            <section id="reviews">
+                    <div>
+                        <p class="comment">Evelynn est d'un professionnel agréable, elle sait donner des directives claires pour un résultat émouvant.</p>
+                        <div class="rating">
+                            <img src="images/rating_red_star.svg">
+                            <img src="images/rating_red_star.svg">
+                            <img src="images/rating_red_star.svg">
+                            <img src="images/rating_black_star.svg">
+                            <img src="images/rating_black_star.svg">
+                        </div>
+                        <p>Alain - 2020</p>
+                    </div>
+                    <div>
+                        <p class="comment">Evelynn est d'un professionnel agréable, elle sait donner des directives claires pour un résultat émouvant.</p>
+                        <div class="rating">
+                            <img src="images/rating_red_star.svg">
+                            <img src="images/rating_red_star.svg">
+                            <img src="images/rating_red_star.svg">
+                            <img src="images/rating_black_star.svg">
+                            <img src="images/rating_black_star.svg">
+                        </div>
+                        <p>Alain - 2020</p>
+                    </div>
+                    <div>
+                        <p class="comment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui cumque fugiat impedit natus? Blanditiis, fuga non? Totam exercitationem nulla, laborum dolores aperiam, ipsa ullam in repellat sequi nam quos culpa.</p>
+                        <div class="rating">
+                            <img src="images/rating_red_star.svg">
+                            <img src="images/rating_red_star.svg">
+                            <img src="images/rating_red_star.svg">
+                            <img src="images/rating_black_star.svg">
+                            <img src="images/rating_black_star.svg">
+                        </div>
+                        <p>Alain - 2020</p>
+                    </div>
             </section>
         </main>
 

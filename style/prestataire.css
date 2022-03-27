@@ -10,7 +10,7 @@ h2{
 
 h3{
     margin-left: -16px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
 
     text-align: left;
 
@@ -93,4 +93,56 @@ th{
 
 td{
     background-color: #eee;
+}
+
+
+
+/* ----- REVIEWS ----- */
+#reviews{
+    padding: 32px;
+
+    background-color: #FEF4EA;
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
+}
+
+#reviews p{
+    color: black;
+}
+
+#reviews{
+    display: flex;
+    width: 100%;
+
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#reviews > div{
+    width: 100%;
+    margin-bottom: 64px;
+}
+
+.comment{
+    text-align: justify;
+}
+
+.rating{
+    margin: 16px 0;
+}
+
+@media screen and (min-width: 700px){
+    #reviews > div{
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    #reviews > div{
+        width: 25%;
+    }
 }
