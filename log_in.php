@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php include('includes/common_head.php'); ?>
-        <link rel="stylesheet" href="style/sign_in.css">
+        <link rel="stylesheet" href="style/log_in.css">
     </head>
     <body>
         <?php include('includes/header.php'); ?>
@@ -30,6 +30,6 @@
         <?php include('includes/footer.php'); ?>
 
         <script src="scripts/index.js"></script>
-        <script src="scripts/sign_in.js"></script>
+        <script src="scripts/log_in.js"></script>
     </body>
 </html>

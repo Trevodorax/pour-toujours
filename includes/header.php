@@ -12,7 +12,7 @@
         <a href="FAQ.php">FAQ</a>
         <a href="#">Prestataires</a>
         <a href="create_account.php">Accès pro</a>
-        <a href="create_account.php">Se connecter</a>
+        <a href="sign_in.php">Se connecter</a>
     </nav>
 </header>
 <div id="header-wave"></div>
