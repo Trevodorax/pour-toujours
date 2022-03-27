@@ -1,9 +1,14 @@
 main{
-    padding: 0;
+    padding: 0 32px;
+}
+
+h2{
+    text-align: left;
 }
 
 #page-top{
     display: flex;
+    margin-top: 32px;
     justify-content: space-between;
 }
 
@@ -14,23 +19,55 @@ main{
 
 .presta-card{
     display: flex;
-    height: 200px;
-    width: 90%;
+    height: 160px;
+    width: 100%;
     margin: 32px auto;
+    padding-right: 8px;
+    border: 1px #FFC7C7 solid;
+    border-radius:4px ;
+    -webkit-border-radius:4px ;
+    -moz-border-radius:4px ;
+    -ms-border-radius:4px ;
+    -o-border-radius:4px ;
 }
 
 .presta-card > img{
     width: 40%;
     height: 100%;
     margin-right: 16px;
+
+    object-fit: cover;
+}
+
+.presta-card h3{
+    padding-top: 8px;
+    
+    font-size: 1.4rem;
+    text-align: left;
 }
 
 .presta-card h4{
     color: #ADA9A8;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
 }
 
 .presta-card p{
     color: #ADA9A8;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.presta-card a{
+    display: block;
+    text-align: right;
+    font-weight: bold;
+}
+
+.presta-card a img{
+    width: 16px;
+    margin-left: 4px;
+}
+
+.presta-card div{
+    width: 60%;
 }

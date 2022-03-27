@@ -15,7 +15,7 @@
                 <p>Filtrez <img src="images/filter.svg"></p>
                 <p>Triez par <img src="images/three_dots.svg"></p>
             </div>
-            <main>
+            <section>
                 <div class="presta-card">
                     <img src="images/home_circle.jpg">
                     <div>
@@ -88,7 +88,7 @@
                         <a>Contacter <img src="images/presta_contact_icon.svg"></a>
                     </div>
                 </div>
-            </main>
+            </section>
         </main>
 
         <?php include('includes/footer.php'); ?>
