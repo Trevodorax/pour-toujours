@@ -1,3 +1,5 @@
+/* ----- GENERAL SETTINGS ----- */
+align-items
 main{
     padding: 0 32px;
 }
@@ -10,16 +12,39 @@ h2{
     text-align: left;
 }
 
+/* ----- PAGE TOP ----- */
+
 #page-top{
     display: flex;
     margin-top: 32px;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 #page-top img{
     width: 16px;
     margin-left: 4px;
 }
+
+#filters{
+    width: 100%;
+    padding: 16px 0;
+
+    background-color: #fef4ea;
+}
+
+#filters a{
+    display: block;
+
+    padding: 16px;
+
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+
+
+/* ----- PRESTA LIST ----- */
 
 .presta-card{
     display: flex;
@@ -76,11 +101,10 @@ h2{
     width: 60%;
 }
 
-@media screen and (min-width: 900px){
+@media screen and (min-width: 700px){
     #desktop-page-top{
         display: flex;
         justify-content: space-around;
-        align-items: center;
     }
 
     #page-title{
@@ -90,13 +114,18 @@ h2{
     #page-top{
         width: 30%;
     }
-}
 
-@media screen and (min-width: 600px){
     section{
         display: flex;
         flex-wrap: wrap;
     }
+
+    .presta-card{
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 1000px){
 
     .presta-card{
         width: 30%;

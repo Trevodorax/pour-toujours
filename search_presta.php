@@ -15,12 +15,43 @@
                     <p>Découvrez tous nos prestataires prêts à travailler à vos côtés pour un mariage réussi</p>
                 </div>
                 <div id="page-top">
-                    <p>Filtrez <img src="images/filter.svg"></p>
+                    <p id="filters-button">Filtrez <img src="images/filter.svg"></p>
                     <p>Triez par <img src="images/three_dots.svg"></p>
+                    <div id="filters">
+                        <a>Les mieux notés</a>
+                        <a>Ordre alphabétique</a>
+                    </div>
                 </div>
             </div>
-            
+
             <section>
+                <div class="presta-card">
+                    <img src="images/home_circle.jpg">
+                    <div>
+                        <h3>Evelynn Delon</h3>
+                        <h4>Photographe</h4>
+                        <p>Orléans</p>
+                        <a>Contacter <img src="images/presta_contact_icon.svg"></a>
+                    </div>
+                </div>
+                <div class="presta-card">
+                    <img src="images/home_circle.jpg">
+                    <div>
+                        <h3>Evelynn Delon</h3>
+                        <h4>Photographe</h4>
+                        <p>Orléans</p>
+                        <a>Contacter <img src="images/presta_contact_icon.svg"></a>
+                    </div>
+                </div>
+                <div class="presta-card">
+                    <img src="images/home_circle.jpg">
+                    <div>
+                        <h3>Evelynn Delon</h3>
+                        <h4>Photographe</h4>
+                        <p>Orléans</p>
+                        <a>Contacter <img src="images/presta_contact_icon.svg"></a>
+                    </div>
+                </div>
                 <div class="presta-card">
                     <img src="images/home_circle.jpg">
                     <div>
