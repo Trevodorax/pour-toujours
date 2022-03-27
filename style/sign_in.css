@@ -1,0 +1,27 @@
+h2{
+    text-align: left;
+}
+
+a{
+    text-decoration: underline;
+}
+
+#forgot_pwd{
+    font-size: 1rem;
+}
+
+#error-message{
+    font-size: 1rem;
+    text-align: center;
+    color: #CF697B;
+}
+
+#validate-button{
+    width: 90%;
+    margin: 64px auto;
+}
+
+#under-form > p{
+    font-size: 1rem;
+    text-align: center;
+}
