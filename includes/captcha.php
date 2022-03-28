@@ -3,9 +3,9 @@
 <div id="captcha">
     <?php
         for($i = 1; $i < 10; $i++){
-            echo "<img id='captcha$i' src='images/captcha/captcha$i.jpg'>";
+            echo "<img src='images/captcha/captcha$i.jpg'>";
         }
     ?>
 </div>
 
-<script src="scripts/captcha.css"></script>
+<script src="scripts/captcha.js"></script>
