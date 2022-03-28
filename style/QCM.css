@@ -24,7 +24,13 @@ body{
     font-family: 'Crimson Pro';
 }
 
+main{
+    padding: 16px;
+}
+
 h2{
+    margin-bottom: 32px;
+
     text-align: center;
 }
 
@@ -32,9 +38,9 @@ h2{
 
 /* ----- FORMS ----- */
 
-form{
-    margin: 0 16px;
-    width: 90%;
+.form-question{
+    margin: 64px auto;
+    width: 100%;
 
     padding: 16px 32px;
 
@@ -45,6 +51,20 @@ form{
     -moz-border-radius:8px;
     -ms-border-radius:8px;
     -o-border-radius:8px;
+}
+
+@media screen and (min-width: 900px){
+    .form-question{
+        width: 50%;
+    }
+}
+
+.form-question{
+    display: none;
+}
+
+.form-question.active{
+    display: block;
 }
 
 .form-navigation{
@@ -58,7 +78,7 @@ form{
     font-size: 1.2rem;
 }
 
-form p{
+.form-question p{
     margin-bottom: 32px;
 
     text-align: center;
@@ -67,12 +87,12 @@ form p{
     color: #444;
 }
 
-form span{
+.form-question span{
     font-size: 1.2rem;
     margin-left: 32px;
 }
 
-form > div{
+.form-question > div{
     display: flex;
     margin: 16px 0;
     height: 64px;
