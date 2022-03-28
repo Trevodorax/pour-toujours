@@ -32,10 +32,9 @@ h2{
 
 /* ----- FORMS ----- */
 
-
-
 form{
     margin: 0 16px;
+    width: 90%;
 
     padding: 16px 32px;
 
@@ -46,6 +45,17 @@ form{
     -moz-border-radius:8px;
     -ms-border-radius:8px;
     -o-border-radius:8px;
+}
+
+.form-navigation{
+    display: flex;
+    width: 100%;
+
+    justify-content: space-between;
+}
+
+.form-navigation > a{
+    font-size: 1.2rem;
 }
 
 form p{
@@ -59,13 +69,14 @@ form p{
 
 form span{
     font-size: 1.2rem;
-    margin-left: 16px;
+    margin-left: 32px;
 }
 
 form > div{
     display: flex;
     margin: 16px 0;
     height: 64px;
+
     align-items: center;
 }
 
@@ -77,15 +88,19 @@ input[type="radio"]{
 }
 
 /* nice looking radio buttons */
+/* after creates a pseudo element after the selected element
+here, we are creating a second radio button replacing the original one*/
 input[type='radio']:after {
-    width: 15px;
-    height: 15px;
-    border-radius: 100%;
-    top: -2px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
     position: relative;
+    left: -2px; /* makes the new element hide the previous radio button */
+    top: -2px;
+
     background-color: #d1d3d1;
     content: '';
-    display: inline-block;
+    border-radius: 100%;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     -ms-border-radius: 100%;
@@ -93,16 +108,21 @@ input[type='radio']:after {
 }
 
 input[type='radio']:checked:after {
-    width: 15px;
-    height: 15px;
-    border-radius: 100%;
-    top: -2px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
     position: relative;
+    left: -2px;
+    top: -2px;
+
     background-color: #CF697B;
     content: '';
-    display: inline-block;
+    border-radius: 100%;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     -ms-border-radius: 100%;
     -o-border-radius: 100%;
 }
+
+/* ----- OTHER STUFF ----- */
+
