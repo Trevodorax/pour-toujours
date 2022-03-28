@@ -78,6 +78,8 @@
 
                 <p id="champs-obligatoires">Les champs marqués d'une * sont obligatoires.</p>
 
+                <?php include('includes/captcha.php'); ?>
+
                 <button id="validate-button" class="big-red-button no-click"><p>Créer mon compte</p></button>
 
             </form>
@@ -88,6 +90,8 @@
                 <br>Accéder à <a href="#">l'espace professionnel</a></p>
             </div>
         </main>
+
+        
 
         <?php include('includes/footer.php'); ?>
 

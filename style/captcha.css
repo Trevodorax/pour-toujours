@@ -1,0 +1,63 @@
+#captcha{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 32px auto 0px;
+
+    background-color: red;
+}
+
+#captcha > img{
+    position: absolute;
+
+    display: block;
+    width: 100px;
+    height: 100px;
+
+    border: white 0.1px solid;
+}
+
+#captcha1{
+    top: 0px;
+    left: 0px;
+}
+
+#captcha2{
+    top: 0px;
+    left: 100px;
+}
+
+#captcha3{
+    top: 0px;
+    left: 200px;
+}
+
+#captcha4{
+    top: 100px;
+    left: 0px;
+}
+
+#captcha5{
+    top: 100px;
+    left: 100px;
+}
+
+#captcha6{
+    top: 100px;
+    left: 200px;
+}
+
+#captcha7{
+    top: 200px;
+    left: 0px;
+}
+
+#captcha8{
+    top: 200px;
+    left: 100px;
+}
+
+#captcha9{
+    top: 200px;
+    left: 200px;
+}

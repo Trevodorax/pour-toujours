@@ -40,6 +40,7 @@
             </form>
         </main>
 
+
         <?php include('includes/footer.php'); ?>
 
         <script src="scripts/index.js"></script>

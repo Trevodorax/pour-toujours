@@ -23,7 +23,7 @@
             </form>
 
             <div id="under-form">
-                <p>Vous n'avez pas encore de compte ? <a href="#"> S'inscrire</a></p>
+                <p>Vous n'avez pas encore de compte ? <a href="create_account.php"> S'inscrire</a></p>
             </div>
         </main>
 
