@@ -52,7 +52,7 @@
                     ?>
                 </select>
 
-                <select class="pro-form " id="activite">
+                <select class="pro-form " id="activite" name="activite">
                     <?php
                         echo "<option disabled='disabled' selected='true'> --- Sélectionner un secteur d'activité ---</option>";
                         $activite_options = ["Photographie", "Cuisine", "Décoration de salles", "Fleuriste"];
