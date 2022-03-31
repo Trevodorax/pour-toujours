@@ -85,7 +85,7 @@
             </form>
 
             <div id="under-form">
-                <p>Vous avez déjà un compte ? <a href="#">Se connecter</a></p>
+                <p>Vous avez déjà un compte ? <a href="log_in.php">Se connecter</a></p>
                 <p class="user-form" onclick="switch_forms()">Vous souhaitez proposer vos services ?
                 <br>Accéder à <a href="#">l'espace professionnel</a></p>
             </div>

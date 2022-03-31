@@ -11,7 +11,7 @@
     <nav>
         <a href="FAQ.php">FAQ</a>
         <a href="#">Prestataires</a>
-        <a href="create_account.php">Accès pro</a>
+        <a href="create_account.php">S'inscrire</a>
         <a href="log_in.php">Se connecter</a>
     </nav>
 </header>
@@ -23,3 +23,16 @@
     <a href="FAQ.php"><h3>F.A.Q<img src="images/go_icon.svg"></h3></a>
     <button class="big-red-button"><p>Se connecter</p></button>
 </nav>
+
+<!--
+    <?php
+        session_start();
+
+        if(isset($_SESSION['email'])){
+            echo '<a href="log_out.php"><h3>Deconnexion</h3></a>';
+        }else{
+            echo '<a href="create_account.php"><h3>S\'inscrire</h3></a>
+                    <a href="log_in.php"><h3>Se connecter</h3></a>';
+        }
+    ?>
+-->

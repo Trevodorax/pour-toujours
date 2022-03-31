@@ -10,10 +10,10 @@
         <main>
             <h2>Créer un compte</h2>
             <p>Accédez à votre profil en saisissant vos identifiants</p>
-            <form method="post">
+            <form method="post" action="check_log_in.php">
 
-                <input type="email" name="email" class="required-input" placeholder=" Votre e-mail">
-                <input type="password" name="password" class="required-input" placeholder=" Votre mot de passe">
+                <input type="email" name="email" class="required-input" placeholder=" Votre e-mail" required>
+                <input type="password" name="password" class="required-input" placeholder=" Votre mot de passe" required>
 
 
                 <p id="error-message">message d'erreur</p>
