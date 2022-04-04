@@ -24,7 +24,7 @@
     ]);
     $email = $req->fetchAll();
     if(count($email) != 0){
-        header ('location: connexion.php?message=Le numéro de téléphone est déjà utilisé');
+        header ('location: create_account.php?message=Le numéro de téléphone est déjà utilisé');
         exit;
     }
 
@@ -33,7 +33,7 @@
         exit;
     }
 
-    if (!preg_match('#^0[168]([ \-\.]?[0-9]{2}){4}$#', $_POST['tel'])){
+    if (!preg_match('#^0[1678]([ \-\.]?[0-9]{2}){4}$#', $_POST['tel'])){
         header('location: create_account.php?message=Le numéro de téléphone n\'est pas valide');
         exit;
     }
@@ -45,7 +45,7 @@
     ]);
     $email = $req->fetchAll();
     if(count($email) != 0){
-        header ('location: connexion.php?message=L\'email est déjà utilisé');
+        header ('location: create_account.php?message=L\'email est déjà utilisé');
         exit;
     }
 
@@ -103,21 +103,23 @@
         exit;
     }
 
-    $q = "INSERT INTO personne(`c_name`, `f_name`, `b_date`, `region`, `tel`, `email`, `password`, `genre`) VALUES (:c_name, :f_name, :b_date, :region, :tel, :email, :password, :genre)";
+    $q = "INSERT INTO personne(`nomComplet`, `nomPrefere`, `date_naissance`, `genre`, `email`, `mot_de_passe`, `numero_tel`, `departement`) VALUES (:c_name, :f_name, :b_date, :genre, :email, :password, :tel, :departement)";
     $req = $bdd->prepare($q);
-    $result = $req->execute([
+    $personne = $req->execute([
         'c_name' => $_POST['c_name'],
         'f_name' => $_POST['f_name'],
         'b_date' => $_POST['b_date'],
-        'region' => $_POST['region'],
-        'tel' => $_POST['tel'],
+        'genre' => $_POST['genre'],
         'email' => $_POST['email'],
         'password' => hash('sha512', $_POST['password']),
-        'genre' => $_POST['genre']
+        'tel' => $_POST['tel'],
+        'departement' => $_POST['departement'],
+
+
     ]);
 
-    if (!$result){
-        header('location: index.php?message=Erreur lors de l\'inscription');
+    if (!$personne){
+        header('location: create_account.php?message=Erreur lors de l\'inscription');
         exit;
     }
 
@@ -134,7 +136,7 @@
         ]);
         $email = $req->fetchAll();
         if(count($email) != 0){
-            header ('location: connexion.php?message=Le numéro de téléphone est déjà utilisé');
+            header ('location: create_account.php?message=Le numéro de téléphone est déjà utilisé');
             exit;
         }
 
@@ -155,7 +157,7 @@
         ]);
         $email = $req->fetchAll();
         if(count($email) != 0){
-            header ('location: connexion.php?message=L\'email est déjà utilisé');
+            header ('location: create_account.php?message=L\'email est déjà utilisé');
             exit;
         }
 
@@ -174,6 +176,44 @@
             exit;
         }
 
+        if($_FILES['image']['error'] != 4){
+
+            $ext = [
+                'image/jpg',
+                'image/jpeg',
+                'image/gif',
+                'image/png'
+            ];
+
+            if(!in_array($_FILES['image']['type'], $ext)){
+                header ('location: connexion.php?message=Format d\'image incorrect');
+                exit;
+            }
+
+            $maxSize = 1024 * 1024;
+
+            if($_FILES['image']['size'] > $maxSize){
+                header('location: connexion.php?message=L\'image ne doit pas dépasser 1 Mo');
+                exit;
+            }
+
+            $path = 'profile_picture';
+            if(!file_exists($path)){
+                mkdir($path, 0777);
+            }
+
+            $filename = $_FILES['image']['name'];
+
+            $array = explode('.', $filename);
+            $extension = end($array);
+
+            $filename = 'image-' . time() . '.' . $extension;
+
+            $destination = $path . '/' . $filename;
+            move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+
+        }
+
         $q = 'SELECT id FROM personne WHERE email = :email';
         $req = $bdd->prepare($q);
         $req->execute([
@@ -181,28 +221,31 @@
         ]);
         $id = $req->fetchAll();
 
-        $q = "INSERT INTO prestataire(`company_name`, `tel_pro`, `email_pro`,`metier`, `personne`) VALUES (:company_name, :tel_pro, :email_pro, :metier, :personne)";
+        $q = "INSERT INTO prestataire(`nomEntreprise`, `telpro`, `emailpro`,`metier`, `description`, `photoProfil`, `lienSiteWeb`, `personne`) VALUES (:company_name, :tel_pro, :email_pro, :metier, :personne)";
         $req = $bdd->prepare($q);
-        $result = $req->execute([
-            'company_name' => $_POST['company_name'],
-            'tel_pro' => $_POST['tel_pro'],
-            'email_pro' => $_POST['email_pro'],
+        $prestataire = $req->execute([
+            'companyname' => $_POST['company_name'],
+            'telpro' => $_POST['tel_pro'],
+            'emailpro' => $_POST['email_pro'],
             'metier' => $_POST['activite'],
+            'profilpicture' => $filename,
+            'linkwebsite' => $_POST['site'],
             'personne' => $id[0][0]
         ]);
 
-        if (!$result){
-            header('location: index.php?message=Erreur lors de l\'inscription');
+        if (!$prestataire){
+            $req = 'DELETE FROM personne WHERE id = ' . $id;
+            header('location: create_account.php?message=Erreur lors de l\'inscription');
             exit;
         }
     }
 
-    if($result){
+    if($personne && $prestataire){
         header('location: index.php?message=Compte créé avec succès');
         exit;
     }
     else{
-        header('location: index.php?message=Erreur lors de l\'inscription');
+        header('location: create_account.php?message=Erreur lors de l\'inscription');
         exit;
     }
 

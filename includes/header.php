@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <header id="mobile-header">
     <a></a>
     <a href="index.php"></a>
@@ -11,8 +12,14 @@
     <nav>
         <a href="FAQ.php">FAQ</a>
         <a href="#">Prestataires</a>
-        <a href="create_account.php">S'inscrire</a>
-        <a href="log_in.php">Se connecter</a>
+        <?php
+        if(isset($_SESSION['email'])){
+            echo '<a href="log_out.php">Deconnexion</a>';
+        }else{
+            echo '<a href="create_account.php">S\'inscrire</a>
+                    <a href="log_in.php">Se connecter</a>';
+        }
+        ?>
     </nav>
 </header>
 <div id="header-wave"></div>
@@ -24,15 +31,3 @@
     <button class="big-red-button"><p>Se connecter</p></button>
 </nav>
 
-<!--
-    <?php
-        session_start();
-
-        if(isset($_SESSION['email'])){
-            echo '<a href="log_out.php"><h3>Deconnexion</h3></a>';
-        }else{
-            echo '<a href="create_account.php"><h3>S\'inscrire</h3></a>
-                    <a href="log_in.php"><h3>Se connecter</h3></a>';
-        }
-    ?>
--->
