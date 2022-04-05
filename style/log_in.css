@@ -6,9 +6,8 @@ a{
     text-decoration: underline;
 }
 
-footer{
-    position: fixed;
-    bottom: 0;
+main{
+    height: 110vh;
 }
 
 #forgot_pwd{
