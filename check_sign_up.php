@@ -212,7 +212,7 @@
                 exit;
             }
 
-            $path = '/includes/images/pp_presta';
+            $path = 'pp_presta';
             if(!file_exists($path)){
                 mkdir($path, 0777);
             }
@@ -236,7 +236,7 @@
         ]);
         $id = $req->fetchAll();
 
-        $q = "INSERT INTO prestataire(`nomEntreprise`, `telpro`, `emailpro`,`metier`, `description`, `photoProfil`, `lienSiteWeb`, `personne`) VALUES (:company_name, :tel_pro, :email_pro, :metier, :personne)";
+        $q = "INSERT INTO prestataire (`nomEntreprise`, `telpro`, `emailpro`,`metier`, `description`, `photoProfil`, `lienSiteWeb`, `personne`) VALUES (:companyname, :telpro, :emailpro, :metier, :profilepicture, :linkwebsite, :personne)";
         $req = $bdd->prepare($q);
         $prestataire = $req->execute([
             'companyname' => $_POST['company_name'],
