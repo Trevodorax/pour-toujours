@@ -44,7 +44,15 @@
         </section>
         <section id="messages-list">
             <?php
-                echo '<button>Créer une nouvelle conversation</button>';
+                echo '<button formmethod="post" formaction="" name="newconversation">Créer une nouvelle conversation</button>';
+
+                $q = "INSERT INTO conversation (id_utilisateur, id_prestataire) VALUES (:id_utilisateur, :id_prestataire)";
+                $req = $bdd->prepare($q);
+                $prestataire = $req->execute([
+                    'id_utilisateur' =>
+                    'id_prestataire' =>
+                ]);
+
                 $q = 'SELECT id FROM conversation WHERE id_utilisateur = :email';
                 $req = $bdd->prepare($q);
                 $req->execute([

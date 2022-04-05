@@ -20,13 +20,7 @@
         <div id="page-top">
             <div>
                 <?php
-                    $q = 'SELECT nomprefere FROM personne WHERE email = :email';
-                    $req = $bdd->prepare($q);
-                    $req->execute([
-                        'email' => $_SESSION['email']
-                    ]);
-                    $nomprefere = $req->fetchAll();
-                    echo '<h2>Bonjour, ' . $nomprefere[0][0] . '!</h2>';
+                    echo '<h2>Bonjour, ' . $_SESSION['nomprefere'] . '!</h2>';
                 ?>
                 <p>Prêt à continuer l'aventure ?</p>
             </div>

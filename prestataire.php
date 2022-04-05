@@ -1,3 +1,5 @@
+session_start();
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,16 +11,30 @@
         <?php include('includes/header.php'); ?>
 
         <main>
-            <h2>Bonjour Evelynn ! <a href="#"><img src="images/settings_icon.svg"></a><a href="#"><img src="images/presta_contact_icon.svg"></a></h2>
+            <?php 
+            echo ' <h2>Bonjour ' . $_SESSION['nomPrefere'] .' ! <a href="#"><img src="images/settings_icon.svg"></a><a href="#"><img src="images/presta_contact_icon.svg"></a></h2>';
+            
+            $q = 'SELECT nomEntreprise, emailPro, telPro,metier, photoProfil, lienSiteWeb FROM user WHERE id = :id'; 
+            $req = $bdd->prepare($q);            
+            $req->execute(['id' => $_SESSION['id']]);
+            $results = $req->fetchAll(PDO::FETCH_ASSOC);
+            ?>
+
             <section id="profile">
                 <div>
+                    <?php 
+                    //Let's finish later
+                    echo '
                     <h3>Vos informations :</h3>
-                    <h4>Nom complet : Evelynn Delon</h4>
-                    <p>Métier : photographe</p>
-                    <p>Nom de votre entreprise : Clair'Esprit</p>
+                    <h4>Nom complet : ' . $_SESSION['nomComplet'] . ' </h4>
+                    <p>Métier : ' . $results[0]['metier'] .'</p>
+                    <p>Nom de votre entreprise : ' . $results[0]['nomEEntreprise']  .'</p>
                     <p>Email : evelynn.pro@gmail.com</p>
-                    <p>Tel pro : 0154987850</p>
+                    <p>Tel pro : '. $results[0]['metier'] .'</p>
                     <p>Secteur : Orléans</p>
+                    '
+                    ?>
+                    
                 </div>
                 <img src="images/prestataires/prestataire1.jpg">
             </section>
