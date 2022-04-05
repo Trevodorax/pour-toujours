@@ -55,7 +55,7 @@
                 <select class="pro-form" id="activite" name="activite">
                     <?php
                         echo "<option disabled='disabled' selected='true' hidden> --- Sélectionner un secteur d'activité ---</option>";
-                        $activite_options = ["Photographie", "Cuisine", "Décoration de salles", "Fleuriste"];
+                        $activite_options = ["Photographie", "Cuisine", "Décoration", "Fleuriste"];
                         foreach ($activite_options as $activite){
                             echo "<option value='$activite'>$activite</option>";
                         }

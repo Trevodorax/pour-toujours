@@ -242,14 +242,14 @@
         ]);
         $id = $req->fetchAll();
 
-        $q = "INSERT INTO prestataire (`nomEntreprise`, `telpro`, `emailpro`,`metier`, `description`, `photoProfil`, `lienSiteWeb`, `personne`) VALUES (:companyname, :telpro, :emailpro, :metier, :profilepicture, :linkwebsite, :personne)";
+        $q = "INSERT INTO prestataire (`nomEntreprise`, `telpro`, `emailpro`,`metier`, `photoProfil`, `lienSiteWeb`, `personne`) VALUES (:companyname, :telpro, :emailpro, :metier, :profilepicture, :linkwebsite, :personne)";
         $req = $bdd->prepare($q);
         $prestataire = $req->execute([
             'companyname' => $_POST['company_name'],
             'telpro' => $_POST['tel_pro'],
             'emailpro' => $_POST['email_pro'],
             'metier' => $_POST['activite'],
-            'profilpicture' => $filename,
+            'profilepicture' => $filename,
             'linkwebsite' => $link,
             'personne' => $id[0][0]
         ]);
