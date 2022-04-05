@@ -12,7 +12,7 @@
             $results = $req->fetchAll(PDO::FETCH_ASSOC); // renvoie un tableau contenant tous les résultats
         ?>
 
-        <main>
+        <main class="container">
             <table class="table table-striped">
                 <thead>
                     <tr>
