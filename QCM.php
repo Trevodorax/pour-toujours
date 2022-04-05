@@ -29,7 +29,7 @@
                                     }else{
                                         echo "<a></a>";
                                     }
-                                    if($index != 10){
+                                    if($index != 9){ // number of questions created
                                         echo "<a onclick='change_form($index, true)'>suivant --&gt</a>";
                                     }else{
                                         echo "<a><input type='submit'></a>";
@@ -43,11 +43,11 @@
                         write_QCM_question("budget", "Votre fourchette de budget est :", ["500 - 1000 €", "1000 - 2000 €", "2000 - 3000 €", "3000 € ou plus"], 3);
                         write_QCM_question("nourriture", "Pour vous, la nourriture est : ", ["Très importante", "Importante", "Peu importante", "Pas importante"], 4);
                         write_QCM_question("animation", "Pour vous, l'animation est : ", ["Très importante", "Importante", "Peu importante", "Pas importante"], 5);
-                        write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 6);
-                        write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 7);
-                        write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 8);
-                        write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 9);
-                        write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 10);
+                        write_QCM_question("lieu", "Pour vous, le lieu est : ", ["Très important", "Important", "Peu important", "Pas important"], 6);
+                        write_QCM_question("tenue", "Pour vous, les tenues sont :", ["Très importantes", "Importantes", "Peu importantes", "Pas importantes"], 7);
+                        write_QCM_question("photos", "Pour vous, les photos sont :", ["Très importantes", "Importantes", "Peu importantes", "Pas importantes"], 8);
+                        write_QCM_question("nb_invites", "Choisissez une fourchette de nombre d'invités :", ["0 - 20", "20 - 50", "50 - 100", "100 - plus"], 9);
+                        // modifier la ligne 32 en cas d'ajout de questions
                     ?>
                 </div>
 
