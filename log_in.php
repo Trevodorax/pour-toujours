@@ -15,8 +15,13 @@
                 <input type="email" name="email" class="required-input" placeholder=" Votre e-mail" required>
                 <input type="password" name="password" class="required-input" placeholder=" Votre mot de passe" required>
 
+                <?php 
+                    if(isset($_GET['message']) && !empty($_GET['message'])) {
 
-                <p id="error-message">message d'erreur</p>
+                        echo ' <p id="error-message">'. $_GET['message'] . '</p>';
+                    }
+                ?>
+               
                 <button id="validate-button" class="big-red-button no-click"><p>Me connecter</p></button>
                 <p id="forgot_pwd">Mot de passe oublié ? <a href="#">Réinitializez-le.</a></p>
 
