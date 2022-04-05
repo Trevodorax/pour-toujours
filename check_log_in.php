@@ -28,7 +28,7 @@
         exit;
     }
 
-    $q = 'SELECT id, nomprefere FROM personne WHERE email = :email AND mot_de_passe = :password';
+    $q = 'SELECT id, nomprefere, nomcomplet FROM personne WHERE email = :email AND mot_de_passe = :password';
     $req = $bdd->prepare($q);
     $req->execute([
         'email' => $_POST['email'],
@@ -50,6 +50,7 @@
     session_start();
     $_SESSION['id'] = $id[0][0];
     $_SESSION['nomprefere'] = $id[0][1];
+    $_SESSION['nomcomplet'] = $id[0][2];
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['emailpro'] = $emailpro;
     header('location: index.php?message=Connecté avec succès');
