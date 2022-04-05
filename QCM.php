@@ -41,8 +41,8 @@
                         write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 1);
                         write_QCM_question("assistance", "Vous préférez un accompagnement :", ["Très poussé, vous suivant du début à la fin", "Modéré, on vous aidera simplement à trouver des prestataires", "Minimal, vous aurez accès à notre liste de prestataires", "Aucun, vous venez juste pour voir"], 2);
                         write_QCM_question("budget", "Votre fourchette de budget est :", ["500 - 1000 €", "1000 - 2000 €", "2000 - 3000 €", "3000 € ou plus"], 3);
-                        write_QCM_question("nourriture", "Pour vous, la nourriture a une importance : ", ["Très important", "Important", "Peu important", "Pas important"], 4);
-                        write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 5);
+                        write_QCM_question("nourriture", "Pour vous, la nourriture est : ", ["Très importante", "Importante", "Peu importante", "Pas importante"], 4);
+                        write_QCM_question("animation", "Pour vous, l'animation est : ", ["Très importante", "Importante", "Peu importante", "Pas importante"], 5);
                         write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 6);
                         write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 7);
                         write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 8);
