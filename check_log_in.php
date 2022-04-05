@@ -28,33 +28,30 @@
         exit;
     }
 
-    $q = 'SELECT id FROM personne WHERE email = :email';
+    $q = 'SELECT id, nomprefere FROM personne WHERE email = :email AND mot_de_passe = :password';
     $req = $bdd->prepare($q);
     $req->execute([
-        'email' => $_POST['email']
-    ]);
-
-    $results = $req->fetchAll();
-    if(count($results) == 0){
-        header ('location: log_in.php?message=Identifiants incorrectes');
-        writeLogLine(false, $_POST['email']);
-        exit;
-    }
-//FAIRE UNE SEULE REQUETE POUR LES IDENTIFIANTS
-    $q = 'SELECT id FROM personne WHERE mot_de_passe = :password';
-    $req = $bdd->prepare($q);
-    $req->execute([
+        'email' => $_POST['email'],
         'password' => hash('sha512', $_POST['password'])
     ]);
-    $results = $req->fetchAll();
-    if(count($results) == 0){
-        header ('location: log_in.php?message=Mot de passe incorrect');
-        writeLogLine(false, $_POST['email']);
+    $id = $req->fetchAll();
+    if(count($id) == 0){
+        header('location: log_in.php?message=Identifiants incorrects');
         exit;
     }
 
+    $q = 'SELECT emailpro FROM prestataire WHERE personne = :personne';
+    $req = $bdd->prepare($q);
+    $req->execute([
+        'personne' => $id[0][0]
+    ]);
+    $emailpro = $req->fetchAll();
+
     session_start();
+    $_SESSION['id'] = $id[0][0];
+    $_SESSION['nomprefere'] = $id[0][1];
     $_SESSION['email'] = $_POST['email'];
+    $_SESSION['emailpro'] = $emailpro;
     header('location: index.php?message=Connecté avec succès');
     writeLogLine(true, $_POST['email']);
     exit;
