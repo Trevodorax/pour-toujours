@@ -1,5 +1,16 @@
 <?php
 
+    //Writing the log
+    function writeLogLine(bool $sucess, string $email){
+    	$file = 'log.txt';
+    	$value = $sucess? 'réussie' : 'échouée';
+    	$log = fopen('log.txt' , 'a+');
+    	$line = date('Y/m/d - H:i:s') . ' Tentative de connexion ' . $value . ' de :' . $email . "\n";
+    	fputs($log, $line);
+    	fclose($log);
+    }
+
+
     include('includes/db.php');
 
     if(!isset($_POST['email']) || empty($_POST['email'])){
@@ -25,6 +36,7 @@
     $results = $req->fetchAll();
     if(count($results) == 0){
         header ('location: log_in.php?message=Email inexistant');
+        writeLogLine(false, $_POST['email']);
         exit;
     }
 
@@ -36,12 +48,14 @@
     $results = $req->fetchAll();
     if(count($results) == 0){
         header ('location: log_in.php?message=Mot de passe incorrect');
+        writeLogLine(false, $_POST['email']);
         exit;
     }
 
     session_start();
     $_SESSION['email'] = $_POST['email'];
     header('location: index.php?message=Connecté avec succès');
+    writeLogLine(true, $_POST['email']);
     exit;
 
 ?>
