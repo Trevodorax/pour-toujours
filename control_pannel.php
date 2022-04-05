@@ -6,6 +6,7 @@
         header('location: control_pannel.php?page=home');
         exit;
     }
+    include('includes/db.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +19,15 @@
         <?php include('includes/header.php'); ?>
         <div id="page-top">
             <div>
-                <h2>Bonjour, Simon !</h2>
+                <?php
+                    $q = 'SELECT nomprefere FROM personne WHERE email = :email';
+                    $req = $bdd->prepare($q);
+                    $req->execute([
+                        'email' => $_SESSION['email']
+                    ]);
+                    $nomprefere = $req->fetchAll();
+                    echo '<h2>Bonjour, ' . $nomprefere[0][0] . '!</h2>';
+                ?>
                 <p>Prêt à continuer l'aventure ?</p>
             </div>
             <div id="time-left">

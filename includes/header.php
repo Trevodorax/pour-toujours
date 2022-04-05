@@ -14,7 +14,8 @@
         <a href="#">Prestataires</a>
         <?php
         if(isset($_SESSION['email'])){
-            echo '<a href="log_out.php">Deconnexion</a>';
+            echo '<a href="control_pannel.php">Mon compte</a>
+                    <a href="log_out.php">Deconnexion</a>';
         }else{
             echo '<a href="create_account.php">S\'inscrire</a>
                     <a href="log_in.php">Se connecter</a>';
