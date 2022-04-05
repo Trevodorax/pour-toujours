@@ -212,7 +212,7 @@
                 exit;
             }
 
-            $path = '/includes/images/pp_presta';
+            $path = '/images/pp_presta';
             if(!file_exists($path)){
                 mkdir($path, 0777);
             }
