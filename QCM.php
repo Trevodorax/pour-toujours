@@ -8,17 +8,18 @@
     </head>
     <body>
         <main>
-            <form action="test.php" method="post">
+            <form action="save_QCM.php" method="post">
                     <?php
                         function write_QCM_question($field_name, $question, $choices, $index){
+                            echo "\n";
                             echo "<div class='form-question'>";
                                 echo "<h2>Question $index/10</h2>";
                                 echo "<p>" . $question . "</p>";
 
-                                foreach($choices as $choice){
+                                for($i = 0; $i < count($choices); $i++){
                                     echo "<div>";
-                                        echo "<input type='radio' name='$field_name'>";
-                                        echo "<span>$choice</span>";
+                                        echo "<input type='radio' name='$field_name' value='" . $i . "'>";
+                                        echo "<span>$choices[$i]</span>";
                                     echo "</div>";
                                 }
 
