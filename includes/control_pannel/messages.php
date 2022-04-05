@@ -29,16 +29,15 @@
             <?php
 
             ?>
-            <form method="post">
+            <form method="post" action="">
                 <input id="page-bottom" type="text" name="message" placeholder=" Votre message">
             </form>
             <?php
-                $message = htmlspecialchars($_POST['message']);
-                $q = "INSERT INTO message ('contenu', 'conversation') VALUES (:message, :conversation)";
+                $message = $_POST['message'];
+                $q = "INSERT INTO message (contenu) VALUES (:message)";
                 $req = $bdd->prepare($q);
                 $results = $req->execute([
                     'message' => $message,
-                    'conversation' => $conversation
                 ]);
             ?>
         </section>
