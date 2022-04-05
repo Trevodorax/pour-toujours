@@ -26,9 +26,21 @@
             <div class="from">Bienvenue Paul ! Toute l'équipe de PourToujours te souhaite  un mariage heureux. </div>
             <div class="to">Merci à vous tous, mon ame-soeur, Simon, et moi-même sommes aux anges depuis que nous avons découverts votre site ! Vous êtes des génies.</div>
             <div class="from">Vous n'avez encore rien vu !</div>
-            <form>
-                <input id="page-bottom" type="text" placeholder=" Votre message">
+            <?php
+
+            ?>
+            <form method="post">
+                <input id="page-bottom" type="text" name="message" placeholder=" Votre message">
             </form>
+            <?php
+                $message = htmlspecialchars($_POST['message']);
+                $q = "INSERT INTO message ('contenu', 'conversation') VALUES (:message, :conversation)";
+                $req = $bdd->prepare($q);
+                $results = $req->execute([
+                    'message' => $message,
+                    'conversation' => $conversation
+                ]);
+            ?>
         </section>
         <section id="messages-list">
             <a>

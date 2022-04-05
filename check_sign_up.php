@@ -120,7 +120,7 @@
         $genre = "N";
     }
 
-    $q = "INSERT INTO personne(`nomComplet`, `nomPrefere`, `date_naissance`, `genre`, `email`, `mot_de_passe`, `numero_tel`, `departement`) VALUES (:c_name, :f_name, :b_date, :genre, :email, :password, :tel, :departement)";
+    $q = "INSERT INTO personne('nomComplet', 'nomPrefere', 'date_naissance', 'genre', 'email', 'mot_de_passe', 'numero_tel', 'departement') VALUES (:c_name, :f_name, :b_date, :genre, :email, :password, :tel, :departement)";
     $req = $bdd->prepare($q);
     $personne = $req->execute([
         'c_name' => $_POST['c_name'],
@@ -242,7 +242,7 @@
         ]);
         $id = $req->fetchAll();
 
-        $q = "INSERT INTO prestataire (`nomEntreprise`, `telpro`, `emailpro`,`metier`, `photoProfil`, `lienSiteWeb`, `personne`) VALUES (:companyname, :telpro, :emailpro, :metier, :profilepicture, :linkwebsite, :personne)";
+        $q = "INSERT INTO prestataire ('nomEntreprise', 'telpro', 'emailpro','metier', 'photoProfil', 'lienSiteWeb', 'personne') VALUES (:companyname, :telpro, :emailpro, :metier, :profilepicture, :linkwebsite, :personne)";
         $req = $bdd->prepare($q);
         $prestataire = $req->execute([
             'companyname' => $_POST['company_name'],
