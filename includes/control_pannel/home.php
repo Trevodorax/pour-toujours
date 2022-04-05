@@ -1,7 +1,7 @@
 <main id="home-main">
     <section id="launch-QCM">
         <p>Vous ne savez pas par où démarrer ?  Nous vous avons préparé un QCM justement fait pour ça !</p>
-            <a href="#"><h3>Lancer le QCM<img src="images/go_icon.svg"></h3></a>
+            <a href="QCM.php"><h3>Lancer le QCM<img src="images/go_icon.svg"></h3></a>
     </section>
 
     <section id="mobile-control-nav">
