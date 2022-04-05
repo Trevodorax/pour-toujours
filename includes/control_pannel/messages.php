@@ -34,14 +34,35 @@
             </form>
             <?php
                 $message = $_POST['message'];
-                $q = "INSERT INTO message (contenu) VALUES (:message)";
+                $q = "INSERT INTO message (contenu, conversation) VALUES (:message, :conversation)";
                 $req = $bdd->prepare($q);
                 $results = $req->execute([
                     'message' => $message,
+                    'conversation' => 0
                 ]);
             ?>
         </section>
         <section id="messages-list">
+            <?php
+                echo '<button formmethod="post" formaction="" name="newconversation">Créer une nouvelle conversation</button>';
+
+                $q = "INSERT INTO conversation (id_utilisateur, id_prestataire) VALUES (:id_utilisateur, :id_prestataire)";
+                $req = $bdd->prepare($q);
+                $prestataire = $req->execute([
+                    'id_utilisateur' =>
+                    'id_prestataire' =>
+                ]);
+
+                $q = 'SELECT id FROM conversation WHERE id_utilisateur = :email';
+                $req = $bdd->prepare($q);
+                $req->execute([
+                    'email' => $_POST['email']
+                ]);
+                $conversation = $req->fetchAll();
+                foreach ($conversation as $key => $value){
+
+                }
+            ?>
             <a>
                 <img src="images/message_pfp.jpg">
                 <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
