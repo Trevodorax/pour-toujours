@@ -12,12 +12,19 @@
         exit;
     }
 
-    if(!isset($_POST['region']) || empty($_POST['region'])){
-        header('location: create_account.php?message=Vous devez sélectionner une région');
+    if(!isset($_POST['departement']) || empty($_POST['departement'])){
+        header('location: create_account.php?message=Vous devez sélectionner un département');
         exit;
     }
 
-    $q = 'SELECT id FROM personne WHERE tel = :tel';
+    $departement = $_POST['departement'];
+
+    $departement_name = explode('-', $departement);
+    $departement_number = $departement_name[0];
+
+    $departement = $departement_number;
+
+    $q = 'SELECT id FROM personne WHERE numero_tel = :tel';
     $req = $bdd->prepare($q);
     $req->execute([
         'tel' => $_POST['tel']
@@ -103,19 +110,27 @@
         exit;
     }
 
+    if($_POST['genre'] === "Homme"){
+        $genre = "H";
+    }elseif ($_POST['genre'] === "Femme"){
+        $genre = "F";
+    }elseif ($_POST['genre'] === "Autre"){
+        $genre = "A";
+    }elseif($_POST['genre'] === "Préfère ne pas répondre"){
+        $genre = "N";
+    }
+
     $q = "INSERT INTO personne(`nomComplet`, `nomPrefere`, `date_naissance`, `genre`, `email`, `mot_de_passe`, `numero_tel`, `departement`) VALUES (:c_name, :f_name, :b_date, :genre, :email, :password, :tel, :departement)";
     $req = $bdd->prepare($q);
     $personne = $req->execute([
         'c_name' => $_POST['c_name'],
         'f_name' => $_POST['f_name'],
         'b_date' => $_POST['b_date'],
-        'genre' => $_POST['genre'],
+        'genre' => $genre,
         'email' => $_POST['email'],
         'password' => hash('sha512', $_POST['password']),
         'tel' => $_POST['tel'],
-        'departement' => $_POST['departement'],
-
-
+        'departement' => $departement
     ]);
 
     if (!$personne){
@@ -129,10 +144,10 @@
             exit;
         }
 
-        $q = 'SELECT id FROM prestataire WHERE tel_pro = :tel_pro';
+        $q = 'SELECT id FROM prestataire WHERE telpro = :telpro';
         $req = $bdd->prepare($q);
         $req->execute([
-            'tel_pro' => $_POST['tel_pro']
+            'telpro' => $_POST['tel_pro']
         ]);
         $email = $req->fetchAll();
         if(count($email) != 0){
@@ -150,10 +165,10 @@
             exit;
         }
 
-        $q = 'SELECT id FROM prestataire WHERE email_pro = :email_pro';
+        $q = 'SELECT id FROM prestataire WHERE emailpro = :emailpro';
         $req = $bdd->prepare($q);
         $req->execute([
-            'email_pro' => $_POST['email_pro']
+            'emailpro' => $_POST['email_pro']
         ]);
         $email = $req->fetchAll();
         if(count($email) != 0){
@@ -186,18 +201,18 @@
             ];
 
             if(!in_array($_FILES['image']['type'], $ext)){
-                header ('location: connexion.php?message=Format d\'image incorrect');
+                header ('location: create_account.php?message=Format d\'image incorrect');
                 exit;
             }
 
-            $maxSize = 1024 * 1024;
+            $maxSize = 4 * 1024 * 1024;
 
             if($_FILES['image']['size'] > $maxSize){
-                header('location: connexion.php?message=L\'image ne doit pas dépasser 1 Mo');
+                header('location: create_account.php?message=L\'image ne doit pas dépasser 4 Mo');
                 exit;
             }
 
-            $path = 'profile_picture';
+            $path = '/includes/images/pp_presta';
             if(!file_exists($path)){
                 mkdir($path, 0777);
             }
@@ -240,7 +255,7 @@
         }
     }
 
-    if($personne && $prestataire){
+    if($personne){
         header('location: index.php?message=Compte créé avec succès');
         exit;
     }

@@ -28,7 +28,7 @@
         exit;
     }
 
-    $q = 'SELECT id FROM personne WHERE password = :password';
+    $q = 'SELECT id FROM personne WHERE mot_de_passe = :password';
     $req = $bdd->prepare($q);
     $req->execute([
         'password' => hash('sha512', $_POST['password'])
