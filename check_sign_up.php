@@ -191,6 +191,12 @@
             exit;
         }
 
+        if(!isset($_POST['site']) || empty($_POST['site'])){
+            $link = "*";
+        }else{
+            $link = $_POST['site'];
+        }
+
         if($_FILES['image']['error'] != 4){
 
             $ext = [
@@ -244,7 +250,7 @@
             'emailpro' => $_POST['email_pro'],
             'metier' => $_POST['activite'],
             'profilpicture' => $filename,
-            'linkwebsite' => $_POST['site'],
+            'linkwebsite' => $link,
             'personne' => $id[0][0]
         ]);
 
