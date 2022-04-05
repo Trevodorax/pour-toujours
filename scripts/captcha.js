@@ -34,7 +34,6 @@ function check_win(){
 
     for(let i = 1; i < 10; i++){
         let case_index = captcha_cases[i - 1].id.charAt(captcha_cases[i - 1].id.length - 1);
-        console.log(case_index);
         if(case_index != i){
             return false;
         }

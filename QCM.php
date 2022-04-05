@@ -8,7 +8,6 @@
     </head>
     <body>
         <main>
-            
             <form>
                     <?php
                         function write_QCM_question($field_name, $question, $choices, $index){
@@ -24,14 +23,22 @@
                                 }
 
                                 echo "<div class='form-navigation'>";
-                                    echo "<a onclick='change_form($index, false)'>&lt-- précédent</a>";
-                                    echo "<a onclick='change_form($index, true)'>suivant --&gt</a>";
+                                    if($index != 1){
+                                        echo "<a onclick='change_form($index, false)'>&lt-- précédent</a>";
+                                    }else{
+                                        echo "<a></a>";
+                                    }
+                                    if($index != 10){
+                                        echo "<a onclick='change_form($index, true)'>suivant --&gt</a>";
+                                    }else{
+                                        echo "<a><input type='submit'></a>";
+                                    }
                                 echo "</div>";
                             echo "</div>";
                         }
 
                         write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 1);
-                        write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 2);
+                        write_QCM_question("budget", "Votre fourchette de budget est :", ["500 - 1000 €", "1000 - 2000 €", "2000 - 3000 €", "3000 € ou plus"], 2);
                         write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 3);
                         write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 4);
                         write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 5);
@@ -42,7 +49,7 @@
                         write_QCM_question("religion", "Vous planifiez un mariage :", ["Civil", "Religieux", "Mixte", "Peu importe"], 10);
                     ?>
                 </div>
-                
+
             </form>
         </main>
         <script src="scripts/QCM.js"></script>
