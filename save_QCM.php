@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
     $religion = $_POST['religion'];
     $assistance = $_POST['assistance'];
@@ -18,23 +19,17 @@
         exit;
     }
 
-    for($i = 0; $i < 10; $i++){
-        if(!in_array($preferences[$i], ['0', '1', '2', '3'])){
-            header('location: QCM.php?erreur=mauvaise saisie');
-            exit;
-        }
-    }
-
-
     // put this in database if everything went right
     include('includes/db.php');
-    $q = "UPDATE UTILISATEUR SET preferences = :user_pref";
+    $q = "UPDATE UTILISATEUR SET preferences_qcm = :user_pref WHERE personne = (SELECT id FROM PERSONNE WHERE email = :user_email)";
     $req = $bdd->prepare($q);
     $result = $req->execute([
-        'user_pref' => $preferences
+        'user_pref' => $preferences,
+        'user_email' => $_SESSION['email']
     ]);
 
-    var_dump($result);
+    header('location: control_pannel.php');
+    exit;
 
 ?>
 

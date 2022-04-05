@@ -33,13 +33,14 @@
     $req->execute([
         'email' => $_POST['email']
     ]);
+
     $results = $req->fetchAll();
     if(count($results) == 0){
-        header ('location: log_in.php?message=Email inexistant');
+        header ('location: log_in.php?message=Identifiants incorrectes');
         writeLogLine(false, $_POST['email']);
         exit;
     }
-
+//FAIRE UNE SEULE REQUETE POUR LES IDENTIFIANTS
     $q = 'SELECT id FROM personne WHERE mot_de_passe = :password';
     $req = $bdd->prepare($q);
     $req->execute([
