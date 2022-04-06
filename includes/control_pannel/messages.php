@@ -29,93 +29,21 @@
             <?php
 
             ?>
-            <form method="post" action="">
+            <form method="post" action="new_message.php">
                 <input id="page-bottom" type="text" name="message" placeholder=" Votre message">
             </form>
-            <?php
-                $q = 'SELECT id FROM conversation WHERE personne1 = :id OR personne2 = :id';
-                $req = $bdd->prepare($q);
-                $req->execute([
-                    'id' => $_SESSION['id']
-                ]);
-                $conversation = $req->fetchAll();
-
-                $message = $_POST['message'];
-                var_dump($_POST['message']);
-                $q = "INSERT INTO message (contenu, conversation) VALUES (:contenu, :conversation)";
-                $req = $bdd->prepare($q);
-                $results = $req->execute([
-                    'contenu' => $message,
-                    'conversation' => $conversation[0][0]
-                ]);
-            ?>
         </section>
         <section id="messages-list">
-            <button class="btn btn-primary" id="new-convo-button" formmethod="post" formaction="" name="newconversation">Créer une nouvelle conversation</button>
-            <form class="pouf" id="new-convo-form" method="post" action="">
+            <button class="btn btn-primary" formmethod="post" formaction="" name="newconversation">Créer une nouvelle conversation</button>
+            <form method="post" action="new_conversation.php">
                 <input type="email" name="email">
                 <input type="submit">
             </form>
+
             <?php
-                $q = 'SELECT id FROM personne WHERE email = :email';
-                $req = $bdd->prepare($q);
-                $req->execute([
-                    'email' => $_POST['email']
-                ]);
-                $id2 = $req->fetchAll();
 
-                if(count($id2) == 0){
-
-                }
-
-                $q = "INSERT INTO conversation (personne1, personne2) VALUES (:personne1, :personne2)";
-                $req = $bdd->prepare($q);
-                $results = $req->execute([
-                    'personne1' => $_SESSION['id'],
-                    'personne2' => $id2[0][0]
-                ]);
             ?>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
+
                 <img src="images/message_pfp.jpg">
                 <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
             </a>
