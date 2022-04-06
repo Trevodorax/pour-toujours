@@ -27,10 +27,7 @@
                     <?php
                         foreach($results[0] as $key => $value){
                             if($key == 'mot_de_passe'){
-                                echo '<tr>';
-                                echo '<td>' . $key . '</td>';
-                                echo '<td>' . 'hidden' . '</td>';
-                                echo '</tr>';
+                                echo '';
                             }else{
                                 echo '<tr>';
                                 echo '<td>' . $key . '</td>';

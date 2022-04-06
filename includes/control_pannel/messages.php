@@ -43,8 +43,8 @@
             ?>
         </section>
         <section id="messages-list">
-            <button class="btn btn-primary" formmethod="post" formaction="" name="newconversation">Créer une nouvelle conversation</button>
-            <form method="post" action="">
+            <button class="btn btn-primary" id="new-convo-button" formmethod="post" formaction="" name="newconversation">Créer une nouvelle conversation</button>
+            <form class="pouf" id="new-convo-form" method="post" action="">
                 <input type="email" name="email">
                 <input type="submit">
             </form>
@@ -57,7 +57,7 @@
                 $id2 = $req->fetchAll();
 
                 if(count($id2) == 0){
-                    alert ('location: index.php?message=L\'email n\'existe pas');
+                    echo '';
                 }
 
                 $q = "INSERT INTO engage (locuteur, personne) VALUES (:id_locuteur, :id_personne)";
