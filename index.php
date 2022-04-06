@@ -1,3 +1,12 @@
+<?php session_start() ?>
+
+<?php
+    if(isset($_SESSION['email'])){
+        header('location: control_pannel.php');
+        exit;
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>

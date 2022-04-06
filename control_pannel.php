@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <?php
     $possible_pages = ["home", "messages", "grid"];
     if(isset($_GET['page']) && in_array($_GET['page'], $possible_pages)){
@@ -20,7 +22,7 @@
         <div id="page-top">
             <div>
                 <?php
-                    echo '<h2>Bonjour, ' . $_SESSION['nomprefere'] . '!</h2>';
+                    echo '<h2>Bonjour, ' . (isset($_SESSION['nomprefere']) ? $_SESSION['nomprefere'] : 'visiteur') . ' !</h2>';
                 ?>
                 <p>Prêt à continuer l'aventure ?</p>
             </div>
@@ -38,7 +40,7 @@
             <a href="control_pannel.php?page=grid&type=repas" class="<?php echo $current_page == "grid" && $_GET['type'] == "repas" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/pitco_repas.svg"><p>Mon&nbsprepas</p></a>
             <a href="control_pannel.php?page=grid&type=favoris" class="<?php echo $current_page == "grid" && $_GET['type'] == "favoris" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_coeur.svg"><p>Mes&nbspfavoris</p></a>
             <a href="control_pannel.php?page=invites"><img src="images/control_nav_pictos/picto_invites.svg"><p>Mes&nbspinvités</p></a>
-            <a href="control_pannel.php?page=parametres"><img src="images/control_nav_pictos/picto_parametre.svg"><p>Paramètres</p></a>
+            <a href="settings.php"><img src="images/control_nav_pictos/picto_parametre.svg"><p>Paramètres</p></a>
         </nav>
 
         <?php include('includes/control_pannel/'. $current_page . '.php'); ?>
