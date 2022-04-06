@@ -32,14 +32,22 @@
             <form method="post" action="">
                 <input id="page-bottom" type="text" name="message" placeholder=" Votre message">
             </form>
-            <?php /*
+            <?php
+                $q = 'SELECT id FROM conversation WHERE personne1 = :id OR personne2 = :id';
+                $req = $bdd->prepare($q);
+                $req->execute([
+                    'id' => $_SESSION['id']
+                ]);
+                $conversation = $req->fetchAll();
+
                 $message = $_POST['message'];
-                $q = "INSERT INTO message (contenu, conversation) VALUES (:message, :conversation)";
+                var_dump($_POST['message']);
+                $q = "INSERT INTO message (contenu, conversation) VALUES (:contenu, :conversation)";
                 $req = $bdd->prepare($q);
                 $results = $req->execute([
-                    'message' => $message,
-                    'conversation' => 0
-                ]);*/
+                    'contenu' => $message,
+                    'conversation' => $conversation[0][0]
+                ]);
             ?>
         </section>
         <section id="messages-list">
@@ -57,25 +65,20 @@
                 $id2 = $req->fetchAll();
 
                 if(count($id2) == 0){
+<<<<<<< HEAD
                     echo '';
                 }
+=======
+>>>>>>> ee075daa6a9a819f4dc4b6235ca108d459ae3520
 
-                $q = "INSERT INTO engage (locuteur, personne) VALUES (:id_locuteur, :id_personne)";
+                }
+
+                $q = "INSERT INTO conversation (personne1, personne2) VALUES (:personne1, :personne2)";
                 $req = $bdd->prepare($q);
-                $prestataire = $req->execute([
-                    'id_locuteur' => $_SESSION['id'],
-                    'id_personne' => $id2[0][0]
+                $results = $req->execute([
+                    'personne1' => $_SESSION['id'],
+                    'personne2' => $id2[0][0]
                 ]);
-
-                /*$q = 'SELECT id FROM conversation WHERE id_utilisateur = :email';
-                $req = $bdd->prepare($q);
-                $req->execute([
-                    'email' => $_POST['email']
-                ]);
-                $conversation = $req->fetchAll();
-                foreach ($conversation as $key => $value){
-
-                }*/
             ?>
             <a>
                 <img src="images/message_pfp.jpg">
