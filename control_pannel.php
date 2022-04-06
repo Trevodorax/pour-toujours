@@ -1,4 +1,10 @@
-<?php session_start() ?>
+<?php
+session_start();
+if(!isset($_SESSION['email'])){
+    header('location: index.php');
+    exit;
+}
+?>
 
 <?php
     $possible_pages = ["home", "messages", "grid"];
@@ -22,7 +28,7 @@
         <div id="page-top">
             <div>
                 <?php
-                    echo '<h2>Bonjour, ' . (isset($_SESSION['nomprefere']) ? $_SESSION['nomprefere'] : 'visiteur') . ' !</h2>';
+                    echo '<h2>Bonjour, ' . $_SESSION['nomprefere'] . ' !</h2>';
                 ?>
                 <p>Prêt à continuer l'aventure ?</p>
             </div>
