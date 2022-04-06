@@ -30,8 +30,8 @@
         </div>
 
         <nav id="desktop-control-nav">
-            <a href="control_pannel.php?page=home" class="active-nav-item"><img src="images/control_nav_pictos/picto_general.svg"><p>Mon&nbspmariage</p></a>
-            <a href="control_pannel.php?page=messages"><img src="images/control_nav_pictos/picto_bulle.svg"><p>Mes&nbspmessages</p></a>
+            <a href="control_pannel.php?page=home" class="<?php echo $current_page == "home" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_general.svg"><p>Mon&nbspmariage</p></a>
+            <a href="control_pannel.php?page=messages" class="<?php echo $current_page == "messages" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_bulle.svg"><p>Mes&nbspmessages</p></a>
             <a href="control_pannel.php?page=lieu"><img src="images/control_nav_pictos/picto_lieu.svg"><p>Lieu&nbspde&nbspmariage</p></a>
             <a href="control_pannel.php?page=animation"><img src="images/control_nav_pictos/picto_animation.svg"><p>Mon&nbspanimation</p></a>
             <a href="control_pannel.php?page=photo"><img src="images/control_nav_pictos/picto_photo.svg"><p>Mes&nbspphotos</p></a>
