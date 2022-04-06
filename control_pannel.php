@@ -32,11 +32,11 @@
         <nav id="desktop-control-nav">
             <a href="control_pannel.php?page=home" class="<?php echo $current_page == "home" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_general.svg"><p>Mon&nbspmariage</p></a>
             <a href="control_pannel.php?page=messages" class="<?php echo $current_page == "messages" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_bulle.svg"><p>Mes&nbspmessages</p></a>
-            <a href="control_pannel.php?page=lieu"><img src="images/control_nav_pictos/picto_lieu.svg"><p>Lieu&nbspde&nbspmariage</p></a>
-            <a href="control_pannel.php?page=animation"><img src="images/control_nav_pictos/picto_animation.svg"><p>Mon&nbspanimation</p></a>
-            <a href="control_pannel.php?page=photo"><img src="images/control_nav_pictos/picto_photo.svg"><p>Mes&nbspphotos</p></a>
-            <a href="control_pannel.php?page=repas"><img src="images/control_nav_pictos/pitco_repas.svg"><p>Mon&nbsprepas</p></a>
-            <a href="control_pannel.php?page=favoris"><img src="images/control_nav_pictos/picto_coeur.svg"><p>Mes&nbspfavoris</p></a>
+            <a href="control_pannel.php?page=grid&type=lieu" class="<?php echo $current_page == "grid" && $_GET['type'] == "lieu" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_lieu.svg"><p>Lieu&nbspde&nbspmariage</p></a>
+            <a href="control_pannel.php?page=grid&type=animation" class="<?php echo $current_page == "grid" && $_GET['type'] == "animation" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_animation.svg"><p>Mon&nbspanimation</p></a>
+            <a href="control_pannel.php?page=grid&type=photo" class="<?php echo $current_page == "grid" && $_GET['type'] == "photo" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_photo.svg"><p>Mes&nbspphotos</p></a>
+            <a href="control_pannel.php?page=grid&type=repas" class="<?php echo $current_page == "grid" && $_GET['type'] == "repas" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/pitco_repas.svg"><p>Mon&nbsprepas</p></a>
+            <a href="control_pannel.php?page=grid&type=favoris" class="<?php echo $current_page == "grid" && $_GET['type'] == "favoris" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_coeur.svg"><p>Mes&nbspfavoris</p></a>
             <a href="control_pannel.php?page=invites"><img src="images/control_nav_pictos/picto_invites.svg"><p>Mes&nbspinvités</p></a>
             <a href="control_pannel.php?page=parametres"><img src="images/control_nav_pictos/picto_parametre.svg"><p>Paramètres</p></a>
         </nav>
