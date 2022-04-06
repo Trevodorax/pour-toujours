@@ -61,6 +61,11 @@
     font-weight: 600;
 }
 
+#new-conv-form-appear{
+    display: block;
+    margin: 0 auto;
+}
+
 @media screen and (max-width: 800px){
     #messages-list{
         width: 90%;

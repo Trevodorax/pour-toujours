@@ -16,6 +16,10 @@
         'contenu' => $message,
         'conversation' => $conversation[0][0]
     ]);
+    $results = $req->fetchAll();
 
-    if
+    if(count($results) == 0){
+        header('location: control_pannel.php?page=messages&message=Message reçu Capitaine !');
+        exit;
+    }
 ?>
