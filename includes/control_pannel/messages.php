@@ -65,11 +65,6 @@
                 $id2 = $req->fetchAll();
 
                 if(count($id2) == 0){
-<<<<<<< HEAD
-                    echo '';
-                }
-=======
->>>>>>> ee075daa6a9a819f4dc4b6235ca108d459ae3520
 
                 }
 
