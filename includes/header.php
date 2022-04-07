@@ -1,4 +1,3 @@
-<?php session_start() ?>
 <header id="mobile-header">
     <a></a>
     <a href="index.php"></a>

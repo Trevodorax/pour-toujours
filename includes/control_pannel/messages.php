@@ -27,82 +27,37 @@
             <div class="to">Merci à vous tous, mon ame-soeur, Simon, et moi-même sommes aux anges depuis que nous avons découverts votre site ! Vous êtes des génies.</div>
             <div class="from">Vous n'avez encore rien vu !</div>
             <?php
-
-            ?>
-            <form method="post" action="">
-                <input id="page-bottom" type="text" name="message" placeholder=" Votre message">
-            </form>
-            <?php
-                $message = $_POST['message'];
-                $q = "INSERT INTO message (contenu, conversation) VALUES (:message, :conversation)";
-                $req = $bdd->prepare($q);
-                $results = $req->execute([
-                    'message' => $message,
-                    'conversation' => 0
-                ]);
-            ?>
-        </section>
-        <section id="messages-list">
-            <?php
-                echo '<button formmethod="post" formaction="" name="newconversation">Créer une nouvelle conversation</button>';
-
-                $q = "INSERT INTO conversation (id_utilisateur, id_prestataire) VALUES (:id_utilisateur, :id_prestataire)";
-                $req = $bdd->prepare($q);
-                $prestataire = $req->execute([
-                    'id_utilisateur' =>
-                    'id_prestataire' =>
-                ]);
-
-                $q = 'SELECT id FROM conversation WHERE id_utilisateur = :email';
+                $q = 'SELECT id FROM conversation WHERE ' . $_SESSION['id'] . ' = personne1 OR ' . $_SESSION['id'] . ' = personne2';
                 $req = $bdd->prepare($q);
                 $req->execute([
-                    'email' => $_POST['email']
-                ]);
-                $conversation = $req->fetchAll();
-                foreach ($conversation as $key => $value){
 
+                ]);
+                $id_conversation = $req->fetchAll();
+
+                $q = 'SELECT contenu FROM message WHERE conversation = ' . $id_conversation[0][0];
+                $req = $bdd->prepare($q);
+                $req->execute([
+                ]);
+                $message = $req->fetchAll();
+
+                foreach ($message as $key => $value){
+                    echo '<p>' . $message[0][0] .'</p>';
                 }
             ?>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
+            <form method="post" action="new_message.php">
+                <input id="page-bottom" type="text" name="message" placeholder=" Votre message">
+            </form>
+        </section>
+        <section id="messages-list">
+            <button id="new-conv-form-appear" class="btn btn-primary" formmethod="post" formaction="" name="newconversation">Créer une nouvelle conversation</button>
+            <form id="new-conv-form" class="pouf" method="post" action="new_conversation.php">
+                <input type="email" name="email">
+                <input type="submit">
+            </form>
+
+            <?php
+
+                ?>
             <a>
                 <img src="images/message_pfp.jpg">
                 <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
@@ -111,3 +66,4 @@
         
     </div>
 </main>
+<script src="scripts/messages.js"></script>

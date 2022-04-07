@@ -1,22 +1,18 @@
-
-
-
-
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include('includes/common_head.php'); ?>
+        <?php include('../includes/common_head.php'); ?>
     </head>
     <body>
         <?php
-            include('includes/db.php');
+            include('../includes/db.php');
 
             $q = 'SELECT id, nomComplet, email FROM PERSONNE';
             $req = $bdd->query($q); //exécute la requête $q
             $results = $req->fetchAll(PDO::FETCH_ASSOC); // renvoie un tableau contenant tous les résultats
         ?>
 
-        <main>
+        <main class="container">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -32,9 +28,9 @@
                             echo '<td>' . $user['nomComplet'] . '</td>';
                             echo '<td>' . $user['email'] . '</td>';
                             echo '<td>';
-                            echo '<a  class="btn btn-sm btn-primary me-2" href="consulter.php?id=' . $user['id'] . '">Consulter</a>';
-                            echo '<a class="btn btn-sm btn-warning me-2" href="modifier.php?id=' . $user['id'] . '">Modifier</a>';
-                            echo '<a class="btn btn-sm btn-danger" href="supprimer.php?id=' . $user['id'] . '">Supprimer</a>';
+                            echo '<a  class="btn btn-sm btn-primary me-2" href="consult.php?id=' . $user['id'] . '">Consulter</a>';
+                            echo '<a class="btn btn-sm btn-warning me-2" href="modify.php?id=' . $user['id'] . '">Modifier</a>';
+                            echo '<a class="btn btn-sm btn-danger" href="delete.php?id=' . $user['id'] . '">Supprimer</a>';
                             echo '</td>';
                             echo '</tr>';
                         }
