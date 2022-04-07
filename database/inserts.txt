@@ -1,0 +1,28 @@
+
+
+
+INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES ('Eva Ray', 'Eva Stella Ray', '1997-07-05', 'A', 'eva.ray@gmail.com', '61a1d5357c3cfcddcf315aff9c70364a492a33d8895e9e8701e0c6d34150c8b0a2be08857c0e4f0e5d5b402419228bee0fc0614d878f0b074772430a84150c31', '0787031216', '05');
+INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES ('Thierry Bichon', 'Thierry B', '1990/04/12', 'H', 'thenry@gmail.com', 'Azerty111!', '0678902612','75');
+
+INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES ('Corinne', 'IFOI', '1987-02-05', 'A', 'eva.ray4@gmail.com', '61a1d5357c3cfcddcf315aff9c70364a492a33d8895e9e8701e0c6d34150c8b0a2be08857c0e4f0e5d5b402419228bee0fc0614d878f0b074772430a84150c31', '0787031216', '05');
+INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES ('oLAOU', 'TLOUA', '1940/04/10', 'F', 'thenry3@gmail.com', 'Azerty111!', '0778902322','972');
+
+INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES ('Evary bIDOU', 'Stella Ray', '1997-07-05', 'A', 'eva.ray@gmail.com', '61a1d5357c3cfcddcf315aff9c70364a492a33d8895e9e8701e0c6d34150c8b0a2be08857c0e4f0e5d5b402419228bee0fc0614d878f0b074772430a84150c31', '0787031216', '05');
+INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES ('Thry Bichon', 'Thierry', '1990/04/12', 'H', 'thenry@gmail.com', 'Azerty111!', '0678955612','77');
+
+INSERT INTO PRESTATAIRE (nomEntreprise, telPro, emailPro, metier, description, photoProfil, lienSiteWeb, personne) VALUES ('France à table', '0628904678', 'pro@gmail.com', 'Cuisine', NULL, 'image-1649349579.png', 'https://france-a-table.fr',1);
+INSERT INTO PRESTATAIRE (nomEntreprise, telPro, emailPro, metier, description, photoProfil, lienSiteWeb, personne) VALUES ('BFER', '0628904678', 'pro2@gmail.com', 'Photographe', NULL, 'image-1649349579.png', 'https://yesyes.fr',2);
+INSERT INTO PRESTATAIRE (nomEntreprise, telPro, emailPro, metier, description, photoProfil, lienSiteWeb, personne) VALUES ('CLAIR ESPRIT', '0621234578', 'pro3@gmail.com', 'Cuisine', NULL, 'image-1649349579.png', 'https://google.fr',3);
+
+INSERT INTO UTILISATEUR(preferences_qcm, avatar, personne) VALUES ('0120120122', NULL, 4);
+INSERT INTO UTILISATEUR(preferences_qcm, avatar, personne) VALUES ('1111111111', NULL, 5);
+INSERT INTO UTILISATEUR(preferences_qcm, avatar, personne) VALUES ('0332221200', NULL, 6);
+
+INSERT INTO MARIAGE (date,utilisateur) VALUES ('2022-12-5', 5);
+INSERT INTO MARIAGE (date,utilisateur) VALUES ('2023-11-5', 4);
+INSERT INTO MARIAGE (date,utilisateur) VALUES ('2022-06-10', 6);
+
+INSERT INTO SERVICE (nom, tarif, description, prestataire) VALUES ('awouiwoui4', 45, 'pizncibvfbvyu cuy  hvgyeofe 66ècduiffr  fipz^z$x', 2);
+INSERT INTO SERVICE (nom, tarif, description, prestataire) VALUES ('awouiwoui27', 23, 'pizncibvfbvyu cuy  hvgyeofe 66ècduiffr  fipz^z$xrftgghbbgSNNHH', 1);
+INSERT INTO SERVICE (nom, tarif, description, prestataire) VALUES ('awouiwoui267', 76, 'pizncibvfbvyu LOREMUIPSOSUUEr  fipz^z$xrftgghbbgSNNHH', 2);
+
