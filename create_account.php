@@ -14,13 +14,13 @@
             <p>Saisissez vos informations pour continuer</p>
             <p class="pro-form">Vous pourrez présenter vos services en détail dans votre profil après vous être créer un compte.</p>
             <form method="post" action ="check_sign_up.php" enctype="multipart/form-data">
-                <input type="text" name="c_name" class="required-input" placeholder=" Votre nom complet">
+                <input type="text" name="c_name" class="required-input" placeholder=" Votre nom complet" value="<?= isset($_COOKIE['nomcomplet']) ? $_COOKIE['nomcomplet'] : '' ?>">
 
-                <input type="text" name="f_name" class="required-input" placeholder=" Votre nom préféré">
+                <input type="text" name="f_name" class="required-input" placeholder=" Votre nom préféré" value="<?= isset($_COOKIE['nomprefere']) ? $_COOKIE['nomprefere'] : '' ?>">
 
                 <input class="date_input" type="date" name="b_date" class="required-input" placeholder=" Votre date de naissance">
 
-                <input class="pro-form" type="text" name="company_name" placeholder=" Nom de votre entreprise">
+                <input class="pro-form" type="text" name="company_name" placeholder=" Nom de votre entreprise" value="<?= isset($_COOKIE['nomentreprise']) ? $_COOKIE['nomentreprise'] : '' ?>">
 
                 <select id="region" name="departement">
                     <?php
@@ -32,13 +32,13 @@
                     ?>
                 </select>
 
-                <input type="tel" name="tel" placeholder=" Votre numéro de téléphone">
+                <input type="tel" name="tel" placeholder=" Votre numéro de téléphone" value="<?= isset($_COOKIE['numero_tel']) ? $_COOKIE['numero_tel'] : '' ?>">
 
-                <input class="pro-form" type="tel" name="tel_pro" placeholder=" Votre numéro de téléphone professionnel">
+                <input class="pro-form" type="tel" name="tel_pro" placeholder=" Votre numéro de téléphone professionnel" value="<?= isset($_COOKIE['telpro']) ? $_COOKIE['telpro'] : '' ?>">
 
-                <input type="email" name="email" class="required-input" placeholder=" Votre e-mail">
+                <input type="email" name="email" class="required-input" placeholder=" Votre e-mail" value="<?= isset($_COOKIE['email']) ? $_COOKIE['email'] : '' ?>">
 
-                <input class="pro-form" type="email" name="email_pro" placeholder=" Votre e-mail professionnel">
+                <input class="pro-form" type="email" name="email_pro" placeholder=" Votre e-mail professionnel" value="<?= isset($_COOKIE['emailpro']) ? $_COOKIE['emailpro'] : '' ?>">
 
                 <input type="password" name="password" class="required-input" placeholder=" Votre mot de passe">
 
@@ -64,7 +64,7 @@
                     ?>
                 </select>
 
-                <input type="text" name="site" class="pro-form" placeholder=" Lien de votre site">
+                <input type="text" name="site" class="pro-form" placeholder=" Lien de votre site" value="<?= isset($_COOKIE['liensiteweb']) ? $_COOKIE['liensiteweb'] : '' ?>">
 
                 <input type="file" name="image" class="pro-form" placeholder=" Votre image de profil">
 

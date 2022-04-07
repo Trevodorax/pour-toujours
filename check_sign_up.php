@@ -7,9 +7,17 @@
         exit;
     }
 
+    if(isset($_POST['c_name']) && !empty($_POST['c_name'])){
+        setcookie('nomcomplet', $_POST['c_name'], time() + 24 * 60 * 60);
+    }
+
     if(!isset($_POST['f_name']) || empty($_POST['f_name'])){
         header('location: create_account.php?message=Vous devez remplir le champ nom préféré');
         exit;
+    }
+
+    if(isset($_POST['f_name']) && !empty($_POST['f_name'])){
+        setcookie('nomprefere', $_POST['f_name'], time() + 24 * 60 * 60);
     }
 
     if(!isset($_POST['departement']) || empty($_POST['departement'])){
@@ -45,6 +53,10 @@
         exit;
     }
 
+    if(isset($_POST['tel']) && !empty($_POST['tel'])){
+        setcookie('numero_tel', $_POST['tel'], time() + 24 * 60 * 60);
+    }
+
     $q = 'SELECT id FROM personne WHERE email = :email';
     $req = $bdd->prepare($q);
     $req->execute([
@@ -56,10 +68,6 @@
         exit;
     }
 
-    if(isset($_POST['email']) && !empty($_POST['email'])){
-        setcookie('email', $_POST['email'], time() + 24 * 60 * 60);
-    }
-
     if(!isset($_POST['email']) || empty($_POST['email'])){
         header('location: create_account.php?message=Vous devez remplir le champ email');
         exit;
@@ -68,6 +76,10 @@
     if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
         header('location: create_account.php?message=Email invalide');
         exit;
+    }
+
+    if(isset($_POST['email']) && !empty($_POST['email'])){
+        setcookie('email', $_POST['email'], time() + 24 * 60 * 60);
     }
 
     if(!isset($_POST['password']) || empty($_POST['password'])){
@@ -149,6 +161,10 @@
             exit;
         }
 
+        if(isset($_POST['company_name']) && !empty($_POST['company_name'])){
+            setcookie('nomentreprise', $_POST['company_name'], time() + 24 * 60 * 60);
+        }
+
         $q = 'SELECT id FROM prestataire WHERE telpro = :telpro';
         $req = $bdd->prepare($q);
         $req->execute([
@@ -168,6 +184,10 @@
         if (!preg_match('#^0[168]([ \-\.]?[0-9]{2}){4}$#', $_POST['tel_pro'])){
             header('location: create_account.php?message=Le numéro de téléphone n\'est pas valide');
             exit;
+        }
+
+        if(isset($_POST['tel_pro']) && !empty($_POST['tel_pro'])){
+            setcookie('telpro', $_POST['tel_pro'], time() + 24 * 60 * 60);
         }
 
         $q = 'SELECT id FROM prestataire WHERE emailpro = :emailpro';
@@ -191,6 +211,10 @@
             exit;
         }
 
+        if(isset($_POST['email_pro']) && !empty($_POST['email_pro'])){
+            setcookie('emailpro', $_POST['email_pro'], time() + 24 * 60 * 60);
+        }
+
         if(!isset($_POST['activite']) || empty($_POST['activite'])){
             header("location: create_account.php?message=Vous devez sélectionner un secteur d'activité");
             exit;
@@ -200,6 +224,10 @@
             $link = "*";
         }else{
             $link = $_POST['site'];
+        }
+
+        if(isset($_POST['site']) && !empty($_POST['site'])){
+            setcookie('liensiteweb', $_POST['site'], time() + 24 * 60 * 60);
         }
 
         if($_FILES['image']['error'] != 4){
