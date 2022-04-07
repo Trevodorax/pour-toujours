@@ -45,7 +45,7 @@
     $req->execute([
         'personne' => $id[0][0]
     ]);
-    $emailpro = $req->fetchAll();
+    $emailpro = $req->fetchAll(PDO::FETCH_ASSOC);
 
     session_start();
     $_SESSION['id'] = $id[0][0];
@@ -53,7 +53,7 @@
     $_SESSION['nomcomplet'] = $id[0][2];
     $_SESSION['departement'] = $id[0][3];
     $_SESSION['email'] = $_POST['email'];
-    $_SESSION['emailpro'] = $emailpro;
+    $_SESSION['emailPro'] = $emailpro;
     header('location: index.php?message=Connecté avec succès');
     writeLogLine(true, $_POST['email']);
     exit;

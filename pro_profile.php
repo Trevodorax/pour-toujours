@@ -1,9 +1,7 @@
 <?php session_start() ;
-//Utiliser pour faire la différence d'affichage : vu presta et vu client
-// if (!empty($_SESSION['emailpro'])){
-        
-//     }
+include('includes/db.php');
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,9 +14,30 @@
 
         <main>
             <?php 
-            echo ' <h2>Bonjour ' . $_SESSION['nomPrefere'] .' ! <a href="#"><img src="images/settings_icon.svg"></a><a href="#"><img src="images/presta_contact_icon.svg"></a></h2>';
+                    function show_page($statut, $id){
+                        
+                    }
+
+                    //Utiliser pour faire la différence d'affichage : vu presta et vu client
+                    if (empty($_SESSION['emailPro'])){
+                        //Customers view
+                        $welcome_title = 'Le profil de ';
+                        $info_det = 'Ses';
+                        $company_det = "son";
+                        $comment_title = 'Avis sur ce prestataire';
+
+                    } else {
+                        //Pros view
+                        $welcome_title = 'Bonjour ';
+                        $info_det = 'Vos';
+                        $company_det = "votre";
+                        $comment_title = 'Avis sur vos prestations';
+                    }
+
+
+            echo ' <h2>' . $welcome_title . $_SESSION['nomprefere'] .' ! <a href="#"><img src="images/settings_icon.svg"></a><a href="#"><img src="images/presta_contact_icon.svg"></a></h2>';
             
-            $q = 'SELECT nomEntreprise, emailPro, telPro,metier, photoProfil, lienSiteWeb FROM user WHERE id = :id'; 
+            $q = 'SELECT nomEntreprise, emailPro, telPro,metier, photoProfil, lienSiteWeb FROM prestataire WHERE personne = :id'; 
             $req = $bdd->prepare($q);            
             $req->execute(['id' => $_SESSION['id']]);
             $results = $req->fetchAll(PDO::FETCH_ASSOC);
@@ -27,15 +46,15 @@
             <section id="profile">
                 <div>
                     <?php 
-                    //Let's finish later
+                
                     echo '
-                    <h3>Vos informations :</h3>
-                    <h4>Nom complet : ' . $_SESSION['nomComplet'] . ' </h4>
+                    <h3>' . $info_det .' informations :</h3>
+                    <h4>Nom complet : ' . $_SESSION['nomcomplet'] . ' </h4>
                     <p>Métier : ' . $results[0]['metier'] .'</p>
-                    <p>Nom de votre entreprise : ' . $results[0]['nomEEntreprise']  .'</p>
-                    <p>Email : evelynn.pro@gmail.com</p>
-                    <p>Tel pro : '. $results[0]['metier'] .'</p>
-                    <p>Secteur : Orléans</p>
+                    <p>Nom de '. $company_det . ' entreprise : ' . $results[0]['nomEntreprise']  .'</p>
+                    <p>Email : ' . $_SESSION['emailPro'][0]['emailPro']. '</p>
+                    <p>Tel pro : '. $results[0]['telPro'] .'</p>
+                    <p>Secteur : ' . $_SESSION['departement'] . '</p>
                     '
                     ?>
                     

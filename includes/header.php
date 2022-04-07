@@ -14,7 +14,7 @@
         <?php
 
         //display a different page based on what kind of user is logged in
-        if (!empty($_SESSION['emailpro'])){
+        if (!empty($_SESSION['emailPro'])){
                 $profile_page = 'pro_profile.php' ;
                 $word = 'pro';
              } else {
