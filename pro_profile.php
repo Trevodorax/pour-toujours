@@ -15,7 +15,7 @@ include('includes/db.php');
         <main>
             <?php 
                     function show_page($statut, $id){
-                        
+
                     }
 
                     //Utiliser pour faire la différence d'affichage : vu presta et vu client
@@ -63,27 +63,70 @@ include('includes/db.php');
             </section>
             <section id="services">
                 <h3>Vos services</h3>
+                <div class="add_service">
+
+                    <!-- Not animated yet, just a template so i can make it work -->
+
+                    <h3>Ajouter un service</h3>
+
+                    <form method="POST" action="check_services.php">
+
+                        <label for='title'>Titre du service</label>
+                        <input type="text" name="title" class="required-input" placeholder="ex: Patisseries en quantité (40+)" required>
+                        <label for='description'>Description du service(255 caractères)</label>
+                        <input type="text" name="description" class="required-input" placeholder="ex: Préparation du jour pour le lendemain des patisseries, choix parmi : choux à la crème, mini-éclairs, madeleines" required>
+                        <label for='price'>Tarif du service(par prestation ou par heure (faire un input radio ?))</label>
+                        <input type="number" min=0 max=50000 name="price" class="required-input" placeholder="ex: 75" required>
+
+                        <?php 
+                            if(isset($_GET['message']) && !empty($_GET['message'])) {
+
+                                echo ' <p id="error-message">'. $_GET['message'] . '</p>';
+                            }
+                         
+                        ?>
+
+                        <button type="submit" name="ajouter">Ajouter</button>
+                        <!--  <button type="submit" id="validate-button" class="big-red-button no-click"><p>Ajouter</p></button> -->
+                    </form>
+                            
+                </div>
+                <!-- End of template zones -->
+
                 <div>
-                    <div class="service-card">
+                    <?php 
+                        $q ='SELECT id,nom,tarif,description,prestataire FROM SERVICE WHERE prestataire = :id';
+                        $req = $bdd->prepare($q);
+                        $req -> execute([
+                            'id' => $_SESSION['id']
+                    ]);
+                    $results = $req->fetchAll(PDO::FETCH_ASSOC);
+                    
+                    
+                    if(count($results) == 0){
+                        echo '<p>Vous n\'avez pas encore ajouté de services</p>';
+                    }
+
+                    foreach($results as $key => $service){
+                        echo '
+                        <div class="service-card">
+                        <h4>'. $service['nom'].'</h4>
+                        <p>Tarif :'. $service['tarif'].'/h</p>
+                        <p>Description : '. $service['description'].'</p>
+                        <a class="btn btn-sm btn-danger me-2" href="#?id=' . $service['id'] . '">Supprimer</a>
+                        </div>
+                        ';
+                    }        
+                    ?>
+
+                    <!-- Templates des services_card -->
+
+                    <!-- <div class="service-card">
                         <h4>Photos mariage</h4>
                         <p>Tarif : 20€/h</p>
                         <p>Description : Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                    <div class="service-card">
-                        <h4>Photos mariage</h4>
-                        <p>Tarif : 20€/h</p>
-                        <p>Description : Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                    <div class="service-card">
-                        <h4>Photos mariage</h4>
-                        <p>Tarif : 20€/h</p>
-                        <p>Description : Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                    <div class="service-card">
-                        <h4>Photos mariage</h4>
-                        <p>Tarif : 20€/h</p>
-                        <p>Description : Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
+                    </div> -->
+                   
                 </div>
             </section>
             <section id="clients">
@@ -169,5 +212,6 @@ include('includes/db.php');
 
         <script src="scripts/index.js"></script>
         <script src="scripts/prestataire.js"></script>
+     
     </body>
 </html>

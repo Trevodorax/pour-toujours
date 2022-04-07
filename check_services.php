@@ -2,6 +2,7 @@
 session_start();
 include('includes/db.php');
 
+//Need to do all the verifs here
 
 if(!isset($_POST['title']) || empty($_POST['title']) ){
         header('location: pro_profile.php?message=Vous devez remplir tous les champs');
