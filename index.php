@@ -1,10 +1,11 @@
 <?php session_start() ?>
 
 <?php
-    if(isset($_SESSION['email'])){
-        header('location: control_pannel.php');
-        exit;
-    }
+// Why this Paul ?i think we should still let this page available, even if you are logged !
+    // if(isset($_SESSION['email'])){
+    //     header('location: control_pannel.php');
+    //     exit;
+    // }
 ?>
 
 <!DOCTYPE html>
