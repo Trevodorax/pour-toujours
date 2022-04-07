@@ -40,7 +40,7 @@
         exit;
     }
 
-    $q = 'SELECT emailpro FROM prestataire WHERE personne = :personne';
+    $q = 'SELECT emailPro FROM prestataire WHERE personne = :personne';
     $req = $bdd->prepare($q);
     $req->execute([
         'personne' => $id[0][0]

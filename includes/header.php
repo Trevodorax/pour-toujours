@@ -19,6 +19,7 @@
                 $word = 'pro';
              } else {
                 $profile_page = 'control_pannel.php';
+                $word = ' ';
              }
         //display this nav if a user is logged in
         if(isset($_SESSION['email'])){
