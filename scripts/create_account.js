@@ -90,7 +90,7 @@ function form_ready(all_set){
 }
 
 
-// captcha code
+/* ----- CAPTCHA FUNCTIONNALITY ----- */
 let previous_pick = null;
 let captcha_cases = document.querySelectorAll('#captcha img');
 
