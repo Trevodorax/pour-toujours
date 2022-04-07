@@ -5,20 +5,41 @@ const pro_elements = document.querySelectorAll('.pro-form');
 const user_elements = document.querySelectorAll('.user-form');
 const pro_checkbox = document.getElementById('pro-checkbox');
 
-// pro elements disappear at the beginning
-pro_elements.forEach(x => x.classList.toggle('pouf'));
+// check the pro checkbox every 200ms
+setInterval(pro_form_check, 200);
+
+// right elements disappear at the beginning (doesn't work yet)
+// get user or pro parameter
+const url = new URL(window.location.href);
+const pov = url.searchParams.get('pov');
+
+if(pov = "user"){
+    pro_elements.forEach(x => x.classList.toggle('pouf'));
+}else{
+    user_elements.forEach(x => x.classList.toggle('pouf'));
+    pro_checkbox.checked = ! pro_checkbox.checked;
+}
+
+
+
 
 // this function switched the disappearing and appearing elements
-function switch_forms(toggled_by_checkbox = false){
-    pro_elements.forEach(x => x.classList.toggle('pouf'));
-    user_elements.forEach(x => x.classList.toggle('pouf'));
-    if(!toggled_by_checkbox){
-        pro_checkbox.checked = !pro_checkbox.checked;
+function switch_forms(){
+    pro_checkbox.checked = ! pro_checkbox.checked;
+}
+
+
+function pro_form_check(){
+    console.log("caught");
+    if(pro_checkbox.checked){
+        pro_elements.forEach(x => x.classList.remove('pouf'));
+        user_elements.forEach(x => x.classList.add('pouf'));
+    }else{
+        pro_elements.forEach(x => x.classList.add('pouf'));
+        user_elements.forEach(x => x.classList.remove('pouf'));
     }
 }
 
-// pro checkbox must toggle the switch_forms function
-pro_checkbox.addEventListener('change', switch_forms, true);
 
 
 /* ----- BUTTON LIGHTS UP WHEN CHECKBOXES CHECKED ----- */

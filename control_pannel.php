@@ -52,7 +52,6 @@ if(!isset($_SESSION['email'])){
         <?php include('includes/control_pannel/'. $current_page . '.php'); ?>
 
         <?php include('includes/footer.php'); ?>
-        
         <script src="scripts/index.js"></script>
         <script src="scripts/control_pannel.js"></script>
     </body>
