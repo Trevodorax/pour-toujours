@@ -8,4 +8,3 @@
     ?>
 </div>
 
-<script src="scripts/captcha.js"></script>
