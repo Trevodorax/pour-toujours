@@ -81,9 +81,33 @@ include('includes/db.php');
 
                                 echo ' <p id="error-message">'. $_GET['message_photo'] . '</p>';
                             } ?>
+
                         <input type="submit" class="btn btn-warning ">
                     </form>
                 </div>
+
+                <div id="show_portfolio">
+                    <!-- Request to show services from the service providers -->
+                    <?php 
+                        $q ='SELECT id, nom, description FROM PORTFOLIO_IMAGES WHERE prestataire = :id';
+                        $req = $bdd->prepare($q);
+                        $req -> execute([
+                            'id' => $_SESSION['id']
+                    ]);
+                    $results = $req->fetchAll(PDO::FETCH_ASSOC);
+                    
+                    
+                    if(count($results) == 0){
+                        echo '<p>Vous n\'avez pas encore ajouté d\'images</p>';
+                    }
+
+                    foreach($results as $key => $image){
+                        echo '<div class="service-card">';
+                        echo ' <img src="' .$image['nom'] .'" alt="' . $image['description'] . '" border=1>';
+                        echo '<a class="btn btn-sm btn-danger me-2" href="#?id=' . $image['id'] . '">Supprimer</a>
+                        </div> ';
+                    }        
+                    ?>
               
             </section>
 
@@ -95,7 +119,7 @@ include('includes/db.php');
 
                     <h2>Ajouter un service</h2>
 
-                    <form method="POST" action="check_services.php">
+                    <form method="POST" action="check_services.php?type=service">
 
                         <label for='title'>Titre du service</label>
                         <input type="text" name="title" class="required-input" placeholder="ex: Patisseries en quantité (40+)" required>
@@ -120,7 +144,7 @@ include('includes/db.php');
                 <!-- End of template zones -->
                             
                 
-                <div class="show_pics">
+                <div id="show_services">
                     <!-- Request to show services from the service providers -->
                     <?php 
                         $q ='SELECT id,nom,tarif,description,prestataire FROM SERVICE WHERE prestataire = :id';

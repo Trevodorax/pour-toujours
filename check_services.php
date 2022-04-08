@@ -5,7 +5,7 @@ include('includes/db.php');
 //Need to do all the verifs from forms from pro_profile 
 
 
-if (!isset($_FILES['image'])){
+if (isset($_GET['type']) and $_GET['type'] == "service"){
 
 //Cheking if services adding form is OK:
 
@@ -25,10 +25,11 @@ if(!isset($_POST['title']) || empty($_POST['title']) ){
 
 header('location: pro_profile.php?message=Service créé avec succès !');
 exit;
+
 }
 
-//Cheking if photos adding form is OK:
 
+//Cheking if photos adding form is OK:
        // checking image validity
        if($_FILES['image']['error'] != 4){
 
@@ -40,14 +41,14 @@ exit;
         ];
 
         if(!in_array($_FILES['image']['type'], $ext)){
-            header ('location: create_account.php?message_photo=Format d\'image incorrect');
+            header ('location: pro_profile.php?message_photo=Format d\'image incorrect');
             exit;
         }
 
         $maxSize = 4 * 1024 * 1024;
 
         if($_FILES['image']['size'] > $maxSize){
-            header('location: create_account.php?message_photo=L\'image ne doit pas dépasser 4 Mo');
+            header('location: pro_profile.php?message_photo=L\'image ne doit pas dépasser 4 Mo');
             exit;
         }
 
@@ -81,7 +82,7 @@ exit;
         $height_stamp = imagesy($stamp);
 
         // this function add a picture to another one with transparence
-        imagecopymerge($image, $stamp, imagesx($image)-6*$width_stamp, imagesy($image)-3*$height_stamp, 0, 0, $width_stamp, $height_stamp,70);
+        imagecopymerge($image, $stamp, imagesx($image)-2*$width_stamp, imagesy($image)-2*$height_stamp, 0, 0, $width_stamp, $height_stamp,70);
 
         //The new image is saved in its slot
         imagepng($image, $filename, 1);
@@ -104,7 +105,7 @@ exit;
         header('location: pro_profile.php?message_photo=Photo enregistrée avec succès');
         exit;
 
-        
+
 
 
     }
