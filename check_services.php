@@ -22,4 +22,3 @@ if(!isset($_POST['title']) || empty($_POST['title']) ){
 
 header('location: pro_profile.php?message=Service créé avec succès !');
 exit;
-  

@@ -6,7 +6,7 @@ include('includes/db.php');
 <html>
     <head>
         <?php include('includes/common_head.php'); ?>
-        <link rel="stylesheet" href="style/prestataire.css">
+        <link rel="stylesheet" href="style/pro_profile.css">
     </head>
     <body>
 
@@ -211,7 +211,7 @@ include('includes/db.php');
         <?php include('includes/footer.php'); ?>
 
         <script src="scripts/index.js"></script>
-        <script src="scripts/prestataire.js"></script>
+        <script src="scripts/pro_profile.js"></script>
      
     </body>
 </html>
