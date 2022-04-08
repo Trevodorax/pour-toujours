@@ -2,6 +2,7 @@
 
     include('includes/db.php');
 
+    // checking if inputs are set and not empty
     if(!isset($_POST['c_name']) || empty($_POST['c_name'])){
         header('location: create_account.php?message=Vous devez remplir le champ nom complet');
         exit;
@@ -25,6 +26,7 @@
         exit;
     }
 
+    // processing departement
     $departement = $_POST['departement'];
 
     $departement_name = explode('-', $departement);
@@ -32,17 +34,20 @@
 
     $departement = $departement_number;
 
+    // check if phone number already exists
     $q = 'SELECT id FROM personne WHERE numero_tel = :tel';
     $req = $bdd->prepare($q);
     $req->execute([
         'tel' => $_POST['tel']
     ]);
     $email = $req->fetchAll();
+
     if(count($email) != 0){
         header ('location: create_account.php?message=Le numéro de téléphone est déjà utilisé');
         exit;
     }
 
+    // checking if phone number exists and is defined
     if(!isset($_POST['tel']) || empty($_POST['tel'])){
         header('location: create_account.php?message=Vous devez remplir le champ numéro de téléphone');
         exit;
@@ -57,6 +62,7 @@
         setcookie('numero_tel', $_POST['tel'], time() + 24 * 60 * 60);
     }
 
+    // checking if email already exists
     $q = 'SELECT id FROM personne WHERE email = :email';
     $req = $bdd->prepare($q);
     $req->execute([
@@ -68,6 +74,7 @@
         exit;
     }
 
+    // checking if email is correctly filled
     if(!isset($_POST['email']) || empty($_POST['email'])){
         header('location: create_account.php?message=Vous devez remplir le champ email');
         exit;
@@ -82,6 +89,8 @@
         setcookie('email', $_POST['email'], time() + 24 * 60 * 60);
     }
 
+
+    // password checks
     if(!isset($_POST['password']) || empty($_POST['password'])){
         header('location: create_account.php?message=Vous devez remplir le champ mot de passe');
         exit;
@@ -122,6 +131,7 @@
         exit;
     }
 
+    // checking and putting gender in the right format for db
     if(!isset($_POST['genre']) || empty($_POST['genre'])){
         header('location: create_account.php?message=Vous devez sélectionner un genre');
         exit;
@@ -137,6 +147,7 @@
         $genre = "N";
     }
 
+    // creating a new person if everything looks nice
     $q = "INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES (:c_name, :f_name, :b_date, :genre, :email, :password, :tel, :departement)";
     $req = $bdd->prepare($q);
     $personne = $req->execute([
@@ -150,12 +161,16 @@
         'departement' => $departement
     ]);
 
+
+    // checking if personne has been successfully created
     if (!$personne){
         header('location: create_account.php?message=Erreur lors de l\'inscription');
         exit;
     }
 
+    // in that block, a pro is created
     if(isset($_POST['pro_access'])){
+        // chekcing pro inputs
         if(!isset($_POST['company_name']) || empty($_POST['company_name'])){
             header('location: create_account.php?message=Vous devez remplir le champ nom de votre entreprise');
             exit;
@@ -165,6 +180,7 @@
             setcookie('nomentreprise', $_POST['company_name'], time() + 24 * 60 * 60);
         }
 
+        // checking if phone number is good
         $q = 'SELECT id FROM prestataire WHERE telpro = :telpro';
         $req = $bdd->prepare($q);
         $req->execute([
@@ -190,6 +206,7 @@
             setcookie('telpro', $_POST['tel_pro'], time() + 24 * 60 * 60);
         }
 
+        // checking if email is correct
         $q = 'SELECT id FROM prestataire WHERE emailpro = :emailpro';
         $req = $bdd->prepare($q);
         $req->execute([
@@ -215,6 +232,7 @@
             setcookie('emailpro', $_POST['email_pro'], time() + 24 * 60 * 60);
         }
 
+        // checking if other things are valid
         if(!isset($_POST['activite']) || empty($_POST['activite'])){
             header("location: create_account.php?message=Vous devez sélectionner un secteur d'activité");
             exit;
@@ -230,6 +248,8 @@
             setcookie('liensiteweb', $_POST['site'], time() + 24 * 60 * 60);
         }
 
+
+        // checking image validity
         if($_FILES['image']['error'] != 4){
 
             $ext = [
@@ -251,6 +271,7 @@
                 exit;
             }
 
+            // putting the image in the right folder
             $path = 'pp_presta';
             if(!file_exists($path)){
                 mkdir($path, 0777);
@@ -268,6 +289,7 @@
 
         }
 
+        // getting the ID of the person we just created
         $q = 'SELECT id FROM personne WHERE email = :email';
         $req = $bdd->prepare($q);
         $req->execute([
@@ -275,6 +297,7 @@
         ]);
         $id = $req->fetchAll();
 
+        // creating a new presta linked to this personne
         $q = "INSERT INTO prestataire (nomEntreprise, telpro, emailpro, metier, photoProfil, lienSiteWeb, personne) VALUES (:companyname, :telpro, :emailpro, :metier, :profilepicture, :linkwebsite, :personne)";
         $req = $bdd->prepare($q);
         $prestataire = $req->execute([
@@ -294,6 +317,7 @@
         }
     }
 
+    // checking if the account was created
     if($personne){
         header('location: index.php?message=Compte créé avec succès');
         exit;

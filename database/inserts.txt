@@ -1,6 +1,3 @@
-
-
-
 INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES ('Eva Ray', 'Eva Stella Ray', '1997-07-05', 'A', 'eva.ray@gmail.com', '61a1d5357c3cfcddcf315aff9c70364a492a33d8895e9e8701e0c6d34150c8b0a2be08857c0e4f0e5d5b402419228bee0fc0614d878f0b074772430a84150c31', '0787031216', '05');
 INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES ('Thierry Bichon', 'Thierry B', '1990/04/12', 'H', 'thenry@gmail.com', 'Azerty111!', '0678902612','75');
 
@@ -25,4 +22,3 @@ INSERT INTO MARIAGE (date,utilisateur) VALUES ('2022-06-10', 6);
 INSERT INTO SERVICE (nom, tarif, description, prestataire) VALUES ('awouiwoui4', 45, 'pizncibvfbvyu cuy  hvgyeofe 66ècduiffr  fipz^z$x', 2);
 INSERT INTO SERVICE (nom, tarif, description, prestataire) VALUES ('awouiwoui27', 23, 'pizncibvfbvyu cuy  hvgyeofe 66ècduiffr  fipz^z$xrftgghbbgSNNHH', 1);
 INSERT INTO SERVICE (nom, tarif, description, prestataire) VALUES ('awouiwoui267', 76, 'pizncibvfbvyu LOREMUIPSOSUUEr  fipz^z$xrftgghbbgSNNHH', 2);
-

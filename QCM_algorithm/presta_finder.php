@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 // get user preferences string
@@ -12,7 +13,5 @@ $req->execute([
 $preferences = $req->fetchAll();
 
 var_dump($preferences);
-
-
 
 ?>
