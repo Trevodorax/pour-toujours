@@ -183,8 +183,8 @@ include('includes/db.php');
                     'prestataire' => $id_presta,
                 ]);
                 $result = $req -> fetchAll(PDO::FETCH_ASSOC);
-                if(count($results) == 0){
-                    echo '<p>Vous n\'avez pas encore de commentaire sur vos prestations</p>';
+                if(count($result) == 0){
+                    echo '<p>Vous n\'avez pas encore de commentaire sur vos</p>';
                 }
                     foreach($result as $key => $commentaire){
                         echo '
