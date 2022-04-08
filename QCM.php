@@ -15,7 +15,7 @@
                         function write_QCM_question($field_name, $question, $choices, $index){
                             echo "\n";
                             echo "<div class='form-question'>";
-                                echo "<h2>Question $index/10</h2>";
+                                echo "<h2>Question $index/9</h2>";
                                 echo "<p>" . $question . "</p>";
 
                                 for($i = 0; $i < count($choices); $i++){
