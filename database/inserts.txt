@@ -14,9 +14,9 @@ INSERT INTO PRESTATAIRE (nomEntreprise, telPro, emailPro, metier, description, p
 INSERT INTO PRESTATAIRE (nomEntreprise, telPro, emailPro, metier, description, photoProfil, lienSiteWeb, personne) VALUES ('BFER', '0628904678', 'pro2@gmail.com', 'Photographe', NULL, 'image-1649349579.png', 'https://yesyes.fr',2);
 INSERT INTO PRESTATAIRE (nomEntreprise, telPro, emailPro, metier, description, photoProfil, lienSiteWeb, personne) VALUES ('CLAIR ESPRIT', '0621234578', 'pro3@gmail.com', 'Cuisine', NULL, 'image-1649349579.png', 'https://google.fr',3);
 
-INSERT INTO UTILISATEUR(preferences_qcm, avatar, personne) VALUES ('0120120122', NULL, 4);
-INSERT INTO UTILISATEUR(preferences_qcm, avatar, personne) VALUES ('1111111111', NULL, 5);
-INSERT INTO UTILISATEUR(preferences_qcm, avatar, personne) VALUES ('0332221200', NULL, 6);
+INSERT INTO UTILISATEUR(preferences_qcm, avatar, personne) VALUES ('012012012', NULL, 4);
+INSERT INTO UTILISATEUR(preferences_qcm, avatar, personne) VALUES ('111111111', NULL, 5);
+INSERT INTO UTILISATEUR(preferences_qcm, avatar, personne) VALUES ('033222100', NULL, 6);
 
 INSERT INTO MARIAGE (date,utilisateur) VALUES ('2022-12-5', 5);
 INSERT INTO MARIAGE (date,utilisateur) VALUES ('2023-11-5', 4);
