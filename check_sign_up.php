@@ -161,12 +161,19 @@
         'departement' => $departement
     ]);
 
-
     // checking if personne has been successfully created
     if (!$personne){
         header('location: create_account.php?message=Erreur lors de l\'inscription');
         exit;
     }
+
+    // getting the ID of the person we just created
+    $q = 'SELECT id FROM personne WHERE email = :email';
+    $req = $bdd->prepare($q);
+    $req->execute([
+        'email' => $_POST['email']
+    ]);
+    $id = $req->fetchAll();
 
     // in that block, a pro is created
     if(isset($_POST['pro_access'])){
@@ -289,14 +296,6 @@
 
         }
 
-        // getting the ID of the person we just created
-        $q = 'SELECT id FROM personne WHERE email = :email';
-        $req = $bdd->prepare($q);
-        $req->execute([
-            'email' => $_POST['email']
-        ]);
-        $id = $req->fetchAll();
-
         // creating a new presta linked to this personne
         $q = "INSERT INTO prestataire (nomEntreprise, telpro, emailpro, metier, photoProfil, lienSiteWeb, personne) VALUES (:companyname, :telpro, :emailpro, :metier, :profilepicture, :linkwebsite, :personne)";
         $req = $bdd->prepare($q);
@@ -312,6 +311,18 @@
 
         if (!$prestataire){
             $req = 'DELETE FROM personne WHERE id = ' . $id;
+            header('location: create_account.php?message=Erreur lors de l\'inscription');
+            exit;
+        }
+    }else{
+        // creating a new user linked to this personne
+        $q = "INSERT INTO utilisateur (personne) VALUES(:idPersonne)";
+        $req = $bdd->prepare($q);
+        $utilisateur = $req->execute([
+            'idPersonne' => $id[0][0]
+        ]);
+
+        if (!$utilisateur){
             header('location: create_account.php?message=Erreur lors de l\'inscription');
             exit;
         }
