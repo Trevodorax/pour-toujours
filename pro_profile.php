@@ -37,10 +37,12 @@ include('includes/db.php');
 
             echo ' <h2>' . $welcome_title . $_SESSION['nomprefere'] .' ! <a href="#"><img src="images/settings_icon.svg"></a><a href="#"><img src="images/presta_contact_icon.svg"></a></h2>';
             
-            $q = 'SELECT nomEntreprise, emailPro, telPro,metier, photoProfil, lienSiteWeb FROM prestataire WHERE personne = :id'; 
+            $q = 'SELECT id, nomEntreprise, emailPro, telPro,metier, photoProfil, lienSiteWeb FROM prestataire WHERE personne = :personne'; 
             $req = $bdd->prepare($q);            
-            $req->execute(['id' => $_SESSION['id']]);
+            $req->execute(['personne' => $_SESSION['id']]);
             $results = $req->fetchAll(PDO::FETCH_ASSOC);
+            $id_presta = $results[0]['id'];
+       ;
             ?>
 
             <section id="profile">
@@ -171,8 +173,35 @@ include('includes/db.php');
             </section>
 
             <h3>Avis sur ce prestataire</h3>
+            
             <section id="reviews">
-                    <div>
+
+            <?php 
+                $q = 'SELECT (SELECT nomPrefere FROM personne WHERE id = utilisateur) AS nom_client, note, contenu, date_envoi FROM COMMENTAIRE WHERE prestataire = :prestataire' ;
+                $req = $bdd->prepare($q);
+                $req -> execute([
+                    'prestataire' => $id_presta,
+                ]);
+                $result = $req -> fetchAll(PDO::FETCH_ASSOC);
+                if(count($result) == 0){
+                    echo '<p>Vous n\'avez pas encore de commentaire sur vos</p>';
+                }
+                    foreach($result as $key => $commentaire){
+                        echo '
+                            <div>
+                            <p class="comment">'. $commentaire['contenu']. '</p>
+                            <div class="rating">';
+                                for($i = 0; $i<$commentaire['note']; $i++){
+                                echo '<img src="images/rating_red_star.svg">';
+                                }
+                            
+                        echo '</div>
+                            <p>'. $commentaire['nom_client']. ' - ' . $commentaire['date_envoi'] . '</p>
+                        </div>';
+                    }
+            ?> 
+                    <!-- TEMPLATE COMMENTS CARDS -->
+                    <!-- <div>
                         <p class="comment">Evelynn est d'un professionnel agréable, elle sait donner des directives claires pour un résultat émouvant.</p>
                         <div class="rating">
                             <img src="images/rating_red_star.svg">
@@ -182,29 +211,7 @@ include('includes/db.php');
                             <img src="images/rating_black_star.svg">
                         </div>
                         <p>Alain - 2020</p>
-                    </div>
-                    <div>
-                        <p class="comment">Evelynn est d'un professionnel agréable, elle sait donner des directives claires pour un résultat émouvant.</p>
-                        <div class="rating">
-                            <img src="images/rating_red_star.svg">
-                            <img src="images/rating_red_star.svg">
-                            <img src="images/rating_red_star.svg">
-                            <img src="images/rating_black_star.svg">
-                            <img src="images/rating_black_star.svg">
-                        </div>
-                        <p>Alain - 2020</p>
-                    </div>
-                    <div>
-                        <p class="comment">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui cumque fugiat impedit natus? Blanditiis, fuga non? Totam exercitationem nulla, laborum dolores aperiam, ipsa ullam in repellat sequi nam quos culpa.</p>
-                        <div class="rating">
-                            <img src="images/rating_red_star.svg">
-                            <img src="images/rating_red_star.svg">
-                            <img src="images/rating_red_star.svg">
-                            <img src="images/rating_black_star.svg">
-                            <img src="images/rating_black_star.svg">
-                        </div>
-                        <p>Alain - 2020</p>
-                    </div>
+                    </div> -->
             </section>
         </main>
 
