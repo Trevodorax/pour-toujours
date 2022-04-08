@@ -46,6 +46,7 @@ include('includes/db.php');
             ?>
 
             <section id="profile">
+                <!--  -->
                 <div>
                     <?php 
                 
@@ -63,13 +64,36 @@ include('includes/db.php');
                 </div>
                 <img src="images/prestataires/prestataire1.jpg">
             </section>
+
+            <section id="portfolio">
+                <!-- Add and display photos from portfolio -->
+                <h3>Votre portfolio</h3>
+
+                <div class="add_photo">
+                    <h3>Ajouter une photo au portfolio</h3>
+                    <form action="check_services.php" method="POST" enctype="multipart/form-data">
+                        <label for="image">Choisissez une image</label>
+                        <input type="file" name="image" placeholder=" Votre image (4 Mo max)">
+                        <input type="text" name="description" placeholder="description de l'image">
+
+                        <?php 
+                            if(isset($_GET['message_photo']) && !empty($_GET['message_photo'])) {
+
+                                echo ' <p id="error-message">'. $_GET['message_photo'] . '</p>';
+                            } ?>
+                        <input type="submit" class="btn btn-warning ">
+                    </form>
+                </div>
+              
+            </section>
+
             <section id="services">
                 <h3>Vos services</h3>
                 <div class="add_service">
 
                     <!-- Not animated yet, just a template so i can make it work -->
 
-                    <h3>Ajouter un service</h3>
+                    <h2>Ajouter un service</h2>
 
                     <form method="POST" action="check_services.php">
 
@@ -94,8 +118,10 @@ include('includes/db.php');
                             
                 </div>
                 <!-- End of template zones -->
-
-                <div>
+                            
+                
+                <div class="show_pics">
+                    <!-- Request to show services from the service providers -->
                     <?php 
                         $q ='SELECT id,nom,tarif,description,prestataire FROM SERVICE WHERE prestataire = :id';
                         $req = $bdd->prepare($q);
@@ -180,7 +206,7 @@ include('includes/db.php');
                 $q = 'SELECT (SELECT nomPrefere FROM personne WHERE id = utilisateur) AS nom_client, note, contenu, date_envoi FROM COMMENTAIRE WHERE prestataire = :prestataire' ;
                 $req = $bdd->prepare($q);
                 $req -> execute([
-                    'prestataire' => $id_presta,
+                    'prestataire' => $id_presta
                 ]);
                 $result = $req -> fetchAll(PDO::FETCH_ASSOC);
                 if(count($result) == 0){
