@@ -4,6 +4,8 @@ include('includes/db.php');
 if(empty($_SESSION['emailPro'])){
     header('location: pro_profile_for_user.php');
     exit;
+
+    // or if the pro is looking at another pro profile ?
 }
 ?>
 
@@ -227,7 +229,7 @@ if(empty($_SESSION['emailPro'])){
                 ]);
                 $result = $req -> fetchAll(PDO::FETCH_ASSOC);
                 if(count($result) == 0){
-                    echo '<p>Vous n\'avez pas encore de commentaire sur vos</p>';
+                    echo '<p>Vous n\'avez pas encore de commentaire sur vos prestations</p>';
                 }
                     foreach($result as $key => $commentaire){
                         echo '
