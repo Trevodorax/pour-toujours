@@ -10,12 +10,24 @@
     </a>
     <nav>
         <a href="FAQ.php">FAQ</a>
-        <a href="#">Prestataires</a>
+        <a href="search_pro.php">Prestataires</a>
         <?php
+
+        //display a different page based on what kind of user is logged in
+        if (!empty($_SESSION['emailPro'])){
+                $profile_page = 'pro_profile.php' ;
+                $word = 'pro';
+             } else {
+                $profile_page = 'control_pannel.php';
+                $word = ' ';
+             }
+        //display this nav if a user is logged in
         if(isset($_SESSION['email'])){
-            echo '<a href="control_pannel.php">Mon compte</a>
+            echo '<a href="'. $profile_page . '">Mon compte '.$word.'</a>
                     <a href="log_out.php">Deconnexion</a>';
+
         }else{
+            //display this nav if a user is NOT logged in
             echo '<a href="create_account.php">S\'inscrire</a>
                     <a href="log_in.php">Se connecter</a>';
         }
@@ -24,7 +36,8 @@
 </header>
 <div id="header-wave"></div>
 <nav id="burger-menu" class="desktop-hidden pouf">
-    <a href="https://www.google.com/"><h3>Nos partenaires<img src="images/go_icon.svg"></h3></a>
+    <!-- The burger menu isn't working yet -->
+    <a href="search_pro.php"><h3>Nos partenaires<img src="images/go_icon.svg"></h3></a>
     <a href="create_account.php"><h3>Accès professionnels<img src="images/go_icon.svg"></h3></a>
     <a href="#"><h3>Trouvez l'inspiration<img src="images/go_icon.svg"></h3></a>
     <a href="FAQ.php"><h3>F.A.Q<img src="images/go_icon.svg"></h3></a>

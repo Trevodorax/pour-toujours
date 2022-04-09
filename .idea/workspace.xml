@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="22163e9a-3a5f-47e0-8312-b49e07a1bae7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/check_sign_up.php" beforeDir="false" afterPath="$PROJECT_DIR$/check_sign_up.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/create_account.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +38,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../site2_classe3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -83,6 +81,7 @@
       <workItem from="1649264346035" duration="906000" />
       <workItem from="1649265620762" duration="2894000" />
       <workItem from="1649275069166" duration="1337000" />
+      <workItem from="1649490207396" duration="326000" />
     </task>
     <servers />
   </component>
