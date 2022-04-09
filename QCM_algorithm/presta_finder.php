@@ -61,4 +61,15 @@ $photos_budget = $budget * $photos_part;
 // var_dump($tenue_budget);
 // var_dump($photos_budget);
 
+
+/* GET THE RIGHT PRESTAS FOR USER PREFERENCES */
+// get the 3 elements with the lowest difference between user budget and budget
+$q = 'SELECT id, ABS(:budget - value) as difference FROM SERVICE ORDER BY difference LIMIT 3 ';
+$req = $bdd->prepare($q);
+$req->execute([
+    'budget' => $nourriture_budget
+]);
+$nourriture_services = $req->fetchAll();
+
+
 ?>
