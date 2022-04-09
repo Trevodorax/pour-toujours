@@ -53,7 +53,7 @@ exit;
         }
 
         // creating the image folder
-        $path = 'images/portfolios/' . $_SESSION['id'] . '/';
+        $path = 'images/portfolios/' . $_SESSION['id'];
         if(!file_exists($path)){
             mkdir($path, 0777, true);
             // the third parameter, allows the creation of a recursive $path
@@ -71,7 +71,7 @@ exit;
         //ADDIND THE WATERMARK
         //
         //creating the file where the new photo will be saved
-        $filename = $path . 'image-' . time() . '.' . $extension;
+        $newFilename = $path . '/image-' . time() . '.' . $extension;
 
         //preparing the two photos we want to combine
         $image = imagecreatefrompng($destination);
@@ -85,11 +85,11 @@ exit;
         imagecopymerge($image, $stamp, imagesx($image)-2*$width_stamp, imagesy($image)-2*$height_stamp, 0, 0, $width_stamp, $height_stamp,70);
 
         //The new image is saved in its slot
-        imagepng($image, $filename, 1);
+        imagepng($image, $newFilename, 1);
 
         //Deleting the original image cuz we don't need it anymore
         imagedestroy($image);
-        unlink($destination);
+        //unlink($destination);
 
 
         //SAVING THE NEW IMAGE IN THE BDD
@@ -97,7 +97,7 @@ exit;
         $q ='INSERT INTO PORTFOLIO_IMAGES (nom,	description,prestataire) VALUES (:nom, :description, :prestataire)';
         $req = $bdd->prepare($q);
         $req -> execute([
-            'nom' => $filename,
+            'nom' => $newFilename,
             'description' => $_POST['description'],
             'prestataire' => $_SESSION['id']
         ]);
