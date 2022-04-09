@@ -1,5 +1,10 @@
 <?php session_start() ;
 include('includes/db.php');
+
+if(empty($_SESSION['emailPro'])){
+    header('location: pro_profile_for_user.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,25 +19,13 @@ include('includes/db.php');
 
         <main>
             <?php 
-                    function show_page($statut, $id){
-
-                    }
-
-                    //Utiliser pour faire la différence d'affichage : vu presta et vu client
-                    if (empty($_SESSION['emailPro'])){
-                        //Customers view
-                        $welcome_title = 'Le profil de ';
-                        $info_det = 'Ses';
-                        $company_det = "son";
-                        $comment_title = 'Avis sur ce prestataire';
-
-                    } else {
-                        //Pros view
-                        $welcome_title = 'Bonjour ';
-                        $info_det = 'Vos';
-                        $company_det = "votre";
-                        $comment_title = 'Avis sur vos prestations';
-                    }
+   
+                //Pros view
+                $welcome_title = 'Bonjour ';
+                $info_det = 'Vos';
+                $company_det = "votre";
+                $comment_title = 'Avis sur vos prestations';
+                    
 
 
             echo ' <h2>' . $welcome_title . $_SESSION['nomprefere'] .' ! <a href="#"><img src="images/settings_icon.svg"></a><a href="#"><img src="images/presta_contact_icon.svg"></a></h2>';
@@ -42,7 +35,7 @@ include('includes/db.php');
             $req->execute(['personne' => $_SESSION['id']]);
             $results = $req->fetchAll(PDO::FETCH_ASSOC);
             $id_presta = $results[0]['id'];
-       ;
+       
             ?>
 
             <section id="profile">
