@@ -53,7 +53,7 @@ exit;
         }
 
         // creating the image folder
-        $path = 'images/portfolios/' . $_SESSION['id'] ; '/';
+        $path = 'images/portfolios/' . $_SESSION['id'] . '/';
         if(!file_exists($path)){
             mkdir($path, 0777, true);
             // the third parameter, allows the creation of a recursive $path
