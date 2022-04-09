@@ -27,6 +27,28 @@
             </div>
 
             <section>
+
+                 <?php 
+                        $q ='SELECT id, metier, (SELECT nomPrefere, departement FROM PERSONNE) FROM PRESTATAIRE';
+                        $req = $bdd->prepare($q);
+                        $req -> execute([
+                            'id' => $_SESSION['id']
+                    ]);
+                    $results = $req->fetchAll(PDO::FETCH_ASSOC);
+                    
+                    
+                    if(count($results) == 0){
+                        echo '<p>Vous n\'avez pas encore ajouté d\'images</p>';
+                    }
+
+                    foreach($results as $key => $image){
+                        echo '<div class="service-card">';
+                        echo ' <img src="' .$image['nom'] .'" alt="' . $image['description'] . '" border=1>';
+                        echo '<a class="btn btn-sm btn-danger me-2" href="#?id=' . $image['id'] . '">Supprimer</a>
+                        </div> ';
+                    }        
+                    ?>
+
                 <div class="presta-card">
                     <img src="images/home_circle.jpg">
                     <div>
