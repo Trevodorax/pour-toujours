@@ -1,10 +1,11 @@
 <?php
     session_start();
     include('includes/db.php');
+    $email = htmlspecialchars($_POST['email']);
     $q = 'SELECT id FROM personne WHERE email = :email';
     $req = $bdd->prepare($q);
     $req->execute([
-        'email' => $_POST['email']
+        'email' => $email
     ]);
     $id2 = $req->fetchAll();
 

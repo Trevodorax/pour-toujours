@@ -10,11 +10,12 @@
     $conversation = $req->fetchAll();
 
     $message = $_POST['message'];
-    $q = "INSERT INTO message (contenu, conversation) VALUES (:contenu, :conversation)";
+    $q = "INSERT INTO message (contenu, conversation, id_auteur) VALUES (:contenu, :conversation, :id_auteur)";
     $req = $bdd->prepare($q);
     $results = $req->execute([
         'contenu' => $message,
-        'conversation' => $conversation[0][0]
+        'conversation' => $conversation[0][0],
+        'id_auteur' => $_SESSION['id']
     ]);
     $results = $req->fetchAll();
 
