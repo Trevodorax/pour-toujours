@@ -20,5 +20,4 @@
         'personne1' => $_SESSION['id'],
         'personne2' => $id2[0][0]
     ]);
-    header('location: control_pannel.php?page=messages&destinataire=' . $email);
 ?>

@@ -34,36 +34,26 @@
 
         </section>
         <section id="conversation">
-            <div class="from">Bienvenue Paul ! Toute l'équipe de PourToujours te souhaite  un mariage heureux. </div>
-            <div class="to">Merci à vous tous, mon ame-soeur, Simon, et moi-même sommes aux anges depuis que nous avons découverts votre site ! Vous êtes des génies.</div>
-            <div class="from">Vous n'avez encore rien vu.</div>
-            <div class="from">Bienvenue Paul ! Toute l'équipe de PourToujours te souhaite  un mariage heureux. </div>
-            <div class="to">Merci à vous tous, mon ame-soeur, Simon, et moi-même sommes aux anges depuis que nous avons découverts votre site ! Vous êtes des génies.</div>
-            <div class="from">Vous n'avez encore rien vu.</div>
-            <div class="from">Bienvenue Paul ! Toute l'équipe de PourToujours te souhaite  un mariage heureux. </div>
-            <div class="to">Merci à vous tous, mon ame-soeur, Simon, et moi-même sommes aux anges depuis que nous avons découverts votre site ! Vous êtes des génies.</div>
-            <div class="from">Vous n'avez encore rien vu !</div>
             <?php
-            $q = 'SELECT id FROM conversation WHERE ' . $_SESSION['id'] . ' = personne1 OR ' . $_SESSION['id'] . ' = personne2';
-            $req = $bdd->prepare($q);
-            $req->execute([
+                $q = 'SELECT id FROM conversation WHERE ' . $_SESSION['id'] . ' = personne1 OR ' . $_SESSION['id'] . ' = personne2';
+                $req = $bdd->prepare($q);
+                $req->execute([
 
-            ]);
-            $id_conversation = $req->fetchAll();
+                ]);
+                $id_conversation = $req->fetchAll();
 
-            $q = 'SELECT contenu, id_auteur FROM message WHERE conversation = ' . $id_conversation[0][0];
-            $req = $bdd->prepare($q);
-            $req->execute([
-            ]);
-            $message = $req->fetchAll();
-
-            foreach ($message as $key => $value){
-                if ($message[$key][1] == $_SESSION['id']){
-                    echo '<div class="to"' . $message[$key][0] .'</div>';
-                }else{
-                    echo '<div class="from"' . $message[$key][0] .'</div>';
+                $q = 'SELECT contenu, id_auteur FROM message WHERE conversation = ' . $id_conversation[0][0];
+                $req = $bdd->prepare($q);
+                $req->execute([
+                ]);
+                $message = $req->fetchAll();
+                foreach ($message as $key => $value){
+                    if ($message[$key][1] == $_SESSION['id']){
+                        echo '<div class="to">' . $message[$key][0] .'</div>';
+                    }else{
+                        echo '<div class="from">' . $message[$key][0] .'</div>';
+                    }
                 }
-            }
             ?>
             <form method="post" action="new_message.php">
                 <input id="page-bottom" type="text" name="message" placeholder=" Votre message">
