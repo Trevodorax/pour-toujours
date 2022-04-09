@@ -1,10 +1,11 @@
 <?php
     session_start();
     include('includes/db.php');
+    $email = htmlspecialchars($_POST['email']);
     $q = 'SELECT id FROM personne WHERE email = :email';
     $req = $bdd->prepare($q);
     $req->execute([
-        'email' => $_POST['email']
+        'email' => $email
     ]);
     $id2 = $req->fetchAll();
 
@@ -19,4 +20,5 @@
         'personne1' => $_SESSION['id'],
         'personne2' => $id2[0][0]
     ]);
+    header('location: control_pannel.php?page=messages&destinataire=' . $email);
 ?>

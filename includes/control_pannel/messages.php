@@ -41,7 +41,8 @@
                 $message = $req->fetchAll();
 
                 foreach ($message as $key => $value){
-                    echo '<p>' . $message[0][0] .'</p>';
+                    echo '<div' . $message[$key][0] .'</div>';
+                    echo '<p>' . $message[$key][0] .'</p>';
                 }
             ?>
             <form method="post" action="new_message.php">
@@ -56,12 +57,14 @@
             </form>
 
             <?php
-
                 ?>
-            <a>
-                <img src="images/message_pfp.jpg">
-                <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
-            </a>
+                <a href="control_pannel.php?page=messages&destinataire=">
+                    <img src="images/message_pfp.jpg">
+                    <div><span>&nbspPour Toujours</span> - l'équipe<br>1 nouveau message</div>
+                </a>
+                <?php
+            ?>
+
         </section>
         
     </div>
