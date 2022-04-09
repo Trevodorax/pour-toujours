@@ -25,54 +25,40 @@ $budget = $budget_array[$preferences[2]];
 
 
 /* FIGURING OUT DIVISION OF BUDGET IN 5 PARTS */
-// nourriture 10 points
-$nourriture_array = [
-    '0' => 2000,
-    '1' => 4000,
-    '2' => 6000,
-    '3' => 8000
-];
+// nourriture 1 points
+$nourriture = ((4 - (int)$preferences[3])) * 1;
 
-$nourriture = $nourriture_array[$preferences[3]];
+// animation 1 points
+$animation = ((4 - (int)$preferences[4])) * 1;
 
-// animation 5 points
-$animation_array = [
-    '0' => 2000,
-    '1' => 4000,
-    '2' => 6000,
-    '3' => 8000
-];
+// lieu 3 points
+$lieu = ((4 - (int)$preferences[5])) * 3;
 
-$animation = $animation_array[$preferences[4]];
+// tenue 2 points
+$tenue = ((4 - (int)$preferences[6])) * 2;
 
-// lieu 15 points
-$lieu_array = [
-    '0' => 2000,
-    '1' => 4000,
-    '2' => 6000,
-    '3' => 8000
-];
+// photos 1 points
+$photos = ((4 - (int)$preferences[7])) * 1;
 
-$lieu = $lieu_array[$preferences[5]];
 
-// tenue 10 points
-$tenue_array = [
-    '0' => 2000,
-    '1' => 4000,
-    '2' => 6000,
-    '3' => 8000
-];
+$diviseur = $nourriture + $animation + $lieu + $tenue + $photos;
+$nourriture_part = (float)$nourriture / $diviseur;
+$animation_part = (float)$animation / $diviseur;
+$lieu_part = (float)$lieu / $diviseur;
+$tenue_part = (float)$tenue / $diviseur;
+$photos_part = (float)$photos / $diviseur;
 
-$tenue = $tenue_array[$preferences[6]];
+$nourriture_budget = $budget * $nourriture_part;
+$animation_budget = $budget * $animation_part;
+$lieu_budget = $budget * $lieu_part;
+$tenue_budget = $budget * $tenue_part;
+$photos_budget = $budget * $photos_part;
 
-// photos 5 points
-$photos_array = [
-    '0' => 2000,
-    '1' => 4000,
-    '2' => 6000,
-    '3' => 8000
-];
-
-$photos = $photos_array[$preferences[7]];
+// see the values of budget for everything
+// var_dump($nourriture_budget);
+// var_dump($animation_budget);
+// var_dump($lieu_budget);
+// var_dump($tenue_budget);
+// var_dump($photos_budget);
 
 ?>
