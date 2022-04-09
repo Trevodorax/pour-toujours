@@ -310,7 +310,9 @@
         ]);
 
         if (!$prestataire){
-            $req = 'DELETE FROM personne WHERE id = ' . $id;
+            $q = 'DELETE FROM personne WHERE id = ' . $id;
+            $req = $bdd->prepare($q);
+            $result = $req->execute();
             header('location: create_account.php?message=Erreur lors de l\'inscription');
             exit;
         }
