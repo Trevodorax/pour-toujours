@@ -14,6 +14,14 @@
         exit;
     }
 
+    var_dump($id);
+    var_dump($_SESSION['email']);
+
+    if($id[0][1] == $_SESSION['email']){
+        header('location: control_pannel.php?page=messages&message=Vous ne pouvez pas vous envoyer un message');
+        exit;
+    }
+
     $q = "INSERT INTO conversation (personne1, personne2) VALUES (:personne1, :personne2)";
     $req = $bdd->prepare($q);
     $results = $req->execute([

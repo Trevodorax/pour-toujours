@@ -87,25 +87,28 @@
                     ]);
                     $conversation = $req->fetchAll();
 
-                    $q = 'SELECT contenu, id_auteur FROM message WHERE conversation = :conversation';
-                    $req = $bdd->prepare($q);
-                    $req->execute([
-                        'conversation' => $conversation[0][0]
-                    ]);
-                    $message = $req->fetchAll();
+                    if (count($conversations) != 0) {
+                        $q = 'SELECT contenu, id_auteur FROM message WHERE conversation = :conversation';
+                        $req = $bdd->prepare($q);
+                        $req->execute([
+                            'conversation' => $conversation[0][0]
+                        ]);
+                        $message = $req->fetchAll();
 
-                    foreach ($message as $key => $value) {
-                        if ($message[$key][1] == $_SESSION['id']) {
-                            echo '<div class="to">' . $message[$key][0] . '</div>';
-                        } else {
-                            echo '<div class="from">' . $message[$key][0] . '</div>';
+                        foreach ($message as $key => $value) {
+                            if ($message[$key][1] == $_SESSION['id']) {
+                                echo '<div class="to">' . $message[$key][0] . '</div>';
+                            } else {
+                                echo '<div class="from">' . $message[$key][0] . '</div>';
+                            }
                         }
+                        echo '<form method="post" action="new_message.php">
+                            <input id="page-bottom" type="text" name="message" placeholder=" Votre message">
+                        </form>';
                     }
                 }
             ?>
-            <form method="post" action="new_message.php">
-                <input id="page-bottom" type="text" name="message" placeholder=" Votre message">
-            </form>
+
         </section>
     </div>
 </main>

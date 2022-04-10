@@ -20,7 +20,7 @@
     $results = $req->fetchAll();
 
     if(count($results) == 0){
-        header('location: control_pannel.php?page=messages&message=Message reçu Capitaine !');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit;
     }
 ?>
