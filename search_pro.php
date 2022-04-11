@@ -9,6 +9,7 @@
     <body>
 
         <?php include('includes/header.php'); ?>
+        <?php include('includes/db.php'); ?>
 
         <main>
             <div id="desktop-page-top">
@@ -29,134 +30,33 @@
             <section>
 
                  <?php 
-                        $q ='SELECT id, metier, (SELECT nomPrefere, departement FROM PERSONNE) FROM PRESTATAIRE';
-                        $req = $bdd->prepare($q);
-                        $req -> execute([
-                            'id' => $_SESSION['id']
-                    ]);
-                    $results = $req->fetchAll(PDO::FETCH_ASSOC);
-                    
-                    
-                    if(count($results) == 0){
-                        echo '<p>Vous n\'avez pas encore ajouté d\'images</p>';
-                    }
+                        $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id ORDER BY nomEntreprise';
+                        $req = $bdd->query($q);
+                        $results = $req->fetchAll(PDO::FETCH_ASSOC);
 
-                    foreach($results as $key => $image){
-                        echo '<div class="service-card">';
-                        echo ' <img src="' .$image['nom'] .'" alt="' . $image['description'] . '" border=1>';
-                        echo '<a class="btn btn-sm btn-danger me-2" href="#?id=' . $image['id'] . '">Supprimer</a>
-                        </div> ';
-                    }        
+                        
+                        
+                       var_dump($results);
+                        if(count($results) == 0){
+                            echo '<p>Il n\'a pas encore de prestataire sur le site.</p>';
+                        }
+                        
+                    foreach($results as $key => $pro){
+                        $id_presta = $pro['id'] ;
+                        $email_presta = $pro['email'];
+                        $path = 'images/portfolios/' . $id_presta ;
+                        echo '
+                            <div class="presta-card">
+                                <img src="'. $path . '/' . $pro['photoProfil'] . '">
+                                <div>
+                                    <h3>' . $pro['nomPrefere'] . '</h3>
+                                    <h4>' . $pro['metier']. '</h4>
+                                    <p>Departement : '. $pro['departement'].'</p>
+                                    <a href="control_pannel.php?page=messages&destinataire='. $email_presta .'">Contacter <img src="images/presta_contact_icon.svg"></a>
+                                </div>
+                            </div>
+                        ' ;}
                     ?>
-
-                <div class="presta-card">
-                    <img src="images/home_circle.jpg">
-                    <div>
-                        <h3>Evelynn Delon</h3>
-                        <h4>Photographe</h4>
-                        <p>Orléans</p>
-                        <a>Contacter <img src="images/presta_contact_icon.svg"></a>
-                    </div>
-                </div>
-                <div class="presta-card">
-                    <img src="images/home_circle.jpg">
-                    <div>
-                        <h3>Evelynn Delon</h3>
-                        <h4>Photographe</h4>
-                        <p>Orléans</p>
-                        <a>Contacter <img src="images/presta_contact_icon.svg"></a>
-                    </div>
-                </div>
-                <div class="presta-card">
-                    <img src="images/home_circle.jpg">
-                    <div>
-                        <h3>Evelynn Delon</h3>
-                        <h4>Photographe</h4>
-                        <p>Orléans</p>
-                        <a>Contacter <img src="images/presta_contact_icon.svg"></a>
-                    </div>
-                </div>
-                <div class="presta-card">
-                    <img src="images/home_circle.jpg">
-                    <div>
-                        <h3>Evelynn Delon</h3>
-                        <h4>Photographe</h4>
-                        <p>Orléans</p>
-                        <a>Contacter <img src="images/presta_contact_icon.svg"></a>
-                    </div>
-                </div>
-                <div class="presta-card">
-                    <img src="images/home_circle.jpg">
-                    <div>
-                        <h3>Evelynn Delon</h3>
-                        <h4>Photographe</h4>
-                        <p>Orléans</p>
-                        <a>Contacter <img src="images/presta_contact_icon.svg"></a>
-                    </div>
-                </div>
-                <div class="presta-card">
-                    <img src="images/home_circle.jpg">
-                    <div>
-                        <h3>Evelynn Delon</h3>
-                        <h4>Photographe</h4>
-                        <p>Orléans</p>
-                        <a>Contacter <img src="images/presta_contact_icon.svg"></a>
-                    </div>
-                </div>
-                <div class="presta-card">
-                    <img src="images/home_circle.jpg">
-                    <div>
-                        <h3>Evelynn Delon</h3>
-                        <h4>Photographe</h4>
-                        <p>Orléans</p>
-                        <a>Contacter <img src="images/presta_contact_icon.svg"></a>
-                    </div>
-                </div>
-                <div class="presta-card">
-                    <img src="images/home_circle.jpg">
-                    <div>
-                        <h3>Evelynn Delon</h3>
-                        <h4>Photographe</h4>
-                        <p>Orléans</p>
-                        <a>Contacter <img src="images/presta_contact_icon.svg"></a>
-                    </div>
-                </div>
-                <div class="presta-card">
-                    <img src="images/home_circle.jpg">
-                    <div>
-                        <h3>Evelynn Delon</h3>
-                        <h4>Photographe</h4>
-                        <p>Orléans</p>
-                        <a>Contacter <img src="images/presta_contact_icon.svg"></a>
-                    </div>
-                </div>
-                <div class="presta-card">
-                    <img src="images/home_circle.jpg">
-                    <div>
-                        <h3>Evelynn Delon</h3>
-                        <h4>Photographe</h4>
-                        <p>Orléans</p>
-                        <a>Contacter <img src="images/presta_contact_icon.svg"></a>
-                    </div>
-                </div>
-                <div class="presta-card">
-                    <img src="images/home_circle.jpg">
-                    <div>
-                        <h3>Evelynn Delon</h3>
-                        <h4>Photographe</h4>
-                        <p>Orléans</p>
-                        <a>Contacter <img src="images/presta_contact_icon.svg"></a>
-                    </div>
-                </div>
-                <div class="presta-card">
-                    <img src="images/home_circle.jpg">
-                    <div>
-                        <h3>Evelynn Delon</h3>
-                        <h4>Photographe</h4>
-                        <p>Orléans</p>
-                        <a>Contacter <img src="images/presta_contact_icon.svg"></a>
-                    </div>
-                </div>
             </section>
         </main>
 
