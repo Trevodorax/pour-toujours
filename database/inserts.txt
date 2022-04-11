@@ -1,24 +1,255 @@
-INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES ('Eva Ray', 'Eva Stella Ray', '1997-07-05', 'A', 'eva.ray@gmail.com', '61a1d5357c3cfcddcf315aff9c70364a492a33d8895e9e8701e0c6d34150c8b0a2be08857c0e4f0e5d5b402419228bee0fc0614d878f0b074772430a84150c31', '0787031216', '05');
-INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES ('Thierry Bichon', 'Thierry B', '1990/04/12', 'H', 'thenry@gmail.com', 'Azerty111!', '0678902612','75');
+-- PERSONNES
 
-INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES ('Corinne', 'IFOI', '1987-02-05', 'A', 'eva.ray4@gmail.com', '61a1d5357c3cfcddcf315aff9c70364a492a33d8895e9e8701e0c6d34150c8b0a2be08857c0e4f0e5d5b402419228bee0fc0614d878f0b074772430a84150c31', '0787031216', '05');
-INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES ('oLAOU', 'TLOUA', '1940/04/10', 'F', 'thenry3@gmail.com', 'Azerty111!', '0778902322','972');
+INSERT INTO PERSONNE(
+    nomComplet,
+    nomPrefere,
+    date_naissance,
+    genre,
+    email,
+    mot_de_passe,
+    numero_tel,
+    departement
+)
+VALUES(
+    'Paul Gaudeaux',
+    'Paul',
+    '2003/07/13',
+    'H',
+    'phvcgdx@gmail.com',
+    '919e4acd7a1714cd19c7c7157ea417ebe85098e16e6c992deec765cef201c404a903ddfa67e1af51a2a091a9a5d8643e1214fd62f48ac56b4c7cd3f91cca7d3e',
+    '0682579783',
+    '75'
+);
 
-INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES ('Evary bIDOU', 'Stella Ray', '1997-07-05', 'A', 'eva.ray@gmail.com', '61a1d5357c3cfcddcf315aff9c70364a492a33d8895e9e8701e0c6d34150c8b0a2be08857c0e4f0e5d5b402419228bee0fc0614d878f0b074772430a84150c31', '0787031216', '05');
-INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES ('Thry Bichon', 'Thierry', '1990/04/12', 'H', 'thenry@gmail.com', 'Azerty111!', '0678955612','77');
 
-INSERT INTO PRESTATAIRE (nomEntreprise, telPro, emailPro, metier, description, photoProfil, lienSiteWeb, personne) VALUES ('France à table', '0628904678', 'pro@gmail.com', 'Cuisine', NULL, 'image-1649349579.png', 'https://france-a-table.fr',1);
-INSERT INTO PRESTATAIRE (nomEntreprise, telPro, emailPro, metier, description, photoProfil, lienSiteWeb, personne) VALUES ('BFER', '0628904678', 'pro2@gmail.com', 'Photographe', NULL, 'image-1649349579.png', 'https://yesyes.fr',2);
-INSERT INTO PRESTATAIRE (nomEntreprise, telPro, emailPro, metier, description, photoProfil, lienSiteWeb, personne) VALUES ('CLAIR ESPRIT', '0621234578', 'pro3@gmail.com', 'Cuisine', NULL, 'image-1649349579.png', 'https://google.fr',3);
 
-INSERT INTO UTILISATEUR(preferences_qcm, avatar, personne) VALUES ('012012012', NULL, 4);
-INSERT INTO UTILISATEUR(preferences_qcm, avatar, personne) VALUES ('111111111', NULL, 5);
-INSERT INTO UTILISATEUR(preferences_qcm, avatar, personne) VALUES ('033222100', NULL, 6);
+INSERT INTO PERSONNE(
+    nomComplet,
+    nomPrefere,
+    date_naissance,
+    genre,
+    email,
+    mot_de_passe,
+    numero_tel,
+    departement
+)
+VALUES(
+    'Loriane Hilderal',
+    'Milo',
+    '2002/08/13',
+    'A',
+    'milo@gmail.com',
+    '919e4acd7a1714cd19c7c7157ea417ebe85098e16e6c992deec765cef201c404a903ddfa67e1af51a2a091a9a5d8643e1214fd62f48ac56b4c7cd3f91cca7d3e',
+    '0682579785',
+    '75'
+);
 
-INSERT INTO MARIAGE (date,utilisateur) VALUES ('2022-12-5', 5);
-INSERT INTO MARIAGE (date,utilisateur) VALUES ('2023-11-5', 4);
-INSERT INTO MARIAGE (date,utilisateur) VALUES ('2022-06-10', 6);
 
-INSERT INTO SERVICE (nom, tarif, description, prestataire) VALUES ('awouiwoui4', 45, 'pizncibvfbvyu cuy  hvgyeofe 66ècduiffr  fipz^z$x', 2);
-INSERT INTO SERVICE (nom, tarif, description, prestataire) VALUES ('awouiwoui27', 23, 'pizncibvfbvyu cuy  hvgyeofe 66ècduiffr  fipz^z$xrftgghbbgSNNHH', 1);
-INSERT INTO SERVICE (nom, tarif, description, prestataire) VALUES ('awouiwoui267', 76, 'pizncibvfbvyu LOREMUIPSOSUUEr  fipz^z$xrftgghbbgSNNHH', 2);
+
+INSERT INTO PERSONNE(
+    nomComplet,
+    nomPrefere,
+    date_naissance,
+    genre,
+    email,
+    mot_de_passe,
+    numero_tel,
+    departement
+)
+VALUES(
+    'Simon Damette',
+    'Simon',
+    '2003/09/13',
+    'H',
+    'sdamette.com',
+    '919e4acd7a1714cd19c7c7157ea417ebe85098e16e6c992deec765cef201c404a903ddfa67e1af51a2a091a9a5d8643e1214fd62f48ac56b4c7cd3f91cca7d3e',
+    '0682579783',
+    '75'
+);
+
+
+
+INSERT INTO PERSONNE(
+    nomComplet,
+    nomPrefere,
+    date_naissance,
+    genre,
+    email,
+    mot_de_passe,
+    numero_tel,
+    departement
+)
+VALUES(
+    'Michel Ducoin',
+    'Michel',
+    '1995/04/13',
+    'H',
+    'mducoin@gmail.com',
+    '919e4acd7a1714cd19c7c7157ea417ebe85098e16e6c992deec765cef201c404a903ddfa67e1af51a2a091a9a5d8643e1214fd62f48ac56b4c7cd3f91cca7d3e',
+    '0682579783',
+    '13'
+);
+
+
+
+INSERT INTO PERSONNE(
+    nomComplet,
+    nomPrefere,
+    date_naissance,
+    genre,
+    email,
+    mot_de_passe,
+    numero_tel,
+    departement
+)
+VALUES(
+    'Sandrine Porto',
+    'Sandy',
+    '1970/07/13',
+    'F',
+    'sporto@gmail.com',
+    '919e4acd7a1714cd19c7c7157ea417ebe85098e16e6c992deec765cef201c404a903ddfa67e1af51a2a091a9a5d8643e1214fd62f48ac56b4c7cd3f91cca7d3e',
+    '0682579783',
+    '13'
+);
+
+
+
+INSERT INTO PERSONNE(
+    nomComplet,
+    nomPrefere,
+    date_naissance,
+    genre,
+    email,
+    mot_de_passe,
+    numero_tel,
+    departement
+)
+VALUES(
+    'Charles Galaga',
+    'Carlos',
+    '2011/07/13',
+    'N',
+    'cgalaga@gmail.com',
+    '919e4acd7a1714cd19c7c7157ea417ebe85098e16e6c992deec765cef201c404a903ddfa67e1af51a2a091a9a5d8643e1214fd62f48ac56b4c7cd3f91cca7d3e',
+    '0682579783',
+    '13'
+);
+
+
+
+-- PRESTATAIRES
+
+INSERT INTO PRESTATAIRE(
+    nomEntreprise,
+    telPro,
+    emailPro,
+    metier,
+    description,
+    personne
+)
+VALUES(
+    'bagels co',
+    '0154878526',
+    'pro@hotmail.fr',
+    'vendeur de bagels',
+    'je vends des bagels',
+    1
+);
+
+
+
+INSERT INTO PRESTATAIRE(
+    nomEntreprise,
+    telPro,
+    emailPro,
+    metier,
+    description,
+    personne
+)
+VALUES(
+    'wedding dresses SARL',
+    '0854746351',
+    'weddress@gmail.com',
+    'tailleuse styliste',
+    'je vous donnerai les meilleures robes pour votre mariage',
+    2
+);
+
+
+
+INSERT INTO PRESTATAIRE(
+    nomEntreprise,
+    telPro,
+    emailPro,
+    metier,
+    description,
+    personne
+)
+VALUES(
+    'organisation mariages',
+    '3630',
+    'supermariage@gmail.com',
+    'agent',
+    'description',
+    3
+);
+
+
+
+INSERT INTO PRESTATAIRE(
+    nomEntreprise,
+    telPro,
+    emailPro,
+    metier,
+    description,
+    personne
+)
+VALUES(
+    'mariages faciles SA',
+    '0187879888',
+    'marifa@gmail.com',
+    'plein de trucs',
+    "je fais ce qu'il faut pour votre mariage",
+    4
+);
+
+
+
+INSERT INTO PRESTATAIRE(
+    nomEntreprise,
+    telPro,
+    emailPro,
+    metier,
+    description,
+    personne
+)
+VALUES(
+    'pommes & co',
+    '0154545465',
+    'padide@hotmail.fr',
+    'padide',
+    'aucune inspiration ici',
+    5
+);
+
+
+
+INSERT INTO PRESTATAIRE(
+    nomEntreprise,
+    telPro,
+    emailPro,
+    metier,
+    description,
+    personne
+)
+VALUES(
+    'entreprise SARL ',
+    '0821252217',
+    'vrmrien@outlook.fr',
+    'bahrienquoi',
+    'vraiment je sais pus quoi écrire',
+    6
+);
+
+
