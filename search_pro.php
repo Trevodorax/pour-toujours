@@ -30,7 +30,7 @@
             <section>
 
                  <?php 
-                        $q ='SELECT PRESTATAIRE.id, metier, photoProfil, nomPrefere, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id ORDER BY nomEntreprise';
+                        $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id ORDER BY nomEntreprise';
                         $req = $bdd->query($q);
                         $results = $req->fetchAll(PDO::FETCH_ASSOC);
 
@@ -43,6 +43,7 @@
                         
                     foreach($results as $key => $pro){
                         $id_presta = $pro['id'] ;
+                        $email_presta = $pro['email'];
                         $path = 'images/portfolios/' . $id_presta ;
                         echo '
                             <div class="presta-card">
@@ -51,7 +52,7 @@
                                     <h3>' . $pro['nomPrefere'] . '</h3>
                                     <h4>' . $pro['metier']. '</h4>
                                     <p>Departement : '. $pro['departement'].'</p>
-                                    <a href="control_pannel?='. $id_presta .'">Contacter <img src="images/presta_contact_icon.svg"></a>
+                                    <a href="control_pannel.php?page=messages&destinataire='. $email_presta .'">Contacter <img src="images/presta_contact_icon.svg"></a>
                                 </div>
                             </div>
                         ' ;}
