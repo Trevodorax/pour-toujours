@@ -67,12 +67,12 @@
                     ]);
                     $destinataire = $req->fetchAll();
 
-                    if (count($destinataire) == 0) {
+                    /*if (count($destinataire) == 0) {
                         header('location: control_pannel.php?page=messages&message=Aucun utilisateur trouvé');
                         exit;
-                    }
+                    }*/
 
-                    if ($email_destinataire == $destinataire[0][0]) {
+                    if ($email_destinataire != $destinataire[0][1]) {
                         header('location: control_pannel.php?page=messages&message=L\'email ne correspond a aucun utilisateur');
                         exit;
                     }
@@ -103,8 +103,9 @@
                             }
                         }
                         echo '<form method="post" action="new_message.php">
-                            <input id="page-bottom" type="text" name="message" placeholder=" Votre message">
-                        </form>';
+                                    <input id="page-bottom" type="text" name="message" placeholder=" Votre message">
+                                    <input type="hidden" name="destinataire" value="' . $destinataire[0][0] .'">                            
+                                </form>';
                     }
                 }
             ?>
