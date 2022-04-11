@@ -34,9 +34,6 @@
                         $req = $bdd->query($q);
                         $results = $req->fetchAll(PDO::FETCH_ASSOC);
 
-                        
-                        
-                       var_dump($results);
                         if(count($results) == 0){
                             echo '<p>Il n\'a pas encore de prestataire sur le site.</p>';
                         }
@@ -44,7 +41,7 @@
                     foreach($results as $key => $pro){
                         $id_presta = $pro['id'] ;
                         $email_presta = $pro['email'];
-                        $path = 'images/portfolios/' . $id_presta ;
+                        $path = 'images/pp_presta';
                         echo '
                             <div class="presta-card">
                                 <img src="'. $path . '/' . $pro['photoProfil'] . '">
