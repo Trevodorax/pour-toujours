@@ -32,7 +32,7 @@ $nourriture = ((4 - (int)$preferences[3])) * 1;
 $animation = ((4 - (int)$preferences[4])) * 1;
 
 // lieu 3 points
-$lieu = ((4 - (int)$preferences[5])) * 3;
+$lieu = ((4 - (int)$preferences[5])) * 4;
 
 // tenue 2 points
 $tenue = ((4 - (int)$preferences[6])) * 2;
@@ -64,7 +64,7 @@ $photos_budget = $budget * $photos_part;
 
 /* GET THE RIGHT PRESTAS FOR USER PREFERENCES */
 // get the 3 elements with the lowest difference between user budget and budget
-$q = 'SELECT id, tarif, ABS(:budget - tarif) as difference FROM SERVICE ORDER BY difference LIMIT 3 ';
+$q = 'SELECT id, tarif, ABS(:budget - tarif) as difference FROM SERVICE ORDER BY difference LIMIT 2 ';
 $req = $bdd->prepare($q);
 $req->execute([
     'budget' => $nourriture_budget
