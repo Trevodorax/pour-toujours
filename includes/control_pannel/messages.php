@@ -67,10 +67,10 @@
                     ]);
                     $destinataire = $req->fetchAll();
 
-                    /*if (count($destinataire) == 0) {
+                    if (count($destinataire) == 0) {
                         header('location: control_pannel.php?page=messages&message=Aucun utilisateur trouvé');
                         exit;
-                    }*/
+                    }
 
                     if ($email_destinataire != $destinataire[0][1]) {
                         header('location: control_pannel.php?page=messages&message=L\'email ne correspond a aucun utilisateur');
