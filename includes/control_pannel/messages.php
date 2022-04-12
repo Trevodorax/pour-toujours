@@ -23,7 +23,7 @@
                 <input type="submit">
             </form>
             <?php
-                $q = 'SELECT id, personne1, personne2 FROM conversation WHERE personne1 = :id OR personne2 = :id';
+                $q = 'SELECT id, personne1, personne2 FROM conversation WHERE personne1 = :id OR personne2 = :id ORDER BY dernier_message DESC ';
                 $req = $bdd->prepare($q);
                 $req->execute([
                     'id' => $_SESSION['id']
