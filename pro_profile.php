@@ -51,7 +51,8 @@ if(empty($_SESSION['emailPro'])){
                     <p>Nom de '. $company_det . ' entreprise : ' . $results[0]['nomEntreprise']  .'</p>
                     <p>Email : ' . $_SESSION['emailPro'][0]['emailPro']. '</p>
                     <p>Tel pro : '. $results[0]['telPro'] .'</p>
-                    <p>Secteur : ' . $_SESSION['departement'] . '</p>
+                    <p>Département : ' . $_SESSION['departement'] . '</p>
+                    <p>Lien du site web : <a target="_blank" href="'. $results[0]['lienSiteWeb'] . '">' .$results[0]['lienSiteWeb']. '</a></p>
                     '
                     ?>
                     
