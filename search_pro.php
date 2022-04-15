@@ -41,7 +41,7 @@
                     foreach($results as $key => $pro){
                         $id_presta = $pro['id'] ;
                         $email_presta = $pro['email'];
-                        $path = 'images/pp_presta';
+                        $path = 'images/prestataires';
                         echo '
                             <div class="presta-card">
                                 <img src="'. $path . '/' . $pro['photoProfil'] . '">
@@ -53,6 +53,7 @@
                                 </div>
                             </div>
                         ' ;}
+                      
                     ?>
             </section>
         </main>

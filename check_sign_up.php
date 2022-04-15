@@ -279,9 +279,10 @@
             }
 
             // putting the image in the right folder
-            $path = 'pp_presta';
+            $path = 'images/prestataires';
             if(!file_exists($path)){
-                mkdir($path, 0777);
+                mkdir($path, 0777,true);
+                // the third parameter, allows the creation of a recursive $path
             }
 
             $filename = $_FILES['image']['name'];
