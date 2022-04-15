@@ -29,21 +29,21 @@ if(empty($_SESSION['emailPro'])){
                     
 
 
-            echo ' <h2>' . $welcome_title . $_SESSION['nomprefere'] .' ! <a href="#"><img src="images/settings_icon.svg"></a><a href="#"><img src="images/presta_contact_icon.svg"></a></h2>';
-            
-            $q = 'SELECT id, nomEntreprise, emailPro, telPro,metier, photoProfil, lienSiteWeb FROM prestataire WHERE personne = :personne'; 
-            $req = $bdd->prepare($q);            
-            $req->execute(['personne' => $_SESSION['id']]);
-            $results = $req->fetchAll(PDO::FETCH_ASSOC);
-            $id_presta = $results[0]['id'];
+                echo ' <h2>' . $welcome_title . $_SESSION['nomprefere'] .' ! <a href="#"><img src="images/settings_icon.svg"></a><a href="#"><img src="images/presta_contact_icon.svg"></a></h2>';
+                
+                $q = 'SELECT id, nomEntreprise, emailPro, telPro,metier, photoProfil, lienSiteWeb FROM prestataire WHERE personne = :personne'; 
+                $req = $bdd->prepare($q);            
+                $req->execute(['personne' => $_SESSION['id']]);
+                $results = $req->fetchAll(PDO::FETCH_ASSOC);
+                $id_presta = $results[0]['id'];
        
             ?>
 
             <section id="profile">
-                <!--  -->
+                <!-- All informations about the service provider 
+                     We take some from the session directly and we go fetch the others -->
                 <div>
                     <?php 
-                
                     echo '
                     <h3>' . $info_det .' informations :</h3>
                     <h4>Nom complet : ' . $_SESSION['nomcomplet'] . ' </h4>
@@ -53,15 +53,15 @@ if(empty($_SESSION['emailPro'])){
                     <p>Tel pro : '. $results[0]['telPro'] .'</p>
                     <p>Département : ' . $_SESSION['departement'] . '</p>
                     <p>Lien du site web : <a target="_blank" href="'. $results[0]['lienSiteWeb'] . '">' .$results[0]['lienSiteWeb']. '</a></p>
-                    '
+                    ';
+                    echo '</div>';
+                    echo '<img src="images/prestataires/'. $results[0]['photoProfil'] . '">'
                     ?>
-                    
-                </div>
-                <img src="images/prestataires/prestataire1.jpg">
+                          
             </section>
 
             <section id="portfolio">
-                <!-- Add and display photos from portfolio -->
+                <!-- Add and display photos from portfolio of the service provider -->
                 <h3>Votre portfolio</h3>
 
                 <div class="add_photo">
@@ -207,13 +207,14 @@ if(empty($_SESSION['emailPro'])){
                         <td>f.sananes@gmail.com</td>
                         <td><img src="images/presta_contact_icon.svg"></td>
                     </tr>
-                    <tr>
+                    <!-- Template for the table row  -->
+                    <!-- <tr>
                         <td>Fredo Sananos</td>
                         <td>2/09/22</td>
                         <td>2</td>
                         <td>f.sananes@gmail.com</td>
                         <td><img src="images/presta_contact_icon.svg"></td>
-                    </tr>
+                    </tr> -->
                 </table>
             </section>
 
