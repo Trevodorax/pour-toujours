@@ -1,7 +1,13 @@
 <?php session_start() ;
 
 function isCustomer(){
-    if(empty($_SESSION['emailPro']) && isset($_SESSION['email'])){
+    if(empty($_SESSION['emailPro'])){
+        return true;
+    }
+}
+
+function isLogged(){
+    if( isset($_SESSION['email'])) {
         return true;
     }
 }
@@ -61,10 +67,12 @@ function isCustomer(){
                                     <p>Departement : '. $pro['departement'].'</p>
                                     <a id="contact" href="control_pannel.php?page=messages&destinataire='. $email_presta .'">Contacter <img src="images/presta_contact_icon.svg"></a>
                                 </div>
-                            </div>
-                            <img src="images/heart_picto.svg">
-                            
-                        ' ;}
+                            </div>' ;
+
+                            if ( isCustomer() && isLogged()){
+                                echo '<img src="images/heart_picto.svg">';
+                            }
+                            }
                       
                     ?>
             </section>

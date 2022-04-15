@@ -1,7 +1,18 @@
 <?php session_start() ;
 include('includes/db.php');
 
-if(empty($_SESSION['emailPro'])){     
+
+
+function isCustomer(){
+    if(empty($_SESSION['emailPro'])){
+        return true;
+    }
+}
+
+
+
+
+if(isCustomer()){     
     header('location: pro_profile_for_user.php');
     exit;
 }
@@ -186,27 +197,7 @@ if(empty($_SESSION['emailPro'])){
                         <th>Adresse email</th>
                         <th></th>
                     </tr>
-                    <tr>
-                        <td>Fredo Sananos</td>
-                        <td>2/09/22</td>
-                        <td>2</td>
-                        <td>f.sananes@gmail.com</td>
-                        <td><img src="images/presta_contact_icon.svg"></td>
-                    </tr>
-                    <tr>
-                        <td>Fredo Sananos</td>
-                        <td>2/09/22</td>
-                        <td>2</td>
-                        <td>f.sananes@gmail.com</td>
-                        <td><img src="images/presta_contact_icon.svg"></td>
-                    </tr>
-                    <tr>
-                        <td>Fredo Sananos</td>
-                        <td>2/09/22</td>
-                        <td>2</td>
-                        <td>f.sananes@gmail.com</td>
-                        <td><img src="images/presta_contact_icon.svg"></td>
-                    </tr>
+                    
                     <!-- Template for the table row  -->
                     <!-- <tr>
                         <td>Fredo Sananos</td>

@@ -1,10 +1,13 @@
 <?php session_start() ;
 include('includes/db.php');
 
-$loggedIn = false;
-if(isset($_SESSION['email'])){
-    $loggedIn = true    ;
+
+function isLogged(){
+    if( isset($_SESSION['email'])) {
+        return true;
+    }
 }
+
 // The user comes from a page where he clicked on the name of a pro, for exemple. We need to get something from this page to be able to 
 // display the informations about the correct pro.
 ?>
@@ -49,7 +52,7 @@ if(isset($_SESSION['email'])){
                 <!--  -->
                 <div>
                     <?php 
-                         if ($loggedIn == true){
+                         if (isLogged()){
                             echo ' <h2>' . $welcome_title . $results[0]['nomPrefere'] .' !<a href="control_pannel.php?page=messages&destinataire='. $results[0]['email'] . '"><img src="images/presta_contact_icon.svg"></a></h2>';
                          } else {
                              echo ' <h2>' . $welcome_title . $results[0]['nomPrefere'] .' !</h2>';
@@ -59,7 +62,7 @@ if(isset($_SESSION['email'])){
                             <p>Métier : ' . $results[0]['metier'] .'</p>
                             <p>Nom de '. $company_det . ' entreprise : ' . $results[0]['nomEntreprise']  .'</p>';
 
-                        if ($loggedIn == true){
+                        if (isLogged()){
                             echo '<p>Email : ' . $results[0]['emailPro'] . '</p>
                             <p>Tel pro : '. $results[0]['telPro'] .'</p>';
                         } else {
