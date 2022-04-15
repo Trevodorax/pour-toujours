@@ -1,4 +1,13 @@
-<?php session_start() ?>
+<?php session_start() ;
+
+function isCustomer(){
+    if(empty($_SESSION['emailPro']) && isset($_SESSION['email'])){
+        return true;
+    }
+}
+
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -43,15 +52,18 @@
                         $email_presta = $pro['email'];
                         $path = 'images/prestataires';
                         echo '
+                           
                             <div class="presta-card">
                                 <img src="'. $path . '/' . $pro['photoProfil'] . '">
                                 <div>
-                                    <h3>' . $pro['nomPrefere'] . '</h3>
+                                    <h3><a href="pro_profile_for_user.php?pro=' . $id_presta . '">' . $pro['nomPrefere'] . '</a></h3>
                                     <h4>' . $pro['metier']. '</h4>
                                     <p>Departement : '. $pro['departement'].'</p>
-                                    <a href="control_pannel.php?page=messages&destinataire='. $email_presta .'">Contacter <img src="images/presta_contact_icon.svg"></a>
+                                    <a id="contact" href="control_pannel.php?page=messages&destinataire='. $email_presta .'">Contacter <img src="images/presta_contact_icon.svg"></a>
                                 </div>
                             </div>
+                            <img src="images/heart_picto.svg">
+                            
                         ' ;}
                       
                     ?>

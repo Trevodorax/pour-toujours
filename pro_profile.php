@@ -1,12 +1,11 @@
 <?php session_start() ;
 include('includes/db.php');
 
-if(empty($_SESSION['emailPro'])){
+if(empty($_SESSION['emailPro'])){     
     header('location: pro_profile_for_user.php');
     exit;
-
-    // or if the pro is looking at another pro profile ?
 }
+
 ?>
 
 <!DOCTYPE html>

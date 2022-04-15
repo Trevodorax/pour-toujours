@@ -86,7 +86,7 @@ h2{
     font-weight: normal;
 }
 
-.presta-card a{
+.presta-card #contact{
     display: block;
     text-align: right;
     font-weight: bold;
