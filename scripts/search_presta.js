@@ -1,3 +1,4 @@
-document.getElementById('filters-button').addEventListener('click', function(){
-    document.getElementById('filters').classList.toggle('pouf');
-})
+document.getElementById('sort-button').addEventListener('click', function(){
+    document.getElementById('sort').classList.toggle('pouf');
+}
+)
