@@ -19,17 +19,40 @@
         exit;
     }
 
-    // put this in database if everything went right
     include('includes/db.php');
-    $q = "UPDATE UTILISATEUR SET preferences_qcm = :user_pref WHERE personne = (SELECT id FROM PERSONNE WHERE email = :user_email)";
+
+    $q = "SELECT id FROM UTILISATEUR WHERE personne = (SELECT id FROM PERSONNE WHERE email = :user_email)";
     $req = $bdd->prepare($q);
-    $result = $req->execute([
-        'user_pref' => $preferences,
+    $req->execute([
         'user_email' => $_SESSION['email']
     ]);
+    $result = $req->fetchAll()[0][0];
+    $user_id = $result;
 
-    header('location: control_pannel.php');
-    exit;
+    // put this in database if everything went right
+    $q = "UPDATE UTILISATEUR SET preferences_qcm = :user_pref WHERE id = :user_id";
+    $req = $bdd->prepare($q);
+    $req->execute([
+        'user_pref' => $preferences,
+        'user_id' => $user_id
+    ]);
+
+    $q = "SELECT id FROM MARIAGE WHERE utilisateur = :user_id";
+    $req = $bdd->prepare($q);
+    $req->execute([
+        'user_id' => $user_id
+    ]);
+
+    $wedding_id = $req->fetchAll();
+
+    if(count($wedding_id) == 0){
+        // create wedding
+        $q = "INSERT INTO MARIAGE (utilisateur) VALUES (". $user_id . ")";
+        $req = $bdd->prepare($q);
+        $utilisateur = $req->execute([]);
+    }
+
+    // header('location: control_pannel.php');
+    // exit;
 
 ?>
-
