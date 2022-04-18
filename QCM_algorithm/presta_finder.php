@@ -2,6 +2,9 @@
 
 session_start();
 
+// get this in db with a table of refused services per user
+$services_refus = "(0, 1, 73)";
+
 // get user preferences string
 include('../includes/db.php');
 
@@ -12,16 +15,25 @@ $req->execute([
 ]);
 $preferences = $req->fetchAll()[0][0];
 
-
 // get budget
-$budget_array = [
+$budget_cases = [
     '0' => 2000,
     '1' => 4000,
     '2' => 6000,
     '3' => 8000
 ];
 
-$budget = $budget_array[$preferences[2]];
+$budget = $budget_cases[$preferences[2]];
+
+// get number of guests
+$guests_cases = [
+    '0' => 20,
+    '1' => 50,
+    '2' => 100,
+    '3' => 200
+];
+
+$nb_guests = $guests_cases[$preferences[8]];
 
 
 /* FIGURING OUT DIVISION OF BUDGET IN 5 PARTS */
@@ -48,28 +60,50 @@ $lieu_part = (float)$lieu / $diviseur;
 $tenue_part = (float)$tenue / $diviseur;
 $photos_part = (float)$photos / $diviseur;
 
-$nourriture_budget = $budget * $nourriture_part;
+$nourriture_budget = ($budget * $nourriture_part) / $nb_guests;
 $animation_budget = $budget * $animation_part;
 $lieu_budget = $budget * $lieu_part;
 $tenue_budget = $budget * $tenue_part;
 $photos_budget = $budget * $photos_part;
 
-// see the values of budget for everything
-// var_dump($nourriture_budget);
-// var_dump($animation_budget);
-// var_dump($lieu_budget);
-// var_dump($tenue_budget);
-// var_dump($photos_budget);
-
 
 /* GET THE RIGHT PRESTAS FOR USER PREFERENCES */
-// get the 3 elements with the lowest difference between user budget and budget
-$q = 'SELECT id, tarif, ABS(:budget - tarif) as difference FROM SERVICE ORDER BY difference LIMIT 2 ';
+// get the elements with the lowest difference between user budget and price
+$q = "SELECT id, ABS(:budget - tarif) as difference FROM SERVICE WHERE type = :type AND id NOT IN" . $services_refus . "ORDER BY difference LIMIT 1 ";
 $req = $bdd->prepare($q);
-$req->execute([
-    'budget' => $nourriture_budget
-]);
-$nourriture_services = $req->fetchAll();
 
+$req->execute([
+    'budget' => $nourriture_budget,
+    'type' => 'N'
+]);
+$nourriture_services = $req->fetchAll()[0][0];
+
+$req->execute([
+    'budget' => $animation_budget,
+    'type' => 'A'
+]);
+$animation_services = $req->fetchAll()[0][0];
+
+$req->execute([
+    'budget' => $lieu_budget,
+    'type' => 'L'
+]);
+$lieu_services = $req->fetchAll()[0][0];
+
+$req->execute([
+    'budget' => $tenue_budget,
+    'type' => 'T'
+]);
+$tenue_services = $req->fetchAll()[0][0];
+
+$req->execute([
+    'budget' => $photos_budget,
+    'type' => 'P'
+]);
+$photos_services = $req->fetchAll()[0][0];
+
+
+header("location: ../control_pannel.php?page=home&N=$nourriture_services&A=$activite_services&L=$lieu_services&T=$tenue_services&P=$photos_services");
+exit;
 
 ?>
