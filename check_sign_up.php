@@ -317,6 +317,7 @@
             header('location: create_account.php?message=Erreur lors de l\'inscription');
             exit;
         }
+
     }else{
         // creating a new user linked to this personne
         $q = "INSERT INTO utilisateur (personne) VALUES(:idPersonne)";

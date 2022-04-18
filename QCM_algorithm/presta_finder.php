@@ -68,7 +68,7 @@ $photos_budget = $budget * $photos_part;
 
 
 /* GET THE RIGHT PRESTAS FOR USER PREFERENCES */
-// get the elements with the lowest difference between user budget and price
+// get the id of services with the lowest difference between user budget and price
 $q = "SELECT id, ABS(:budget - tarif) as difference FROM SERVICE WHERE type = :type AND id NOT IN" . $services_refus . "ORDER BY difference LIMIT 1 ";
 $req = $bdd->prepare($q);
 
@@ -76,34 +76,83 @@ $req->execute([
     'budget' => $nourriture_budget,
     'type' => 'N'
 ]);
-$nourriture_services = $req->fetchAll()[0][0];
+$nourriture_service = $req->fetchAll()[0][0];
 
 $req->execute([
     'budget' => $animation_budget,
     'type' => 'A'
 ]);
-$animation_services = $req->fetchAll()[0][0];
+$animation_service = $req->fetchAll()[0][0];
 
 $req->execute([
     'budget' => $lieu_budget,
     'type' => 'L'
 ]);
-$lieu_services = $req->fetchAll()[0][0];
+$lieu_service = $req->fetchAll()[0][0];
 
 $req->execute([
     'budget' => $tenue_budget,
     'type' => 'T'
 ]);
-$tenue_services = $req->fetchAll()[0][0];
+$tenue_service = $req->fetchAll()[0][0];
 
 $req->execute([
     'budget' => $photos_budget,
     'type' => 'P'
 ]);
-$photos_services = $req->fetchAll()[0][0];
+$photos_service = $req->fetchAll()[0][0];
+
+// getting user id
+$q = "SELECT id FROM UTILISATEUR WHERE personne = (SELECT id FROM PERSONNE WHERE email = :user_email)";
+$req = $bdd->prepare($q);
+$req->execute([
+    'user_email' => $_SESSION['email']
+]);
+$user_id = $req->fetchAll()[0][0];
+
+// getting user wedding
+$q = "SELECT id FROM MARIAGE WHERE utilisateur = :user_id";
+$req = $bdd->prepare($q);
+$req->execute([
+    'user_id' => $user_id
+]);
+$user_wedding = $req->fetchAll()[0][0];
 
 
-header("location: ../control_pannel.php?page=home&N=$nourriture_services&A=$activite_services&L=$lieu_services&T=$tenue_services&P=$photos_services");
+// delete any previously stored team from db
+$bdd->exec('DELETE FROM DEMANDE WHERE mariage = ' . $user_wedding);
+
+// store these IDs in the DEMANDE table
+$q = "INSERT INTO DEMANDE (mariage, service, statut) VALUES(:mariage, :service, 'propose')";
+$req = $bdd->prepare($q);
+$req->execute([
+    'mariage' => $user_wedding,
+    'service' => $nourriture_service
+]);
+
+$req->execute([
+    'mariage' => $user_wedding,
+    'service' => $animation_service
+]);
+
+$req->execute([
+    'mariage' => $user_wedding,
+    'service' => $lieu_service
+]);
+
+$req->execute([
+    'mariage' => $user_wedding,
+    'service' => $tenue_service
+]);
+
+$req->execute([
+    'mariage' => $user_wedding,
+    'service' => $photos_service
+]);
+
+
+// redirect at the end
+header("location: ../control_pannel.php");
 exit;
 
 ?>
