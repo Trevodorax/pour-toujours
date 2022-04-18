@@ -1,7 +1,14 @@
 <?php
 session_start();
-if(!isset($_SESSION['email'])){
-    header('location: index.php');
+
+function isLogged(){
+    if( isset($_SESSION['email'])) {
+        return true;
+    }
+}
+
+if(!isLogged()){
+    header('location: index.php?message=Vous n\'avez pas accès à cette page');
     exit;
 }
 ?>

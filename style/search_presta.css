@@ -26,14 +26,14 @@ h2{
     margin-left: 4px;
 }
 
-#filters{
+#sort{
     width: 100%;
     padding: 16px 0;
 
     background-color: #fef4ea;
 }
 
-#filters a{
+#sort a{
     display: block;
 
     padding: 16px;
@@ -42,10 +42,32 @@ h2{
     text-align: center;
 }
 
+/* FILTERS AREA */
 
+
+
+#filter-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #dfdad8;
+    margin : 0;
+    padding : 2em
+}
+#filter-area h3{
+    text-align: left;
+}
+.list {
+    display: flex;
+    flex-direction: column;
+}
 
 /* ----- PRESTA LIST ----- */
 
+/* 
+#all-presta{
+    width: 70vw;
+} */
 .presta-card{
     display: flex;
     height: 160px;
@@ -86,7 +108,7 @@ h2{
     font-weight: normal;
 }
 
-.presta-card a{
+.presta-card #contact{
     display: block;
     text-align: right;
     font-weight: bold;
@@ -118,6 +140,10 @@ h2{
     section{
         display: flex;
         flex-wrap: wrap;
+    }
+
+    #filter-area{
+        width: 20vw;
     }
 
     .presta-card{

@@ -1,10 +1,13 @@
 <?php session_start() ;
 include('includes/db.php');
 
-$loggedIn = false;
-if(isset($_SESSION['email'])){
-    $loggedIn = true    ;
+
+function isLogged(){
+    if( isset($_SESSION['email'])) {
+        return true;
+    }
 }
+
 // The user comes from a page where he clicked on the name of a pro, for exemple. We need to get something from this page to be able to 
 // display the informations about the correct pro.
 ?>
@@ -27,14 +30,21 @@ if(isset($_SESSION['email'])){
                     $info_det = 'Ses';
                     $company_det = "son";
                     $comment_title = 'Avis sur ce prestataire';
-
+                    $id_presta = $_GET['pro'];
+                    
                 //REQUEST TO DISPLAY PRO INFORMATIONS :
 
-                    $q = 'SELECT id, nomEntreprise, emailPro, telPro, metier, photoProfil, lienSiteWeb FROM prestataire WHERE personne = :personne'; 
-                    $req = $bdd->prepare($q);            
-                    $req->execute(['personne' => $value]);
-                    $results = $req->fetchAll(PDO::FETCH_ASSOC);
-                    $id_presta = $results[0]['id'];
+                    if (isset($id_presta)){
+
+                        $q = 'SELECT nomPrefere, email, departement, nomEntreprise, emailPro, telPro, metier, photoProfil, lienSiteWeb FROM prestataire INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id WHERE PRESTATAIRE.id = :id'; 
+                        $req = $bdd->prepare($q);            
+                        $req->execute(['id' => $id_presta]);
+                        $results = $req->fetchAll(PDO::FETCH_ASSOC);
+                       
+                    } else {
+                        header('location:search_pro.php?message=Il y a eu une erreur, veuillez réessayer');
+                        exit;
+                    }              
        
             ?>
 
@@ -42,27 +52,37 @@ if(isset($_SESSION['email'])){
                 <!--  -->
                 <div>
                     <?php 
-                    echo ' <h2>' . $welcome_title . $_SESSION['nomprefere'] .' ! <a href="#"><img src="images/settings_icon.svg"></a><a href="#"><img src="images/presta_contact_icon.svg"></a></h2>';
-            
+                         if (isLogged()){
+                            echo ' <h2>' . $welcome_title . $results[0]['nomPrefere'] .' !<a href="control_pannel.php?page=messages&destinataire='. $results[0]['email'] . '"><img src="images/presta_contact_icon.svg"></a></h2>';
+                         } else {
+                             echo ' <h2>' . $welcome_title . $results[0]['nomPrefere'] .' !</h2>';
+                         }
                     echo '
-                    <h3>' . $info_det .' informations :</h3>
-                    <p>Métier : ' . $results[0]['metier'] .'</p>
-                    <p>Nom de '. $company_det . ' entreprise : ' . $results[0]['nomEntreprise']  .'</p>
-                    <p>Email : ' . $results[0]['emailPro'] . '</p>
-                    <p>Tel pro : '. $results[0]['telPro'] .'</p>
-                    <p>Secteur : ' . $_SESSION['departement'] . '</p>
-                    '
+                            <h3>' . $info_det .' informations :</h3>
+                            <p>Métier : ' . $results[0]['metier'] .'</p>
+                            <p>Nom de '. $company_det . ' entreprise : ' . $results[0]['nomEntreprise']  .'</p>';
+
+                        if (isLogged()){
+                            echo '<p>Email : ' . $results[0]['emailPro'] . '</p>
+                            <p>Tel pro : '. $results[0]['telPro'] .'</p>';
+                        } else {
+                            echo '<p id="message">Vous devez être connecté pour voir les coordonnées de ce prestataire</p>';
+                        }
+                    
+                    echo '<p>Département: ' . $results[0]['departement'] . '</p>
+                    <p>Lien du site web : <a target="_blank" href="'. $results[0]['lienSiteWeb'] . '">' .$results[0]['lienSiteWeb']. '</a></p>
+                    ';
                     ?>
                     
                 </div>
-                <?= '<img src="' . $results[0]['photoProfil']. '">' ;?>
+                <?= '<img src="images/prestataires/' . $results[0]['photoProfil']. '">' ;?>
             </section>
 
             <section id="portfolio">
 
                 <!-- Only if it exist -->
                
-                <h3>Le portfolio de </h3>
+                <h3>Le portfolio de ce prestataire</h3>
                 
                 <div id="show_portfolio">
                     <!-- Request to show services from the service providers -->
@@ -141,7 +161,7 @@ if(isset($_SESSION['email'])){
                 ]);
                 $result = $req -> fetchAll(PDO::FETCH_ASSOC);
                 if(count($result) == 0){
-                    echo '<p>Vous n\'avez pas encore de commentaire sur vos</p>';
+                    echo '<p>Ce prestataire n\'as pas encore de commentaire sur ses prestatations</p>';
                 }
                     foreach($result as $key => $commentaire){
                         echo '

@@ -26,11 +26,16 @@ h4{
     margin-bottom: 16px;
 }
 
+p#message {
+    color : #CF697B ;
+}
+
 p{
     margin-bottom: 8px;
     color: #aaa;
     font-weight: normal;
 }
+
 
 
 
