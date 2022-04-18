@@ -1,3 +1,8 @@
+<?php
+var_dump($_GET['type']);
+?>
+
+
 <main id="grid-main">
     <section id="mobile-control-nav">
         <p id="nav-opener">Mon panneau de contrôle</p>
@@ -9,6 +14,7 @@
             <a href="#">Mon animation</a>
             <a href="#">Mes photos</a>
             <a href="#">Mon repas</a>
+            <a href="#">Ma tenue</a>
             <a href="#">Ma liste d'invités</a>
             <a href="#">Mes favoris</a>
             <a href="#">Mes paramètres</a>
