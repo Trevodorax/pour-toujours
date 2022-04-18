@@ -11,6 +11,7 @@ if(!isLogged()){
     header('location: index.php?message=Vous n\'avez pas accès à cette page');
     exit;
 }
+
 ?>
 
 <?php
@@ -21,8 +22,63 @@ if(!isLogged()){
         header('location: control_pannel.php?page=home');
         exit;
     }
-    include('includes/db.php');
+
+    if($current_page == 'grid' && !isset($_GET['type'])){
+        header('location: control_pannel.php?page=home');
+        exit;
+    }
 ?>
+
+<?php
+    include('includes/db.php');
+
+    if($current_page == 'grid'){
+        $q = "SELECT id FROM SERVICE WHERE type = :type AND id IN (SELECT service FROM DEMANDE WHERE mariage = (SELECT id FROM MARIAGE WHERE utilisateur = (SELECT id FROM UTILISATEUR WHERE personne = :id_personne)))";
+        $req = $bdd->prepare($q);
+
+        $req->execute([
+            'type' => 'N',
+            'id_personne' => $_SESSION['id']
+        ]);
+        $nourriture_service = $req->fetchAll();
+
+        // get the other services only if nourriture exists (otherwise none of them exists)
+        if(count($nourriture_service) > 0){
+            $has_services = true;
+
+            $nourriture_service = $nourriture_service[0][0];
+
+            $req->execute([
+                'type' => 'A',
+                'id_personne' => $_SESSION['id']
+            ]);
+            $animation_service = $req->fetchAll()[0][0];
+
+            $req->execute([
+                'type' => 'L',
+                'id_personne' => $_SESSION['id']
+            ]);
+            $lieu_service = $req->fetchAll()[0][0];
+
+            $req->execute([
+                'type' => 'T',
+                'id_personne' => $_SESSION['id']
+            ]);
+            $tenue_service = $req->fetchAll()[0][0];
+
+            $req->execute([
+                'type' => 'P',
+                'id_personne' => $_SESSION['id']
+            ]);
+            $photos_service = $req->fetchAll()[0][0];
+        }else{
+            $has_services = false;
+        }
+
+
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>

@@ -11,7 +11,7 @@ main > div{
     border: 1px solid #ffc7c7;
 }
 
-main > div a{
+#load-content{
     display: block;
     margin: 16px 0;
     text-align: center;
@@ -36,3 +36,7 @@ main > div a{
     flex-wrap: wrap;
 }
 
+.grid-card{
+    min-width: 300px;
+    margin: 32px 16px;
+}
