@@ -18,77 +18,77 @@
     <div>
         <h2>Voici quelques lieux qui devraient vous plaire</h2>
         <div id="grid-items">
-            <div class="grid-card">
+            <a class="grid-card">
                 <img src="images/home_circle.jpg">
                 <div>
                     <h4>Plaza Henest Dan</h4>
                     <p>Plage des diamants<br>Paris 75001</p>
                 </div>
-            </div>
-            <div class="grid-card">
+            </a>
+            <a class="grid-card">
                 <img src="images/home_circle.jpg">
                 <div>
                     <h4>Plaza Henest Dan</h4>
                     <p>Plage des diamants<br>Paris 75001</p>
                 </div>
-            </div>
-            <div class="grid-card">
+            </a>
+            <a class="grid-card">
                 <img src="images/home_circle.jpg">
                 <div>
                     <h4>Plaza Henest Dan</h4>
                     <p>Plage des diamants<br>Paris 75001</p>
                 </div>
-            </div>
-            <div class="grid-card">
+            </a>
+            <a class="grid-card">
                 <img src="images/home_circle.jpg">
                 <div>
                     <h4>Plaza Henest Dan</h4>
                     <p>Plage des diamants<br>Paris 75001</p>
                 </div>
-            </div>
-            <div class="grid-card">
+            </a>
+            <a class="grid-card">
                 <img src="images/home_circle.jpg">
                 <div>
                     <h4>Plaza Henest Dan</h4>
                     <p>Plage des diamants<br>Paris 75001</p>
                 </div>
-            </div>
-            <div class="grid-card">
+            </a>
+            <a class="grid-card">
                 <img src="images/home_circle.jpg">
                 <div>
                     <h4>Plaza Henest Dan</h4>
                     <p>Plage des diamants<br>Paris 75001</p>
                 </div>
-            </div>
-            <div class="grid-card">
+            </a>
+            <a class="grid-card">
                 <img src="images/home_circle.jpg">
                 <div>
                     <h4>Plaza Henest Dan</h4>
                     <p>Plage des diamants<br>Paris 75001</p>
                 </div>
-            </div>
-            <div class="grid-card">
+            </a>
+            <a class="grid-card">
                 <img src="images/home_circle.jpg">
                 <div>
                     <h4>Plaza Henest Dan</h4>
                     <p>Plage des diamants<br>Paris 75001</p>
                 </div>
-            </div>
-            <div class="grid-card">
+            </a>
+            <a class="grid-card">
                 <img src="images/home_circle.jpg">
                 <div>
                     <h4>Plaza Henest Dan</h4>
                     <p>Plage des diamants<br>Paris 75001</p>
                 </div>
-            </div>
-            <div class="grid-card">
+            </a>
+            <a class="grid-card">
                 <img src="images/home_circle.jpg">
                 <div>
                     <h4>Plaza Henest Dan</h4>
                     <p>Plage des diamants<br>Paris 75001</p>
                 </div>
-            </div>
+            </a>
         </div>
-        <a href="#">Voir plus de lieux</a>
+        <a id="load-content" href="#">Voir plus...</a>
     </div>
 </main>
