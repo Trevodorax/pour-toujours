@@ -26,8 +26,7 @@
     $req->execute([
         'user_email' => $_SESSION['email']
     ]);
-    $result = $req->fetchAll()[0][0];
-    $user_id = $result;
+    $user_id = $req->fetchAll()[0][0];
 
     // put this in database if everything went right
     $q = "UPDATE UTILISATEUR SET preferences_qcm = :user_pref WHERE id = :user_id";
@@ -52,7 +51,7 @@
         $utilisateur = $req->execute([]);
     }
 
-    // header('location: control_pannel.php');
-    // exit;
+    header('location: QCM_algorithm/presta_finder.php');
+    exit;
 
 ?>
