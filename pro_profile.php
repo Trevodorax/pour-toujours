@@ -9,9 +9,6 @@ function isCustomer(){
     }
 }
 
-
-
-
 if(isCustomer()){     
     header('location: pro_profile_for_user.php');
     exit;
@@ -75,9 +72,9 @@ if(isCustomer()){
                 <!-- Add and display photos from portfolio of the service provider -->
                 <h3>Votre portfolio</h3>
 
-                <div class="add_photo">
-                    <h3>Ajouter une photo au portfolio</h3>
-                    <form action="check_services.php" method="POST" enctype="multipart/form-data">
+                <div class="add">
+                    <p class="title">Ajouter une photo au portfolio</p>
+                    <form class="portfolio" action="check_services.php" method="POST" enctype="multipart/form-data">
                         <label for="image">Choisissez une image</label>
                         <input type="file" name="image" placeholder=" Votre image (4 Mo max)">
                         <input type="text" name="description" placeholder="description de l'image">
@@ -108,9 +105,9 @@ if(isCustomer()){
                     }
 
                     foreach($results as $key => $image){
-                        echo '<div class="service-card">';
-                        echo ' <img src="' .$image['nom'] .'" alt="' . $image['description'] . '" border=1>';
-                        echo '<a class="btn btn-sm btn-danger me-2" href="#?id=' . $image['id'] . '">Supprimer</a>
+                        echo '<div class="portfolio-card">';
+                        echo ' <img src="' . $image['nom'] .'" alt="' . $image['description'] . '" border=1>';
+                        echo '<a class="btn btn-sm btn-danger" href="#?id=' . $image['id'] . '">Supprimer</a>
                         </div> ';
                     }        
                     ?>
@@ -119,13 +116,11 @@ if(isCustomer()){
 
             <section id="services">
                 <h3>Vos services</h3>
-                <div class="add_service">
+                <div class="add">
 
-                    <!-- Not animated yet, just a template so i can make it work -->
+                    <p class="title">Ajouter un service</p>
 
-                    <h2>Ajouter un service</h2>
-
-                    <form method="POST" action="check_services.php?type=service">
+                    <form class="service" method="POST" action="check_services.php?type=service">
 
                         <label for='title'>Titre du service</label>
                         <input type="text" name="title" class="required-input" placeholder="ex: Patisseries en quantité (40+)" required>

@@ -11,6 +11,10 @@ h2{
     text-align: left;
 }
 
+form{
+    border: 2px solid #FFC7C7;
+}
+
 h3{
     margin-left: -16px;
     margin-bottom: 24px;
@@ -51,14 +55,53 @@ h2 img{
 /* ----- PROFILE INFORMATIONS ----- */
 #profile{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 #profile > img{
     height: 300px;
     width: 200px;
-
+    align-self: center;
     object-fit : cover;
 }
+@media screen and (min-width: 700px){
+    #profile{
+        flex-direction: row;
+    }
+    #profile > img{
+        height: 300px;
+        width: 200px;
+
+        object-fit : cover;
+}
+}
+
+/* PORTFOLIO & SERVICES */
+
+.add form{
+    display: none;
+}
+
+.add {
+    background-image: url('../images/down_arrow.svg');
+    background-position: top 10px left 300px;
+    background-size: 24px;
+    background-repeat: no-repeat;
+}
+
+.open-section{
+    background-image: url('../images/up_arrow.svg');
+}
+
+.open-section form{
+    display: flex;
+}
+
+.title{
+    color : #CF697B ;
+    font-weight: bold;
+}
+
 
 
 
@@ -85,6 +128,41 @@ h2 img{
         width: 25%;
         margin: 3%
     }
+}
+/* PORTFOLIOS */
+
+#show_portfolio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#show_portfolio img{
+    height: 200px;
+    width: 90vw;
+    margin-bottom: 1em;
+    object-fit : cover;
+}
+
+.portfolio-card{
+    display: flex;
+    flex-direction: column;
+    margin : 3%
+}
+
+
+@media screen and (min-width: 700px){
+    #show_portfolio{
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    #show_portfolio img{
+        height: 200px;
+        width: 100%;
+        margin-bottom: 1em;
+        object-fit : cover;
+}
 }
 
 
