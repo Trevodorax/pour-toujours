@@ -57,6 +57,7 @@ function isLogged(){
                          } else {
                              echo ' <h2>' . $welcome_title . $results[0]['nomPrefere'] .' !</h2>';
                          }
+
                     echo '
                             <h3>' . $info_det .' informations :</h3>
                             <p>Métier : ' . $results[0]['metier'] .'</p>
@@ -79,8 +80,6 @@ function isLogged(){
             </section>
 
             <section id="portfolio">
-
-                <!-- Only if it exist -->
                
                 <h3>Le portfolio de ce prestataire</h3>
                 

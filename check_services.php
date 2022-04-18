@@ -20,7 +20,8 @@ if(!isset($_POST['title']) || empty($_POST['title']) ){
         'nom' => $_POST['title'],
         'tarif' => $_POST['price'],
         'description' => $_POST['description'],
-        'prestataire' => $_SESSION['id']
+        'prestataire' => $id_presta
+       
     ]);
 
 header('location: pro_profile.php?message=Service créé avec succès !');
@@ -52,7 +53,7 @@ exit;
             exit;
         }
 
-        // creating the image folder
+        // Creating the image folder
         $path = 'images/portfolios/' . $_SESSION['id'];
         if(!file_exists($path)){
             mkdir($path, 0777, true);

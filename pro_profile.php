@@ -74,7 +74,7 @@ if(isCustomer()){
 
                 <div class="add">
                     <p class="title">Ajouter une photo au portfolio</p>
-                    <form class="portfolio" action="check_services.php" method="POST" enctype="multipart/form-data">
+                    <form class="portfolio" action="check_services.php?pro=<?= $id_presta ?>" method="POST" enctype="multipart/form-data">
                         <label for="image">Choisissez une image</label>
                         <input type="file" name="image" placeholder=" Votre image (4 Mo max)">
                         <input type="text" name="description" placeholder="description de l'image">
@@ -95,7 +95,8 @@ if(isCustomer()){
                         $q ='SELECT id, nom, description FROM PORTFOLIO_IMAGES WHERE prestataire = :id';
                         $req = $bdd->prepare($q);
                         $req -> execute([
-                            'id' => $_SESSION['id']
+                            'id' => $id_presta 
+       
                     ]);
                     $results = $req->fetchAll(PDO::FETCH_ASSOC);
                     
@@ -151,7 +152,8 @@ if(isCustomer()){
                         $q ='SELECT id,nom,tarif,description,prestataire FROM SERVICE WHERE prestataire = :id';
                         $req = $bdd->prepare($q);
                         $req -> execute([
-                            'id' => $_SESSION['id']
+                            'id' => $id_presta
+       
                     ]);
                     $results = $req->fetchAll(PDO::FETCH_ASSOC);
                     

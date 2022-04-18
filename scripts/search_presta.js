@@ -11,7 +11,7 @@ let currentURL = window.location.href ;
 
 function filter(element){
 
-    selectedFilter =element.innerHTML;
+    selectedFilter = element.innerHTML;
 
     const request = new XMLHttpRequest();
   
@@ -27,6 +27,7 @@ function filter(element){
         
         } 
 
+        //display elements through here ! remove the element before and then apply the new one !!!!
 
 }
 request.send();
