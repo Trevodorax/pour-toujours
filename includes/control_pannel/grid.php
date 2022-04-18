@@ -1,5 +1,12 @@
 <?php
-var_dump($_GET['type']);
+
+$possible_grid_types = ['repas', 'animation', 'lieu', 'tenue', 'photos'];
+
+if(!in_array($_GET['type'], $possible_grid_types)){
+    header('location: control_pannel.php');
+    exit;
+}
+
 ?>
 
 
@@ -20,52 +27,18 @@ var_dump($_GET['type']);
             <a href="#">Mes paramètres</a>
         </nav>
     </section>
-    <h2>Mon lieu de mariage : non défini</h2>
+    <h2><?= ucwords($_GET['type']) ?> pour le mariage :</h2>
     <div>
-        <h2>Voici quelques lieux qui devraient vous plaire</h2>
+        <?php
+        if($has_services){
+            echo "<h2>Notre sélection pour vous :</h2>";
+        }else{
+            echo "<h2><a href='search_pro.php?type=" . $_GET['type'] . "'>Aller voir les prestataires de la catégorie " . $_GET['type'] . "</a></h2>";
+        }
+        ?>
+
+        <!--
         <div id="grid-items">
-            <a class="grid-card">
-                <img src="images/home_circle.jpg">
-                <div>
-                    <h4>Plaza Henest Dan</h4>
-                    <p>Plage des diamants<br>Paris 75001</p>
-                </div>
-            </a>
-            <a class="grid-card">
-                <img src="images/home_circle.jpg">
-                <div>
-                    <h4>Plaza Henest Dan</h4>
-                    <p>Plage des diamants<br>Paris 75001</p>
-                </div>
-            </a>
-            <a class="grid-card">
-                <img src="images/home_circle.jpg">
-                <div>
-                    <h4>Plaza Henest Dan</h4>
-                    <p>Plage des diamants<br>Paris 75001</p>
-                </div>
-            </a>
-            <a class="grid-card">
-                <img src="images/home_circle.jpg">
-                <div>
-                    <h4>Plaza Henest Dan</h4>
-                    <p>Plage des diamants<br>Paris 75001</p>
-                </div>
-            </a>
-            <a class="grid-card">
-                <img src="images/home_circle.jpg">
-                <div>
-                    <h4>Plaza Henest Dan</h4>
-                    <p>Plage des diamants<br>Paris 75001</p>
-                </div>
-            </a>
-            <a class="grid-card">
-                <img src="images/home_circle.jpg">
-                <div>
-                    <h4>Plaza Henest Dan</h4>
-                    <p>Plage des diamants<br>Paris 75001</p>
-                </div>
-            </a>
             <a class="grid-card">
                 <img src="images/home_circle.jpg">
                 <div>
@@ -96,5 +69,6 @@ var_dump($_GET['type']);
             </a>
         </div>
         <a id="load-content" href="#">Voir plus...</a>
+        -->
     </div>
 </main>
