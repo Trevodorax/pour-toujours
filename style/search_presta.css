@@ -64,10 +64,6 @@ h2{
 
 /* ----- PRESTA LIST ----- */
 
-/* 
-#all-presta{
-    width: 70vw;
-} */
 .presta-card{
     display: flex;
     height: 160px;
@@ -92,7 +88,6 @@ h2{
 
 .presta-card h3{
     padding-top: 8px;
-
     font-size: 1.4rem;
     text-align: left;
 }
@@ -139,21 +134,33 @@ h2{
 
     section{
         display: flex;
-        flex-wrap: wrap;
+    }
+
+    #page-bottom{
+        justify-content : space-between;
     }
 
     #filter-area{
-        width: 20vw;
+        width: 35%;
     }
 
-    .presta-card{
-        width: 40%;
-    }
+     #all-presta{
+         flex-direction: column;
+         margin-top: 0;
+     }
 }
 
 @media screen and (min-width: 1000px){
 
-    .presta-card{
-        width: 30%;
+    #filter-area{
+        width: 25%;
     }
+    #all-presta{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .presta-card{
+        width: 45%;
+    }
+    
 }

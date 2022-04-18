@@ -30,7 +30,7 @@ function isLogged(){
             <div id="desktop-page-top">
                 <div id="page-title">
                     <h2>Nos prestataires</h2>
-                    <p>Découvrez tous nos prestataires prêts à travailler à vos côtés pour un mariage réussi</p>
+                    <p>Découvrez tous nos prestataires prêts à travailler à vos côtés pour un mariage réussi !</p>
                 </div>
                 
                 <div id="page-top">
@@ -42,67 +42,68 @@ function isLogged(){
                     </div>
                 </div>
             </div>
+            <section id="page-bottom">
+                <section id="filter-area">
 
-            <section id="filter-area">
+                    <h2>Filtrez les résultats</h2>
 
-                <h2>Filtrez les résultats</h2>
+                    <div class="job list">
+                        <h3>Activité </h3>
+                        <p onclick="filter(obj)">Photographe - 15</p>
+                        <p onclick="filter(event)">Animateur</p>
+                        <p onclick="filter(this)">Traiteur</p>
+                        <p onclick="filter(this)">Fleuriste</p>
+                    </div>
 
-                <div class="job list">
-                    <h3>Activité </h3>
-                    <a>Photographe - 15</a>
-                    <a>Animateur</a>
-                    <a>Traiteur</a>
-                    <a>Fleuriste</a>
-                </div>
+                    <div class="departement list">
+                        <h3>Département prisé</h3>
+                        <p onclick="filter(this)">Paris</p>
+                        <p onclick="filter(this)">Ain</p>
+                        <p onclick="filter(this)">Oise</p>
+                        <p onclick="filter(this)">Ile-et-Villaine</p>
+                    </div>
 
-                <div class="departement list">
-                    <h3>Département prisé</h3>
-                    <a>Paris</a>
-                    <a>Ain</a>
-                    <a>Oise</a>
-                    <a>Ile-et-Villaine</a>
-                </div>
+                    <h3 id="recent-pro" onclick="filter(this)">Ajoutés récemment </h3>  
+                    <h3 id="best-pro" onclick="filter(this)">Les plus recommendés (3)</h3>
 
-                <h3 id="recent-pro">Ajoutés récemment </h3>  
-                <h3 id="best-pro">Les plus recommendés (3)</h3>
+                    <button id="choose-filter" class="btn-sucess btn">Afficher les résultats</button>
 
-                <button id="choose-filter" class="btn-sucess btn">Afficher les résultats</button>
+                </section>
 
-            </section>
+                <section id="all-presta">
 
-            <section id="all-presta">
+                    <?php 
+                            $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id ORDER BY nomEntreprise';
+                            $req = $bdd->query($q);
+                            $results = $req->fetchAll(PDO::FETCH_ASSOC);
 
-                 <?php 
-                        $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id ORDER BY nomEntreprise';
-                        $req = $bdd->query($q);
-                        $results = $req->fetchAll(PDO::FETCH_ASSOC);
+                            if(count($results) == 0){
+                                echo '<p>Il n\'a pas encore de prestataire sur le site.</p>';
+                            }
+                            
+                        foreach($results as $key => $pro){
+                            $id_presta = $pro['id'] ;
+                            $email_presta = $pro['email'];
+                            $path = 'images/prestataires';
+                            echo '
+                            
+                                <div class="presta-card">
+                                    <img src="'. $path . '/' . $pro['photoProfil'] . '">
+                                    <div>
+                                        <h3><a href="pro_profile_for_user.php?pro=' . $id_presta . '">' . $pro['nomPrefere'] . '</a></h3>
+                                        <h4>' . $pro['metier']. '</h4>
+                                        <p>Departement : '. $pro['departement'].'</p>
+                                        <a id="contact" href="control_pannel.php?page=messages&destinataire='. $email_presta .'">Contacter <img src="images/presta_contact_icon.svg"></a>
+                                    </div>
+                                </div>' ;
 
-                        if(count($results) == 0){
-                            echo '<p>Il n\'a pas encore de prestataire sur le site.</p>';
-                        }
+                                if ( isCustomer() && isLogged()){
+                                    echo '<img src="images/heart_picto.svg">';
+                                }
+                                }
                         
-                    foreach($results as $key => $pro){
-                        $id_presta = $pro['id'] ;
-                        $email_presta = $pro['email'];
-                        $path = 'images/prestataires';
-                        echo '
-                           
-                            <div class="presta-card">
-                                <img src="'. $path . '/' . $pro['photoProfil'] . '">
-                                <div>
-                                    <h3><a href="pro_profile_for_user.php?pro=' . $id_presta . '">' . $pro['nomPrefere'] . '</a></h3>
-                                    <h4>' . $pro['metier']. '</h4>
-                                    <p>Departement : '. $pro['departement'].'</p>
-                                    <a id="contact" href="control_pannel.php?page=messages&destinataire='. $email_presta .'">Contacter <img src="images/presta_contact_icon.svg"></a>
-                                </div>
-                            </div>' ;
-
-                            if ( isCustomer() && isLogged()){
-                                echo '<img src="images/heart_picto.svg">';
-                            }
-                            }
-                      
-                    ?>
+                        ?>
+                </section>
             </section>
         </main>
 
