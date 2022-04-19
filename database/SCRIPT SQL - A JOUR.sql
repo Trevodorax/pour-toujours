@@ -1,25 +1,25 @@
-//NB : LES DONNEES DE TYPE TIME VONT PEUT ETRE CHANGEES ?
-//LE 04/04/22
-//author:milo
+--NB : LES DONNEES DE TYPE TIME VONT PEUT ETRE CHANGEES ?
+--LE 04/04/22
+--author:milo
 
-//Connexion à mySQL distant, création de la BDD et ATTRIBUTION DES DROITS AU USER
+--Connexion à mySQL distant, création de la BDD et ATTRIBUTION DES DROITS AU USER
 
 mysql -u root -h 217.182.69.119 -p
 
 CREATE DATABASE POURTOUJOURS ;
 
-//On vérifie si la db est bien créée
+-- On vérifie si la db est bien créée
 SHOW DATABASES;
 
-//CONNEXION EN TANT QUE USER
+-- CONNEXION EN TANT QUE USER
 
 mysql -u TOUJOURS -h 217.182.69.119 -p
 
 
-//On séléctionne la db PourToujours
+-- On séléctionne la db PourToujours
 USE POURTOUJOURS;
 
-//ON COMMENCE A TOUT CREER :
+-- ON COMMENCE A TOUT CREER :
 
 CREATE TABLE PERSONNE(
 	id INTEGER PRIMARY KEY auto_increment,
@@ -31,7 +31,8 @@ CREATE TABLE PERSONNE(
 	mot_de_passe VARCHAR(255),
 	numero_tel CHAR(10),
 	departement CHAR(3),
-	date_inscription DATETIME DEFAULT NOW()
+	date_inscription DATETIME DEFAULT NOW(),
+	estAdmin TINYINT(1)
 );
 
 CREATE TABLE CONVERSATION( 

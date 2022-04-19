@@ -1,3 +1,11 @@
+<?php
+
+    session_start();
+    //! check if user is admin
+
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
