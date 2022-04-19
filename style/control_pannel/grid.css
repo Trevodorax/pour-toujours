@@ -1,42 +1,77 @@
-/* ----- GENRAL SETTINGS ----- */
-main > div{
-    margin-bottom: 128px;
-    background-color: #EEE;
-    padding: 16px;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    border: 1px solid #ffc7c7;
+/* ----- GENERAL SETTINGS -----*/
+main h2 {
+    font-weight: bold;
+}
+h3 {
+    text-align: left;
 }
 
-#load-content{
-    display: block;
-    margin: 16px 0;
-    text-align: center;
-}
 
-@media screen and (max-width: 600px){
-    main > div h2 {
-        text-align: center;
-    }
-}
+/* ----- PRESTA CARD ----- */
 
-/* ----- GRID CONTENT ----- */
-
-#grid-items{
-    overflow-y: scroll;
-
+.presta-card {
     display: flex;
-    height: 300px;
-    margin: 32px 0;
-
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    height: 160px;
+    width: 60%;
+    min-width: 400px;
+    padding-right: 8px;
+    border: 1px #FFC7C7 solid;
+    border-radius:4px ;
+    -webkit-border-radius:4px ;
+    -moz-border-radius:4px ;
+    -ms-border-radius:4px ;
+    -o-border-radius:4px ;
 }
 
-.grid-card{
+.presta-card > img {
+    width: 160px;
+    height: 160px;
+    margin-right: 16px;
+
+    object-fit: cover;
+}
+
+.presta-card h3 {
+    padding-top: 8px;
+    font-size: 1.4rem;
+    text-align: left;
+}
+
+.presta-card h4 {
+    color: #ADA9A8;
+    font-size: 1.4rem;
+}
+
+.presta-card p {
+    color: #ADA9A8;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.presta-card #contact {
+    display: block;
+    text-align: right;
+    font-weight: bold;
+}
+
+.presta-card a img {
+    width: 16px;
+    margin-left: 4px;
+}
+
+.presta-card div {
+    width: 60%;
+}
+
+/* ----- NO PRESTA SELECTED ----- */
+.big-red-button {
+    width: 60%;
     min-width: 300px;
-    margin: 32px 16px;
+    max-width: 600px;
+    color: white;
+    margin-left: 0;
+}
+
+.big-red-button a:hover {
+    color: white;
 }

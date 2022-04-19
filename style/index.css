@@ -24,6 +24,10 @@ body{
     font-family: 'Crimson Pro';
 }
 
+main{
+    min-height: 100vh;
+}
+
 h2{
     margin: 16px 0;
 
@@ -207,6 +211,7 @@ header{
     background-color: #FFC7C7;
 }
 
+
 header a:hover{
     color: #ffffff;
     text-decoration: underline;
@@ -297,6 +302,12 @@ header a:hover{
     background-image: url('../images/vagues_header.svg');
     background-size: 100%;
     background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 1500px) {
+    #header-wave {
+        height: 200px;
+    }
 }
 
 /* footer */
