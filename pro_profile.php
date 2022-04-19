@@ -206,7 +206,7 @@ if(isCustomer()){
                 </table>
             </section>
 
-            <h3>Avis sur ce prestataire</h3>
+            <h3>Avis sur vos prestations</h3>
             
             <section id="reviews">
 

@@ -99,10 +99,9 @@ function isLogged(){
                     }
 
                     foreach($results as $key => $image){
-                        echo '<div class="service-card">';
+                        echo '<div class="portfolio-card">';
                         echo ' <img src="' .$image['nom'] .'" alt="' . $image['description'] . '" border=1>';
-                        echo '<a class="btn btn-sm btn-danger me-2" href="#?id=' . $image['id'] . '">Supprimer</a>
-                        </div> ';
+                        echo '</div> ';
                     }        
                     ?>
               
@@ -132,7 +131,6 @@ function isLogged(){
                         <h4>'. $service['nom'].'</h4>
                         <p>Tarif :'. $service['tarif'].'/h</p>
                         <p>Description : '. $service['description'].'</p>
-                        <a class="btn btn-sm btn-danger me-2" href="#?id=' . $service['id'] . '">Commander</a>
                         </div>
                         ';
                     }        
