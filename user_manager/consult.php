@@ -1,5 +1,24 @@
 <?php
 
+session_start();
+include('../includes/db.php');
+
+// check if person is admin
+if(!isset($_SESSION['id'])){
+    header('location: manage_users.php');
+    exit;
+}
+
+$q = 'SELECT estAdmin FROM PERSONNE WHERE id = ?';
+$req = $bdd->prepare($q);
+$req->execute([$_SESSION['id']]);
+
+$estAdmin = $req->fetchAll()[0][0];
+if($estAdmin != '1') {
+    header('location: manage_users.php');
+    exit;
+}
+
 function isPro($id_personne) {
     include('../includes/db.php');
 
@@ -20,7 +39,6 @@ function isPro($id_personne) {
     </head>
     <body>
         <?php
-            include('../includes/db.php');
 
             $q = 'SELECT * FROM PERSONNE WHERE id = :id';
             $req = $bdd->prepare($q);
