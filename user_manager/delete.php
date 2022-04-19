@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    // check if user is admin
+    //! check if user is admin
 
     $id = $_GET['id'];
 

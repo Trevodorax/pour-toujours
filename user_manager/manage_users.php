@@ -1,13 +1,28 @@
+<?php
+
+function isPro($id_personne){
+    include('../includes/db.php');
+
+    $q = 'SELECT id FROM PRESTATAIRE WHERE personne = ?';
+    $req = $bdd->prepare($q);
+    $req->execute([$id_personne]);
+
+    return count($req->fetchAll()) > 0;
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <?php include('../includes/common_head.php'); ?>
+        <link rel="stylesheet" href="../style/user_manager.css">
     </head>
     <body>
         <?php
             include('../includes/db.php');
 
-            $q = 'SELECT id, nomComplet, email FROM PERSONNE';
+            $q = 'SELECT id, nomComplet, estAdmin FROM PERSONNE';
             $req = $bdd->query($q); //exécute la requête $q
             $results = $req->fetchAll(PDO::FETCH_ASSOC); // renvoie un tableau contenant tous les résultats
         ?>
@@ -17,20 +32,18 @@
                 <thead>
                     <tr>
                         <th>Nom</th>
-                        <th>Email</th>
-                        <th>Actions</th>
+                        <th>Rôle</th>
+                        <th>Modifier</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                        foreach($results as $key => $user){
-                            echo '<tr>';
-                            echo '<td>' . $user['nomComplet'] . '</td>';
-                            echo '<td>' . $user['email'] . '</td>';
+                        foreach($results as $key => $personne){
+                            echo '<tr ' . ($personne['estAdmin'] ? 'class = admin-row' : '') . '>';
+                            echo '<td>' . $personne['nomComplet'] . '</td>';
+                            echo '<td>' . (isPro($personne['id']) ? 'Prestataire' : 'Utilisateur') . '</td>';
                             echo '<td>';
-                            echo '<a  class="btn btn-sm btn-primary me-2" href="consult.php?id=' . $user['id'] . '">Consulter</a>';
-                            echo '<a class="btn btn-sm btn-warning me-2" href="modify.php?id=' . $user['id'] . '">Modifier</a>';
-                            echo '<a class="btn btn-sm btn-danger" href="delete.php?id=' . $user['id'] . '">Supprimer</a>';
+                            echo '<a href="consult.php?id=' . $personne['id'] . '"><img src="../images/pen_picto.svg"></a>';
                             echo '</td>';
                             echo '</tr>';
                         }
