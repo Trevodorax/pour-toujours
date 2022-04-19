@@ -154,7 +154,7 @@ h2 img{
 #show_portfolio img{
     height: 200px; 
     margin-bottom: 1em;
-    object-fit : cover;
+
 }
 
 .portfolio-card{
@@ -169,9 +169,9 @@ h2 img{
 
     #show_portfolio img{
         height: 200px;
-        width: 100%;
+        width: auto ;
         margin-bottom: 1em;
-        object-fit : cover;
+
 }
 }
 

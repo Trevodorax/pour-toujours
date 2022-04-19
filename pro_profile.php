@@ -44,6 +44,7 @@ if(isCustomer()){
                 $req->execute(['personne' => $_SESSION['id']]);
                 $results = $req->fetchAll(PDO::FETCH_ASSOC);
                 $id_presta = $results[0]['id'];
+                $type = $results[0]['metier'];
        
             ?>
 
@@ -121,7 +122,7 @@ if(isCustomer()){
 
                     <p class="title">Ajouter un service</p>
 
-                    <form class="service" method="POST" action="check_services.php?type=service">
+                    <form class="service" method="POST" action="check_services.php?section=service&pro=<?= $id_presta ?>&type=<?= $type ?>">
 
                         <label for='title'>Titre du service</label>
                         <input type="text" name="title" class="required-input" placeholder="ex: Patisseries en quantité (40+)" required>
