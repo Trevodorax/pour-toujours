@@ -4,16 +4,25 @@ document.getElementById('sort-button').addEventListener('click', function(){
 
 
 
-
-
 let selectedFilter ;
 let column_name ;
 
+function sort(element){
+    
+    //codecodecode
+
+}
+
+//Filter the service providers : 
+
 function filter(element){
 
-    selectedFilter = element.innerHTML;
+    selectedFilter = element.innerText;
+    console.log(selectedFilter)
+   
     column_name = (element.parentNode).classList[0]
 
+    console.log(column_name)
     const request = new XMLHttpRequest();
   
 
@@ -23,10 +32,13 @@ function filter(element){
 
         if ( request.readyState == 4){
 
+            //step 1: delete what is previously done
             purgeSectionPro();
-            displayFilteredResults();
-                    
+            
+            //step2: display new elements
+            displayFilteredResults(request.responseText);
         } 
+
 }
 
 $data = 'column_name=' + column_name + '&content=' + selectedFilter ;
@@ -42,7 +54,12 @@ function purgeSectionPro(){
     }
 }
 
-function displayFilteredResults(){
-    section = document.getElementById("all-presta")
-    section.innerHTML = "<?php include('includes/add_filters.php'); ?>"
+function displayFilteredResults(divs){
+    section = document.getElementById("all-presta");
+    console.log(divs)
+    section.innerHTML = divs ;
+}
+
+function removeFilters(){
+
 }

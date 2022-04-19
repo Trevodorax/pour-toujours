@@ -137,7 +137,7 @@ h2{
     }
 
     #page-bottom{
-        justify-content : space-between;
+        justify-content : space-around;
     }
 
     #filter-area{
@@ -147,6 +147,7 @@ h2{
      #all-presta{
          flex-direction: column;
          margin-top: 0;
+         min-width : 370px;
      }
 }
 
@@ -158,6 +159,7 @@ h2{
     #all-presta{
         flex-direction: row;
         flex-wrap: wrap;
+        min-width : 650px
     }
     .presta-card{
         width: 45%;
