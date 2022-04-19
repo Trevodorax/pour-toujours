@@ -47,14 +47,18 @@ function isPro($id_personne) {
                 ]);
                 $specific_results = $req->fetchAll(PDO::FETCH_ASSOC);
             }
+            if(count($specific_results) == 0){
+                $specific_results = [['aucun']];
+            }
         ?>
 
         <main class="container">
-            <table class="table table-striped">
+            <table class="table">
                 <thead>
                     <tr>
-                        <th>Champ</th>
-                        <th>Valeur</th>
+                        <th>Champs généraux</th>
+                        <th>Valeurs</th>
+                        <th>Nouvelle valeur</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,19 +69,46 @@ function isPro($id_personne) {
                             }else{
                                 echo '<tr>';
                                 echo '<td>' . $key . '</td>';
+
                                 echo '<td>' . $value . '</td>';
+
+                                echo '<td>';
+                                if($key != 'id'){
+                                    echo '<form action="modify.php?id=8">';
+                                        echo '<input type="text" name="new_content" placeholder="Nouvelle valeur">';
+                                        echo '<button type="submit"><img src="../images/pen_picto.svg"></button>';
+                                    echo '</form>';
+                                }
+                                echo '</td>';
+
                                 echo '</tr>';
                             }
                         }
+                    ?>
+
+
+                    <tr>
+                        <th>Champs spécifiques</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <?php
                         foreach($specific_results[0] as $key => $value){
-                            if($key == 'mot_de_passe'){
-                                echo '';
-                            }else{
-                                echo '<tr>';
-                                echo '<td>' . $key . '</td>';
-                                echo '<td>' . $value . '</td>';
-                                echo '</tr>';
+                            echo '<tr>';
+                            echo '<td>' . $key . '</td>';
+
+                            echo '<td>' . $value . '</td>';
+
+                            echo '<td>';
+                            if($key != 'id'){
+                                echo '<form action="modify.php">';
+                                    echo '<input type="text" name="new_content" placeholder="Nouvelle valeur">';
+                                    echo '<button type="submit"><img src="../images/pen_picto.svg"></button>';
+                                echo '</form>';
                             }
+                            echo '</td>';
+
+                            echo '</tr>';
                         }
                     ?>
                 </tbody>
