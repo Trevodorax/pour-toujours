@@ -7,6 +7,13 @@ function isLogged(){
     }
 }
 
+
+function isCustomer(){
+    if(empty($_SESSION['emailPro'])){
+        return true;
+    }
+}
+
 if(!isLogged()){
     header('location: index.php?message=Vous n\'avez pas accès à cette page');
     exit;
@@ -91,15 +98,22 @@ if(!isLogged()){
             <div>
                 <?php
                     echo '<h2>Bonjour, ' . $_SESSION['nomprefere'] . ' !</h2>';
+                    echo isCustomer() ? '<p>Prêt à continuer l\'aventure ?</p>' : 'Commencez ou reprenez vos conversations !';
                 ?>
-                <p>Prêt à continuer l'aventure ?</p>
+                
             </div>
             <div id="time-left">
-                <img src="images/clock_icon.svg"> J-67
+                <?php 
+                   echo isCustomer() ? '<img src="images/clock_icon.svg"> J-67' : '';
+                 ?>
             </div>
         </div>
 
-        <nav id="desktop-control-nav">
+        <?php 
+           
+        ?>
+
+        <nav id="desktop-control-nav" class="<?php echo isCustomer() ? '' : 'pouf' ?>">
             <a href="control_pannel.php?page=home" class="<?php echo $current_page == "home" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_general.svg"><p>Mon&nbspmariage</p></a>
             <a href="control_pannel.php?page=messages" class="<?php echo $current_page == "messages" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_bulle.svg"><p>Mes&nbspmessages</p></a>
             <a href="control_pannel.php?page=grid&type=lieu" class="<?php echo $current_page == "grid" && $_GET['type'] == "lieu" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_lieu.svg"><p>Lieu&nbspde&nbspmariage</p></a>
