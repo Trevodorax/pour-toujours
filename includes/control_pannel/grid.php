@@ -8,23 +8,26 @@ if(!in_array($_GET['type'], $possible_grid_types)){
 }
 
 // getting the service for this page
-switch($_GET[('type')]){
-    case('repas'):
-        $current_service = $repas_service;
-        break;
-    case('animation'):
-        $current_service = $animation_service;
-        break;
-    case('lieu'):
-        $current_service = $lieu_service;
-        break;
-    case('tenue'):
-        $current_service = $tenue_service;
-        break;
-    case('photos'):
-        $current_service = $photos_service;
-        break;
+if($has_services){
+    switch($_GET[('type')]){
+        case('repas'):
+            $current_service = $repas_service;
+            break;
+        case('animation'):
+            $current_service = $animation_service;
+            break;
+        case('lieu'):
+            $current_service = $lieu_service;
+            break;
+        case('tenue'):
+            $current_service = $tenue_service;
+            break;
+        case('photos'):
+            $current_service = $photos_service;
+            break;
+    }
 }
+
 
 // gets all info needed in this page about a service
 function get_service_info($id_service){
@@ -37,7 +40,7 @@ function get_service_info($id_service){
     $service_info = $req_service->fetchAll()[0];
 
     // getting info from PRESTATAIRE table
-    $q = "SELECT metier, photoProfil, personne  FROM PRESTATAIRE WHERE id = ?";
+    $q = "SELECT id, metier, photoProfil, emailPro, personne  FROM PRESTATAIRE WHERE id = ?";
     $req_presta = $bdd->prepare($q);
     $req_presta->execute([end($service_info)]);
     $presta_info = $req_presta->fetchAll()[0];
@@ -76,10 +79,31 @@ function get_service_info($id_service){
     <div>
         <?php
         if($has_services){
-            echo "<h2>Notre sélection pour vous :</h2>";
-            var_dump(get_service_info($current_service));
+            $service_info = get_service_info($current_service);
+            $path = 'images/prestataires';
+            // service part
+            echo
+                '
+                <h3>Service :</h3>
+                <p>' . $service_info[0]['nom']   . '</p>
+                ';
+            // prestataire part
+            echo
+                '
+                <h3>Organisé par :</h3>
+                <div class="presta-card">
+                    <img src="'. $path . '/' . $service_info[1]['photoProfil'] . '">
+                    <div>
+                        <h3><a href="pro_profile_for_user.php?pro=' . $service_info[1]['id'] . '">' . $service_info[2]['nomPrefere'] . '</a></h3>
+                        <h4>' . $service_info[1]['metier'] . '</h4>
+                        <p>Departement : '. $service_info[2]['departement'] .'</p>
+                        <a id="contact" href="control_pannel.php?page=messages&destinataire='. $service_info[1]['emailPro'] .'">Contacter <img src="images/presta_contact_icon.svg"></a>
+                    </div>
+                </div>
+                ';
+
         }else{
-            echo "<h2><a href='search_pro.php?type=" . $_GET['type'] . "'>Aller voir les prestataires de la catégorie " . $_GET['type'] . "</a></h2>";
+            echo "<button class='big-red-button'><a href='search_pro.php?type=" . $_GET['type'] . "'>Aller voir les prestataires de la catégorie " . $_GET['type'] . "</a></button>";
         }
         ?>
 
