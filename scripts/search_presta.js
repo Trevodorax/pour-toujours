@@ -7,29 +7,42 @@ document.getElementById('sort-button').addEventListener('click', function(){
 
 
 let selectedFilter ;
-let currentURL = window.location.href ;
+let column_name ;
 
 function filter(element){
 
     selectedFilter = element.innerHTML;
+    column_name = (element.parentNode).classList[0]
 
     const request = new XMLHttpRequest();
   
 
-    request.open('GET', 'search_pro.php?filter='+ selectedFilter);
+    request.open('post', 'includes/add_filters.php');
 
-    request.onreadystatechange =function(){
+    request.onreadystatechange = function(){
 
         if ( request.readyState == 4){
 
-            console.log(selectedFilter);
-            
-        
+            purgeSectionPro();
+            displayFilteredResults();
+                    
         } 
-
-        //display elements through here ! remove the element before and then apply the new one !!!!
-
-}
-request.send();
 }
 
+$data = 'column_name=' + column_name + '&content=' + selectedFilter ;
+request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+request.send($data);
+}
+
+function purgeSectionPro(){
+    toDelete = document.querySelectorAll(".presta-card") 
+
+    for (let div of toDelete) {    
+        div.remove() ;
+    }
+}
+
+function displayFilteredResults(){
+    section = document.getElementById("all-presta")
+    section.innerHTML = "<?php include('includes/add_filters.php'); ?>"
+}

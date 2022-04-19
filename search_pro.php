@@ -47,7 +47,7 @@ function isLogged(){
 
                     <h2>Filtrez les résultats</h2>
 
-                    <div class="job list">
+                    <div class="metier list">
                         <h3>Activité </h3>
                         <p onclick="filter(this)">Photographe - 15</p>
                         <p onclick="filter(this)">Animateur</p>
@@ -73,13 +73,6 @@ function isLogged(){
                 <section id="all-presta">
 
                     <?php 
-                           
-                            if (isset($_GET['filter'])){
-                                $selectedFilter = "metier =" . $_GET['filter'];
-                                echo $selectedFilter;
-                            } else {
-                                echo "non";
-                            }
 
                             $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id ORDER BY nomEntreprise';
                             $req = $bdd->query($q);
