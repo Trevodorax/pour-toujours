@@ -176,7 +176,7 @@ h2 img{
 }
 
 
-/* ----- CLIENTS ----- */
+/* ----- CUSTOMERS ----- */
 table{
     width: 100%;
 
@@ -218,7 +218,7 @@ td{
 
 #reviews > div{
     margin-bottom: 32px;
-    min-width:110%;
+    min-width:120%;
 }
 
 .comment{
@@ -242,7 +242,7 @@ td{
 @media screen and (min-width: 1000px){
 
     #reviews{
-        width : 85vw;
+        width : 90%;
     }
     
     #reviews > div{

@@ -186,15 +186,48 @@ if(isCustomer()){
             </section>
             <section id="clients">
                 <h3>Vos clients</h3>
-                <table>
-                    <tr>
-                        <th>Nom complet</th>
-                        <th>Date du mariage</th>
-                        <th>Service</th>
-                        <th>Adresse email</th>
-                        <th></th>
-                    </tr>
-                    
+
+                <?php 
+                        //VERY LONG REQUEST BUT we need it
+                    $q ='SELECT PERSONNE.NomComplet, PERSONNE.email, MARIAGE.date , DEMANDE.service FROM PERSONNE 
+                            INNER JOIN UTILISATEUR ON personne = PERSONNE.id
+                                INNER JOIN MARIAGE ON utilisateur = UTILISATEUR.id 
+                                    INNER JOIN DEMANDE ON DEMANDE.mariage = MARIAGE.id 
+                                        INNER JOIN SERVICE ON SERVICE.id = DEMANDE.service
+                                            WHERE SERVICE.prestataire = :id';
+                    $req = $bdd->prepare($q);
+                    $req -> execute([
+                         'id' => $id_presta                              
+                            ]);
+                 $results = $req->fetchAll(PDO::FETCH_ASSOC);
+
+                 if(count($results) == 0){
+                     echo '<p>Vous n\'avez pas encore de clients</p>';
+                 }
+
+                 //Basic structure of the table
+                 echo '
+                        <table>
+                        <tr>
+                            <th>Nom complet</th>
+                            <th>Date du mariage</th>
+                            <th>Service</th>
+                            <th>Adresse email</th>
+                            <th></th>
+                        </tr>';
+                //Displaying infos on the customer who ordered a service       
+                foreach($results as $key =>$customer)  {      
+                    echo '<tr>';
+                    echo '<td>' . $customer['NomComplet'] . '</td>';
+                    echo '<td>' . $customer['date'] . '</td>';
+                    echo '<td>' . $customer['service'] . '</td>';
+                    echo '<td>' . $customer['email'] . '</td>';
+                    echo '<td><img src="images/presta_contact_icon.svg"></td>';
+                    echo '</tr>';
+                }   
+                echo '</table>';
+                
+                ?>  
                     <!-- Template for the table row  -->
                     <!-- <tr>
                         <td>Fredo Sananos</td>
@@ -203,7 +236,8 @@ if(isCustomer()){
                         <td>f.sananes@gmail.com</td>
                         <td><img src="images/presta_contact_icon.svg"></td>
                     </tr> -->
-                </table>
+
+              
             </section>
 
             <h3>Avis sur vos prestations</h3>
