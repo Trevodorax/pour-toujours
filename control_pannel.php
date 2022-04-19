@@ -40,13 +40,13 @@ if(!isLogged()){
             'type' => 'N',
             'id_personne' => $_SESSION['id']
         ]);
-        $nourriture_service = $req->fetchAll();
+        $repas_service = $req->fetchAll();
 
         // get the other services only if nourriture exists (otherwise none of them exists)
-        if(count($nourriture_service) > 0){
+        if(count($repas_service) > 0){
             $has_services = true;
 
-            $nourriture_service = $nourriture_service[0][0];
+            $repas_service = $repas_service[0][0];
 
             $req->execute([
                 'type' => 'A',
@@ -74,7 +74,6 @@ if(!isLogged()){
         }else{
             $has_services = false;
         }
-
 
     }
 ?>
