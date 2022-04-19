@@ -74,9 +74,10 @@ function isPro($id_personne) {
 
                                 echo '<td>';
                                 if($key != 'id'){
-                                    echo '<form action="modify.php?id=8">';
+                                    echo '<form action="modify.php" method="POST">';
                                         echo '<input type="text" name="new_content" placeholder="Nouvelle valeur">';
-                                        echo '<button type="submit"><img src="../images/pen_picto.svg"></button>';
+                                        echo '<input type="hidden" name="column" value="' . $key . '">';
+                                        echo '<button type="submit" name="id" value="' . $_GET['id'] . '"><img src="../images/pen_picto.svg"></button>';
                                     echo '</form>';
                                 }
                                 echo '</td>';
@@ -100,10 +101,11 @@ function isPro($id_personne) {
                             echo '<td>' . $value . '</td>';
 
                             echo '<td>';
-                            if($key != 'id'){
-                                echo '<form action="modify.php">';
+                            if($key != 'id' && $key != 'personne'){
+                                echo '<form action="modify.php" method="POST">';
                                     echo '<input type="text" name="new_content" placeholder="Nouvelle valeur">';
-                                    echo '<button type="submit"><img src="../images/pen_picto.svg"></button>';
+                                    echo '<input type="hidden" name="column" value="' . $key . '">';
+                                    echo '<button type="submit" name="id" value="' . $_GET['id'] . '"><img src="../images/pen_picto.svg"></button>';
                                 echo '</form>';
                             }
                             echo '</td>';
