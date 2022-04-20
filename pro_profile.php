@@ -70,10 +70,10 @@ if(isCustomer()){
                         <div class="row">
                             <h3>Votre signature</h3>
                             <p>Veuillez signer ci-dessous pour enregistrer votre signature, nous validerons votre profil après cela.</p>
-                            <canvas id="sign-space" class="mb-3" width="100%" height="40%"></canvas>
+                            <canvas id="sign-space" class="mb-3" width="300px" height="100px"></canvas>
                             
                             <button class="btn btn-primary mb-2" id="sig-submitBtn">Envoyer la signature</button>
-			            	<button class="btn btn-danger" id="sig-clearBtn">Effacer la signature</button>
+			            	<button class="btn btn-danger" id="sig-clearBtn" onclick="eraseCanva()">Effacer la signature</button>
 			
                         </div>
                     </section>    
