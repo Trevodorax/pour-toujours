@@ -9,9 +9,16 @@ function changeUserType(form){
         proRows.forEach(function(row){
             row.classList.add('pouf');
         })
-    }else{
+    }else if(form.value == "prestas"){
         userRows.forEach(function(row){
             row.classList.add('pouf');
+        })
+        proRows.forEach(function(row){
+            row.classList.remove('pouf');
+        })
+    }else{
+        userRows.forEach(function(row){
+            row.classList.remove('pouf');
         })
         proRows.forEach(function(row){
             row.classList.remove('pouf');

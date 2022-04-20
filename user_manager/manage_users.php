@@ -44,6 +44,7 @@ function isPro($id_personne){
                 <form>
                     <div>
                         <input type="text" name="research" placeholder="Rechercher un utilisateur">
+                        <br><input type=radio name="user-type" value="all" onchange="changeUserType(this)"> Tout voir
                         <br><input type=radio name="user-type" value="users" onchange="changeUserType(this)"> Utilisateurs
                         <br><input type=radio name="user-type" value="prestas" onchange="changeUserType(this)"> Prestataires
                     </div>
