@@ -63,10 +63,20 @@ if(isCustomer()){
                     <p>Département : ' . $_SESSION['departement'] . '</p>
                     <p>Lien du site web : <a target="_blank" href="'. $results[0]['lienSiteWeb'] . '">' .$results[0]['lienSiteWeb']. '</a></p>
                     ';
-                    echo '</div>';
-                    echo '<img src="images/prestataires/'. $results[0]['photoProfil'] . '">'
+                    echo '</div>'; ?>
+                    <?php echo '<img src="images/prestataires/'. $results[0]['photoProfil'] . '">'
                     ?>
-                          
+                    <section id="signature">
+                        <div class="row">
+                            <h3>Votre signature</h3>
+                            <p>Veuillez signer ci-dessous pour enregistrer votre signature, nous validerons votre profil après cela.</p>
+                            <canvas id="sign-space" class="mb-3" width="100%" height="40%"></canvas>
+                            
+                            <button class="btn btn-primary mb-2" id="sig-submitBtn">Envoyer la signature</button>
+			            	<button class="btn btn-danger" id="sig-clearBtn">Effacer la signature</button>
+			
+                        </div>
+                    </section>    
             </section>
 
             <section id="portfolio">
@@ -288,6 +298,7 @@ if(isCustomer()){
 
         <script src="scripts/index.js"></script>
         <script src="scripts/pro_profile.js"></script>
+        <script src="scripts/draw_signature.js"></script>
      
     </body>
 </html>
