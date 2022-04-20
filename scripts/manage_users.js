@@ -43,7 +43,8 @@ function searchPersonne(){
         if ( request.readyState == 4){
 
             // display the found persons on top of table
-            writeRows(request.responseText);
+            console.log(request.responseText)
+            writeRows(JSON.parse(request.responseText));
         }
 
     }

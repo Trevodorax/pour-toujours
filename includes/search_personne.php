@@ -6,7 +6,7 @@ function isPro($id_personne){
     $req = $bdd->prepare($q);
     $req->execute([$id_personne]);
 
-    return count($req->fetchAll()) > 0;
+    return (count($req->fetchAll()) > 0 ? 1 : 0);
 }
 
 ?>
@@ -19,20 +19,23 @@ function isPro($id_personne){
     $req->execute(['searchedText' => ('%' . $_POST['searchedText'] . '%')]);
     $results = $req->fetchAll();
 
-    foreach($results as $result){
-        echo "{";
-            echo "id: ";
-            echo $result['id'];
-            echo ", ";
-            echo "estAdmin: ";
+    echo '{';
+        echo "\n";
+    foreach($results as $index => $result){
+        echo '"' . $result['id'] . '": {';
+            echo '"estAdmin": ';
             echo $result['estAdmin'];
-            echo ", ";
-            echo "nomComplet: ";
-            echo $result['nomComplet'];
-            echo ", ";
-            echo "estPro: ";
+            echo ', ';
+            echo '"nomComplet": ';
+            echo '"' . $result['nomComplet'] . '"';
+            echo ', ';
+            echo '"estPro": ';
             echo isPro($result['id']);
         echo "}";
+        if ($index != array_key_last($results)) {
+            echo ',';
+        }
         echo "\n";
     }
+    echo '}';
 ?>
