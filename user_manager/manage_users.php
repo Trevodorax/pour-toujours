@@ -41,9 +41,9 @@ function isPro($id_personne){
         <main class="container">
             <section id="filters">
                 <h3>Filtres</h3>
-                <form>
+                <form onsubmit="return searchPersonne()">
                     <div>
-                        <input type="text" name="research" placeholder="Rechercher un utilisateur">
+                        <input type="text" name="research" placeholder="Rechercher un utilisateur" id="searchedText">
                         <br><input type=radio name="user-type" value="all" onchange="changeUserType(this)"> Tout voir
                         <br><input type=radio name="user-type" value="users" onchange="changeUserType(this)"> Utilisateurs
                         <br><input type=radio name="user-type" value="prestas" onchange="changeUserType(this)"> Prestataires
