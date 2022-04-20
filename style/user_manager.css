@@ -1,5 +1,12 @@
+/* general settings */
+
+.pouf{
+    display: none;
+}
+
+
 /* header */
-header{
+header {
     display: flex;
     height: 100px;
     width: 100%;
@@ -9,21 +16,49 @@ header{
     padding: 0 32px;
 }
 
-header h2{
+header h2 {
     display: inline-block;
 }
 
 
-nav a{
+nav a {
     display: inline-block;
     margin-left: 16px;
 
     color: white;
 }
 
+/* filters */
+#filters form{
+    display: flex;
+}
+
+
+#filters input[type="radio"] {
+    margin: 4px 16px;
+}
+
+#filters input[type="text"] {
+    margin: 16px 0;
+    margin-right: 32px;
+
+
+    padding: 4px 16px;
+
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+#filters button{
+    margin-top: 16px;
+    margin-left: 56px;
+}
 
 /* list of users */
-.admin-row{
+.admin-row {
     background-color: #FFC7C7;
 }
 
@@ -34,11 +69,11 @@ td img {
 
 
 /* consult page */
-button{
+button {
     border: 0px white solid;
     background-color: white;
 }
 
-input{
+table input {
     margin-right: 32px;
 }
