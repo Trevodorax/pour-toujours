@@ -9,7 +9,27 @@ let column_name ;
 
 function sort(element){
     
-    //codecodecode
+    let selectedSort = element.id ;
+    console.log(selectedSort);
+
+    const request = new XMLHttpRequest();
+  
+    request.open('post', 'includes/add_filters.php');
+
+    request.onreadystatechange = function(){
+
+        if ( request.readyState == 4){
+
+            //step 1: delete what is previously done
+            purgeSectionPro();
+            
+            //step2: display new elements
+            displayFilteredResults(request.responseText);
+        } 
+
+}
+request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+request.send('sort=' + selectedSort);
 
 }
 
@@ -60,6 +80,3 @@ function displayFilteredResults(divs){
     section.innerHTML = divs ;
 }
 
-function removeFilters(){
-
-}

@@ -33,11 +33,11 @@ function isLogged(){
                 </div>
                 
                 <div id="page-top">
-                    <!-- <p id="filters-button">Filtrez <img src="images/filter.svg"></p> -->
                     <p id="sort-button">Triez par <img src="images/three_dots.svg"></p>
                     <div id="sort">
-                        <a>Les mieux notés</a>
-                        <a>Ordre alphabétique</a>
+                        <a id="time" onclick="sort(this)">Date d'inscription</a>  
+                        <a id="metier" onclick="sort(this)">Métiers</a>
+                        <a id="alphabet" onclick="sort(this)">Ordre alphabétique du nom</a>
                     </div>
                 </div>
             </div>
@@ -61,11 +61,9 @@ function isLogged(){
                         <p onclick="filter(this)">Oise</p>
                         <p onclick="filter(this)">Ile-et-Villaine</p>
                     </div>
-
-                    <h3 id="recent-pro" onclick="filter(this)">Ajoutés récemment </h3>  
                     <h3 id="best-pro" onclick="filter(this)">Les plus recommendés (3)</h3>
 
-                    <button id="remove-filter" onclick="removeFilters()" class="btn-danger btn">Retirer les filtres</button>
+                    <a id="remove-filter" href="search_pro.php" class="btn-danger btn">Retirer les filtres</a>
 
                 </section>
 
