@@ -73,7 +73,19 @@ h2 img{
         width: 200px;
 
         object-fit : cover;
+    }
+
+    #signature{
+        display:none;
+    }
 }
+
+/* CANVAS */
+
+#sign-space{
+    border :  solid 1px #CF697B;
+    border-radius: 15px;
+  cursor: crosshair;
 }
 
 /* PORTFOLIO & SERVICES */
