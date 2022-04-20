@@ -16,10 +16,26 @@
         <img src="images/text_logo.svg">
     </a>
     <nav>
+        <?php
+            include('includes/db.php');
+            // check if user is connected
+            if(isset($_SESSION['id'])){
+                // check if user is admin
+                $q = 'SELECT estAdmin FROM PERSONNE WHERE id = ?';
+                $req = $bdd->prepare($q);
+                $req->execute([$_SESSION['id']]);
+
+                $estAdmin = $req->fetchAll()[0][0];
+                if($estAdmin == '1') {
+                    echo '<a href="user_manager/manage_users.php">Administrateur</a>';
+                }
+            }
+            
+        ?>
         <a href="FAQ.php">FAQ</a>
         <a href="search_pro.php">Prestataires</a>
-        <?php
 
+        <?php
         //display a different page based on what kind of user is logged in
         if (!empty($_SESSION['emailPro'])){
                 $profile_page = 'pro_profile.php' ;
@@ -63,8 +79,5 @@
             echo '<a href="create_account.php"><h3>S\'inscrire<img src="images/go_icon.svg"></h3></a>';
             echo '<button class="big-red-button"><p><a href="log_in.php">Se connecter</a></p></button>';
         } ?>
-    <!-- <a href="create_account.php"><h3>Accès professionnels<img src="images/go_icon.svg"></h3></a>
-    <a href="FAQ.php"><h3>F.A.Q<img src="images/go_icon.svg"></h3></a>
-    <button class="big-red-button"><p>Se connecter</p></button> -->
 </nav>
 

@@ -30,19 +30,13 @@ function isPro($id_personne){
 
 ?>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <?php include('../includes/common_head.php'); ?>
-        <link rel="stylesheet" href="../style/user_manager.css">
-    </head>
-    <body>
-        <?php
+<?php
+    include('user_manager_header.php');
 
-            $q = 'SELECT id, nomComplet, estAdmin FROM PERSONNE';
-            $req = $bdd->query($q); //exécute la requête $q
-            $results = $req->fetchAll(PDO::FETCH_ASSOC); // renvoie un tableau contenant tous les résultats
-        ?>
+    $q = 'SELECT id, nomComplet, estAdmin FROM PERSONNE';
+    $req = $bdd->query($q);
+    $results = $req->fetchAll(PDO::FETCH_ASSOC);
+?>
 
         <main class="container">
             <table class="table table-striped">
@@ -57,7 +51,7 @@ function isPro($id_personne){
                 <tbody>
                     <?php
                         foreach($results as $key => $personne){
-                            echo '<tr ' . ($personne['estAdmin'] ? 'class = admin-row' : '') . '>';
+                            echo '<tr class=' . ($personne['estAdmin'] ? 'admin-row ' : '') . (isPro($personne['id']) ? 'pro-row' : 'user-row') .'>';
                             echo '<td>' . $personne['nomComplet'] . '</td>';
                             echo '<td>' . (isPro($personne['id']) ? 'Prestataire' : 'Utilisateur') . '</td>';
                             echo '<td>';

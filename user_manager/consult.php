@@ -31,14 +31,8 @@ function isPro($id_personne) {
 
 ?>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <?php include('../includes/common_head.php'); ?>
-        <link rel="stylesheet" href="../style/user_manager.css">
-    </head>
-    <body>
         <?php
+            include('user_manager_header.php');
 
             $q = 'SELECT * FROM PERSONNE WHERE id = :id';
             $req = $bdd->prepare($q);
