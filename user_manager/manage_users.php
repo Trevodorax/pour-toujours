@@ -63,21 +63,7 @@ function isPro($id_personne){
                             <th>Supprimer</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <?php
-                            foreach($results as $key => $personne){
-                                echo '<tr class="' . ($personne['estAdmin'] ? 'admin-row ' : '') . (isPro($personne['id']) ? 'pro-row' : 'user-row') .'">';
-                                echo '<td>' . $personne['nomComplet'] . '</td>';
-                                echo '<td>' . (isPro($personne['id']) ? 'Prestataire' : 'Utilisateur') . '</td>';
-                                echo '<td>';
-                                echo '<a href="consult.php?id=' . $personne['id'] . '"><img src="../images/pen_picto.svg"></a>';
-                                echo '</td>';
-                                echo '<td>';
-                                echo '<a href="delete.php?id=' . $personne['id'] . '"><img src="../images/go_icon.svg"></a>';
-                                echo '</td>';
-                                echo '</tr>';
-                            }
-                        ?>
+                    <tbody id="usersTable">
                     </tbody>
                 </table>
             </section>

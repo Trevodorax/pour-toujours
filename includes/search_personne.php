@@ -23,6 +23,9 @@ function isPro($id_personne){
         echo "\n";
     foreach($results as $index => $result){
         echo '"' . $result['id'] . '": {';
+            echo '"id": ';
+            echo $result['id'];
+            echo ', ';
             echo '"estAdmin": ';
             echo $result['estAdmin'];
             echo ', ';
