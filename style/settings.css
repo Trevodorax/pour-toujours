@@ -28,3 +28,42 @@ p{
     color: #aaa;
     font-weight: normal;
 }
+
+/* AVATAR */
+#avatar-maker {
+    display: flex;
+    width: 400px;
+
+    justify-content: space-around;
+}
+
+#avatar {
+    margin: 0;
+}
+
+.avatar-arrows {
+    display: flex;
+    height : 307px;
+    width : 40px;
+
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.avatar-arrows:first-child > img{
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+}
+
+.avatar-arrows > img {
+    height: 40px;
+    width: 40px;
+}
+
+#save-avatar {
+    margin: 16px 100px 64px;
+    width: 200px;
+}

@@ -54,7 +54,7 @@ CREATE TABLE MESSAGE(
 CREATE TABLE UTILISATEUR(
 	id INTEGER PRIMARY KEY auto_increment,
 	preferences_qcm CHAR(9),
-	avatar VARCHAR(40),
+	avatar CHAR(10),
 	personne INTEGER  NOT NULL UNIQUE REFERENCES PERSONNE(id)
 );
 
