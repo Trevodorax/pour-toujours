@@ -34,31 +34,31 @@
                     <p>Personnaliser mon avatar</p>
                     <div id="avatar-maker">
                         <div class="avatar-arrows">
-                            <img src="images/go_icon.svg" onclick="changeAvatar('hair', false)">
-                            <img src="images/go_icon.svg" onclick="changeAvatar('face', false)">
-                            <img src="images/go_icon.svg" onclick="changeAvatar('eyes', false)">
-                            <img src="images/go_icon.svg" onclick="changeAvatar('nose', false)">
-                            <img src="images/go_icon.svg" onclick="changeAvatar('mouth', false)">
-                            <img src="images/go_icon.svg" onclick="changeAvatar('chest', false)">
-                            <img src="images/go_icon.svg" onclick="changeAvatar('detail', false)">
+                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'hair', false)" for="hair">
+                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'face', false)" for="face">
+                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'eyes', false)" for="eyes">
+                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'nose', false)" for="nose">
+                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'mouth', false)" for="mouth">
+                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'chest', false)" for="chest">
+                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'detail', false)" for="detail">
                         </div>
                         <div id="avatar" class="blue">
-                            <div id="hair1"></div>
-                            <div id="face2"></div>
-                            <div id="eyes2"></div>
-                            <div id="nose2"></div>
-                            <div id="mouth2"></div>
-                            <div id="chest1"></div>
-                            <div id="detail1"></div>
+                            <div id="hair1" class="hair"></div>
+                            <div id="face2" class="face"></div>
+                            <div id="eyes2" class="eyes"></div>
+                            <div id="nose2" class="nose"></div>
+                            <div id="mouth2" class="mouth"></div>
+                            <div id="chest1" class="chest"></div>
+                            <div id="detail1" class="detail"></div>
                         </div>
                         <div class="avatar-arrows">
-                            <img src="images/go_icon.svg" onclick="changeAvatar('hair', true)">
-                            <img src="images/go_icon.svg" onclick="changeAvatar('face', true)">
-                            <img src="images/go_icon.svg" onclick="changeAvatar('eyes', true)">
-                            <img src="images/go_icon.svg" onclick="changeAvatar('nose', true)">
-                            <img src="images/go_icon.svg" onclick="changeAvatar('mouth', true)">
-                            <img src="images/go_icon.svg" onclick="changeAvatar('chest', true)">
-                            <img src="images/go_icon.svg" onclick="changeAvatar('detail', true)">
+                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'hair', true)" for="hair">
+                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'face', true)" for="face">
+                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'eyes', true)" for="eyes">
+                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'nose', true)" for="nose">
+                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'mouth', true)" for="mouth">
+                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'chest', true)" for="chest">
+                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'detail', true)" for="detail">
                         </div>
                     </div>
                     <p>Modifier mon mot de passe</p>
@@ -73,5 +73,6 @@
 
         <script src="scripts/index.js"></script>
         <script src="scripts/settings.js"></script>
+        <script src="scripts/change_avatar.js"></script>
     </body>
 </html>
