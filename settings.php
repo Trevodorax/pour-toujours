@@ -32,15 +32,19 @@
                 <h3>Mon profil</h3>
                 <div>
                     <p>Personnaliser mon avatar</p>
+
+                    <?php
+                        // for the loop that will create side arrows
+                        $avatar_parts = ['hair', 'face', 'eyes', 'nose', 'mouth', 'chest', 'detail'];
+                    ?>
+
                     <div id="avatar-maker">
                         <div class="avatar-arrows">
-                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'hair', false)" for="hair">
-                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'face', false)" for="face">
-                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'eyes', false)" for="eyes">
-                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'nose', false)" for="nose">
-                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'mouth', false)" for="mouth">
-                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'chest', false)" for="chest">
-                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'detail', false)" for="detail">
+                        <?php
+                            foreach($avatar_parts as $part) {
+                                echo '<img src="images/go_icon.svg" onclick="changeAvatar(this, \'' . $part . '\', false)" for="' . $part . '">';
+                            }
+                        ?>
                         </div>
                         <div id="avatar" class="blue">
                             <div id="hair1" class="hair"></div>
@@ -52,15 +56,14 @@
                             <div id="detail1" class="detail"></div>
                         </div>
                         <div class="avatar-arrows">
-                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'hair', true)" for="hair">
-                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'face', true)" for="face">
-                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'eyes', true)" for="eyes">
-                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'nose', true)" for="nose">
-                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'mouth', true)" for="mouth">
-                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'chest', true)" for="chest">
-                            <img src="images/go_icon.svg" onclick="changeAvatar(this, 'detail', true)" for="detail">
+                        <?php
+                        foreach($avatar_parts as $part) {
+                            echo '<img src="images/go_icon.svg" onclick="changeAvatar(this, \'' . $part . '\', true)" for="' . $part . '">';
+                        }
+                        ?>
                         </div>
                     </div>
+                    <button class="btn btn-primary" id="save-avatar" onclick="saveAvatar()">Sauvegarder l'avatar</button>
                     <p>Modifier mon mot de passe</p>
                     <p>Supprimer mon compte</p>
                     <p>Lier une nouvelle adresse e-mail à mon compte</p>

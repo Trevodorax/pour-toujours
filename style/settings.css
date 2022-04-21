@@ -33,7 +33,6 @@ p{
 #avatar-maker {
     display: flex;
     width: 400px;
-    margin: 16px 32px 64px;
 
     justify-content: space-around;
 }
@@ -64,3 +63,7 @@ p{
     width: 40px;
 }
 
+#save-avatar {
+    margin: 16px 100px 64px;
+    width: 200px;
+}
