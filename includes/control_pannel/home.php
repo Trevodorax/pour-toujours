@@ -1,4 +1,15 @@
+
 <main id="home-main">
+    <section>
+        <!-- MODIFY THE IDs AND CLASSES TO PIMP THE AVATAR -->
+        <div id="avatar" class="blue">
+            <div id="face2"></div>
+            <div id="eyes2"></div>
+            <div id="nose2"></div>
+            <div id="mouth2"></div>
+        </div>
+        <a href="settings.php"><h3>Personnaliser mon avatar<img src="images/go_icon.svg"></h3></a>
+    </section>
     <section id="launch-QCM">
         <p>Vous ne savez pas par où démarrer ?  Nous vous avons préparé un QCM justement fait pour ça !</p>
             <a href="QCM.php"><h3>Lancer le QCM<img src="images/go_icon.svg"></h3></a>

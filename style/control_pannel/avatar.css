@@ -1,0 +1,68 @@
+#avatar {
+    height: 307px;
+    width: 215px;
+    margin: 16px auto;
+
+    padding: 10px;
+}
+
+#avatar > div {
+    position: absolute;
+
+    height: 287px;
+    width: 195px;
+}
+
+/* BACKGROUNDS */
+#avatar.pink {
+    background-color: #FFC7C7;
+}
+
+#avatar.blue {
+    background-color: #7ee1ff;
+}
+
+/* EYES */
+#eyes1 {
+    background-image: url('../../images/avatars/eyes1.png');
+}
+
+#eyes2 {
+    background-image: url('../../images/avatars/eyes2.png');
+}
+
+/* FACES */
+#face1 {
+    background-image: url('../../images/avatars/face1.png');
+}
+
+#face2 {
+    background-image: url('../../images/avatars/face2.png');
+}
+
+#face3 {
+    background-image: url('../../images/avatars/face3.png');
+}
+
+/* MOUTH */
+#mouth1 {
+    background-image: url('../../images/avatars/mouth1.png');
+}
+
+#mouth2 {
+    background-image: url('../../images/avatars/mouth2.png');
+}
+
+/* NOSES */
+#nose1 {
+    background-image: url('../../images/avatars/nose1.png');
+}
+
+#nose2 {
+    background-image: url('../../images/avatars/nose2.png');
+}
+
+/* DETAILS */
+#detail1 {
+    background-image: url('../../images/avatars/mouth2.png');
+}

@@ -91,6 +91,7 @@ if(!isLogged()){
         <?php include('includes/common_head.php'); ?>
         <link rel="stylesheet" href="style/control_pannel/control_pannel.css">
         <link rel="stylesheet" href="style/control_pannel/<?=$current_page?>.css">
+        <link rel="stylesheet" href="style/control_pannel/avatar.css">
     </head>
     <body>
         <?php include('includes/header.php'); ?>
