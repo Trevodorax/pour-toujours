@@ -87,6 +87,54 @@ function draw(srcX, srcY, destX, destY){
 
 //As the name might tells you already, this erase the canva !
 function eraseCanva(){
-    console.log("AH")
     ctx.clearRect(0,0, canva.width, canva.height)
+}
+
+//We need this to send to php and then to the server the signature
+function saveAsImage(){
+
+    let signature = canva.toDataURL("image/png");
+
+    //DO AJAX : 
+    const request = new XMLHttpRequest();
+  
+    request.open('post', '../save_signature.php');
+
+    request.onreadystatechange = function(){
+
+        if ( request.readyState == 4){
+
+            displaySignature(signature);
+
+}
+request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+request.send('sign=' + signature);
+
+}
+}
+
+function displaySignature(pic){
+
+    section = document.getElementById('signature')
+    displayed = document.getElementById('displayed_sign')
+
+    //Checking if a signature is already on the page before adding it.
+
+    if (displayed == null){
+        image = document.createElement("img");
+        image.setAttribute("src", pic)
+        image.setAttribute("alt", "votre signature")
+        image.setAttribute("class", "mt-3")
+        image.id = "displayed_sign"
+        section.appendChild(image)  
+    }
+    if (displayed !== null){
+        displayed.remove()
+        image = document.createElement("img");
+        image.setAttribute("src", pic)
+        image.setAttribute("alt", "votre signature")
+        image.setAttribute("class", "mt-3")
+        image.id = "displayed_sign"
+        section.appendChild(image)  
+    }
 }
