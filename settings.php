@@ -47,8 +47,9 @@
                         ?>
                         </div>
                         <div id="avatar" class="blue">
-                            <div id="hair1" class="hair"></div>
+                     
                             <div id="face2" class="face"></div>
+                            <div id="hair1" class="hair"></div>
                             <div id="eyes2" class="eyes"></div>
                             <div id="nose2" class="nose"></div>
                             <div id="mouth2" class="mouth"></div>
