@@ -3,10 +3,12 @@
     <section>
         <!-- MODIFY THE IDs AND CLASSES TO PIMP THE AVATAR -->
         <div id="avatar" class="blue">
+            <div id="hair1"></div>
             <div id="face2"></div>
             <div id="eyes2"></div>
             <div id="nose2"></div>
             <div id="mouth2"></div>
+            <div id="chest1"></div>
         </div>
         <a href="settings.php"><h3>Personnaliser mon avatar<img src="images/go_icon.svg"></h3></a>
     </section>
