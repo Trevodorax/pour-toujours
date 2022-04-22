@@ -46,6 +46,7 @@ canva.addEventListener("touchstart", function(e){
      //New positions of cursor 
     beforeX = touch.clientX -rect.left
     beforeY = touch.clientY - rect.top 
+    console.log(beforeX, beforeY, rect)
 })
 
 canva.addEventListener("touchmove", function(e){
@@ -63,12 +64,13 @@ canva.addEventListener("touchmove", function(e){
         //New positions of cursor
         let nowX = touch.clientX - rect.left
         let nowY = touch.clientY - rect.top
-
+        console.log(nowX, beforeX);
         draw(beforeX, beforeY, nowX, nowY)
 
         //using the starting point of the line the ex-end
         beforeX = nowX
-        beforeY = nowY    
+        beforeY = nowY   
+
     }
 }, false)
 
