@@ -14,6 +14,30 @@ function changeAvatar(arrow, part, next) {
     }
 }
 
+function changeAvatarColor(next) {
+    // get the element who's class has to be changed
+    const colorElement = document.getElementById('avatar');
+
+    // get the color of this element
+    const currentColor = colorElement.classList[0];
+
+    // change the color accordingly
+    switch(currentColor) {
+        case('blue'):
+            colorElement.classList.remove(currentColor);
+            colorElement.classList.add('pink');
+            break;
+        case('pink'):
+            colorElement.classList.remove(currentColor);
+            colorElement.classList.add('green');
+            break;
+        case('green'):
+            colorElement.classList.remove(currentColor);
+            colorElement.classList.add('blue');
+            break;
+    }
+}
+
 function saveAvatar(){
     // get all the avatar elements
     const avatarParts = document.querySelectorAll('#avatar>div');

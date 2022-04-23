@@ -76,16 +76,17 @@ function drawAvatar($avatar_specs) {
 
                     <?php
                         // for the loop that will create side arrows
-                        $avatar_parts = ['hair', 'face', 'eyes', 'nose', 'mouth', 'chest', 'detail'];
+                        $avatar_parts = ['hair', 'face', 'eyes', 'nose', 'mouth', 'detail'];
                     ?>
 
                     <div id="avatar-maker">
                         <div class="avatar-arrows">
-                        <?php
-                            foreach($avatar_parts as $part) {
-                                echo '<img src="images/go_icon.svg" onclick="changeAvatar(this, \'' . $part . '\', false)" for="' . $part . '">';
-                            }
-                        ?>
+                            <img src="images/go_icon.svg" onclick="changeAvatarColor(false)">
+                            <?php
+                                foreach($avatar_parts as $part) {
+                                    echo '<img src="images/go_icon.svg" onclick="changeAvatar(this, \'' . $part . '\', false)" for="' . $part . '">';
+                                }
+                            ?>
                         </div>
                         <?php
                             $avatar_specs = getAvatar($_SESSION['id']);
@@ -94,11 +95,12 @@ function drawAvatar($avatar_specs) {
                             }
                         ?>
                         <div class="avatar-arrows">
-                        <?php
-                        foreach($avatar_parts as $part) {
-                            echo '<img src="images/go_icon.svg" onclick="changeAvatar(this, \'' . $part . '\', true)" for="' . $part . '">';
-                        }
-                        ?>
+                            <img src="images/go_icon.svg" onclick="changeAvatarColor(true)">
+                            <?php
+                            foreach($avatar_parts as $part) {
+                                echo '<img src="images/go_icon.svg" onclick="changeAvatar(this, \'' . $part . '\', true)" for="' . $part . '">';
+                            }
+                            ?>
                         </div>
                     </div>
 
