@@ -25,14 +25,17 @@
 
 /* EYES */
 #hair1 {
+    z-index: 2;
     background-image: url('../images/avatars/hair1.png');
 }
 
 #hair2 {
+    z-index: 2;
     background-image: url('../images/avatars/hair2.png');
 }
 
 #hair3 {
+    z-index: 2;
     background-image: url('../images/avatars/hair3.png');
 }
 
