@@ -17,6 +17,27 @@ if (isCustomer()){
     $className = " ";
 }
 
+function getAvatar($id_personne) {
+    include('includes/db.php');
+    $q = 'SELECT avatar FROM UTILISATEUR WHERE personne = ?';
+    $req = $bdd->prepare($q);
+    $req->execute([$id_personne]);
+    return $req->fetchAll()[0][0];
+}
+
+function drawAvatar($avatar_specs) {
+    $colors = ['blue', 'pink'];
+    echo '<div id="avatar" class="' . $colors[$avatar_specs[7] - 1] . '">';
+        echo '<div id="hair' . $avatar_specs[0] . '"></div>';
+        echo '<div id="face' . $avatar_specs[1] . '"></div>';
+        echo '<div id="eyes' . $avatar_specs[2] . '"></div>';
+        echo '<div id="nose' . $avatar_specs[3] . '"></div>';
+        echo '<div id="mouth' . $avatar_specs[4] . '"></div>';
+        echo '<div id="chest' . $avatar_specs[5] . '"></div>';
+        echo '<div id="detail' . $avatar_specs[6] . '"></div>';
+    echo '</div>';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -67,16 +88,12 @@ if (isCustomer()){
                             }
                         ?>
                         </div>
-                        <div id="avatar" class="blue">
-                     
-                            <div id="face2" class="face"></div>
-                            <div id="hair1" class="hair"></div>
-                            <div id="eyes2" class="eyes"></div>
-                            <div id="nose2" class="nose"></div>
-                            <div id="mouth2" class="mouth"></div>
-                            <div id="chest1" class="chest"></div>
-                            <div id="detail1" class="detail"></div>
-                        </div>
+                        <?php
+                            $avatar_specs = getAvatar($_SESSION['id']);
+                            if($avatar_specs){
+                                drawAvatar($avatar_specs);
+                            }
+                        ?>
                         <div class="avatar-arrows">
                         <?php
                         foreach($avatar_parts as $part) {
@@ -87,7 +104,7 @@ if (isCustomer()){
                     </div>
 
                     <button class="btn btn-primary" id="save-avatar" onclick="saveAvatar()">Sauvegarder l'avatar</button>
-                   
+
                     <section id="account-modification">
                       <p>Modifier mon mot de passe</p>
                       <p>Supprimer mon compte</p>
