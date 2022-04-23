@@ -32,7 +32,7 @@ CREATE TABLE PERSONNE(
 	numero_tel CHAR(10),
 	departement CHAR(3),
 	date_inscription DATETIME DEFAULT NOW(),
-	estAdmin TINYINT(1)
+	estAdmin TINYINT(1) DEFAULT 0
 );
 
 CREATE TABLE CONVERSATION( 

@@ -2,7 +2,7 @@
 
     session_start();
     include('../includes/db.php');
-    
+
 
     // check if person is admin
     if(!isset($_SESSION['id'])){
@@ -38,7 +38,7 @@
     $req = $bdd->prepare($q);
     try{
         $req->execute([
-            'new_content' => $_POST['new_content'],
+            'new_content' => htmlspecialchars($_POST['new_content']),
             'id' => $_POST['id']
         ]);
     } catch(PDOException $e) {
