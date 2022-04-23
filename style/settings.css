@@ -28,3 +28,77 @@ p{
     color: #aaa;
     font-weight: normal;
 }
+
+/* AVATAR */
+#avatar-maker {
+    display: flex;
+    width: 400px;
+
+    justify-content: space-around;
+}
+
+#avatar {
+    margin: 0;
+}
+
+.avatar-arrows {
+    display: flex;
+    height : 307px;
+    width : 40px;
+
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.avatar-arrows:first-child > img{
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+}
+
+.avatar-arrows > img {
+    height: 40px;
+    width: 40px;
+}
+
+#save-avatar {
+    margin: 16px 100px 64px;
+    width: 200px;
+}
+
+/* CHANGING FORMS */
+
+.changing-forms {
+    display: none;
+}
+
+#title {
+    background-image: url('../images/down_arrow.svg');
+    background-position: top 10px left 350px;
+    background-size: 24px;
+    background-repeat: no-repeat;
+}
+
+.changing-forms form {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 8px;
+    margin: 16px auto;
+}
+.open-section{
+    display: flex;
+    flex-wrap : wrap  
+}
+
+.changing-forms form .required-input {
+    width: 50%;
+    margin: 0 10% 0 3%;
+}
+
+
+.changing-forms form label{
+   width : 30%;
+}

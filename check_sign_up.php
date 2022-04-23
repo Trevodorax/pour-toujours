@@ -149,8 +149,10 @@
         $genre = "N";
     }
 
+    $key = rand(100000000, 999999999);
+
     // creating a new person if everything looks nice
-    $q = "INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES (:c_name, :f_name, :b_date, :genre, :email, :password, :tel, :departement)";
+    $q = "INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement, cle) VALUES (:c_name, :f_name, :b_date, :genre, :email, :password, :tel, :departement, :key)";
     $req = $bdd->prepare($q);
     $personne = $req->execute([
         'c_name' => htmlspecialchars($_POST['c_name']),
@@ -160,7 +162,8 @@
         'email' => htmlspecialchars($_POST['email']),
         'password' => hash('sha512', htmlspecialchars($_POST['password'])),
         'tel' => htmlspecialchars($_POST['tel']),
-        'departement' => $departement
+        'departement' => $departement,
+        'key' => $key
     ]);
 
     // checking if personne has been successfully created

@@ -24,6 +24,10 @@ body{
     font-family: 'Crimson Pro';
 }
 
+main{
+    min-height: 100vh;
+}
+
 h2{
     margin: 16px 0;
 
@@ -207,6 +211,7 @@ header{
     background-color: #FFC7C7;
 }
 
+
 header a:hover{
     color: #ffffff;
     text-decoration: underline;
@@ -299,6 +304,12 @@ header a:hover{
     background-repeat: no-repeat;
 }
 
+@media screen and (min-width: 1500px) {
+    #header-wave {
+        height: 200px;
+    }
+}
+
 /* footer */
 footer{
     height: 250px;
@@ -341,7 +352,7 @@ footer a:nth-of-type(2n){
 /* ------------ MAIN ----------- */
 
 main{
-    padding: 0 8vw;
+    padding: 0 10vw;
 }
 
 section{

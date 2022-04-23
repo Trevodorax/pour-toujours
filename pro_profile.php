@@ -37,13 +37,14 @@ if(isCustomer()){
                     
 
 
-                echo ' <h2>' . $welcome_title . $_SESSION['nomprefere'] .' ! <a href="#"><img src="images/settings_icon.svg"></a><a href="#"><img src="images/presta_contact_icon.svg"></a></h2>';
+                echo ' <h2>' . $welcome_title . $_SESSION['nomPrefere'] .' ! <a href="settings.php"><img src="images/settings_icon.svg"></a><a href="control_pannel.php?page=messages"><img src="images/presta_contact_icon.svg"></a></h2>';
                 
                 $q = 'SELECT id, nomEntreprise, emailPro, telPro,metier, photoProfil, lienSiteWeb FROM prestataire WHERE personne = :personne'; 
                 $req = $bdd->prepare($q);            
                 $req->execute(['personne' => $_SESSION['id']]);
                 $results = $req->fetchAll(PDO::FETCH_ASSOC);
                 $id_presta = $results[0]['id'];
+                $type = $results[0]['metier'];
        
             ?>
 
@@ -54,18 +55,27 @@ if(isCustomer()){
                     <?php 
                     echo '
                     <h3>' . $info_det .' informations :</h3>
-                    <h4>Nom complet : ' . $_SESSION['nomcomplet'] . ' </h4>
+                    <h4>Nom complet : ' . $_SESSION['nomComplet'] . ' </h4>
                     <p>Métier : ' . $results[0]['metier'] .'</p>
                     <p>Nom de '. $company_det . ' entreprise : ' . $results[0]['nomEntreprise']  .'</p>
-                    <p>Email : ' . $_SESSION['emailPro'][0]['emailPro']. '</p>
+                    <p>Email : ' . $results[0]['emailPro']. '</p>
                     <p>Tel pro : '. $results[0]['telPro'] .'</p>
                     <p>Département : ' . $_SESSION['departement'] . '</p>
                     <p>Lien du site web : <a target="_blank" href="'. $results[0]['lienSiteWeb'] . '">' .$results[0]['lienSiteWeb']. '</a></p>
                     ';
-                    echo '</div>';
-                    echo '<img src="images/prestataires/'. $results[0]['photoProfil'] . '">'
+                    echo '</div>'; ?>
+                    <?php echo '<img src="images/prestataires/'. $results[0]['photoProfil'] . '">'
                     ?>
-                          
+                    <section id="signature">
+                        <div class="row">
+                            <h3>Votre signature</h3>
+                            <p>Veuillez signer ci-dessous pour enregistrer votre signature, nous validerons votre profil après cela.</p>
+                            <canvas id="sign-space" class="mb-3" width="300px" height="100px"></canvas>
+                            
+                            <button class="btn btn-primary mb-2" id="sig-submitBtn" onclick="saveAsImage()">Envoyer la signature</button>
+			            	<button class="btn btn-danger" id="sig-clearBtn" onclick="eraseCanva()">Effacer la signature</button>
+                        </div>
+                    </section>    
             </section>
 
             <section id="portfolio">
@@ -121,7 +131,7 @@ if(isCustomer()){
 
                     <p class="title">Ajouter un service</p>
 
-                    <form class="service" method="POST" action="check_services.php?type=service">
+                    <form class="service" method="POST" action="check_services.php?section=service&pro=<?= $id_presta ?>&type=<?= $type ?>">
 
                         <label for='title'>Titre du service</label>
                         <input type="text" name="title" class="required-input" placeholder="ex: Patisseries en quantité (40+)" required>
@@ -186,15 +196,48 @@ if(isCustomer()){
             </section>
             <section id="clients">
                 <h3>Vos clients</h3>
-                <table>
-                    <tr>
-                        <th>Nom complet</th>
-                        <th>Date du mariage</th>
-                        <th>Service</th>
-                        <th>Adresse email</th>
-                        <th></th>
-                    </tr>
-                    
+
+                <?php 
+                        //VERY LONG REQUEST BUT we need it
+                    $q ='SELECT PERSONNE.NomComplet, PERSONNE.email, MARIAGE.date , DEMANDE.service FROM PERSONNE 
+                            INNER JOIN UTILISATEUR ON personne = PERSONNE.id
+                                INNER JOIN MARIAGE ON utilisateur = UTILISATEUR.id 
+                                    INNER JOIN DEMANDE ON DEMANDE.mariage = MARIAGE.id 
+                                        INNER JOIN SERVICE ON SERVICE.id = DEMANDE.service
+                                            WHERE SERVICE.prestataire = :id';
+                    $req = $bdd->prepare($q);
+                    $req -> execute([
+                         'id' => $id_presta                              
+                            ]);
+                 $results = $req->fetchAll(PDO::FETCH_ASSOC);
+
+                 if(count($results) == 0){
+                     echo '<p>Vous n\'avez pas encore de clients</p>';
+                 }
+
+                 //Basic structure of the table
+                 echo '
+                        <table>
+                        <tr>
+                            <th>Nom complet</th>
+                            <th>Date du mariage</th>
+                            <th>Service</th>
+                            <th>Adresse email</th>
+                            <th></th>
+                        </tr>';
+                //Displaying infos on the customer who ordered a service       
+                foreach($results as $key =>$customer)  {      
+                    echo '<tr>';
+                    echo '<td>' . $customer['NomComplet'] . '</td>';
+                    echo '<td>' . $customer['date'] . '</td>';
+                    echo '<td>' . $customer['service'] . '</td>';
+                    echo '<td>' . $customer['email'] . '</td>';
+                    echo '<td><img src="images/presta_contact_icon.svg"></td>';
+                    echo '</tr>';
+                }   
+                echo '</table>';
+                
+                ?>  
                     <!-- Template for the table row  -->
                     <!-- <tr>
                         <td>Fredo Sananos</td>
@@ -203,10 +246,11 @@ if(isCustomer()){
                         <td>f.sananes@gmail.com</td>
                         <td><img src="images/presta_contact_icon.svg"></td>
                     </tr> -->
-                </table>
+
+              
             </section>
 
-            <h3>Avis sur ce prestataire</h3>
+            <h3>Avis sur vos prestations</h3>
             
             <section id="reviews">
 
@@ -253,6 +297,7 @@ if(isCustomer()){
 
         <script src="scripts/index.js"></script>
         <script src="scripts/pro_profile.js"></script>
+        <script src="scripts/draw_signature.js"></script>
      
     </body>
 </html>

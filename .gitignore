@@ -1,5 +1,5 @@
-# ignore .idea files from Sublime Text(Simon)
+# ignore .idea files from shitty IDE (Simon)
 .idea/workspace.xml
 
-#ignore logs files ?
+# ignore logs files
 *log.txt

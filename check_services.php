@@ -5,19 +5,34 @@ include('includes/db.php');
 //Need to do all the verifs from forms from pro_profile 
 
 
-if (isset($_GET['type']) and $_GET['type'] == "service"){
+if (isset($_GET['section']) and $_GET['section'] == "service"){
 
-//Cheking if services adding form is OK:
+    
+    //Cheking if services adding form is OK:
 
-if(!isset($_POST['title']) || empty($_POST['title']) ){
-        header('location: pro_profile.php?message=Vous devez remplir tous les champs');
-        exit;
-    }
+    if(!isset($_POST['title']) || empty($_POST['title'])
+        || !isset($_POST['price']) || empty($_POST['price'])
+            || !isset($_POST['description']) || empty($_POST['description'])
+            ){
+                header('location: pro_profile.php?message=Vous devez remplir tous les champs');
+                exit;
+            }
 
-    $q ='INSERT INTO SERVICE(nom,tarif,description,prestataire) VALUES (:nom, :tarif, :description, :prestataire)';
+        if (!isset($_GET['type']) || empty($_GET['type']) ){
+            header('location: pro_profile.php?message=Il y a eu un problème');
+            exit;
+        }
+    
+    $type =htmlspecialchars($_GET['type']);
+    $id_presta = htmlspecialchars($_GET['pro']);
+    $letter = $type[0];
+
+
+    $q ='INSERT INTO SERVICE(nom, type, tarif,description,prestataire) VALUES (:nom, :type, :tarif, :description, :prestataire)';
     $req = $bdd->prepare($q);
     $req -> execute([
         'nom' => $_POST['title'],
+        'type' => $letter[0],
         'tarif' => $_POST['price'],
         'description' => $_POST['description'],
         'prestataire' => $id_presta
@@ -32,7 +47,7 @@ exit;
 
 //Cheking if photos adding form is OK:
        // checking image validity
-       if($_FILES['image']['error'] != 4){
+       if($_FILES['image']['error'] != 4 && isset($_POST['description']) && !empty($_POST['description'])){
 
         $ext = [
             'image/jpg',
@@ -83,7 +98,7 @@ exit;
         $height_stamp = imagesy($stamp);
 
         // this function add a picture to another one with transparence
-        imagecopymerge($image, $stamp, imagesx($image)-2*$width_stamp, imagesy($image)-2*$height_stamp, 0, 0, $width_stamp, $height_stamp,70);
+        imagecopymerge($image, $stamp, imagesx($image)/2, imagesy($image)/2, 0, 0, $width_stamp, $height_stamp,70);
 
         //The new image is saved in its slot
         imagepng($image, $newFilename, 1);
