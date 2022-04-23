@@ -8,13 +8,13 @@ function isCustomer(){
     }
 }
 function add_label($name, $value){
-    if (!isCustomer()){
         echo '<label for="'. $name .'">Valeur enregistrée: ' . $value . '</label>';
-    } 
 }
 
 if (isCustomer()){
     $className = "pouf";
+} else{
+    $className = " ";
 }
 
 ?>
@@ -98,93 +98,133 @@ if (isCustomer()){
                       <!-- REQUEST TO GET THE MISSING INFORMATIONS (NOT SET IN SESSION) ABOUT THE PROFILE -->
                         <?php
 
+                        //Add some parameters if the user is a services provider
                         if (!isCustomer()){
                             $extra = [
-                                "nomEntreprise, metier, telPro, description,photoProfil,lienSiteWeb", 
+                                "nomEntreprise, metier, emailPro, telPro, description,photoProfil,lienSiteWeb", 
                                 "INNER JOIN PRESTATAIRE ON personne = PERSONNE.id"
                             ];
                         } else {
                             $extra = [" ", " "];
+                            
                         }
                       
-                        $q = 'SELECT date_naissance, numero_tel, genre ' . $extra[0] . ' FROM PERSONNE ' . $extra[1]. ' WHERE PERSONNE.id = :id';
+                        $q = 'SELECT DATE_FORMAT(date_naissance, "%e/%m/%Y") as naissance, numero_tel, genre,' . $extra[0] . ' FROM PERSONNE ' . $extra[1]. ' WHERE PERSONNE.id = :id';
                         $req = $bdd->prepare($q);
                         $req->execute(['id' => $_SESSION['id']]);
                         $results= $req->fetchAll(PDO::FETCH_ASSOC);
-
-                        var_dump($results);
-
                         ?>
+
                       <!-- Displaying old values AND Form to change them if need be -->
-                        <form class="add" method="post" action ="check_sign_up.php" enctype="multipart/form-data">
+
+                        <?php 
+
+                            function create_form($old_value, $placeholder, $columnName ){
                             
-                            <label for="c_name"><? echo 'Valeur enregistrée: '. $_SESSION['nomcomplet'] ?></label>
-                            <input type="text" name="c_name" class="required-input" placeholder=" Votre nom complet" value="">
+                                echo '<form method="post" action ="check_profile_modification.php" enctype="multipart/form-data"> ' ;
+                                echo ' <label for="new_value">Valeur enregistrée: '. $old_value . '</label>';
+                                echo '<input type="text" name="new_value" class="required-input" placeholder="'.$placeholder.'">';
+                                echo '<input type="hidden" name="column" value=' . $columnName . '>';
+                                echo '<input type="submit">';
+
+                                if(isset($_GET['message']) && !empty($_GET['message'])) {
+
+                                    echo ' <p id="error-message">'. $_GET['message'] . '</p>';
+                                }
+
+                                echo '</form>';
+                            }     
+                            
+                            create_form($_SESSION['nomcomplet'], "Votre nouveau nom complet", "nomComplet");
+                            create_form($_SESSION['nomprefere'], "Votre nouveau nom prefere", "nomPrefere");
+                            create_form($results[0]['naissance'], "Votre date de naissance", "date_naissance");                   
+                        ?>
+                            <form method="post" action ="check_profile_modification.php" enctype="multipart/form-data">
+                                <?php if (!isCustomer()){add_label("company_name", $results[0]['nomEntreprise']);} ?>
+                                <input class="<?php echo $className ?> pro-form" type="text" name="company_name" placeholder="Nouveau nom de votre entreprise" value="">
+                                <input type="submit">
+                            </form>
+                            
+                            <form method="post" action ="check_profile_modification.php" enctype="multipart/form-data">
+                                <label for="departement"><? echo 'Valeur enregistrée: '. $_SESSION['departement'] ?></label>        
+                                <select id="region" name="new_value">
+
+                                    <?php
+                                        echo "<option disabled='disabled' selected='true' hidden> --- Sélectionner un département ---</option>";
+                                        $departement_options = ["01 - Ain", "02 - Aisne","03 - Allier","04 - Alpes-de-Haute-Provence","05 - Hautes-alpes","06 - Alpes-maritimes","07 - Ardèche","08 - Ardennes","09 - Ariège","10 - Aube","11 - Aude","12 - Aveyron","13 - Bouches-du-Rhône","14 - Calvados","15 - Cantal","16 - Charente","17 - Charente-maritime","18 - Cher","19 - Corrèze","2A - Corse-du-sud","2B - Haute-Corse","21 - Côte-d'Or","22 - Côtes-d'Armor","23 - Creuse","24 - Dordogne","25 - Doubs","26 - Drôme","27 - Eure","28 - Eure-et-loir","29 - Finistère","30 - Gard","31 - Haute-garonne","32 - Gers","33 - Gironde","34 - Hérault","35 - Ille-et-vilaine","36 - Indre","37 - Indre-et-loire","38 - Isère","39 - Jura","40 - Landes", "41 - Loir-et-cher","42 - Loire","43 - Haute-loire","44 - Loire-atlantique","45 - Loiret","46 - Lot","47 - Lot-et-garonne","48 - Lozère","49 - Maine-et-loire","50 - Manche","51 - Marne","52 - Haute-marne","53 - Mayenne","54 - Meurthe-et-moselle","55 - Meuse","56 - Morbihan","57 - Moselle","58 - Nièvre","59 - Nord","60 - Oise","61 - Orne","62 - Pas-de-calais","63 - Puy-de-dôme","64 - Pyrénées-atlantiques","65 - Hautes-Pyrénées","66 - Pyrénées-orientales","67 - Bas-rhin","68 - Haut-rhin","69 - Rhône","70 - Haute-saône","71 - Saône-et-loire","72 - Sarthe","73 - Savoie","74 - Haute-savoie","75 - Paris","76 - Seine-maritime","77 - Seine-et-marne","78 - Yvelines","79 - Deux-sèvres","80 - Somme","81 - Tarn","82 - Tarn-et-Garonne","83 - Var","84 - Vaucluse","85 - Vendée","86 - Vienne","87 - Haute-vienne","88 - Vosges","89 - Yonne","90 - Territoire de belfort","91 - Essonne","92 - Hauts-de-seine","93 - Seine-Saint-Denis","94 - Val-de-marne","95 - Val-d'Oise","971 - Guadeloupe","972 - Martinique","973 - Guyane","974 - La réunion","976 - Mayotte"];
+                                        foreach ($departement_options as $departement){
+                                            echo "<option value='$departement'>$departement</option>";
+                                        }
+                                    ?>
+                                </select>
+                                <input type="submit">
+                                <input type="hidden" name="column" value="departement">
+                            </form>
+
+                            <?php 
+                                  create_form($results[0]['numero_tel'], "Votre nouveau numéro de télephone", "numero_tel");
+                            ?>
+                            <form method="post" action ="check_profile_modification.php" enctype="multipart/form-data">                         
+                                <?php if (!isCustomer()){add_label("tel_pro", $results[0]['telPro']);} ?>
+                                <input class="<?php echo $className ?> pro-form" type="tel" name="tel_pro" placeholder=" Votre nouveau numéro de téléphone professionnel" value="<?= isset($_COOKIE['telpro']) ? $_COOKIE['telpro'] : '' ?>">
+                                <input type="hidden" name="column" value="telPro">
+                                <input type="submit">
+                            </form>
+               
+                            <?php 
+                                  create_form($_SESSION['email'], "Votre nouvel email", "email");
+                            ?>
+
+                            <form method="post" action ="check_profile_modification.php" enctype="multipart/form-data">                         
+                                <?php if (!isCustomer()){add_label("email_pro", $results[0]['emailPro']);} ?>
+                                <input class="<?php echo $className ?> pro-form" type="email" name="email_pro" placeholder=" Votre e-mail professionnel" value="<?= isset($_COOKIE['emailpro']) ? $_COOKIE['emailpro'] : '' ?>">
+                                <input type="hidden" name="column" value="email_pro">
+                                <input type="submit">
+                            </form>
+                            
+                            <form action="check_profile_modification.php" method="POST">
+                                <?php $var = $results[0]['genre'] == 'H' ? 'Homme' : ($results[0]['genre'] == 'F' ? 'Femme' : 'Autre'); ?>
+                                <label for="genre"><?= 'Valeur enregistrée: ' . $var ?></label>        
+                                <select id="genre" name="new_value">
+                                    <?php
+                                        echo "<option disabled='disabled' selected='true' hidden> --- Sélectionner un genre ---</option>";
+                                        $gender_options = ["Homme","Femme","Autre","Préfère ne pas répondre"];
+                                        foreach ($gender_options as $genre){
+                                            echo "<option value='$genre'>$genre</option>";
+                                        }
+                                    ?>
+                                </select>
+                                <input type="hidden" name="column" value="genre">
+                                <input type="submit">
+                            </form>
+                                
+                            <form action="check_profile_modification.php" method="POST">
+                                <?php if (!isCustomer()){add_label("activite", $results[0]['metier']);} ?>
+                                <select class="<?php echo $className ?> pro-form" id="activite" name="new_value">
+                                    <?php
+                                        echo "<option disabled='disabled' selected='true' hidden> --- Sélectionner un secteur d'activité ---</option>";
+                                        $activite_options = ["Photographie", "Cuisine", "Décoration", "Fleuriste"];
+                                        foreach ($activite_options as $activite){
+                                            echo "<option value='$activite'>$activite</option>";
+                                        }
+                                    ?>
+                                </select>
+                                <input type="hidden" name="column" value="metier">
+                                <input type="submit">
+                            </form>
 
 
-                            <label for="f_name"><? echo 'Valeur enregistrée: '. $_SESSION['nomprefere'] ?></label>        
-                            <input type="text" name="f_name" class="required-input" placeholder=" Votre nom préféré" value="">
-                                 
-                            <label for="f_name"><? echo 'Valeur enregistrée: '. $_SESSION['nomprefere'] ?></label>        
-                            <input class="date_input" type="date" name="b_date" class="required-input" placeholder="Votre date de naissance" value="">
-                                
-                            <?php add_label("company_name", $results[0]['nomEntreprise']) ?>
-                            <input class="<?php echo $className ?> pro-form" type="text" name="company_name" placeholder=" Nom de votre entreprise" value="">
-                                    
-                            <label for="departement"><? echo 'Valeur enregistrée: '. $_SESSION['departement'] ?></label>        
-                            <select id="region" name="departement">
+                            <?php create_form($results[0]['lienSiteWeb'], "Nouveau lien du site web", "lienSiteWeb");
+                            ?>
 
-                                <?php
-                                    echo "<option disabled='disabled' selected='true' hidden> --- Sélectionner un département ---</option>";
-                                    $departement_options = ["01 - Ain", "02 - Aisne","03 - Allier","04 - Alpes-de-Haute-Provence","05 - Hautes-alpes","06 - Alpes-maritimes","07 - Ardèche","08 - Ardennes","09 - Ariège","10 - Aube","11 - Aude","12 - Aveyron","13 - Bouches-du-Rhône","14 - Calvados","15 - Cantal","16 - Charente","17 - Charente-maritime","18 - Cher","19 - Corrèze","2A - Corse-du-sud","2B - Haute-Corse","21 - Côte-d'Or","22 - Côtes-d'Armor","23 - Creuse","24 - Dordogne","25 - Doubs","26 - Drôme","27 - Eure","28 - Eure-et-loir","29 - Finistère","30 - Gard","31 - Haute-garonne","32 - Gers","33 - Gironde","34 - Hérault","35 - Ille-et-vilaine","36 - Indre","37 - Indre-et-loire","38 - Isère","39 - Jura","40 - Landes", "41 - Loir-et-cher","42 - Loire","43 - Haute-loire","44 - Loire-atlantique","45 - Loiret","46 - Lot","47 - Lot-et-garonne","48 - Lozère","49 - Maine-et-loire","50 - Manche","51 - Marne","52 - Haute-marne","53 - Mayenne","54 - Meurthe-et-moselle","55 - Meuse","56 - Morbihan","57 - Moselle","58 - Nièvre","59 - Nord","60 - Oise","61 - Orne","62 - Pas-de-calais","63 - Puy-de-dôme","64 - Pyrénées-atlantiques","65 - Hautes-Pyrénées","66 - Pyrénées-orientales","67 - Bas-rhin","68 - Haut-rhin","69 - Rhône","70 - Haute-saône","71 - Saône-et-loire","72 - Sarthe","73 - Savoie","74 - Haute-savoie","75 - Paris","76 - Seine-maritime","77 - Seine-et-marne","78 - Yvelines","79 - Deux-sèvres","80 - Somme","81 - Tarn","82 - Tarn-et-Garonne","83 - Var","84 - Vaucluse","85 - Vendée","86 - Vienne","87 - Haute-vienne","88 - Vosges","89 - Yonne","90 - Territoire de belfort","91 - Essonne","92 - Hauts-de-seine","93 - Seine-Saint-Denis","94 - Val-de-marne","95 - Val-d'Oise","971 - Guadeloupe","972 - Martinique","973 - Guyane","974 - La réunion","976 - Mayotte"];
-                                    foreach ($departement_options as $departement){
-                                        echo "<option value='$departement'>$departement</option>";
-                                    }
-                                ?>
-                            </select>
-                                
-                            <label for="f_name"><? echo 'Valeur enregistrée: ' . $results[0]['numero_tel'] ?></label>        
-                            <input type="tel" name="tel" placeholder=" Votre numéro de téléphone" value="<?= isset($_COOKIE['numero_tel']) ? $_COOKIE['numero_tel'] : '' ?>">
-                                
-                            <?php add_label("tel_pro", $results[0]['telPro']) ?>
-                            <input class="<?php echo $className ?> pro-form" type="tel" name="tel_pro" placeholder=" Votre numéro de téléphone professionnel" value="<?= isset($_COOKIE['telpro']) ? $_COOKIE['telpro'] : '' ?>">
-                                
-                            <label for="email"><? echo 'Valeur enregistrée: '. $_SESSION['email'] ?></label>        
-                            <input type="email" name="email" class="required-input" placeholder=" Votre e-mail" value="">
-                                
-                            <?php add_label("email_pro", $results[0]['emailPro']) ?>
-                            <input class="<?php echo $className ?> pro-form" type="email" name="email_pro" placeholder=" Votre e-mail professionnel" value="<?= isset($_COOKIE['emailpro']) ? $_COOKIE['emailpro'] : '' ?>">
-                                    
-                            <?php $var = $results[0]['genre'] == 'H'?'Homme' :'Femme'; ?>
-                            <label for="genre"><?= 'Valeur enregistrée: ' . $var ?></label>        
-                            <select id="genre" name="genre">
-                                <?php
-                                    echo "<option disabled='disabled' selected='true' hidden> --- Sélectionner un genre ---</option>";
-                                    $gender_options = ["Homme","Femme","Autre","Préfère ne pas répondre"];
-                                    foreach ($gender_options as $genre){
-                                        echo "<option value='$genre'>$genre</option>";
-                                    }
-                                ?>
-                            </select>
-                                
-                            <?php add_label("activite", $results[0]['metier']) ?>
-                            <select class="<?php echo $className ?> pro-form" id="activite" name="activite">
-                                <?php
-                                    echo "<option disabled='disabled' selected='true' hidden> --- Sélectionner un secteur d'activité ---</option>";
-                                    $activite_options = ["Photographie", "Cuisine", "Décoration", "Fleuriste"];
-                                    foreach ($activite_options as $activite){
-                                        echo "<option value='$activite'>$activite</option>";
-                                    }
-                                ?>
-                            </select>
+                            <form action="check_profile_modif.php" method="post" enctype="">      
+                                <?php if (!isCustomer()){add_label("image", $results[0]['photoProfil']);} ?>
+                                <input type="file" name="image" class="<?php echo $className ?> pro-form" placeholder=" Votre image de profil">
+                                <input type="hidden" name="column" value="photoProfil">
+                                <input type="submit">
+                            </form>
 
-                            <?php add_label("site", $results[0]['lienSiteWeb']) ?>    
-                            <input type="text" name="site" class="<?php echo $className ?> pro-form" placeholder=" Lien de votre site" value="<?= isset($_COOKIE['liensiteweb']) ? $_COOKIE['liensiteweb'] : '' ?>">
                                 
-                            <?php add_label("image", $results[0]['photoProfil']) ?>
-                            <input type="file" name="image" class="<?php echo $className ?> pro-form" placeholder=" Votre image de profil">
-                                
-                            <input type="submit" name="send" >
                     </section>
 
                 </div>
