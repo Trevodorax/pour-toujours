@@ -15,12 +15,27 @@ function changeAvatar(arrow, part, next) {
 }
 
 function saveAvatar(){
-    // get all the avatar indexes
+    // get all the avatar elements
     const avatarParts = document.querySelectorAll('#avatar>div');
+
+    // get avatar background color
+    const color = document.getElementById('avatar').classList[0];
+    const possibleColors = {
+        "blue" : 1,
+        "pink" : 2,
+        "green" : 3
+    }
+    const colorNumber = possibleColors[color];
+
     let avatarSpecs = "";
+
+    // add all the face parts to the avatarSpecs
     avatarParts.forEach(part => {
         avatarSpecs += part.id[part.id.length - 1];
-    })
+    });
+
+    // add the avatar background color at the last index
+    avatarSpecs += colorNumber;
 
     const request = new XMLHttpRequest();
     request.open('post', 'includes/change_avatar.php');
