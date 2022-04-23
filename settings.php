@@ -126,7 +126,7 @@ function drawAvatar($avatar_specs) {
                             
                         }
                       
-                        $q = 'SELECT DATE_FORMAT(date_naissance, "%e/%m/%Y") as naissance, numero_tel, genre,' . $extra[0] . ' FROM PERSONNE ' . $extra[1]. ' WHERE PERSONNE.id = :id';
+                        $q = 'SELECT DATE_FORMAT(date_naissance, "%e/%m/%Y") as naissance, numero_tel, genre,' . $extra[0] . ' FROM PERSONNE ' . $extra[1]. ' WHERE id = :id ';
                         $req = $bdd->prepare($q);
                         $req->execute(['id' => $_SESSION['id']]);
                         $results= $req->fetchAll(PDO::FETCH_ASSOC);
