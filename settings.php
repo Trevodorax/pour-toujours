@@ -93,7 +93,7 @@ if (isCustomer()){
                       <p>Supprimer mon compte</p>
                       <p>Télécharger toutes mes informations (RGPD)</p>
 
-                      <p class="title">Modifier mes informations personnelles</p>
+                      <p id="title">Modifier mes informations personnelles</p>
 
                       <!-- REQUEST TO GET THE MISSING INFORMATIONS (NOT SET IN SESSION) ABOUT THE PROFILE -->
                         <?php
@@ -116,38 +116,40 @@ if (isCustomer()){
                         ?>
 
                       <!-- Displaying old values AND Form to change them if need be -->
-
+                      <div class="changing-forms">
                         <?php 
+                               if(isset($_GET['message']) && !empty($_GET['message'])) {
 
-                            function create_form($old_value, $placeholder, $columnName ){
+                                echo ' <p id="error-message">'. $_GET['message'] . '</p>';
+                            }
+
+                            function create_form($old_value, $name, $placeholder, $columnName ){
                             
                                 echo '<form method="post" action ="check_profile_modification.php" enctype="multipart/form-data"> ' ;
                                 echo ' <label for="new_value">Valeur enregistrée: '. $old_value . '</label>';
-                                echo '<input type="text" name="new_value" class="required-input" placeholder="'.$placeholder.'">';
+                                echo '<input type="text" name="'. $name .'" class="required-input" placeholder="'.$placeholder.'">';
                                 echo '<input type="hidden" name="column" value=' . $columnName . '>';
                                 echo '<input type="submit">';
 
-                                if(isset($_GET['message']) && !empty($_GET['message'])) {
-
-                                    echo ' <p id="error-message">'. $_GET['message'] . '</p>';
-                                }
+             
 
                                 echo '</form>';
                             }     
                             
-                            create_form($_SESSION['nomcomplet'], "Votre nouveau nom complet", "nomComplet");
-                            create_form($_SESSION['nomprefere'], "Votre nouveau nom prefere", "nomPrefere");
-                            create_form($results[0]['naissance'], "Votre date de naissance", "date_naissance");                   
+                            create_form($_SESSION['nomcomplet'], "c_name", "Votre nouveau nom complet", "nomComplet");
+                            create_form($_SESSION['nomprefere'], "f_name", "Votre nouveau nom prefere", "nomPrefere");
+                            create_form($results[0]['naissance'], "b_date", "Votre date de naissance", "date_naissance");                   
                         ?>
                             <form method="post" action ="check_profile_modification.php" enctype="multipart/form-data">
                                 <?php if (!isCustomer()){add_label("company_name", $results[0]['nomEntreprise']);} ?>
-                                <input class="<?php echo $className ?> pro-form" type="text" name="company_name" placeholder="Nouveau nom de votre entreprise" value="">
+                                <input class="<?php echo $className ?> pro-form required-input" type="text" name="company_name" placeholder="Nouveau nom de votre entreprise" value="">
                                 <input type="submit">
+                                <input type="hidden" name="column" value="nomEntreprise">
                             </form>
                             
                             <form method="post" action ="check_profile_modification.php" enctype="multipart/form-data">
                                 <label for="departement"><? echo 'Valeur enregistrée: '. $_SESSION['departement'] ?></label>        
-                                <select id="region" name="new_value">
+                                <select id="region" name="departement" class="required-input">
 
                                     <?php
                                         echo "<option disabled='disabled' selected='true' hidden> --- Sélectionner un département ---</option>";
@@ -162,22 +164,22 @@ if (isCustomer()){
                             </form>
 
                             <?php 
-                                  create_form($results[0]['numero_tel'], "Votre nouveau numéro de télephone", "numero_tel");
+                                  create_form($results[0]['numero_tel'], "tel","Votre nouveau numéro de télephone", "numero_tel");
                             ?>
                             <form method="post" action ="check_profile_modification.php" enctype="multipart/form-data">                         
                                 <?php if (!isCustomer()){add_label("tel_pro", $results[0]['telPro']);} ?>
-                                <input class="<?php echo $className ?> pro-form" type="tel" name="tel_pro" placeholder=" Votre nouveau numéro de téléphone professionnel" value="<?= isset($_COOKIE['telpro']) ? $_COOKIE['telpro'] : '' ?>">
+                                <input class="<?php echo $className ?> required-input pro-form" type="tel" name="tel_pro" placeholder=" Votre nouveau numéro de téléphone professionnel" value="<?= isset($_COOKIE['telpro']) ? $_COOKIE['telpro'] : '' ?>">
                                 <input type="hidden" name="column" value="telPro">
                                 <input type="submit">
                             </form>
                
                             <?php 
-                                  create_form($_SESSION['email'], "Votre nouvel email", "email");
+                                  create_form($_SESSION['email'], "email", "Votre nouvel email", "email");
                             ?>
 
                             <form method="post" action ="check_profile_modification.php" enctype="multipart/form-data">                         
                                 <?php if (!isCustomer()){add_label("email_pro", $results[0]['emailPro']);} ?>
-                                <input class="<?php echo $className ?> pro-form" type="email" name="email_pro" placeholder=" Votre e-mail professionnel" value="<?= isset($_COOKIE['emailpro']) ? $_COOKIE['emailpro'] : '' ?>">
+                                <input class="<?php echo $className ?> required-input pro-form" type="email" name="email_pro" placeholder=" Votre e-mail professionnel" value="<?= isset($_COOKIE['emailpro']) ? $_COOKIE['emailpro'] : '' ?>">
                                 <input type="hidden" name="column" value="email_pro">
                                 <input type="submit">
                             </form>
@@ -185,7 +187,7 @@ if (isCustomer()){
                             <form action="check_profile_modification.php" method="POST">
                                 <?php $var = $results[0]['genre'] == 'H' ? 'Homme' : ($results[0]['genre'] == 'F' ? 'Femme' : 'Autre'); ?>
                                 <label for="genre"><?= 'Valeur enregistrée: ' . $var ?></label>        
-                                <select id="genre" name="new_value">
+                                <select id="genre" name="genre" class="required-input">
                                     <?php
                                         echo "<option disabled='disabled' selected='true' hidden> --- Sélectionner un genre ---</option>";
                                         $gender_options = ["Homme","Femme","Autre","Préfère ne pas répondre"];
@@ -200,7 +202,7 @@ if (isCustomer()){
                                 
                             <form action="check_profile_modification.php" method="POST">
                                 <?php if (!isCustomer()){add_label("activite", $results[0]['metier']);} ?>
-                                <select class="<?php echo $className ?> pro-form" id="activite" name="new_value">
+                                <select class="<?php echo $className ?> required-input pro-form" id="activite" name="activite">
                                     <?php
                                         echo "<option disabled='disabled' selected='true' hidden> --- Sélectionner un secteur d'activité ---</option>";
                                         $activite_options = ["Photographie", "Cuisine", "Décoration", "Fleuriste"];
@@ -214,16 +216,16 @@ if (isCustomer()){
                             </form>
 
 
-                            <?php create_form($results[0]['lienSiteWeb'], "Nouveau lien du site web", "lienSiteWeb");
+                            <?php create_form($results[0]['lienSiteWeb'],"site", "Nouveau lien du site web", "lienSiteWeb");
                             ?>
 
                             <form action="check_profile_modif.php" method="post" enctype="">      
                                 <?php if (!isCustomer()){add_label("image", $results[0]['photoProfil']);} ?>
-                                <input type="file" name="image" class="<?php echo $className ?> pro-form" placeholder=" Votre image de profil">
+                                <input type="file" name="image" class="<?php echo $className ?> required-input pro-form" placeholder=" Votre image de profil">
                                 <input type="hidden" name="column" value="photoProfil">
                                 <input type="submit">
                             </form>
-
+                         </div>               
                                 
                     </section>
 
