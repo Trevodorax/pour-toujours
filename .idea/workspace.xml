@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="22163e9a-3a5f-47e0-8312-b49e07a1bae7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/new_message.php" beforeDir="false" afterPath="$PROJECT_DIR$/new_message.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_sign_up.php" beforeDir="false" afterPath="$PROJECT_DIR$/check_sign_up.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/SCRIPT SQL - A JOUR.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/SCRIPT SQL - A JOUR.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/control_pannel/messages.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/control_pannel/messages.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +41,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../site2_classe3" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -87,7 +89,12 @@
       <workItem from="1649611168581" duration="5455000" />
       <workItem from="1649681761860" duration="90000" />
       <workItem from="1649685747257" duration="4289000" />
-      <workItem from="1649758754393" duration="1319000" />
+      <workItem from="1649758754393" duration="1664000" />
+      <workItem from="1649927468680" duration="14000" />
+      <workItem from="1650467136539" duration="2135000" />
+      <workItem from="1650655958965" duration="696000" />
+      <workItem from="1650732182864" duration="869000" />
+      <workItem from="1650734127606" duration="2487000" />
     </task>
     <servers />
   </component>

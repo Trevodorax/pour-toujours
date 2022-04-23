@@ -47,65 +47,73 @@
 
                             echo '  <a href="control_pannel.php?page=messages&destinataire=' . $destinataires[0][0] .'">
                                                 <img src="images/message_pfp.jpg">
-                                                <div><span>' . $destinataires[0][1] .'</span> - ' . $destinataires[0][0] .'<br>1 nouveau message</div>
+                                                <div><span>' . $destinataires[0][1] .'</span> - ' . $destinataires[0][0] .'<br></div>
                                             </a>';
                     }
                 }
             ?>
+            <a href="control_pannel.php?page=messages&destinataire=pour-toujours">
+                <img src="images/message_pfp.jpg">
+                <div><span>L'équipe Pour-Toujours</span></div>
+            </a>
         </section>
         <section id="conversation">
             <?php
                 if (isset($_GET['destinataire']) && !empty($_GET['destinataire'])){
                     $email_destinataire = htmlspecialchars($_GET['destinataire']);
-                }
 
-                if(isset($email_destinataire) && !empty($email_destinataire)) {
-                    $q = 'SELECT id, email FROM personne WHERE email = :email';
-                    $req = $bdd->prepare($q);
-                    $req->execute([
-                        'email' => $email_destinataire
-                    ]);
-                    $destinataire = $req->fetchAll();
+                    if ($email_destinataire == "pour-toujours"){
+                        echo '<div class="from">Bonjour voisin !<br>Toute l\'équipe de Pour Toujours vous souhaites la bienvenue sur notre plateforme<br>Nous espérons de tout coeur que vous trouverez votre bonheur !<br>A bientôt !</br>L\'équipe Pour Toujours</div>';
+                    }else{
+                        if(isset($email_destinataire) && !empty($email_destinataire)) {
+                            $q = 'SELECT id, email FROM personne WHERE email = :email';
+                            $req = $bdd->prepare($q);
+                            $req->execute([
+                                'email' => $email_destinataire
+                            ]);
+                            $destinataire = $req->fetchAll();
 
-                    if (count($destinataire) == 0) {
-                        header('location: control_pannel.php?page=messages&message=Aucun utilisateur trouvé');
-                        exit;
-                    }
-
-                    if ($email_destinataire != $destinataire[0][1]) {
-                        header('location: control_pannel.php?page=messages&message=L\'email ne correspond a aucun utilisateur');
-                        exit;
-                    }
-
-                    $q = 'SELECT id FROM conversation WHERE (personne1 = ? AND personne2 = ?) OR (personne1 = ? AND personne2 = ?)';
-                    $req = $bdd->prepare($q);
-                    $req->execute([
-                        $destinataire[0][0],
-                        $_SESSION['id'],
-                        $_SESSION['id'],
-                        $destinataire[0][0]
-                    ]);
-                    $conversation = $req->fetchAll();
-
-                    if (count($conversations) != 0) {
-                        $q = 'SELECT contenu, id_auteur FROM message WHERE conversation = :conversation';
-                        $req = $bdd->prepare($q);
-                        $req->execute([
-                            'conversation' => $conversation[0][0]
-                        ]);
-                        $message = $req->fetchAll();
-
-                        foreach ($message as $key => $value) {
-                            if ($message[$key][1] == $_SESSION['id']) {
-                                echo '<div class="to">' . $message[$key][0] . '</div>';
-                            } else {
-                                echo '<div class="from">' . $message[$key][0] . '</div>';
+                            if (count($destinataire) == 0) {
+                                header('location: control_pannel.php?page=messages&message=Aucun utilisateur trouvé');
+                                exit;
                             }
-                        }
-                        echo '<form method="post" action="new_message.php">
+
+                            if ($email_destinataire != $destinataire[0][1]) {
+                                header('location: control_pannel.php?page=messages&message=L\'email ne correspond a aucun utilisateur');
+                                exit;
+                            }
+
+                            $q = 'SELECT id FROM conversation WHERE (personne1 = ? AND personne2 = ?) OR (personne1 = ? AND personne2 = ?)';
+                            $req = $bdd->prepare($q);
+                            $req->execute([
+                                $destinataire[0][0],
+                                $_SESSION['id'],
+                                $_SESSION['id'],
+                                $destinataire[0][0]
+                            ]);
+                            $conversation = $req->fetchAll();
+
+                            if (count($conversations) != 0) {
+                                $q = 'SELECT contenu, id_auteur FROM message WHERE conversation = :conversation';
+                                $req = $bdd->prepare($q);
+                                $req->execute([
+                                    'conversation' => $conversation[0][0]
+                                ]);
+                                $message = $req->fetchAll();
+
+                                foreach ($message as $key => $value) {
+                                    if ($message[$key][1] == $_SESSION['id']) {
+                                        echo '<div class="to">' . $message[$key][0] . '</div>';
+                                    } else {
+                                        echo '<div class="from">' . $message[$key][0] . '</div>';
+                                    }
+                                }
+                                echo '<form method="post" action="new_message.php">
                                     <input id="page-bottom" type="text" name="message" placeholder=" Votre message">
                                     <input type="hidden" name="destinataire" value="' . $destinataire[0][0] .'">                            
                                 </form>';
+                            }
+                        }
                     }
                 }
             ?>

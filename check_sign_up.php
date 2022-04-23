@@ -1,5 +1,7 @@
 <?php
 
+    require "includes/PHPMailer/PHPMailerAutoload.php";
+
     include('includes/db.php');
 
     // checking if inputs are set and not empty
@@ -27,7 +29,7 @@
     }
 
     // processing departement
-    $departement = $_POST['departement'];
+    $departement = htmlspecialchars($_POST['departement']);
 
     $departement_name = explode('-', $departement);
     $departement_number = $departement_name[0];
@@ -38,7 +40,7 @@
     $q = 'SELECT id FROM personne WHERE numero_tel = :tel';
     $req = $bdd->prepare($q);
     $req->execute([
-        'tel' => $_POST['tel']
+        'tel' => htmlspecialchars($_POST['tel'])
     ]);
     $email = $req->fetchAll();
 
@@ -66,7 +68,7 @@
     $q = 'SELECT id FROM personne WHERE email = :email';
     $req = $bdd->prepare($q);
     $req->execute([
-        'email' => $_POST['email']
+        'email' => htmlspecialchars($_POST['email'])
     ]);
     $email = $req->fetchAll();
     if(count($email) != 0){
@@ -137,13 +139,13 @@
         exit;
     }
 
-    if($_POST['genre'] === "Homme"){
+    if(htmlspecialchars($_POST['genre']) === "Homme"){
         $genre = "H";
-    }elseif ($_POST['genre'] === "Femme"){
+    }elseif (htmlspecialchars($_POST['genre']) === "Femme"){
         $genre = "F";
-    }elseif ($_POST['genre'] === "Autre"){
+    }elseif (htmlspecialchars($_POST['genre']) === "Autre"){
         $genre = "A";
-    }elseif($_POST['genre'] === "Préfère ne pas répondre"){
+    }elseif(htmlspecialchars($_POST['genre']) === "Préfère ne pas répondre"){
         $genre = "N";
     }
 
@@ -151,13 +153,13 @@
     $q = "INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement) VALUES (:c_name, :f_name, :b_date, :genre, :email, :password, :tel, :departement)";
     $req = $bdd->prepare($q);
     $personne = $req->execute([
-        'c_name' => $_POST['c_name'],
-        'f_name' => $_POST['f_name'],
-        'b_date' => $_POST['b_date'],
+        'c_name' => htmlspecialchars($_POST['c_name']),
+        'f_name' => htmlspecialchars($_POST['f_name']),
+        'b_date' => htmlspecialchars($_POST['b_date']),
         'genre' => $genre,
-        'email' => $_POST['email'],
-        'password' => hash('sha512', $_POST['password']),
-        'tel' => $_POST['tel'],
+        'email' => htmlspecialchars($_POST['email']),
+        'password' => hash('sha512', htmlspecialchars($_POST['password'])),
+        'tel' => htmlspecialchars($_POST['tel']),
         'departement' => $departement
     ]);
 
@@ -171,7 +173,7 @@
     $q = 'SELECT id FROM personne WHERE email = :email';
     $req = $bdd->prepare($q);
     $req->execute([
-        'email' => $_POST['email']
+        'email' => htmlspecialchars($_POST['email'])
     ]);
     $id = $req->fetchAll();
 
@@ -191,7 +193,7 @@
         $q = 'SELECT id FROM prestataire WHERE telpro = :telpro';
         $req = $bdd->prepare($q);
         $req->execute([
-            'telpro' => $_POST['tel_pro']
+            'telpro' => htmlspecialchars($_POST['tel_pro'])
         ]);
         $email = $req->fetchAll();
         if(count($email) != 0){
@@ -217,7 +219,7 @@
         $q = 'SELECT id FROM prestataire WHERE emailpro = :emailpro';
         $req = $bdd->prepare($q);
         $req->execute([
-            'emailpro' => $_POST['email_pro']
+            'emailpro' => htmlspecialchars($_POST['email_pro'])
         ]);
         $email = $req->fetchAll();
         if(count($email) != 0){
@@ -248,7 +250,7 @@
         if(!isset($_POST['site']) || empty($_POST['site'])){
             $link = "*";
         }else{
-            $link = $_POST['site'];
+            $link = htmlspecialchars($_POST['site']);
         }
 
         if(isset($_POST['site']) && !empty($_POST['site'])){
@@ -285,7 +287,7 @@
                 // the third parameter, allows the creation of a recursive $path
             }
 
-            $filename = $_FILES['image']['name'];
+            $filename = htmlspecialchars($_FILES['image']['name']);
 
             $array = explode('.', $filename);
             $extension = end($array);
@@ -301,10 +303,10 @@
         $q = "INSERT INTO prestataire (nomEntreprise, telpro, emailpro, metier, photoProfil, lienSiteWeb, personne) VALUES (:companyname, :telpro, :emailpro, :metier, :profilepicture, :linkwebsite, :personne)";
         $req = $bdd->prepare($q);
         $prestataire = $req->execute([
-            'companyname' => $_POST['company_name'],
-            'telpro' => $_POST['tel_pro'],
-            'emailpro' => $_POST['email_pro'],
-            'metier' => $_POST['activite'],
+            'companyname' => htmlspecialchars($_POST['company_name']),
+            'telpro' => htmlspecialchars($_POST['tel_pro']),
+            'emailpro' => htmlspecialchars($_POST['email_pro']),
+            'metier' => htmlspecialchars($_POST['activite']),
             'profilepicture' => $filename,
             'linkwebsite' => $link,
             'personne' => $id[0][0]
@@ -334,6 +336,61 @@
 
     // checking if the account was created
     if($personne){
+
+        // if yes, sending an email
+        function smtpmailer($to, $from, $from_name, $subject, $body)
+        {
+            $mail = new PHPMailer();
+            $mail->IsSMTP();
+            $mail->SMTPAuth = true;
+
+            $mail->SMTPSecure = 'ssl';
+            $mail->Host = 'smtp.gmail.com';
+            $mail->Port = 465;
+            $mail->Username = 'pour.toujours2k22@gmail.com';
+            $mail->Password = 'Respons11!!!';
+
+            //   $path = 'reseller.pdf';
+            //   $mail->AddAttachment($path);
+
+            $mail->IsHTML(true);
+            $mail->From="pour.toujours2k22@gmail.com";
+            $mail->FromName=$from_name;
+            $mail->Sender=$from;
+            $mail->AddReplyTo($from, $from_name);
+            $mail->Subject = $subject;
+            $mail->Body = $body;
+            $mail->AddAddress($to);
+            if(!$mail->Send())
+            {
+                $error ="Une erreur est survenue, merci de réessayer plus tard";
+                return $error;
+            }
+            else
+            {
+                $error = "L'Email à bien été envoyé";
+                return $error;
+            }
+    }
+
+        $to   = htmlspecialchars($_POST['email']);
+        $from = 'pour.toujours2k22@gmail.com';
+        $name = 'Pour Toujours';
+        $subj = 'Confirmation de votre compte Pour Toujours';
+        $msg = ' Bonjour ' . htmlspecialchars($_POST["c_name"]) . ' !,
+                
+                Merci d’avoir rejoint Pour Toujours.
+                
+                Votre demande de création de compte a bien été enregistrée. Pour confirmer la création de votre compte, veuillez cliquez sur le lien ci-dessous.
+                
+                [Lien/Bouton]
+                
+                Si vous rencontrez des difficultés pour vous connecter à votre compte, contactez-nous à [adresse e-mail].
+                
+                Cordialement,
+                L’équipe du [portail client]';
+
+        $error=smtpmailer($to,$from, $name ,$subj, $msg);
         header('location: index.php?message=Compte créé avec succès');
         exit;
     }
