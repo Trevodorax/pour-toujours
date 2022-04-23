@@ -1,5 +1,4 @@
 <?php session_start() ;
-
 include('includes/db.php');
 
 function isCustomer(){
@@ -118,7 +117,7 @@ function drawAvatar($avatar_specs) {
                         //Add some parameters if the user is a services provider
                         if (!isCustomer()){
                             $extra = [
-                                "nomEntreprise, metier, emailPro, telPro, description,photoProfil,lienSiteWeb", 
+                                ",nomEntreprise, metier, emailPro, telPro, description,photoProfil,lienSiteWeb", 
                                 "INNER JOIN PRESTATAIRE ON personne = PERSONNE.id"
                             ];
                         } else {
@@ -126,7 +125,7 @@ function drawAvatar($avatar_specs) {
                             
                         }
                       
-                        $q = 'SELECT DATE_FORMAT(date_naissance, "%e/%m/%Y") as naissance, numero_tel, genre,' . $extra[0] . ' FROM PERSONNE ' . $extra[1]. ' WHERE id = :id ';
+                        $q = 'SELECT DATE_FORMAT(date_naissance, "%e/%m/%Y") as naissance, numero_tel, genre' . $extra[0] . ' FROM PERSONNE ' . $extra[1]. ' WHERE PERSONNE.id = :id ';
                         $req = $bdd->prepare($q);
                         $req->execute(['id' => $_SESSION['id']]);
                         $results= $req->fetchAll(PDO::FETCH_ASSOC);
@@ -153,16 +152,20 @@ function drawAvatar($avatar_specs) {
                                 echo '</form>';
                             }     
                             
-                            create_form($_SESSION['nomcomplet'], "c_name", "Votre nouveau nom complet", "nomComplet");
-                            create_form($_SESSION['nomprefere'], "f_name", "Votre nouveau nom prefere", "nomPrefere");
+                            create_form($_SESSION['nomComplet'], "c_name", "Votre nouveau nom complet", "nomComplet");
+                            create_form($_SESSION['nomPrefere'], "f_name", "Votre nouveau nom prefere", "nomPrefere");
                             create_form($results[0]['naissance'], "b_date", "Votre date de naissance", "date_naissance");                   
                         ?>
-                            <form method="post" action ="check_profile_modification.php" enctype="multipart/form-data">
-                                <?php if (!isCustomer()){add_label("company_name", $results[0]['nomEntreprise']);} ?>
-                                <input class="<?php echo $className ?> pro-form required-input" type="text" name="company_name" placeholder="Nouveau nom de votre entreprise" value="">
-                                <input type="submit">
-                                <input type="hidden" name="column" value="nomEntreprise">
-                            </form>
+
+                        <?php if (!isCustomer()){
+                            echo '<form method="post" action ="check_profile_modification.php" enctype="multipart/form-data">';
+                            add_label("company_name", $results[0]['nomEntreprise']);
+                              echo ' <input class="'. $className .'pro-form required-input" type="text" name="company_name" placeholder="Nouveau nom de votre entreprise">
+                                    <input type="submit">
+                                    <input type="hidden" name="column" value="nomEntreprise">
+                            </form>';
+                        }
+                            ?>
                             
                             <form method="post" action ="check_profile_modification.php" enctype="multipart/form-data">
                                 <label for="departement"><? echo 'Valeur enregistrée: '. $_SESSION['departement'] ?></label>        
@@ -170,7 +173,7 @@ function drawAvatar($avatar_specs) {
 
                                     <?php
                                         echo "<option disabled='disabled' selected='true' hidden> --- Sélectionner un département ---</option>";
-                                        $departement_options = ["01 - Ain", "02 - Aisne","03 - Allier","04 - Alpes-de-Haute-Provence","05 - Hautes-alpes","06 - Alpes-maritimes","07 - Ardèche","08 - Ardennes","09 - Ariège","10 - Aube","11 - Aude","12 - Aveyron","13 - Bouches-du-Rhône","14 - Calvados","15 - Cantal","16 - Charente","17 - Charente-maritime","18 - Cher","19 - Corrèze","2A - Corse-du-sud","2B - Haute-Corse","21 - Côte-d'Or","22 - Côtes-d'Armor","23 - Creuse","24 - Dordogne","25 - Doubs","26 - Drôme","27 - Eure","28 - Eure-et-loir","29 - Finistère","30 - Gard","31 - Haute-garonne","32 - Gers","33 - Gironde","34 - Hérault","35 - Ille-et-vilaine","36 - Indre","37 - Indre-et-loire","38 - Isère","39 - Jura","40 - Landes", "41 - Loir-et-cher","42 - Loire","43 - Haute-loire","44 - Loire-atlantique","45 - Loiret","46 - Lot","47 - Lot-et-garonne","48 - Lozère","49 - Maine-et-loire","50 - Manche","51 - Marne","52 - Haute-marne","53 - Mayenne","54 - Meurthe-et-moselle","55 - Meuse","56 - Morbihan","57 - Moselle","58 - Nièvre","59 - Nord","60 - Oise","61 - Orne","62 - Pas-de-calais","63 - Puy-de-dôme","64 - Pyrénées-atlantiques","65 - Hautes-Pyrénées","66 - Pyrénées-orientales","67 - Bas-rhin","68 - Haut-rhin","69 - Rhône","70 - Haute-saône","71 - Saône-et-loire","72 - Sarthe","73 - Savoie","74 - Haute-savoie","75 - Paris","76 - Seine-maritime","77 - Seine-et-marne","78 - Yvelines","79 - Deux-sèvres","80 - Somme","81 - Tarn","82 - Tarn-et-Garonne","83 - Var","84 - Vaucluse","85 - Vendée","86 - Vienne","87 - Haute-vienne","88 - Vosges","89 - Yonne","90 - Territoire de belfort","91 - Essonne","92 - Hauts-de-seine","93 - Seine-Saint-Denis","94 - Val-de-marne","95 - Val-d'Oise","971 - Guadeloupe","972 - Martinique","973 - Guyane","974 - La réunion","976 - Mayotte"];
+                                        $departement_options = ["01 - Ain", "02 - Aisne","03 - Allier","04 - Alpes-de-Haute-Provence","05 - Hautes-alpes","06 - Alpes-maritimes","07- Ardèche","08 - Ardennes","09 - Ariège","10 - Aube","11 - Aude","12 - Aveyron","13 - Bouches-du-Rhône","14 - Calvados","15 - Cantal","16 - Charente","17 - Charente-maritime","18 - Cher","19 - Corrèze","2A - Corse-du-sud","2B - Haute-Corse","21 - Côte-d'Or","22 - Côtes-d'Armor","23 - Creuse","24 - Dordogne","25 - Doubs","26 - Drôme","27 - Eure","28 - Eure-et-loir","29 - Finistère","30 - Gard","31 - Haute-garonne","32 - Gers","33 - Gironde","34 - Hérault","35 - Ille-et-vilaine","36 - Indre","37 - Indre-et-loire","38 - Isère","39 - Jura","40 - Landes", "41 - Loir-et-cher","42 - Loire","43 - Haute-loire","44 - Loire-atlantique","45 - Loiret","46 - Lot","47 - Lot-et-garonne","48 - Lozère","49 - Maine-et-loire","50 - Manche","51 - Marne","52 - Haute-marne","53 - Mayenne","54 - Meurthe-et-moselle","55 - Meuse","56 - Morbihan","57 - Moselle","58 - Nièvre","59 - Nord","60 - Oise","61 - Orne","62 - Pas-de-calais","63 - Puy-de-dôme","64 - Pyrénées-atlantiques","65 - Hautes-Pyrénées","66 - Pyrénées-orientales","67 - Bas-rhin","68 - Haut-rhin","69 - Rhône","70 - Haute-saône","71 - Saône-et-loire","72 - Sarthe","73 - Savoie","74 - Haute-savoie","75 - Paris","76 - Seine-maritime","77 - Seine-et-marne","78 - Yvelines","79 - Deux-sèvres","80 - Somme","81 - Tarn","82 - Tarn-et-Garonne","83 - Var","84 - Vaucluse","85 - Vendée","86 - Vienne","87 - Haute-vienne","88 - Vosges","89 - Yonne","90 - Territoire de belfort","91 - Essonne","92 - Hauts-de-seine","93 - Seine-Saint-Denis","94 - Val-de-marne","95 - Val-d'Oise","971 - Guadeloupe","972 - Martinique","973 - Guyane","974 - La réunion","976 - Mayotte"];
                                         foreach ($departement_options as $departement){
                                             echo "<option value='$departement'>$departement</option>";
                                         }
@@ -183,23 +186,28 @@ function drawAvatar($avatar_specs) {
                             <?php 
                                   create_form($results[0]['numero_tel'], "tel","Votre nouveau numéro de télephone", "numero_tel");
                             ?>
-                            <form method="post" action ="check_profile_modification.php" enctype="multipart/form-data">                         
-                                <?php if (!isCustomer()){add_label("tel_pro", $results[0]['telPro']);} ?>
-                                <input class="<?php echo $className ?> required-input pro-form" type="tel" name="tel_pro" placeholder=" Votre nouveau numéro de téléphone professionnel" value="<?= isset($_COOKIE['telpro']) ? $_COOKIE['telpro'] : '' ?>">
+                            <?php if (!isCustomer()){
+                            echo '<form method="post" action ="check_profile_modification.php" enctype="multipart/form-data">';                         
+                            add_label("tel_pro", $results[0]['telPro']);
+                               echo ' <input class="'.$className. ' required-input pro-form" type="tel" name="tel_pro" placeholder=" Votre nouveau numéro de téléphone professionnel">
                                 <input type="hidden" name="column" value="telPro">
                                 <input type="submit">
-                            </form>
+                            </form>';
+                            }
+                            ?>
                
                             <?php 
                                   create_form($_SESSION['email'], "email", "Votre nouvel email", "email");
                             ?>
-
-                            <form method="post" action ="check_profile_modification.php" enctype="multipart/form-data">                         
-                                <?php if (!isCustomer()){add_label("email_pro", $results[0]['emailPro']);} ?>
-                                <input class="<?php echo $className ?> required-input pro-form" type="email" name="email_pro" placeholder=" Votre e-mail professionnel" value="<?= isset($_COOKIE['emailpro']) ? $_COOKIE['emailpro'] : '' ?>">
-                                <input type="hidden" name="column" value="email_pro">
-                                <input type="submit">
-                            </form>
+                             <?php if (!isCustomer()){
+                            echo '<form method="post" action ="check_profile_modification.php" enctype="multipart/form-data">';                         
+                            add_label("email_pro", $results[0]['emailPro']);
+                            echo   '<input class="' . $className . 'required-input pro-form" type="email" name="email_pro" placeholder=" Votre e-mail professionnel">
+                                    <input type="hidden" name="column" value="emailPro">
+                                    <input type="submit">
+                                </form>';
+                             }
+                            ?>
                             
                             <form action="check_profile_modification.php" method="POST">
                                 <?php $var = $results[0]['genre'] == 'H' ? 'Homme' : ($results[0]['genre'] == 'F' ? 'Femme' : 'Autre'); ?>
@@ -216,32 +224,38 @@ function drawAvatar($avatar_specs) {
                                 <input type="hidden" name="column" value="genre">
                                 <input type="submit">
                             </form>
-                                
-                            <form action="check_profile_modification.php" method="POST">
-                                <?php if (!isCustomer()){add_label("activite", $results[0]['metier']);} ?>
-                                <select class="<?php echo $className ?> required-input pro-form" id="activite" name="activite">
-                                    <?php
+                            
+                            
+                            <?php if (!isCustomer()){
+                                echo '<form action="check_profile_modification.php" method="POST">';
+                                add_label("activite", $results[0]['metier']);
+                                echo '<select class="'. $className . '  required-input pro-form" id="activite" name="activite">';
+                                   
                                         echo "<option disabled='disabled' selected='true' hidden> --- Sélectionner un secteur d'activité ---</option>";
                                         $activite_options = ["Photographie", "Cuisine", "Décoration", "Fleuriste"];
                                         foreach ($activite_options as $activite){
                                             echo "<option value='$activite'>$activite</option>";
                                         }
-                                    ?>
-                                </select>
-                                <input type="hidden" name="column" value="metier">
-                                <input type="submit">
-                            </form>
+                                
+                                echo '</select>';
+                                echo '<input type="hidden" name="column" value="metier">';
+                                echo '<input type="submit">';
+                            echo '</form>' ;
+                                    } ?>
 
-
-                            <?php create_form($results[0]['lienSiteWeb'],"site", "Nouveau lien du site web", "lienSiteWeb");
+                            <?php if (!isCustomer()){
+                                create_form($results[0]['lienSiteWeb'],"site", "Nouveau lien du site web", "lienSiteWeb");}
                             ?>
 
-                            <form action="check_profile_modif.php" method="post" enctype="">      
-                                <?php if (!isCustomer()){add_label("image", $results[0]['photoProfil']);} ?>
-                                <input type="file" name="image" class="<?php echo $className ?> required-input pro-form" placeholder=" Votre image de profil">
-                                <input type="hidden" name="column" value="photoProfil">
-                                <input type="submit">
-                            </form>
+                            <?php if (!isCustomer()){
+                            echo '<form action="check_profile_modification.php" method="post" enctype="multipart/form-data"> ';    
+                            add_label("image", $results[0]['photoProfil']);
+                            echo ' <input type="file" name="image" class="'.$className.' required-input pro-form" placeholder="Votre image de profil">';
+                            echo ' <input type="hidden" name="column" value="photoProfil">';
+                            echo ' <input type="submit">';
+                            echo '</form>';
+                            }
+                            ?>
                          </div>               
                                 
                     </section>

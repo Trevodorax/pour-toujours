@@ -49,8 +49,8 @@
 
     session_start();
     $_SESSION['id'] = $id[0][0];
-    $_SESSION['nomprefere'] = $id[0][1];
-    $_SESSION['nomcomplet'] = $id[0][2];
+    $_SESSION['nomPrefere'] = $id[0][1];
+    $_SESSION['nomComplet'] = $id[0][2];
     $_SESSION['departement'] = $id[0][3];
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['emailPro'] = $emailpro;

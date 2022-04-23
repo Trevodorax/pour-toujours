@@ -37,7 +37,7 @@ if(isCustomer()){
                     
 
 
-                echo ' <h2>' . $welcome_title . $_SESSION['nomprefere'] .' ! <a href="#"><img src="images/settings_icon.svg"></a><a href="#"><img src="images/presta_contact_icon.svg"></a></h2>';
+                echo ' <h2>' . $welcome_title . $_SESSION['nomPrefere'] .' ! <a href="settings.php"><img src="images/settings_icon.svg"></a><a href="control_pannel.php?page=messages"><img src="images/presta_contact_icon.svg"></a></h2>';
                 
                 $q = 'SELECT id, nomEntreprise, emailPro, telPro,metier, photoProfil, lienSiteWeb FROM prestataire WHERE personne = :personne'; 
                 $req = $bdd->prepare($q);            
@@ -55,10 +55,10 @@ if(isCustomer()){
                     <?php 
                     echo '
                     <h3>' . $info_det .' informations :</h3>
-                    <h4>Nom complet : ' . $_SESSION['nomcomplet'] . ' </h4>
+                    <h4>Nom complet : ' . $_SESSION['nomComplet'] . ' </h4>
                     <p>Métier : ' . $results[0]['metier'] .'</p>
                     <p>Nom de '. $company_det . ' entreprise : ' . $results[0]['nomEntreprise']  .'</p>
-                    <p>Email : ' . $_SESSION['emailPro'][0]['emailPro']. '</p>
+                    <p>Email : ' . $results[0]['emailPro']. '</p>
                     <p>Tel pro : '. $results[0]['telPro'] .'</p>
                     <p>Département : ' . $_SESSION['departement'] . '</p>
                     <p>Lien du site web : <a target="_blank" href="'. $results[0]['lienSiteWeb'] . '">' .$results[0]['lienSiteWeb']. '</a></p>

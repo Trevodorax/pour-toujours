@@ -98,7 +98,7 @@ if(!isLogged()){
         <div id="page-top">
             <div>
                 <?php
-                    echo '<h2>Bonjour, ' . $_SESSION['nomprefere'] . ' !</h2>';
+                    echo '<h2>Bonjour, ' . $_SESSION['nomPrefere'] . ' !</h2>';
                     echo isCustomer() ? '<p>Prêt à continuer l\'aventure ?</p>' : 'Commencez ou reprenez vos conversations !';
                 ?>
                 
