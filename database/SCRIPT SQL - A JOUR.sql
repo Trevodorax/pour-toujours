@@ -68,6 +68,7 @@ CREATE TABLE PRESTATAIRE(
 	description VARCHAR(255),
 	photoProfil VARCHAR(40),
 	lienSiteWeb VARCHAR(100),
+	signature VARCHAR(100),
 	personne INTEGER NOT NULL UNIQUE REFERENCES PERSONNE(id)
 );
 

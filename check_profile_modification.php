@@ -18,8 +18,6 @@ foreach($posts as $post){
 
     //COMMENT GERER DEPARTEMENT ET IMAGE ET GENRE ?
 
-
-
 //Updating the db : thx modify.php
 ////PARAMETERS FOR THE REQUEST
 $personne_columns = ['nomComplet', 'nomPrefere', 'date_naissance', 'genre', 'email', 'numero_tel', 'departement', 'date_inscription'];
@@ -53,6 +51,7 @@ try{
     exit;
 }
 
+//CHANGING SESSION PARAMS SO EVERYTHING IS STILL UP TO DATE
 if (isset($_SESSION[$column])){
     $_SESSION[$column] = $_POST['new_value'] ;
 }
