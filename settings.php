@@ -26,7 +26,7 @@ function getAvatar($id_personne) {
 }
 
 function drawAvatar($avatar_specs) {
-    $colors = ['blue', 'pink'];
+    $colors = ['blue', 'pink', 'green'];
     echo '<div id="avatar" class="' . $colors[$avatar_specs[7] - 1] . '">';
         echo '<div id="hair' . $avatar_specs[0] . '"></div>';
         echo '<div id="face' . $avatar_specs[1] . '"></div>';
