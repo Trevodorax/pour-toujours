@@ -344,6 +344,8 @@
         function smtpmailer($to, $from, $from_name, $subject, $body)
         {
             $mail = new PHPMailer();
+            $mail->CharSet = "UTF-8";
+            $mail->Encoding = 'base64';
             $mail->IsSMTP();
             $mail->SMTPAuth = true;
 
@@ -380,21 +382,21 @@
         $from = 'pour.toujours2k22@gmail.com';
         $name = 'Pour Toujours';
         $subj = 'Confirmation de votre compte Pour Toujours';
-        $msg = ' Bonjour ' . htmlspecialchars($_POST["c_name"]) . ' !,
+        $msg = ' <h3>Bonjour ' . htmlspecialchars($_POST["c_name"]) . ' !</h3><br>,
                 
-                Merci d’avoir rejoint Pour Toujours.
+                <p>Merci d’avoir rejoint Pour Toujours.<br><br>
                 
-                Votre demande de création de compte a bien été enregistrée. Pour confirmer la création de votre compte, veuillez cliquez sur le lien ci-dessous.
+                Votre demande de création de compte a bien été enregistrée. Pour confirmer la création de votre compte, veuillez cliquer sur le lien ci-dessous :<br>
                 
-                https://pourtoujours.live/confirm_sign_up?email=' . $to . '&cle=' . $key . '
+                <a href="https://pourtoujours.live/confirm_sign_up?email=' . $to . '&cle=' . $key . '">Confirmer mon compte</a><br><br>
                 
-                Si vous rencontrez des difficultés pour vous connecter à votre compte, contactez-nous à ' . $from . '.
+                Si vous rencontrez des difficultés pour vous connecter à votre compte, contactez-nous via l\'adresse mail ' . $from . ' ou via le formulaire de contact de notre site.<br><br>
                 
-                Cordialement,
-                L’équipe de Pour Toujours';
+                Cordialement,<br>
+                L’équipe de <strong>Pour Toujours</strong></p>';
 
         $error=smtpmailer($to,$from, $name ,$subj, $msg);
-        
+
         header('location: index.php?message=Compte créé avec succès');
         exit;
     }

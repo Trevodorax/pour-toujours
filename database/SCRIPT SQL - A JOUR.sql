@@ -33,7 +33,6 @@ CREATE TABLE PERSONNE(
 	departement CHAR(3),
 	cle integer,
 	confirme integer DEFAULT 0,
-	date_inscription DATETIME DEFAULT NOW()
 	date_inscription DATETIME DEFAULT NOW(),
 	estAdmin TINYINT(1) DEFAULT 0
 );
@@ -105,7 +104,7 @@ CREATE TABLE COMMENTAIRE(
 	contenu VARCHAR(255),
 	note TINYINT,
 	date_envoi DATETIME,
-	prestataire INTEGER NOT NULL REFERENCES PRESTATAIRE(id) ,
+	prestataire INTEGER NOT NULL REFERENCES PRESTATAIRE(id),
 	utilisateur INTEGER NOT NULL REFERENCES UTILISATEUR(id),
 	valide TINYINT 
 );
