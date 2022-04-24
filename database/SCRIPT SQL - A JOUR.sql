@@ -31,14 +31,11 @@ CREATE TABLE PERSONNE(
 	mot_de_passe VARCHAR(255),
 	numero_tel CHAR(10),
 	departement CHAR(3),
-<<<<<<< HEAD
 	cle integer,
 	confirme integer DEFAULT 0,
 	date_inscription DATETIME DEFAULT NOW()
-=======
 	date_inscription DATETIME DEFAULT NOW(),
 	estAdmin TINYINT(1) DEFAULT 0
->>>>>>> 9077839c6fd22524c3a18b1e066322c5fd1a35d7
 );
 
 CREATE TABLE CONVERSATION( 
@@ -60,7 +57,7 @@ CREATE TABLE MESSAGE(
 CREATE TABLE UTILISATEUR(
 	id INTEGER PRIMARY KEY auto_increment,
 	preferences_qcm CHAR(9),
-	avatar CHAR(10),
+	avatar CHAR(10) DEFAULT '1111111',
 	personne INTEGER  NOT NULL UNIQUE REFERENCES PERSONNE(id)
 );
 
