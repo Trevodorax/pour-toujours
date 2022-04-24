@@ -14,9 +14,6 @@
         exit;
     }
 
-    var_dump($id);
-    var_dump($_SESSION['email']);
-
     if($id[0][1] == $_SESSION['email']){
         header('location: control_pannel.php?page=messages&message=Vous ne pouvez pas vous envoyer un message');
         exit;
