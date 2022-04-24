@@ -71,40 +71,41 @@ function drawAvatar($avatar_specs) {
 
                 <h3>Mon profil</h3>
 
-                <div id="avatar-area">
-                    <p>Personnaliser mon avatar</p>
+                <?php
+                if(empty($_SESSION['emailPro'])){
+                    echo '<div id="avatar-area">';
+                    echo '<p>Personnaliser mon avatar</p>';
 
-                    <?php
-                        // for the loop that will create side arrows
-                        $avatar_parts = ['hair', 'face', 'eyes', 'nose', 'mouth', 'detail'];
-                    ?>
+                    // for the loop that will create side arrows
+                    $avatar_parts = ['hair', 'face', 'eyes', 'nose', 'mouth', 'detail'];
 
-                    <div id="avatar-maker">
-                        <div class="avatar-arrows">
-                            <img src="images/go_icon.svg" onclick="changeAvatarColor(false)">
-                            <?php
-                                foreach($avatar_parts as $part) {
-                                    echo '<img src="images/go_icon.svg" onclick="changeAvatar(this, \'' . $part . '\', false)" for="' . $part . '">';
-                                }
-                            ?>
-                        </div>
-                        <?php
-                            $avatar_specs = getAvatar($_SESSION['id']);
-                            if($avatar_specs){
-                                drawAvatar($avatar_specs);
+                    echo '<div id="avatar-maker">';
+                        echo '<div class="avatar-arrows">';
+                            echo '<img src="images/go_icon.svg" onclick="changeAvatarColor(false)">';
+
+                            foreach($avatar_parts as $part) {
+                                echo '<img src="images/go_icon.svg" onclick="changeAvatar(this, \'' . $part . '\', false)" for="' . $part . '">';
                             }
-                        ?>
-                        <div class="avatar-arrows">
-                            <img src="images/go_icon.svg" onclick="changeAvatarColor(true)">
-                            <?php
+
+                        echo '</div>';
+
+                        $avatar_specs = getAvatar($_SESSION['id']);
+                        if($avatar_specs){
+                            drawAvatar($avatar_specs);
+                        }
+
+                        echo '<div class="avatar-arrows">';
+                            echo '<img src="images/go_icon.svg" onclick="changeAvatarColor(true)">';
                             foreach($avatar_parts as $part) {
                                 echo '<img src="images/go_icon.svg" onclick="changeAvatar(this, \'' . $part . '\', true)" for="' . $part . '">';
                             }
-                            ?>
-                        </div>
-                    </div>
+                        echo '</div>';
+                    echo '</div>';
 
-                    <button class="btn btn-primary" id="save-avatar" onclick="saveAvatar()">Sauvegarder l'avatar</button>
+                    echo '<button class="btn btn-primary" id="save-avatar" onclick="saveAvatar()">Sauvegarder l\'avatar</button>';
+
+                }
+                ?>
 
                     <section id="account-modification">
                       <p>Modifier mon mot de passe</p>
