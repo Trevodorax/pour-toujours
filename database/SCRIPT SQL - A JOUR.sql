@@ -31,16 +31,18 @@ CREATE TABLE PERSONNE(
 	mot_de_passe VARCHAR(255),
 	numero_tel CHAR(10),
 	departement CHAR(3),
+	cle integer,
+	confirme integer DEFAULT 0,
 	date_inscription DATETIME DEFAULT NOW(),
 	estAdmin TINYINT(1) DEFAULT 0
 );
 
 CREATE TABLE CONVERSATION( 
 	id INTEGER PRIMARY KEY auto_increment,
-	date_creation DATETIME,
+	date_creation DATETIME NOT NULL DEFAULT NOW(),
 	personne1 INTEGER NOT NULL REFERENCES PERSONNE(id),
 	personne2 INTEGER NOT NULL REFERENCES PERSONNE(id),
-	dernier_message DATETIME NOT NULL REFERENCES MESSAGE(heure_envoi)
+	dernier_message DATETIME NOT NULL DEFAULT NOW() REFERENCES MESSAGE(heure_envoi)
 );
 
 CREATE TABLE MESSAGE(
@@ -54,7 +56,7 @@ CREATE TABLE MESSAGE(
 CREATE TABLE UTILISATEUR(
 	id INTEGER PRIMARY KEY auto_increment,
 	preferences_qcm CHAR(9),
-	avatar CHAR(10),
+	avatar CHAR(10) DEFAULT '1111111',
 	personne INTEGER  NOT NULL UNIQUE REFERENCES PERSONNE(id)
 );
 
@@ -102,7 +104,7 @@ CREATE TABLE COMMENTAIRE(
 	contenu VARCHAR(255),
 	note TINYINT,
 	date_envoi DATETIME,
-	prestataire INTEGER NOT NULL REFERENCES PRESTATAIRE(id) ,
+	prestataire INTEGER NOT NULL REFERENCES PRESTATAIRE(id),
 	utilisateur INTEGER NOT NULL REFERENCES UTILISATEUR(id),
 	valide TINYINT 
 );
