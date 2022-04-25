@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="22163e9a-3a5f-47e0-8312-b49e07a1bae7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/SCRIPT SQL - A JOUR.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/SCRIPT SQL - A JOUR.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/new_conversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/new_conversation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_sign_up.php" beforeDir="false" afterPath="$PROJECT_DIR$/check_sign_up.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/confirm_sign_up.php" beforeDir="false" afterPath="$PROJECT_DIR$/confirm_sign_up.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Test" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -100,7 +100,9 @@
       <workItem from="1650732182864" duration="869000" />
       <workItem from="1650734127606" duration="4095000" />
       <workItem from="1650805210977" duration="2354000" />
-      <workItem from="1650829320178" duration="948000" />
+      <workItem from="1650829320178" duration="1186000" />
+      <workItem from="1650916918981" duration="1310000" />
+      <workItem from="1650918389178" duration="2327000" />
     </task>
     <servers />
   </component>

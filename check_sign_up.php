@@ -388,7 +388,7 @@
                 
                 Votre demande de création de compte a bien été enregistrée. Pour confirmer la création de votre compte, veuillez cliquer sur le lien ci-dessous :<br>
                 
-                <a href="https://pourtoujours.live/confirm_sign_up?email=' . $to . '&cle=' . $key . '">Confirmer mon compte</a><br><br>
+                <a href="http://localhost/pour-toujours/confirm_sign_up.php?email=' . $to . '&cle=' . $key . '">Confirmer mon compte</a><br><br>
                 
                 Si vous rencontrez des difficultés pour vous connecter à votre compte, contactez-nous via l\'adresse mail ' . $from . ' ou via le formulaire de contact de notre site.<br><br>
                 
