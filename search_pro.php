@@ -34,7 +34,7 @@ function isLogged(){
                 
                 <div id="page-top">
                     <p id="sort-button">Triez par <img src="images/three_dots.svg"></p>
-                    <div id="sort">
+                    <div id="sort" class="pouf">
                         <a id="time" onclick="sort(this)">Date d'inscription</a>  
                         <a id="metier" onclick="sort(this)">Métiers</a>
                         <a id="alphabet" onclick="sort(this)">Ordre alphabétique du nom</a>
@@ -56,10 +56,9 @@ function isLogged(){
 
                     <div class="departement list">
                         <h3>Département prisé</h3>
-                        <p onclick="filter(this)">Paris</p>
-                        <p onclick="filter(this)">Ain</p>
-                        <p onclick="filter(this)">Oise</p>
-                        <p onclick="filter(this)">Ile-et-Villaine</p>
+                        <p onclick="filter(this)">75 - Paris</p>
+                        <p onclick="filter(this)">13 - Bouches du Rhones</p>
+                        <p onclick="filter(this)">35 - Ile-et-Villaine</p>
                     </div>
                     <h3 id="best-pro" onclick="filter(this)">Les plus recommendés (3)</h3>
 

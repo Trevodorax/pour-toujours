@@ -46,7 +46,7 @@ function displayInfo($informations){
         } else if ($_POST['sort'] = "metier"){
             $sort = 'metier';
         } else if ($_POST['sort'] = "alphabet"){
-            $sort = 'nomComplet' ;
+            $sort = 'nomPrefere' ;
         }
 
         //REQUEST OF ALL PROS but ORDERED:
@@ -65,7 +65,7 @@ function displayInfo($informations){
                  isset($_POST['content'])){
 
            //SETTING THE VALUE OF THE CONDITION
-        $column_name = $_POST['column_name'];
+        $column_name = htmlspecialchars($_POST['column_name']);
 
         $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id WHERE ' . $column_name . '= :content';
         $req = $bdd->prepare($q);

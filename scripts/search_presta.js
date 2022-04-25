@@ -40,7 +40,11 @@ function filter(element){
    
     column_name = (element.parentNode).classList[0]
 
-    console.log(column_name)
+    if (column_name == "departement"){
+        midFilter = selectedFilter.split(" -") 
+        selectedFilter = midFilter[0]
+    }
+
     const request = new XMLHttpRequest();
   
 
@@ -57,11 +61,12 @@ function filter(element){
             displayFilteredResults(request.responseText);
         } 
 
-}
+    }
 
 $data = 'column_name=' + column_name + '&content=' + selectedFilter ;
 request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 request.send($data);
+
 }
 
 function purgeSectionPro(){
@@ -74,7 +79,6 @@ function purgeSectionPro(){
 
 function displayFilteredResults(divs){
     section = document.getElementById("all-presta");
-    console.log(divs)
     section.innerHTML = divs ;
 }
 
