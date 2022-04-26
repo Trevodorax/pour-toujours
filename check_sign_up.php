@@ -23,6 +23,27 @@
         setcookie('nomprefere', $_POST['f_name'], time() + 24 * 60 * 60);
     }
 
+    if(!isset($_POST['b_date']) || empty($_POST['b_date'])){
+        header('location: create_account.php?message=Vous devez entrer votre date de naissance');
+        exit;
+    }
+
+    if(isset($_POST['b_date']) && !empty($_POST['b_date'])){
+        setcookie('date_naissance', $_POST['b_date'], time() + 24 * 60 * 60);
+    }
+
+    $b_date = htmlspecialchars($_POST['b_date']);
+
+    $array = explode('-', $b_date);
+    $year = $array[0];
+    $month = $array[1];
+    $day = $array[2];
+
+    if(checkdate($year, $month, $day)){
+        header('location: create_account.php?message=La date entrée n\'est pas valide');
+        exit;
+    }
+
     if(!isset($_POST['departement']) || empty($_POST['departement'])){
         header('location: create_account.php?message=Vous devez sélectionner un département');
         exit;

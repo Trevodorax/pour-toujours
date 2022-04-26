@@ -18,7 +18,7 @@
 
                 <input type="text" name="f_name" class="required-input" placeholder=" Votre nom préféré" value="<?= isset($_COOKIE['nomprefere']) ? $_COOKIE['nomprefere'] : '' ?>">
 
-                <input class="date_input" type="date" name="b_date" class="required-input" placeholder=" Votre date de naissance">
+                <input class="date_input" type="date" name="b_date" class="required-input" placeholder=" Votre date de naissance" value="<?= isset($_COOKIE['date_naissance']) ? $_COOKIE['date_naissance'] : '' ?>">
 
                 <input class="pro-form" type="text" name="company_name" placeholder=" Nom de votre entreprise" value="<?= isset($_COOKIE['nomentreprise']) ? $_COOKIE['nomentreprise'] : '' ?>">
 
