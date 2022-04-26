@@ -14,7 +14,7 @@
             <p>Accédez à votre profil en saisissant vos identifiants</p>
             <form method="post" action="check_log_in.php">
 
-                <input type="email" name="email" class="required-input" placeholder=" Votre e-mail" required>
+                <input type="email" name="email" class="required-input" placeholder=" Votre e-mail" value="<?= isset($_COOKIE['email']) ? $_COOKIE['email'] : '' ?>" required>
                 <input type="password" name="password" class="required-input" placeholder=" Votre mot de passe" required>
 
                 <?php 

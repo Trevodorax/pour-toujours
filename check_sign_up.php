@@ -209,7 +209,7 @@
             exit;
         }
 
-        if (!preg_match('#^0[168]([ \-\.]?[0-9]{2}){4}$#', $_POST['tel_pro'])){
+        if (!preg_match('#^0[136789]([ \-\.]?[0-9]{2}){4}$#', $_POST['tel_pro'])){
             header('location: create_account.php?message=Le numéro de téléphone n\'est pas valide');
             exit;
         }
@@ -250,16 +250,28 @@
             exit;
         }
 
+        // checking if a link exists
         if(!isset($_POST['site']) || empty($_POST['site'])){
-            $link = "*";
+            //if no
+            header("location: create_account.php?message=Vous devez entrer le lien de votre site");
+            exit;
         }else{
+            // if yes
             $link = htmlspecialchars($_POST['site']);
+            // checking if there's a protocol, if not adding one
+            $temp_link = (!preg_match('#^(ht|f)tps?://#', $link)) ? 'http://' . $link : $link;
+            //checking if it's a valid url
+            if (filter_var($temp_link, FILTER_VALIDATE_URL)){
+                $link = $temp_link;
+            } else {
+                header("location: create_account.php?message=Le lien de votre site n'est pas valide");
+                exit;
+            }
         }
 
         if(isset($_POST['site']) && !empty($_POST['site'])){
             setcookie('liensiteweb', $_POST['site'], time() + 24 * 60 * 60);
         }
-
 
         // checking image validity
         if($_FILES['image']['error'] != 4){
@@ -341,8 +353,7 @@
     if($personne){
 
         // if yes, sending an email
-        function smtpmailer($to, $from, $from_name, $subject, $body)
-        {
+        function smtpmailer($to, $from, $from_name, $subject, $body){
             $mail = new PHPMailer();
             $mail->CharSet = "UTF-8";
             $mail->Encoding = 'base64';
@@ -376,19 +387,19 @@
                 $error = "L'Email à bien été envoyé";
                 return $error;
             }
-    }
+        }
 
         $to   = htmlspecialchars($_POST['email']);
         $from = 'pour.toujours2k22@gmail.com';
         $name = 'Pour Toujours';
-        $subj = 'Confirmation de votre compte Pour Toujours';
+        $subj = 'Confirmation de votre compte - Pour Toujours';
         $msg = ' <h3>Bonjour ' . htmlspecialchars($_POST["c_name"]) . ' !</h3><br>,
                 
                 <p>Merci d’avoir rejoint Pour Toujours.<br><br>
                 
                 Votre demande de création de compte a bien été enregistrée. Pour confirmer la création de votre compte, veuillez cliquer sur le lien ci-dessous :<br>
                 
-                <a href="http://localhost/pour-toujours/confirm_sign_up.php?email=' . $to . '&cle=' . $key . '">Confirmer mon compte</a><br><br>
+                <a href="http://localhost/pour-toujours/confirm_sign_up.php?email=' . $to . '&cle=' . $key . '" target="_blank">Confirmer mon compte</a><br><br>
                 
                 Si vous rencontrez des difficultés pour vous connecter à votre compte, contactez-nous via l\'adresse mail ' . $from . ' ou via le formulaire de contact de notre site.<br><br>
                 

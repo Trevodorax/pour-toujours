@@ -108,7 +108,7 @@ function drawAvatar($avatar_specs) {
                 ?>
 
                     <section id="account-modification">
-                      <p>Modifier mon mot de passe</p>
+                        <a href="reset_password.php"><p>Modifier mon mot de passe</p></a>
                       <p>Supprimer mon compte</p>
                       <p>Télécharger toutes mes informations (RGPD)</p>
 
