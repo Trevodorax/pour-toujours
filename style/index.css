@@ -2,6 +2,11 @@
 
 
 /* ---------- GENERAL SETTINGS ---------- */
+@import "colors.css";
+
+.darkmode{
+   --dark_white : #393534; ;
+}
 
 *{
     box-sizing: border-box;
@@ -9,6 +14,7 @@
 
 body{
     margin: 0;
+    background-color: var(--dark_white);
 }
 
 .pouf{
@@ -30,7 +36,7 @@ main{
 
 h2{
     margin: 16px 0;
-
+    color : var(--black) ;
     text-align: center;
     font-size: 1.7rem;
 }
@@ -290,6 +296,19 @@ header a:hover{
 
 #burger-menu .register-button{
     width: 80%;
+}
+
+#switch {
+    border: none;
+    background-color: transparent;
+    padding-top: 3vh;
+    padding-left: 0;
+    width: auto;
+    display: flex;
+}
+
+#switch > img {
+    width : 20vw;
 }
 
 

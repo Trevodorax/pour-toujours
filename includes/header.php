@@ -79,5 +79,8 @@
             echo '<a href="create_account.php"><h3>S\'inscrire<img src="images/go_icon.svg"></h3></a>';
             echo '<button class="big-red-button"><p><a href="log_in.php">Se connecter</a></p></button>';
         } ?>
+
+    <button id="switch" onclick="darkMode()"><img id="mode" src="images/button_dark_mode.svg"/></button>
 </nav>
+<script src="scripts/darkmode.js"></script>
 
