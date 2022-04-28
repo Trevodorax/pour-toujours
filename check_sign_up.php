@@ -429,7 +429,7 @@
 
         $error=smtpmailer($to,$from, $name ,$subj, $msg);
 
-        header('location: index.php?message=Compte créé avec succès');
+        header('location: index.php?message=Un email de confirmation de compte vous à été envoyé');
         exit;
     }
     else{
