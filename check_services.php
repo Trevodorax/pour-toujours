@@ -31,10 +31,10 @@ if (isset($_GET['section']) and $_GET['section'] == "service"){
     $q ='INSERT INTO SERVICE(nom, type, tarif,description,prestataire) VALUES (:nom, :type, :tarif, :description, :prestataire)';
     $req = $bdd->prepare($q);
     $req -> execute([
-        'nom' => $_POST['title'],
+        'nom' => htmlspecialchars($_POST['title']),
         'type' => $letter[0],
-        'tarif' => $_POST['price'],
-        'description' => $_POST['description'],
+        'tarif' => htmlspecialchars($_POST['price']),
+        'description' => htmlspecialchars($_POST['description']),
         'prestataire' => $id_presta
        
     ]);
@@ -114,7 +114,7 @@ exit;
         $req = $bdd->prepare($q);
         $req -> execute([
             'nom' => $newFilename,
-            'description' => $_POST['description'],
+            'description' => htmlspecialchars($_POST['description']),
             'prestataire' => $_SESSION['id']
         ]);
 

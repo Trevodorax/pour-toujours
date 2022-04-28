@@ -30,7 +30,7 @@ function isLogged(){
                     $info_det = 'Ses';
                     $company_det = "son";
                     $comment_title = 'Avis sur ce prestataire';
-                    $id_presta = $_GET['pro'];
+                    $id_presta = htmlspecialchars($_GET['pro']);
                     
                 //REQUEST TO DISPLAY PRO INFORMATIONS :
 
@@ -136,13 +136,6 @@ function isLogged(){
                     }        
                     ?>
 
-                    <!-- Templates des services_card -->
-
-                    <!-- <div class="service-card">
-                        <h4>Photos mariage</h4>
-                        <p>Tarif : 20€/h</p>
-                        <p>Description : Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div> -->
                  </div>
             </section>
 

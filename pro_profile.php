@@ -64,8 +64,10 @@ if(isCustomer()){
                     <p>Lien du site web : <a target="_blank" href="'. $results[0]['lienSiteWeb'] . '">' .$results[0]['lienSiteWeb']. '</a></p>
                     ';
                     echo '</div>'; ?>
+
                     <?php echo '<img src="images/prestataires/'. $results[0]['photoProfil'] . '">'
                     ?>
+                    
                     <section id="signature">
                         <div class="row">
                             <h3>Votre signature</h3>
@@ -225,6 +227,7 @@ if(isCustomer()){
                             <th>Adresse email</th>
                             <th></th>
                         </tr>';
+
                 //Displaying infos on the customer who ordered a service       
                 foreach($results as $key =>$customer)  {      
                     echo '<tr>';

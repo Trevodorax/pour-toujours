@@ -101,7 +101,7 @@ function isLogged(){
                         if(isset($_GET['type'])){
 
                                 //Request with filters if they exist
-                                $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id WHERE metier = ? ORDER BY nomEntreprise';
+                                $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id WHERE metier = ?';
                                 $req = $bdd->prepare($q);
                                 $req->execute([
                                     $_POST['content']
