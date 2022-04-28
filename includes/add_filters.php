@@ -70,7 +70,7 @@ function displayInfo($informations){
         $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id WHERE ' . $column_name . '= :content';
         $req = $bdd->prepare($q);
         $req->execute([
-            'content' => $_POST['content']
+            'content' => htmlspecialchars($_POST['content'])
         ]);
         $results = $req->fetchAll(PDO::FETCH_ASSOC);
 
@@ -82,5 +82,23 @@ function displayInfo($informations){
        
  }  else {
        echo '<p>Erreur avec la demande</p>';
-  }   
+  }
+  
+  
+// NEW REQUEST FOR SPECIAL FILTER
+//   if ( ) {
+
+//     $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id WHERE ' . $column_name . '= :content';
+//     $req = $bdd->prepare($q);
+//     $req->execute([
+//         'content' => htmlspecialchars($_POST['content'])
+//     ]);
+//     $results = $req->fetchAll(PDO::FETCH_ASSOC);
+
+//     if(count($results) == 0){
+//         echo '<p class="mt-3">Il n\'y a pas de prestataires correspondant à ce filtre.</p>';
+//     }
+    
+//     displayInfo($results);
+//   }
 ?>
