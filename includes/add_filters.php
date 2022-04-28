@@ -64,41 +64,43 @@ function displayInfo($informations){
             (isset($_POST['column_name']) &&
                  isset($_POST['content'])){
 
-           //SETTING THE VALUE OF THE CONDITION
-        $column_name = htmlspecialchars($_POST['column_name']);
+            //SETTING THE VALUE OF THE CONDITION
+                $column_name = htmlspecialchars($_POST['column_name']);
 
-        $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id WHERE ' . $column_name . '= :content';
-        $req = $bdd->prepare($q);
-        $req->execute([
-            'content' => htmlspecialchars($_POST['content'])
-        ]);
-        $results = $req->fetchAll(PDO::FETCH_ASSOC);
+                    // REQUEST FOR SPECIAL FILTER
+                if($_POST['column_name'] == 'rank'){
 
-        if(count($results) == 0){
-            echo '<p class="mt-3">Il n\'y a pas de prestataires correspondant à ce filtre.</p>';
-        }
-        
-        displayInfo($results);
-       
- }  else {
-       echo '<p>Erreur avec la demande</p>';
-  }
+                    $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement, ROUND(AVG(note),2) AS MOYENNE_NOTES FROM PRESTATAIRE 
+                            INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id
+                            INNER JOIN COMMENTAIRE ON  PRESTATAIRE.id = COMMENTAIRE.prestataire
+                                GROUP BY COMMENTAIRE.prestataire
+                                    ORDER BY MOYENNE_NOTES DESC
+                                        LIMIT 3 ' ;
+                    $req = $bdd->prepare($q);
+                    $req->execute();
+                    $results = $req->fetchAll(PDO::FETCH_ASSOC);
+
+                } else {
+
+                    //REQUEST FOR BASIC FILTERS : 
+                    $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id WHERE ' . $column_name . '= :content';
+                    $req = $bdd->prepare($q);
+                    $req->execute([
+                        'content' => htmlspecialchars($_POST['content'])
+                    ]);
+                    $results = $req->fetchAll(PDO::FETCH_ASSOC);
+                
+                }
+
+                    if(count($results) == 0){
+                        echo '<p class="mt-3">Il n\'y a pas de prestataires correspondant à ce filtre.</p>';
+                    }
+
+                    displayInfo($results);
+                
+
+        } else {
+                echo '<p>Erreur avec la demande</p>';
+                }
   
-  
-// NEW REQUEST FOR SPECIAL FILTER
-//   if ( ) {
-
-//     $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id WHERE ' . $column_name . '= :content';
-//     $req = $bdd->prepare($q);
-//     $req->execute([
-//         'content' => htmlspecialchars($_POST['content'])
-//     ]);
-//     $results = $req->fetchAll(PDO::FETCH_ASSOC);
-
-//     if(count($results) == 0){
-//         echo '<p class="mt-3">Il n\'y a pas de prestataires correspondant à ce filtre.</p>';
-//     }
-    
-//     displayInfo($results);
-//   }
 ?>

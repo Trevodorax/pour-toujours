@@ -60,8 +60,10 @@ function isLogged(){
                         <p onclick="filter(this)">13 - Bouches du Rhones</p>
                         <p onclick="filter(this)">35 - Ile-et-Villaine</p>
                     </div>
+                    <div class="rank">
                     <h3 id="best-pro" onclick="filter(this)">Les plus recommendés (3)</h3>
-
+                    </div>
+                  
                     <a id="remove-filter" href="search_pro.php" class="btn-danger btn">Retirer les filtres</a>
 
                 </section>

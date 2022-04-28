@@ -37,9 +37,11 @@ function filter(element){
 
     selectedFilter = element.innerText;
     console.log(selectedFilter)
+
     
     column_name = (element.parentNode).classList[0]
-
+    console.log(column_name)
+    
     if (column_name == "departement"){
         midFilter = selectedFilter.split(" -") 
         selectedFilter = midFilter[0]
@@ -67,38 +69,6 @@ request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 request.send($data);
 
 }
-
-//Special filter !
-// function specialFilter(element){
-
-//     selectedFilter = element.innerText;
-//     console.log(selectedFilter)
-
-//     }
-
-//     const request = new XMLHttpRequest();
-  
-//     request.open('post', 'includes/add_filters.php');
-
-//     request.onreadystatechange = function(){
-
-//         if ( request.readyState == 4){
-
-//             //step 1: delete what is previously done
-//             purgeSectionPro();
-            
-//             //step2: display new elements
-//             displayFilteredResults(request.responseText);
-//         } 
-
-//     }
-
-// $data = 'column_name=' + column_name + '&content=' + selectedFilter ;
-// request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-// request.send($data);
-
-
-
 
 
 function purgeSectionPro(){
