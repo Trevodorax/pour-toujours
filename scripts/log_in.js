@@ -21,7 +21,7 @@ function checkbox_verify(){
 function form_ready(all_set){
     const button = document.getElementById('validate-button');
     if(all_set){
-        button.style.backgroundColor = '#CF697B';
+        button.style.backgroundColor = 'var(--dark_pink)';
         button.classList.remove('no-click');
     }else{
         button.style.backgroundColor = '#bbbbbb';

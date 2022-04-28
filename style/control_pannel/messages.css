@@ -112,12 +112,12 @@
 
 #conversation > div.from{
     margin-right: auto;
-    background-color: #CF697B;
+    background-color: var(--dark_pink);
 }
 
 #conversation > div.to{
     margin-left: auto;
-    background-color: #5A5250;
+    background-color: var(--dark_grey)
 }
 
 #conversation form{

@@ -4,10 +4,6 @@
 /* ---------- GENERAL SETTINGS ---------- */
 @import "colors.css";
 
-.darkmode{
-   --dark_white : #393534; ;
-}
-
 *{
     box-sizing: border-box;
 }
@@ -36,7 +32,7 @@ main{
 
 h2{
     margin: 16px 0;
-    color : var(--black) ;
+    color : var(--dark_grey) ;
     text-align: center;
     font-size: 1.7rem;
 }
@@ -45,13 +41,13 @@ h3{
     text-align: center;
     font-size: 1.2rem;
     font-weight: bold;
-    color: #706663;
+    color: var(--grey2);
 }
 
 p{
     font-size: 1.2rem;
     font-weight: bold;
-    color: #706663;
+    color: var(--grey2);
 }
 
 a{
@@ -118,7 +114,7 @@ a{
     -o-border-radius: 16px;
     border: none;
 
-    background-color: #CF697B;
+    background-color: var(--dark_pink);
 }
 
 .big-red-button:hover{
@@ -126,7 +122,7 @@ a{
 }
 
 .big-red-button > p{
-    color: #FDFDFD;
+    color: var(--dark_white);
     text-align: center;
     margin: 0 auto;
 }
@@ -147,7 +143,7 @@ form{
     -moz-border-radius: 24px;
     -ms-border-radius: 24px;
     -o-border-radius: 24px;
-    border: 1px solid #5A5250;
+    border: 1px solid var(--dark_grey)
 }
 
 form input, form select, form textarea{
@@ -176,8 +172,8 @@ form input, form select, form textarea{
 
     align-items: center;
 
-    border: 1px #FFC7C7 solid;
-    background-color: white;
+    border: 1px var(--light_pink) solid;
+    background-color: var(--dark_white);
 }
 
 .grid-card > img{
@@ -214,12 +210,12 @@ header{
     justify-content: space-between;
     align-items: center;
 
-    background-color: #FFC7C7;
+    background-color: var(--light_pink);
 }
 
 
 header a:hover{
-    color: #ffffff;
+    color: var(--dark_white);
     text-decoration: underline;
 }
 
@@ -268,7 +264,7 @@ header a:hover{
         display: flex;
         justify-content: space-between;
 
-        color: white;
+        color: var(--dark_white);
     }
 
     #desktop-header>a>img{
@@ -336,13 +332,13 @@ footer{
 
     padding: 16px;
 
-    background-color: #FFC7C7;
+    background-color: var(--light_pink);
 }
 
 footer a{
     display: inline-block;
     min-width: 49%;
-    color: #5A5250;
+    color: var(--dark_grey);
     text-decoration: none;
     font-size: 1rem;
 }
@@ -382,4 +378,18 @@ section{
     section{
         margin: 200px 0;
     }
+}
+
+/* DARMODE COLORS */
+
+.darkmode{
+    
+   --dark_white : #393534; ;
+   --light_pink : #FFC7C7 ;
+   --beige : rgb(117 56 56);
+   --dark_pink : #CF697B;
+   --dark-grey : #fef4ea;
+   --grey2 : #FDFDFD ;
+   --place_holder : #aaaaaa;
+   --transparent_grey :#ADA9A8 ;
 }

@@ -1,3 +1,11 @@
+<?php 
+    function wasDark(){
+        if (isset($_COOKIE['theme']) && $_COOKIE['theme'] == 'darkmode'){
+            return true ;
+        }
+    }   
+?>
+
 <header id="mobile-header">
     <a></a>
     <a href="index.php"></a>
@@ -82,5 +90,7 @@
 
     <button id="switch" onclick="darkMode()"><img id="mode" src="images/button_dark_mode.svg"/></button>
 </nav>
+<!-- ADDING THE DARKMODE IF THE COOKIE IS SET ON DARKMODE -->
+<body class="<?php echo wasDark() ? 'darkmode' : ' ' ; ?>">
 <script src="scripts/darkmode.js"></script>
 

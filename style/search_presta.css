@@ -30,7 +30,7 @@ h2{
     width: 100%;
     padding: 16px 0;
 
-    background-color: #fef4ea;
+    background-color: var(--beige);
 }
 
 #sort a{
@@ -50,7 +50,7 @@ h2{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background-color: #dfdad8;
+    background-color: var(--place_holder);
     margin : 0;
     padding : 2em
 }
@@ -71,7 +71,7 @@ h2{
     width: 100%;
     margin: 32px auto;
     padding-right: 8px;
-    border: 1px #FFC7C7 solid;
+    border: 1px var(--light_pink) solid;
     border-radius:4px ;
     -webkit-border-radius:4px ;
     -moz-border-radius:4px ;
@@ -94,12 +94,12 @@ h2{
 }
 
 .presta-card h4{
-    color: #ADA9A8;
+    color: var(--transparent_grey);
     font-size: 1.4rem;
 }
 
 .presta-card p{
-    color: #ADA9A8;
+    color: var(--transparent_grey);
     font-size: 1.2rem;
     font-weight: normal;
 }

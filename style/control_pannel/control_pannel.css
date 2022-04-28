@@ -19,7 +19,7 @@ section{
 
 p{
     font-weight: 500;
-    color: #5A5250;
+    color: var(--dark_grey)
 }
 
 
@@ -41,7 +41,7 @@ p{
 
 #time-left{
     font-size: 2.5rem;
-    color: #5A5250;
+    color: var(--dark_grey)
 }
 
 #time-left img{
@@ -86,7 +86,7 @@ p{
     align-items: center;
     padding: 8px;
 
-    background-color: #FFC7C7;
+    background-color: var(--light_pink);
 }
 
 #desktop-control-nav img{
@@ -110,7 +110,7 @@ p{
 #desktop-control-nav a.active-nav-item{
     width: 112px;
 
-    background-color: #CF697B;
+    background-color: var(--dark_pink);
     border-radius:0 16px 16px 0;
     -webkit-border-radius:0 16px 16px 0;
     -moz-border-radius:0 16px 16px 0;
@@ -157,7 +157,7 @@ p{
     padding: 8px;
 
     text-align: center;
-    background-color: #FFC7C7;
+    background-color: var(--light_pink);
     border-radius:4px;
     -webkit-border-radius:4px;
     -moz-border-radius:4px;
@@ -168,7 +168,7 @@ p{
 #mobile-control-nav nav{
     width: 280px;
     margin: 0 auto;
-    border: solid 3px #FFC7C7;
+    border: solid 3px var(--light_pink);
     border-top: 0;
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
@@ -187,7 +187,7 @@ p{
     text-align: center;
     font-size: 1rem;
     font-weight: bold;
-    color: #5A5250;
+    color: var(--dark_grey)
 }
 
 /* nav appears and disappears */
