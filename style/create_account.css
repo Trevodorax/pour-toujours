@@ -25,7 +25,7 @@ h2{
 }
 
 ::placeholder{
-    color: #aaaaaa;
+    color: var(--place_holder);
 }
 
 /* checkboxes */
@@ -39,13 +39,14 @@ h2{
 .checkbox-line > span{
     width: 80%;
     font-size: 0.8rem;
+    color : var(--dark_grey)
 }
 
 /* details */
 #champs-obligatoires{
     font-size: 0.8rem;
     text-align: center;
-    color: #CF697B;
+    color: var(--dark_pink);
 }
 
 /* ----- UNDER FORM ----- */
@@ -70,7 +71,7 @@ h2{
 
     font-size: 2rem;
 
-    color: #CF697B;
+    color: var(--dark_pink);
     text-decoration: underline;
 }
 

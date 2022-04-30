@@ -60,8 +60,10 @@ function isLogged(){
                         <p onclick="filter(this)">13 - Bouches du Rhones</p>
                         <p onclick="filter(this)">35 - Ile-et-Villaine</p>
                     </div>
+                    <div class="rank">
                     <h3 id="best-pro" onclick="filter(this)">Les plus recommendés (3)</h3>
-
+                    </div>
+                  
                     <a id="remove-filter" href="search_pro.php" class="btn-danger btn">Retirer les filtres</a>
 
                 </section>
@@ -99,7 +101,7 @@ function isLogged(){
                         if(isset($_GET['type'])){
 
                                 //Request with filters if they exist
-                                $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id WHERE metier = ? ORDER BY nomEntreprise';
+                                $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id WHERE metier = ?';
                                 $req = $bdd->prepare($q);
                                 $req->execute([
                                     $_POST['content']

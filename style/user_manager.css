@@ -59,7 +59,7 @@ nav a {
 
 /* list of users */
 .admin-row {
-    background-color: #FFC7C7;
+    background-color: var(--light_pink);
 }
 
 td img {

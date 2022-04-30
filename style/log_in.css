@@ -17,7 +17,7 @@ main{
 #error-message{
     font-size: 1rem;
     text-align: center;
-    color: #CF697B;
+    color: var(--dark_pink);
 }
 
 #validate-button{

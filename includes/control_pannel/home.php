@@ -8,15 +8,14 @@
     }
 
     function drawAvatar($avatar_specs) {
-        $colors = ['blue', 'pink', 'green'];
-        echo '<div id="avatar" class="' . $colors[$avatar_specs[7] - 1] . '">';
-            echo '<div id="hair' . $avatar_specs[0] . '"></div>';
-            echo '<div id="face' . $avatar_specs[1] . '"></div>';
-            echo '<div id="eyes' . $avatar_specs[2] . '"></div>';
-            echo '<div id="nose' . $avatar_specs[3] . '"></div>';
-            echo '<div id="mouth' . $avatar_specs[4] . '"></div>';
-            echo '<div id="chest' . $avatar_specs[5] . '"></div>';
-            echo '<div id="detail' . $avatar_specs[6] . '"></div>';
+        $colors = array('blue', 'pink', 'green');
+        echo '<div id="avatar" class="' . $colors[$avatar_specs[6] - 1] . '">';
+            echo '<div id="hair' . $avatar_specs[0] . '" class="hair"></div>';
+            echo '<div id="face' . $avatar_specs[1] . '" class="face"></div>';
+            echo '<div id="eyes' . $avatar_specs[2] . '" class="eyes"></div>';
+            echo '<div id="nose' . $avatar_specs[3] . '" class="nose"></div>';
+            echo '<div id="mouth' . $avatar_specs[4] . '" class="mouth"></div>';
+            echo '<div id="detail' . $avatar_specs[5] . '" class="detail"></div>';
         echo '</div>';
     }
 ?>

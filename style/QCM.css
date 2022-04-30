@@ -44,7 +44,7 @@ h2{
 
     padding: 16px 32px;
 
-    background-color: #FEF4EA;
+    background-color: var(--beige);
     border: #ccc 1px solid;
     border-radius:8px;
     -webkit-border-radius:8px;
@@ -135,7 +135,7 @@ input[type='radio']:checked:after {
     left: -2px;
     top: -2px;
 
-    background-color: #CF697B;
+    background-color: var(--dark_pink);
     content: '';
     border-radius: 100%;
     -webkit-border-radius: 100%;

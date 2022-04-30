@@ -15,7 +15,7 @@ h3 {
     width: 60%;
     min-width: 400px;
     padding-right: 8px;
-    border: 1px #FFC7C7 solid;
+    border: 1px var(--light_pink) solid;
     border-radius:4px ;
     -webkit-border-radius:4px ;
     -moz-border-radius:4px ;
@@ -38,12 +38,12 @@ h3 {
 }
 
 .presta-card h4 {
-    color: #ADA9A8;
+    color: var(--transparent_grey);
     font-size: 1.4rem;
 }
 
 .presta-card p {
-    color: #ADA9A8;
+    color: var(--transparent_grey);
     font-size: 1.2rem;
     font-weight: normal;
 }

@@ -6,7 +6,7 @@
     height: 40vw;
     margin: 0 auto;
 
-    border: 2px solid #FEF4EA;
+    border: 2px solid var(--beige);
 }
 
 #home-circle > div{
@@ -89,7 +89,7 @@
     -ms-border-radius: 16px;
     -o-border-radius: 16px;
 
-    background-color: #FEF4EA ;
+    background-color: var(--beige) ;
 }
 
 #prestataires-images{
@@ -106,7 +106,7 @@
     min-width: 88px;
     margin: 8px 8px;
 
-    border: 1px solid #5A5250;
+    border: 1px solid var(--dark_grey)
 }
 
 @media screen and (min-width: 900px){
@@ -149,7 +149,7 @@
     padding: 16px;
 
     border-radius: 16px;
-    border: 2px solid #FFC7C7;
+    border: 2px solid var(--light_pink);
     -webkit-border-radius: 16px;
     -moz-border-radius: 16px;
     -ms-border-radius: 16px;
@@ -171,7 +171,7 @@
 }
 
 .action-border:hover{
-    background-color: #fff6f6;
+    background-color: var(--light_pink);
 }
 
 @media screen and (min-width: 700px){
@@ -211,7 +211,7 @@
     -moz-border-radius:32px;
     -ms-border-radius:32px;
     -o-border-radius:32px;
-    background-color: #FEF4EA;
+    background-color: var(--beige);
 }
 
 #carousel-image{

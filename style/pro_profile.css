@@ -12,7 +12,7 @@ h2{
 }
 
 form{
-    border: 2px solid #FFC7C7;
+    border: 2px solid var(--light_pink);
 }
 
 h3{
@@ -28,10 +28,11 @@ h3{
 h4{
     font-size: 1.2rem;
     margin-bottom: 16px;
+    color: var(--dark_grey)
 }
 
 p#message {
-    color : #CF697B ;
+    color : var(--dark_pink) ;
 }
 
 p{
@@ -83,7 +84,7 @@ h2 img{
 /* CANVAS */
 
 #sign-space{
-    border :  solid 1px #CF697B;
+    border :  solid 1px var(--dark_pink);
     border-radius: 15px;
     cursor: crosshair;
     padding : 0;
@@ -111,7 +112,7 @@ h2 img{
 }
 
 .title{
-    color : #CF697B ;
+    color : var(--dark_pink) ;
     font-weight: bold;
 }
 
@@ -120,7 +121,7 @@ h2 img{
 
 /* ----- SERVICES ----- */
 #services{
-    border :#CF697B solid 1px;
+    border :var(--dark_pink) solid 1px;
     border-radius: 16px;
     -webkit-border-radius: 16px;
     -moz-border-radius: 16px;
@@ -210,7 +211,7 @@ td{
 #reviews{
     padding: 32px;
 
-    background-color: #FEF4EA;
+    background-color: var(--beige);
     border-radius: 16px;
     -webkit-border-radius: 16px;
     -moz-border-radius: 16px;

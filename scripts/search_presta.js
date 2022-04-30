@@ -37,9 +37,11 @@ function filter(element){
 
     selectedFilter = element.innerText;
     console.log(selectedFilter)
-   
-    column_name = (element.parentNode).classList[0]
 
+    
+    column_name = (element.parentNode).classList[0]
+    console.log(column_name)
+    
     if (column_name == "departement"){
         midFilter = selectedFilter.split(" -") 
         selectedFilter = midFilter[0]
@@ -47,7 +49,6 @@ function filter(element){
 
     const request = new XMLHttpRequest();
   
-
     request.open('post', 'includes/add_filters.php');
 
     request.onreadystatechange = function(){
@@ -68,6 +69,7 @@ request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 request.send($data);
 
 }
+
 
 function purgeSectionPro(){
     toDelete = document.querySelectorAll(".presta-card") 

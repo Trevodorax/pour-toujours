@@ -17,7 +17,7 @@ section{
 
     padding: 0 16px;
 
-    border-left: 3px solid #FFC7C7;
+    border-left: 3px solid var(--light_pink);
     background-image: url('../images/down_arrow.svg');
     background-position: top 8px right;
     background-size: 24px;
@@ -40,7 +40,7 @@ section p{
 /* ----- UNDER QUESTIONS AND FORM ----- */
 #contactez-nous{
     font-size: 1.5rem;
-    color: #CF697B;
+    color: var(--dark_pink);
 }
 
 #under-questions p{
@@ -49,7 +49,7 @@ section p{
 
 /* form */
 form{
-    border: 2px solid #FFC7C7;
+    border: 2px solid var(--light_pink);
 }
 .big-red-button{
     color: white;
