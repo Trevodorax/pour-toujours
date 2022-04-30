@@ -121,7 +121,7 @@ if(!isLogged()){
             <a href="control_pannel.php?page=grid&type=animation" class="<?php echo $current_page == "grid" && $_GET['type'] == "animation" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_animation.svg"><p>Mon&nbspanimation</p></a>
             <a href="control_pannel.php?page=grid&type=photos" class="<?php echo $current_page == "grid" && $_GET['type'] == "photos" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_photo.svg"><p>Mes&nbspphotos</p></a>
             <a href="control_pannel.php?page=grid&type=repas" class="<?php echo $current_page == "grid" && $_GET['type'] == "repas" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/pitco_repas.svg"><p>Mon&nbsprepas</p></a>
-            <a href="control_pannel.php?page=grid&type=tenue" class="<?php echo $current_page == "grid" && $_GET['type'] == "tenue" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_animation.svg"><p>Ma&nbsptenue</p></a>
+            <a href="control_pannel.php?page=grid&type=tenue" class="<?php echo $current_page == "grid" && $_GET['type'] == "tenue" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_tenue.svg"><p>Ma&nbsptenue</p></a>
             <a href="control_pannel.php?page=grid&type=favoris" class="<?php echo $current_page == "grid" && $_GET['type'] == "favoris" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_coeur.svg"><p>Mes&nbspfavoris</p></a>
             <a href="control_pannel.php?page=invites"><img src="images/control_nav_pictos/picto_invites.svg"><p>Mes&nbspinvités</p></a>
             <a href="settings.php"><img src="images/control_nav_pictos/picto_parametre.svg"><p>Paramètres</p></a>
