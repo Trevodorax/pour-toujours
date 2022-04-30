@@ -3,7 +3,16 @@
 
 /* ---------- GENERAL SETTINGS ---------- */
 @import "colors.css";
-
+.lightmode{
+    --light_pink : #FFC7C7 ;
+    --beige : #FEF4EA;
+    --dark_white : #FDFDFD ;
+    --dark_pink : #CF697B;
+    --dark_grey : #5A5250;
+    --grey2 : #706663;
+    --place_holder : #aaaaaa;
+    --transparent_grey :#ADA9A8 ;
+}
 *{
     box-sizing: border-box;
 }
@@ -51,7 +60,7 @@ p{
 }
 
 a{
-    color: inherit;
+    color: var(--grey2);
     text-decoration: none;
 }
 
@@ -259,16 +268,21 @@ header a:hover{
     #desktop-header nav{
         width: 50%;
         margin-left: auto;
-
-
         display: flex;
         justify-content: space-between;
-
+        align-items: center;
         color: var(--dark_white);
     }
 
     #desktop-header>a>img{
         height: 60px;
+    }
+
+    #desktop-header #switch > img {
+        width : 10vw;
+    }
+    #desktop-header #switch {
+        padding: 0;
     }
 }
 
@@ -388,7 +402,7 @@ section{
    --light_pink : #FFC7C7 ;
    --beige : rgb(117 56 56);
    --dark_pink : #CF697B;
-   --dark-grey : #fef4ea;
+   --dark_grey : #fef4ea;
    --grey2 : #FDFDFD ;
    --place_holder : #aaaaaa;
    --transparent_grey :#ADA9A8 ;

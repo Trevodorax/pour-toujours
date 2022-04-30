@@ -16,10 +16,9 @@ function darkMode(){
     }
     else {
         image.src = "images/button_dark_mode.svg";
-        document.cookie = "theme=darkmode;expires=20 Aug 2020 12:00:00 UTC"
-
+        document.cookie =  "theme=darkmode;expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/pour-toujours"
+        //deleting the cookie if we are on light mode
     }
 
-    
 
 }

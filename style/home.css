@@ -171,7 +171,7 @@
 }
 
 .action-border:hover{
-    background-color: #fff6f6;
+    background-color: var(--light_pink);
 }
 
 @media screen and (min-width: 700px){

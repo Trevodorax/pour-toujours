@@ -40,6 +40,7 @@
             }
             
         ?>
+        <button id="switch" onclick="darkMode()"><img id="mode" src="<?= wasDark() ? "images/button_light_mode.svg" : "images/button_dark_mode.svg" ?>"/></button>
         <a href="FAQ.php">FAQ</a>
         <a href="search_pro.php">Prestataires</a>
 
@@ -88,9 +89,9 @@
             echo '<button class="big-red-button"><p><a href="log_in.php">Se connecter</a></p></button>';
         } ?>
 
-    <button id="switch" onclick="darkMode()"><img id="mode" src="images/button_dark_mode.svg"/></button>
+    <button id="switch" onclick="darkMode()"><img id="mode" src="<?= wasDark() ? "images/button_light_mode.svg" : "images/button_dark_mode.svg" ?>"/></button>
 </nav>
 <!-- ADDING THE DARKMODE IF THE COOKIE IS SET ON DARKMODE -->
-<body class="<?php echo wasDark() ? 'darkmode' : ' ' ; ?>">
+<body class="<?php echo wasDark() ? 'darkmode' : 'lightmode' ; ?>">
 <script src="scripts/darkmode.js"></script>
 
