@@ -279,7 +279,7 @@ header a:hover{
     }
 
     #desktop-header #switch > img {
-        width : 10vw;
+        width : 8vw;
     }
     #desktop-header #switch {
         padding: 0;
@@ -314,11 +314,11 @@ header a:hover{
     padding-top: 3vh;
     padding-left: 0;
     width: auto;
-    display: flex;
+    
 }
 
 #switch > img {
-    width : 20vw;
+    width : 16vw;
 }
 
 

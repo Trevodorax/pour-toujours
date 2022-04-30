@@ -24,7 +24,6 @@ p{
 
 
 /* ----- TOP PART ----- */
-/* another fucking go button (should do a common class but meh) */
 #page-top{
     width: 100%;
 
@@ -131,13 +130,13 @@ p{
     display: block;
 }
 
-@media screen and (max-width: 999px){
+@media screen and (max-width: 900px){
     #desktop-control-nav{
         display: none;
     }
 }
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 900px){
     #page-top{
         padding-left: 16vw;
     }
@@ -209,7 +208,7 @@ p{
 }
 
 /* desktop settings */
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 900px){
     #home-main{
         flex-direction: row;
         justify-content: space-around;

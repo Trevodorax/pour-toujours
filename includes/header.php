@@ -80,7 +80,7 @@
              }
         //display this nav if a user is logged in
         if(isset($_SESSION['email'])){
-            echo '<a href="'. $profile_page . '"><h3>Mon compte '.$word.'<img src="images/go_icon.svg"><h3></a>';
+            echo '<a href="'. $profile_page . '"><h3>Mon compte '.$word.'<img src="images/go_icon.svg"></h3></a>';
             echo '<button class="big-red-button"><p><a href="log_out.php">Déconnexion</a></p></button>';
 
         }else{
