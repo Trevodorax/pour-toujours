@@ -31,8 +31,8 @@ CREATE TABLE PERSONNE(
 	mot_de_passe VARCHAR(255),
 	numero_tel CHAR(10),
 	departement CHAR(3),
-	cle integer,
-	confirme integer DEFAULT 0,
+	cle INTEGER,
+	confirme INTEGER DEFAULT 0,
 	date_inscription DATETIME DEFAULT NOW(),
 	estAdmin TINYINT(1) DEFAULT 0
 );

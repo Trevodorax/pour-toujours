@@ -6,12 +6,12 @@ let selectedFilter ;
 let column_name ;
 
 function sort(element){
-    
+
     let selectedSort = element.id ;
     console.log(selectedSort);
 
     const request = new XMLHttpRequest();
-  
+
     request.open('post', 'includes/add_filters.php');
 
     request.onreadystatechange = function(){
@@ -20,18 +20,18 @@ function sort(element){
 
             //step 1: delete what is previously done
             purgeSectionPro();
-            
+
             //step2: display new elements
             displayFilteredResults(request.responseText);
-        } 
+        }
+
+    }
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send('sort=' + selectedSort);
 
 }
-request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-request.send('sort=' + selectedSort);
 
-}
-
-//Filter the service providers : 
+//Filter the service providers :
 
 function filter(element){
 

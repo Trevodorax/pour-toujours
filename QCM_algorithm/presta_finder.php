@@ -3,7 +3,7 @@
 session_start();
 
 // get this in db with a table of refused services per user
-$services_refus = "(0, 1, 73)";
+$services_refus = "(0)";
 
 // get user preferences string
 include('../includes/db.php');
