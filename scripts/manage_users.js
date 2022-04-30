@@ -88,7 +88,7 @@ function addRow(table, rowInformation){
 
     // creating "supprimer" column
     const supprimer = document.createElement('td');
-    supprimer.innerHTML = "<a href='delete.php?id=" + rowInformation.id + "'><img src='../images/go_icon.svg'></a>"
+    supprimer.innerHTML = "<a href='delete.php?id=" + rowInformation.id + "'><img src='../images/picto_delete.svg'></a>"
 
     // inserting columns in row
     newRow.appendChild(nom);
