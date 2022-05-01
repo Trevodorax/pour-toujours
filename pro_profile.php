@@ -88,16 +88,18 @@ if(isCustomer()){
                     <p class="title">Ajouter une photo au portfolio</p>
                     <form class="portfolio" action="check_services.php?pro=<?= $id_presta ?>" method="POST" enctype="multipart/form-data">
                         <label for="image">Choisissez une image</label>
-                        <input type="file" name="image" placeholder=" Votre image (4 Mo max)">
-                        <input type="text" name="description" placeholder="description de l'image">
+                        <input type="file" name="image"  required placeholder=" Votre image (4 Mo max)">
+                        <input type="text" name="description" required  placeholder="description de l'image">
 
                         <?php 
                             if(isset($_GET['message_photo']) && !empty($_GET['message_photo'])) {
 
-                                echo ' <p id="error-message">'. $_GET['message_photo'] . '</p>';
-                            } ?>
+                                echo '<p id="error-message">'. $_GET['message_photo'] . '</p>';
+                            } 
 
-                        <input type="submit" class="btn btn-warning ">
+                            ?>
+
+                        <input type="submit" class="btn btn-primary">
                     </form>
                 </div>
 
@@ -120,7 +122,7 @@ if(isCustomer()){
                     foreach($results as $key => $image){
                         echo '<div class="portfolio-card">';
                         echo ' <img src="' . $image['nom'] .'" alt="' . $image['description'] . '" border=1>';
-                        echo '<a class="btn btn-sm btn-danger" href="#?id=' . $image['id'] . '">Supprimer</a>
+                        echo '<a class="btn btn-sm btn-danger" onclick="deleteInfos(this, \'portfolio_images\',' . $image['id'] . ',' .$id_presta . ')">Supprimer</a>
                         </div> ';
                     }        
                     ?>
@@ -138,8 +140,8 @@ if(isCustomer()){
                         <label for='title'>Titre du service</label>
                         <input type="text" name="title" class="required-input" placeholder="ex: Patisseries en quantité (40+)" required>
                         <label for='description'>Description du service(255 caractères)</label>
-                        <input type="text" name="description" class="required-input" placeholder="ex: Préparation du jour pour le lendemain des patisseries, choix parmi : choux à la crème, mini-éclairs, madeleines" required>
-                        <label for='price'>Tarif du service(par prestation ou par heure (faire un input radio ?))</label>
+                        <input type="text" name="description" class="required-input" required placeholder="ex: Préparation du jour pour le lendemain des patisseries, choix parmi : choux à la crème, mini-éclairs, madeleines" required>
+                        <label for='price'>Tarif du service (en €)</label>
                         <input type="number" min=0 max=50000 name="price" class="required-input" placeholder="ex: 75" required>
 
                         <?php 
@@ -150,7 +152,7 @@ if(isCustomer()){
                          
                         ?>
 
-                        <button type="submit" name="ajouter">Ajouter</button>
+                        <button type="submit" class="btn btn-primary" name="ajouter">Ajouter</button>
                         <!--  <button type="submit" id="validate-button" class="big-red-button no-click"><p>Ajouter</p></button> -->
                     </form>
                             
@@ -178,21 +180,13 @@ if(isCustomer()){
                         echo '
                         <div class="service-card">
                         <h4>'. $service['nom'].'</h4>
-                        <p>Tarif :'. $service['tarif'].'/h</p>
+                        <p>Tarif :'. $service['tarif'].' € par prestatation </p>
                         <p>Description : '. $service['description'].'</p>
-                        <a class="btn btn-sm btn-danger me-2" href="#?id=' . $service['id'] . '">Supprimer</a>
+                        <a class="btn btn-sm btn-danger me-2" onclick="deleteInfos(this, \'service\',' . $service['id'] . ',' .$id_presta . ')">Supprimer</a>
                         </div>
                         ';
                     }        
                     ?>
-
-                    <!-- Templates des services_card -->
-
-                    <!-- <div class="service-card">
-                        <h4>Photos mariage</h4>
-                        <p>Tarif : 20€/h</p>
-                        <p>Description : Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div> -->
                    
                 </div>
             </section>
