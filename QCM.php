@@ -1,4 +1,11 @@
-<?php session_start() ?>
+<?php session_start() ;
+
+  function wasDark(){
+    if (isset($_COOKIE['theme']) && $_COOKIE['theme'] == 'darkmode'){
+        return true ;
+    }
+}   
+?>
 
 <!DOCTYPE html>
 <html>
@@ -7,8 +14,9 @@
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <title>QCM - Pour Toujours</title>
         <link rel="stylesheet" href="style/QCM.css">
+        <link rel="stylesheet" href="style/colors.css">
     </head>
-    <body>
+    <body class="<?php echo wasDark() ? 'darkmode' : 'lightmode' ; ?>">
         <main>
             <form action="save_QCM.php" method="post">
                     <?php

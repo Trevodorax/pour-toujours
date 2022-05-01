@@ -3,16 +3,7 @@
 
 /* ---------- GENERAL SETTINGS ---------- */
 @import "colors.css";
-.lightmode{
-    --light_pink : #FFC7C7 ;
-    --beige : #FEF4EA;
-    --dark_white : #FDFDFD ;
-    --dark_pink : #CF697B;
-    --dark_grey : #5A5250;
-    --grey2 : #706663;
-    --place_holder : #aaaaaa;
-    --transparent_grey :#ADA9A8 ;
-}
+
 *{
     box-sizing: border-box;
 }
@@ -51,6 +42,10 @@ h3{
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--grey2);
+}
+
+label{
+    color : var(--dark_grey)
 }
 
 p{
@@ -396,14 +391,3 @@ section{
 
 /* DARMODE COLORS */
 
-.darkmode{
-    
-   --dark_white : #393534; ;
-   --light_pink : #FFC7C7 ;
-   --beige : rgb(117 56 56);
-   --dark_pink : #CF697B;
-   --dark_grey : #fef4ea;
-   --grey2 : #FDFDFD ;
-   --place_holder : #aaaaaa;
-   --transparent_grey :#ADA9A8 ;
-}
