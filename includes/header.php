@@ -4,10 +4,13 @@
             return true ;
         }
     }   
+
+    //declaring $estAdmin so we don't have errors if it's not set
+    $estAdmin = 0; 
 ?>
 
 <header id="mobile-header">
-    <a></a>
+    <a id="icon-burger-menu" class=""></a>
     <a href="index.php"></a>
      <?php  
         if(isset($_SESSION['email'])){ 
@@ -15,9 +18,9 @@
         } else {
             echo '<a href="create_account.php"></a>';
         }
-       ?>
-    
+       ?> 
 </header>
+
 <header id="desktop-header" class="mobile-hidden">
     <a href="index.php">
         <img src="images/pt_logo.svg">
@@ -34,6 +37,7 @@
                 $req->execute([$_SESSION['id']]);
 
                 $estAdmin = $req->fetchAll()[0][0];
+
                 if($estAdmin == '1') {
                     echo '<a href="user_manager/manage_users.php">Administrateur</a>';
                 }
@@ -66,8 +70,15 @@
         ?>
     </nav>
 </header>
+
+<!-- Mobile nav -->
 <div id="header-wave"></div>
 <nav id="burger-menu" class="desktop-hidden pouf">
+
+    <?php if($estAdmin == '1') {
+                    echo '<a href="user_manager/manage_users.php"><h3>Administrateur<img src="images/go_icon.svg"></h3></a>';
+                }
+    ?>
     <a href="search_pro.php"><h3>Prestataires<img src="images/go_icon.svg"></h3></a>
     <a href="FAQ.php"><h3>FAQ<img src="images/go_icon.svg"></h3></a>
     <?php

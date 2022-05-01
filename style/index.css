@@ -226,8 +226,8 @@ header a:hover{
  /* header images */
  #mobile-header>a{
     display: block;
-    height: 60px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
 
     background-size: contain;
     background-repeat: no-repeat;
@@ -235,6 +235,11 @@ header a:hover{
 
 #mobile-header :nth-child(1){
     background-image: url('../images/burger_icon.svg');
+}
+
+/* Changing image on click */
+#mobile-header .icon-burger-on{
+    background-image: url('../images/icon_croix.svg');
 }
 
 #mobile-header :nth-child(2){
@@ -273,6 +278,9 @@ header a:hover{
         height: 60px;
     }
 
+    #desktop-header a{
+        font-size : 18px;
+    }
     #desktop-header #switch > img {
         width : 8vw;
     }

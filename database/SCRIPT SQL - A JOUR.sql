@@ -68,7 +68,7 @@ CREATE TABLE PRESTATAIRE(
 	emailPro VARCHAR(60),
 	metier VARCHAR(20),
 	description VARCHAR(255),
-	photoProfil VARCHAR(40),
+	photoProfil VARCHAR(40) DEFAULT 'default_pp.jpg',
 	lienSiteWeb VARCHAR(100),
 	signature VARCHAR(100),
 	personne INTEGER NOT NULL UNIQUE REFERENCES PERSONNE(id)
