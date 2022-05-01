@@ -52,18 +52,18 @@ function drawAvatar($avatar_specs) {
 
         <main>
 
-            <h2>Mes paramètres</h2>
-            <section id="settings-generaux">
-                <h3>Généraux</h3>
-                <p>Activer le mode sombre</p>
-                <p>Affichage sombre</p>
-                <p>Affichage sombre</p>
-            </section>
+        <?php 
+             if(isset($_GET['message']) && !empty($_GET['message'])) {
 
+                 echo ' <p id="error-message">'. $_GET['message'] . '</p>';
+             } 
+        ?>
+
+            <h2>Mes paramètres</h2>
             <section id="settings-confidentialite">
                 <h3>Confidentialité</h3>
                 <p>Mentions légales</p>
-                <p>Contactez l'équipe technique</p>
+                <a  href="FAQ.php#contactez-nous"><p>Contactez l'équipe technique</p></a>
                 <p>Lier une nouvelle adresse e-mail à mon compte</p>
             </section>
 
@@ -109,7 +109,7 @@ function drawAvatar($avatar_specs) {
 
                     <section id="account-modification">
                         <a href="reset_password.php"><p>Modifier mon mot de passe</p></a>
-                      <p>Supprimer mon compte</p>
+                      <a onclick="deleteAccount()"><p>Supprimer mon compte</p></a>
                       <p>Télécharger toutes mes informations (RGPD)</p>
 
                       <p id="title">Modifier mes informations personnelles</p>
