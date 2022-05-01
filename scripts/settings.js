@@ -15,7 +15,7 @@ opener.addEventListener('click', function(){
 //We are not allowing the user to delete their account unless they REALLY want it 
 let clicks = 0 ;
 
-function deleteAccount(){
+function deleteAccount(id){
     clicks ++ ;
     console.log(clicks);
     if (clicks < 5){
@@ -27,6 +27,17 @@ function deleteAccount(){
 
     //Ajax to delete account
 
+    const request = new XMLHttpRequest();
+  
+    request.open('GET', 'delete_account.php?id=' + id);
+
+    request.onreadystatechange = function(){
+
+        if ( request.readyState == 4){
+            console.log(request.responseText) ;     
+        } 
+    }
+    request.send()
 
     }  
 

@@ -1,7 +1,13 @@
+
+
 <main id="messages-main">
     <section id="mobile-control-nav">
-        <p id="nav-opener">Mon panneau de contrôle</p>
-        <nav>
+        
+        <!-- The nav is readable only if the user is a customer -->
+        <!-- Service providers only have access to the message page of the control pannel -->
+        
+        <p id="nav-opener" class="<?php echo isCustomer()? '' : 'pouf' ?>">Mon panneau de contrôle</p>
+        <nav class="<?php echo isCustomer()? '' : 'pouf' ?>">
             <br>
             <a href="#">Vue générale sur mon mariage</a>
             <a href="#">Mes messages privés</a>
