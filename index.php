@@ -35,8 +35,24 @@
                 <div id="prestataires-mieux-notes">
                     <div id="prestataires-images">
                         <?php
-                            for($i = 1; $i <= 5; $i += 1){
-                                echo "<div class='outer-circle'><img src='images/prestataires/prestataire$i.jpg'></div>";
+                            include('includes/db.php');
+                            $q = 'SELECT presta.id, presta.photoProfil
+                            FROM PRESTATAIRE AS presta
+                            INNER JOIN
+                                 (SELECT prestataire
+                                 FROM COMMENTAIRE
+                                 GROUP BY prestataire
+                                 ORDER BY AVG(note) DESC
+                                 LIMIT 3) as comm
+                            ON presta.id = comm.prestataire';
+                            
+                            $req = $bdd->prepare($q);
+                            $req->execute([]);
+                            $results = $req->fetchAll(PDO::FETCH_ASSOC);
+
+
+                            foreach($results as $prestataire){
+                                echo "<a href='" . $prestataire['id'] . "' class='outer-circle'><img src='images/prestataires/" . $prestataire['photoProfil'] . "'></a>";
                             }
                         ?>
                     </div>

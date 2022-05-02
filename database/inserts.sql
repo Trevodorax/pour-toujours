@@ -136,6 +136,28 @@ VALUES(
     '13'
 );
 
+INSERT INTO PERSONNE(
+    nomComplet,
+    nomPrefere,
+    date_naissance,
+    genre,
+    email,
+    mot_de_passe,
+    numero_tel,
+    departement
+)
+VALUES(
+    'Henri Gaudeaux',
+    'Riton',
+    '1998/09/20',
+    'H',
+    'hgaudeaux@gmail.com',
+    '919e4acd7a1714cd19c7c7157ea417ebe85098e16e6c992deec765cef201c404a903ddfa67e1af51a2a091a9a5d8643e1214fd62f48ac56b4c7cd3f91cca7d3e',
+    '0682579783',
+    '75'
+);
+
+
 
 
 -- PRESTATAIRES
@@ -500,3 +522,89 @@ VALUES(
     "Vous regarderez encore ces photos en souriant d'ici 30 ans, un photographe de rêve",
     4
 );
+
+-- utilisateur
+INSERT INTO UTILISATEUR (personne) VALUES (7);
+
+-- commentaires
+INSERT INTO COMMENTAIRE (
+    note,
+    prestataire,
+    utilisateur,
+    valide
+)
+VALUES (
+    5,
+    1,
+    1,
+    1
+);
+
+
+INSERT INTO COMMENTAIRE (
+    note,
+    prestataire,
+    utilisateur,
+    valide
+)
+VALUES (
+    4,
+    2,
+    1,
+    1
+);
+
+
+INSERT INTO COMMENTAIRE (
+    note,
+    prestataire,
+    utilisateur,
+    valide
+)
+VALUES (
+    4,
+    3,
+    1,
+    1
+);
+
+
+INSERT INTO COMMENTAIRE (
+    note,
+    prestataire,
+    utilisateur,
+    valide
+)
+VALUES (
+    5,
+    4,
+    1,
+    1
+);
+
+INSERT INTO COMMENTAIRE (
+    note,
+    prestataire,
+    utilisateur,
+    valide
+)
+VALUES (
+    4,
+    4,
+    2,
+    1
+);
+
+INSERT INTO COMMENTAIRE (
+    note,
+    prestataire,
+    utilisateur,
+    valide
+)
+VALUES (
+    5,
+    4,
+    2,
+    1
+);
+
