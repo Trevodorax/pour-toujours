@@ -129,10 +129,6 @@
         width: 40%;
     }
 
-    ::-webkit-scrollbar {
-        width: 0px;
-    }
-
 }
 
 /* cartes actions */
@@ -140,6 +136,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .action-border{
@@ -192,10 +189,10 @@
     }
 }
 
-@media screen and (min-width: 900px){
+@media screen and (min-width: 1000px){
     .action-border{
-        width: 20vw;
-        height: 20vw;
+        width: 18vw;
+        height: 18vw;
     }
 }
 
