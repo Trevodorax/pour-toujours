@@ -45,7 +45,7 @@
                                  ORDER BY AVG(note) DESC
                                  LIMIT 3) as comm
                             ON presta.id = comm.prestataire';
-                            
+
                             $req = $bdd->prepare($q);
                             $req->execute([]);
                             $results = $req->fetchAll(PDO::FETCH_ASSOC);

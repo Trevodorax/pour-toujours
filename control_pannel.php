@@ -22,7 +22,7 @@ if(!isLogged()){
 ?>
 
 <?php
-    $possible_pages = ["home", "messages", "grid"];
+    $possible_pages = ["home", "messages", "grid", "invites"];
     if(isset($_GET['page']) && in_array($_GET['page'], $possible_pages)){
         $current_page = $_GET['page'];
     }else{
