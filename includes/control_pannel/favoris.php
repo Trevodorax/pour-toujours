@@ -1,5 +1,3 @@
-
-
 <?php
 
 //FUNCTIONS NEEDED :
@@ -10,7 +8,7 @@ function displayInfo($informations){
         $id_presta = $pro['id'] ;
         $email_presta = $pro['email'];
         $path = 'images/prestataires';
-        echo '  <div class="presta-card-heart">
+        echo '<div class="presta-card-heart">
         
             <div class="presta-card">
                 <img src="'. $path . '/' . $pro['photoProfil'] . '">
@@ -22,8 +20,7 @@ function displayInfo($informations){
                     <a id="contact" href="control_pannel.php?page=messages&destinataire='. $email_presta .'">Contacter <img src="images/presta_contact_icon.svg"></a>
                 </div>
             </div>' ;
-            echo '<img src="images/heart_picto_full.svg" id="fav-'. $id_presta . '"onclick="changePicto(this,'. $id_presta .',' . $_SESSION['id'] .')" class="fav">';
-                                    
+            echo '<img src="images/heart_picto_full.svg" id="fav-'. $id_presta . '" onclick="changePicto(this,'. $id_presta .',' . $_SESSION['id'] .')" class="fav">';                               
             echo '</div>' ;
     }
     echo '</section>' ;
@@ -63,13 +60,36 @@ function displayInfo($informations){
         }
 ?>
 <main class="">
+
+    <section id="mobile-control-nav">
+
+        <!-- The nav is readable only if the user is a customer -->
+        <!-- Service providers only have access to the message page of the control pannel -->
+        
+        <p id="nav-opener" class="<?php echo isCustomer()? '' : 'pouf' ?>">Mon panneau de contrôle</p>
+        <nav class="<?php echo isCustomer()? '' : 'pouf' ?>">
+            <br>
+            <a href="#">Vue générale sur mon mariage</a>
+            <a href="#">Mes messages privés</a>
+            <a href="#">Mon lieu de mariage</a>
+            <a href="#">Mon animation</a>
+            <a href="#">Mes photos</a>
+            <a href="#">Mon repas</a>
+            <a href="#">Ma tenue</a>
+            <a href="#">Ma liste d'invités</a>
+            <a href="#">Mes favoris</a>
+            <a href="#">Mes paramètres</a>
+        </nav>
+    </section>
+
+
     <?php 
 
-        //DISPLAY THE FAVORIS
+        //DISPLAY THE FAVORIS : new section
         displayInfo($results);
 
     ?>
 </main>
 
         
-<script src="../../scripts/favorites.js"></script>
+<script src="scripts/favorites.js"></script>

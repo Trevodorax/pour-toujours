@@ -131,6 +131,6 @@ if(!isLogged()){
 
         <?php include('includes/footer.php'); ?>
         <script src="scripts/index.js"></script>
-        <script src="scripts/control_pannel.js"></script>
+        <script src="scripts/control_pannel.js"></script>               
     </body>
 </html>
