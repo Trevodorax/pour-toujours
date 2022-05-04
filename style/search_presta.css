@@ -122,9 +122,13 @@ h2{
     width: 60%;
 }
 
-.favorites{
+
+.presta-card-heart .fav{
     width : 10% ;
+
 }
+
+
 
 @media screen and (min-width: 700px){
     #desktop-page-top{

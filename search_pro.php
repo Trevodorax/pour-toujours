@@ -96,7 +96,7 @@ function isLogged(){
                                     </div>' ;
     
                                     if ( isCustomer() && isLogged()){
-                                        echo '<img id="fav-'. $id_presta . '"onclick="addToFav(this,'. $id_presta .',' . $_SESSION['id'] .')" class="favorites" src="images/heart_picto.svg">';
+                                        echo '<img src="images/heart_picto.svg" id="fav-'. $id_presta . '"onclick="changePicto(this,'. $id_presta .',' . $_SESSION['id'] .')" class="fav">';
                                     }
                                     echo '</div>' ;
                                 }

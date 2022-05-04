@@ -1,0 +1,96 @@
+/* ----- PRESTA LIST ----- */
+.presta-card-heart{
+    width: 100%;
+    margin: 32px auto;
+}
+.presta-card{
+    display: flex;
+    height: 160px;
+    width: 100%;
+    margin: 32px auto;
+    padding-right: 8px;
+    border: 1px var(--light_pink) solid;
+    border-radius:4px ;
+    -webkit-border-radius:4px ;
+    -moz-border-radius:4px ;
+    -ms-border-radius:4px ;
+    -o-border-radius:4px ;
+}
+
+.presta-card > img{
+    width: 40%;
+    height: 100%;
+    margin-right: 16px;
+
+    object-fit: cover;
+}
+
+.presta-card h3{
+    padding-top: 8px;
+    font-size: 1.4rem;
+    text-align: left;
+}
+
+.presta-card h4{
+    color: var(--transparent_grey);
+    font-size: 1.4rem;
+}
+
+.presta-card p{
+    color: var(--transparent_grey);
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.presta-card #contact{
+    display: block;
+    text-align: right;
+    font-weight: bold;
+}
+
+.presta-card a img{
+    width: 16px;
+    margin-left: 4px;
+}
+
+.presta-card div{
+    width: 60%;
+}
+
+.presta-card-heart .fav{
+    width : 10% ;
+
+}
+
+#all-presta {
+    display: flex;
+    flex-direction  : column ;
+}
+
+
+@media screen and (min-width: 700px){
+    
+#all-presta {
+    flex-direction: column;
+    margin-top: 0;
+    min-width : 370px;
+}
+
+.presta-card-heart{
+    width: 70%;
+}
+
+}
+
+@media screen and (min-width: 1000px){
+    #all-presta{
+        flex-direction: row;
+        flex-wrap: wrap;
+        min-width : 650px
+    }
+
+.presta-card-heart{
+    width: 45%;
+}
+}
+
