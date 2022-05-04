@@ -34,6 +34,14 @@
 
     $b_date = htmlspecialchars($_POST['b_date']);
 
+    $today = date("Y-m-d");
+    $diff = date_diff(date_create($b_date), date_create($today));
+
+    if($diff->format('%y') < 18){
+        header('location: create_account.php?message=Vous n\'avez l\'age légal pour rejoindre Pour-Toujours');
+        exit;
+    }
+
     $array = explode('-', $b_date);
     $year = $array[0];
     $month = $array[1];
@@ -429,7 +437,7 @@
 
         $error=smtpmailer($to,$from, $name ,$subj, $msg);
 
-        header('location: index.php?message=Un email de confirmation de compte vous à été envoyé');
+        header('location: index.php?message=Un email de confirmation de compte vous a été envoyé');
         exit;
     }
     else{

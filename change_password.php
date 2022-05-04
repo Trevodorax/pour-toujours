@@ -22,6 +22,15 @@ session_start();
 include('includes/db.php');
 
 if(isset($_POST['submit'])){
+
+    if (!isset($_GET['email']) || empty($_GET['email']) || !isset($_GET['cle']) || empty($_GET['cle'])){
+        header('location: index.php?message=Il manque les informations de vérifications');
+        exit;
+    }
+
+    $email = htmlspecialchars($_GET['email']);
+    $key = htmlspecialchars($_GET['cle']);
+
     // checking if fields are filled
     if(!isset($_POST['previous']) || empty($_POST['previous'])){
         header('location: ' . $_SERVER['HTTP_REFERER'] . '&message=Vous devez remplir le champ ancien mot de passe');
@@ -67,9 +76,6 @@ if(isset($_POST['submit'])){
     }
 
     // checking if previous password matches
-
-    $email = htmlspecialchars($_GET['email']);
-    $key = htmlspecialchars($_GET['cle']);
 
     $q = 'SELECT id FROM PERSONNE WHERE email = :email AND cle = :cle AND mot_de_passe = :password';
     $req = $bdd->prepare($q);

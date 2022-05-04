@@ -11,6 +11,12 @@
     <body>
     <?php include('includes/header.php'); ?>
     <main>
+        <?php
+        if (isset($_GET['message'])){
+            $message = htmlspecialchars($_GET['message']);
+            echo '<p style="color: #CF6987;">' . $message . '</p>';
+        }
+        ?>
         <section id="call-to-action">
             <div id="home-circle" class="outer-circle"><div></div></div>
             <div id="home-text">

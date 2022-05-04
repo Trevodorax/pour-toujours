@@ -110,8 +110,7 @@ function drawAvatar($avatar_specs) {
                     <section id="account-modification">
                         <a href="reset_password.php"><p>Modifier mon mot de passe</p></a>
                       <a onclick="deleteAccount($_SESSION['id'])"><p>Supprimer mon compte</p></a>
-                      <p>Télécharger toutes mes informations (RGPD)</p>
-
+                      <a href="download_info.php"><p>Télécharger toutes mes informations (RGPD)</p></a>
                       <p id="title">Modifier mes informations personnelles</p>
 
                       <!-- REQUEST TO GET THE MISSING INFORMATIONS (NOT SET IN SESSION) ABOUT THE PROFILE -->

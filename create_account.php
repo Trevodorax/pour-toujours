@@ -12,6 +12,12 @@
         <main>
             <h2>Créer un compte<span class="user-form" onclick="switch_forms()" id="top-right-acces-pro">Accès pro</span><span class="pro-form" onclick="switch_forms()" id="top-right-acces-pro"r>Accès utilisateur</span></h2>
             <p>Saisissez vos informations pour continuer</p>
+            <?php
+                if (isset($_GET['message'])){
+                    $message = htmlspecialchars($_GET['message']);
+                    echo '<p style="color: #CF6987;">' . $message . '</p>';
+                }
+            ?>
             <p class="pro-form">Vous pourrez présenter vos services en détail dans votre profil après vous être créer un compte.</p>
             <form method="post" action ="check_sign_up.php" enctype="multipart/form-data">
                 <input type="text" name="c_name" class="required-input" placeholder=" Votre nom complet" value="<?= isset($_COOKIE['nomcomplet']) ? $_COOKIE['nomcomplet'] : '' ?>">

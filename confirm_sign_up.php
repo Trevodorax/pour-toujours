@@ -4,7 +4,7 @@
     include('includes/db.php');
 // checking if fields are filled
 if (!isset($_GET['email']) || empty($_GET['email']) || !isset($_GET['cle']) || empty($_GET['cle'])){
-    header('location: index.php?message:Il manque des informations requises pour la confirmation du compte');
+    header('location: index.php?message=Il manque des informations requises pour la confirmation du compte');
     exit;
 }else{
     // converting using htmlspecialchars to avoid injections
@@ -29,18 +29,18 @@ if (!isset($_GET['email']) || empty($_GET['email']) || !isset($_GET['cle']) || e
                 $q = 'UPDATE PERSONNE SET confirme = 1 WHERE email = ? AND cle = ?';
                 $req = $bdd->prepare($q);
                 $req->execute(array($email, $bddkey[0]));
-                header('location: index.php?message:L\'email a bien été confirmé');
+                header('location: index.php?message=L\'email a bien été confirmé');
                 exit;
             }else{
-                header('location: index.php?message:Les informations requises pour la confirmation du compte sont invalides');
+                header('location: index.php?message=Les informations requises pour la confirmation du compte sont invalides');
                 exit;
             };
         }else{
-            header('location: index.php?message:L`\'email ne correspond à aucun utilisateur');
+            header('location: index.php?message=L`\'email ne correspond à aucun utilisateur');
             exit;
         }
     }else{
-        header('location: index.php?message:L`\'email à déjà été confirmé');
+        header('location: index.php?message=L`\'email a déjà été confirmé');
         exit;
     }
 }
