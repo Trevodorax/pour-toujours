@@ -64,7 +64,10 @@ h2{
 }
 
 /* ----- PRESTA LIST ----- */
-
+.presta-card-heart{
+    width: 100%;
+    margin: 32px auto;
+}
 .presta-card{
     display: flex;
     height: 160px;
@@ -119,6 +122,10 @@ h2{
     width: 60%;
 }
 
+.favorites{
+    width : 10% ;
+}
+
 @media screen and (min-width: 700px){
     #desktop-page-top{
         display: flex;
@@ -162,7 +169,7 @@ h2{
         flex-wrap: wrap;
         min-width : 650px
     }
-    .presta-card{
+    .presta-card-heart{
         width: 45%;
     }
     
