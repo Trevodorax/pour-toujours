@@ -135,8 +135,18 @@ if(isCustomer()){
 
                     <p class="title">Ajouter un service</p>
 
-                    <form class="service" method="POST" action="check_services.php?section=service&pro=<?= $id_presta ?>&type=<?= $type ?>">
+                    <form class="service" method="POST" action="check_services.php?section=service&pro=<?= $id_presta ?>">
 
+                        <label for="type">Catégorie du service</label>
+                        <select id="Scategory" name="type">
+                            <?php
+                                echo "<option disabled='disabled' selected='true' hidden> --- Sélectionner une catégorie ---</option>";
+                                $type_options = ["Nourriture","Animation", "Lieu", "Tenue", "Photographie"];
+                                foreach ($type_options as $Stype){
+                                    echo "<option value='$Stype'>$Stype</option>";
+                                }
+                            ?>
+                        </select>
                         <label for='title'>Titre du service</label>
                         <input type="text" name="title" class="required-input" placeholder="ex: Patisseries en quantité (40+)" required>
                         <label for='description'>Description du service(255 caractères)</label>
