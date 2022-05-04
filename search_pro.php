@@ -35,9 +35,9 @@ function isLogged(){
                 <div id="page-top">
                     <p id="sort-button">Triez par <img src="images/three_dots.svg"></p>
                     <div id="sort" class="pouf">
-                        <a id="time" onclick="sort(this)">Date d'inscription</a>  
-                        <a id="metier" onclick="sort(this)">Métiers</a>
-                        <a id="alphabet" onclick="sort(this)">Ordre alphabétique du nom</a>
+                        <a id="time1" onclick="sort(this)">Ancienneté (+ à -)</a>  
+                        <a id="time2" onclick="sort(this)">Ancienneté (- à +)</a>
+                        <a id="alphabet" onclick="sort(this)">Ordre alphabétique (A à Z)</a>
                     </div>
                 </div>
             </div>
@@ -46,12 +46,13 @@ function isLogged(){
 
                     <h2>Filtrez les résultats</h2>
 
-                    <div class="metier list">
-                        <h3>Activité </h3>
+                    <div class="type list">
+                        <h3>Services</h3>
                         <p onclick="filter(this)">Photographie</p>
-                        <p onclick="filter(this)">Décoration</p>
-                        <p onclick="filter(this)">Cuisine</p>
-                        <p onclick="filter(this)">Fleuriste</p>
+                        <p onclick="filter(this)">Animation</p>
+                        <p onclick="filter(this)">Nourriture</p>
+                        <p onclick="filter(this)">Lieu</p>
+                        <p onclick="filter(this)">Tenue</p>
                     </div>
 
                     <div class="departement list">

@@ -39,12 +39,18 @@ function filter(element){
     console.log(selectedFilter)
 
     
-    column_name = (element.parentNode).classList[0]
+    column_name = (element.parentNode).classList[0];
     console.log(column_name)
     
     if (column_name == "departement"){
-        midFilter = selectedFilter.split(" -") 
-        selectedFilter = midFilter[0]
+        midFilter = selectedFilter.split(" -") ;
+        selectedFilter = midFilter[0];
+    }
+
+    if (column_name == "type"){
+        midFilter = selectedFilter[0];
+        selectedFilter = midFilter;
+        console.log(selectedFilter)
     }
 
     const request = new XMLHttpRequest();
