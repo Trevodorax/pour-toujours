@@ -41,16 +41,20 @@ function displayInfo($informations){
     if (isset($_POST['sort']) && !empty($_POST['sort'])){
         
         //CHANGING THE VALUE OF THE ORDER BY IN THE INCOMING REQUEST
-        if ($_POST['sort'] = "time"){
+        if ($_POST['sort'] == "time1"){
             $sort = 'date_inscription';
-        } else if ($_POST['sort'] = "metier"){
-            $sort = 'metier';
-        } else if ($_POST['sort'] = "alphabet"){
-            $sort = 'nomPrefere' ;
+
+        } else if ($_POST['sort'] == "time2"){
+            $sort = 'date_inscription DESC';
+
+        } else if ($_POST['sort'] == "alphabet"){
+            $sort = 'PERSONNE.nomPrefere' ;
         }
 
         //REQUEST OF ALL PROS but ORDERED:
-        $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id ORDER BY ' . $sort ;
+        $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE 
+            INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id 
+                ORDER BY ' . $sort ;
         $req = $bdd->query($q);
         $results = $req->fetchAll(PDO::FETCH_ASSOC);
 
@@ -67,7 +71,7 @@ function displayInfo($informations){
             //SETTING THE VALUE OF THE CONDITION
                 $column_name = htmlspecialchars($_POST['column_name']);
 
-                    // REQUEST FOR SPECIAL FILTER
+                    // REQUEST FOR RANK FILTER
                 if($_POST['column_name'] == 'rank'){
 
                     $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement, ROUND(AVG(note),2) AS MOYENNE_NOTES FROM PRESTATAIRE 
@@ -80,9 +84,9 @@ function displayInfo($informations){
                     $req->execute();
                     $results = $req->fetchAll(PDO::FETCH_ASSOC);
 
-                } else {
+                } else if ($_POST['column_name'] == 'departement') {
 
-                    //REQUEST FOR BASIC FILTERS : 
+                    //REQUEST FOR DEPARTMENT FILTERS : 
                     $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id WHERE ' . $column_name . '= :content';
                     $req = $bdd->prepare($q);
                     $req->execute([
@@ -90,6 +94,20 @@ function displayInfo($informations){
                     ]);
                     $results = $req->fetchAll(PDO::FETCH_ASSOC);
                 
+                } else {
+
+                    //REQUEST FOR SERVICE CATEGORIES FILTERS : 
+            
+                    $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE 
+                        INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id 
+                            INNER JOIN SERVICE ON PRESTATAIRE.id = SERVICE.prestataire
+                                WHERE ' . $column_name . '= :content';
+                   
+                   $req = $bdd->prepare($q);
+                    $req->execute([
+                        'content' => htmlspecialchars($_POST['content'])
+                    ]);
+                    $results = $req->fetchAll(PDO::FETCH_ASSOC);
                 }
 
                     if(count($results) == 0){

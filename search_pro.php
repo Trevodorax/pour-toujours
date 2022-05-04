@@ -35,27 +35,31 @@ function isLogged(){
                 <div id="page-top">
                     <p id="sort-button">Triez par <img src="images/three_dots.svg"></p>
                     <div id="sort" class="pouf">
-                        <a id="time" onclick="sort(this)">Date d'inscription</a>  
-                        <a id="metier" onclick="sort(this)">Métiers</a>
-                        <a id="alphabet" onclick="sort(this)">Ordre alphabétique du nom</a>
+                        <a id="time1" onclick="sort(this)">Ancienneté (+ à -)</a>  
+                        <a id="time2" onclick="sort(this)">Ancienneté (- à +)</a>
+                        <a id="alphabet" onclick="sort(this)">Ordre alphabétique (A à Z)</a>
                     </div>
                 </div>
             </div>
             <section id="page-bottom">
+                
                 <section id="filter-area">
 
                     <h2>Filtrez les résultats</h2>
 
-                    <div class="metier list">
-                        <h3>Activité </h3>
+                    <div class="type list">
+                        <h3>Services</h3>
+                        <!-- The only services we have at the moment -->
                         <p onclick="filter(this)">Photographie</p>
-                        <p onclick="filter(this)">Décoration</p>
-                        <p onclick="filter(this)">Cuisine</p>
-                        <p onclick="filter(this)">Fleuriste</p>
+                        <p onclick="filter(this)">Animation</p>
+                        <p onclick="filter(this)">Nourriture</p>
+                        <p onclick="filter(this)">Lieu</p>
+                        <p onclick="filter(this)">Tenue</p>
                     </div>
 
                     <div class="departement list">
                         <h3>Département prisé</h3>
+                        <!-- Declared by us -->
                         <p onclick="filter(this)">75 - Paris</p>
                         <p onclick="filter(this)">13 - Bouches du Rhones</p>
                         <p onclick="filter(this)">35 - Ile-et-Villaine</p>
@@ -78,10 +82,11 @@ function isLogged(){
                                 $id_presta = $pro['id'] ;
                                 $email_presta = $pro['email'];
                                 $path = 'images/prestataires';
-                                echo '
+                                echo '  <div class="presta-card-heart">
                                 
                                     <div class="presta-card">
                                         <img src="'. $path . '/' . $pro['photoProfil'] . '">
+                                       
                                         <div>
                                             <h3><a href="pro_profile_for_user.php?pro=' . $id_presta . '">' . $pro['nomPrefere'] . '</a></h3>
                                             <h4>' . $pro['metier']. '</h4>
@@ -91,8 +96,9 @@ function isLogged(){
                                     </div>' ;
     
                                     if ( isCustomer() && isLogged()){
-                                        echo '<img src="images/heart_picto.svg">';
+                                        echo '<img id="fav-'. $id_presta . '"onclick="addToFav(this,'. $id_presta .',' . $_SESSION['id'] .')" class="favorites" src="images/heart_picto.svg">';
                                     }
+                                    echo '</div>' ;
                                 }
                             }
                         
@@ -137,6 +143,7 @@ function isLogged(){
         <?php include('includes/footer.php'); ?>
 
         <script src="scripts/index.js"></script>
+        <script src="scripts/favorites.js"></script>
         <script src="scripts/search_presta.js"></script>
     </body>
 </html>

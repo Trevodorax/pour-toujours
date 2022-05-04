@@ -2,8 +2,6 @@
 session_start();
 include('includes/db.php');
 
-//Need to do all the verifs from forms from pro_profile 
-
 if (isset($_GET['pro']) && !empty($_GET['pro'])) {
 
     $id_presta = htmlspecialchars($_GET['pro']);
@@ -16,17 +14,14 @@ if (isset($_GET['pro']) && !empty($_GET['pro'])) {
         if(!isset($_POST['title']) || empty($_POST['title'])
             || !isset($_POST['price']) || empty($_POST['price'])
                 || !isset($_POST['description']) || empty($_POST['description'])
+                || !isset($_POST['type']) || empty($_POST['type'])
                 ){
                     header('location: pro_profile.php?message=Vous devez remplir tous les champs');
                     exit;
                 }
 
-            if (!isset($_GET['type']) || empty($_GET['type']) ){
-                header('location: pro_profile.php?message=Il y a eu un problème');
-                exit;
-            }
         
-        $type =htmlspecialchars($_GET['type']);
+        $type =htmlspecialchars($_POST['type']);
         $letter = $type[0];
 
 
@@ -34,7 +29,7 @@ if (isset($_GET['pro']) && !empty($_GET['pro'])) {
         $req = $bdd->prepare($q);
         $req -> execute([
             'nom' => htmlspecialchars($_POST['title']),
-            'type' => $letter[0],
+            'type' => $letter,
             'tarif' => htmlspecialchars($_POST['price']),
             'description' => htmlspecialchars($_POST['description']),
             'prestataire' => $id_presta
