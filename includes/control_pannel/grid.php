@@ -59,6 +59,7 @@ function get_service_info($id_service){
 
 
 <main id="grid-main">
+    <?php var_dump($current_service); ?>
     <section id="mobile-control-nav">
         <p id="nav-opener">Mon panneau de contrôle</p>
         <nav>
@@ -107,38 +108,6 @@ function get_service_info($id_service){
         }
         ?>
 
-        <!--
-        <div id="grid-items">
-            <a class="grid-card">
-                <img src="images/home_circle.jpg">
-                <div>
-                    <h4>Plaza Henest Dan</h4>
-                    <p>Plage des diamants<br>Paris 75001</p>
-                </div>
-            </a>
-            <a class="grid-card">
-                <img src="images/home_circle.jpg">
-                <div>
-                    <h4>Plaza Henest Dan</h4>
-                    <p>Plage des diamants<br>Paris 75001</p>
-                </div>
-            </a>
-            <a class="grid-card">
-                <img src="images/home_circle.jpg">
-                <div>
-                    <h4>Plaza Henest Dan</h4>
-                    <p>Plage des diamants<br>Paris 75001</p>
-                </div>
-            </a>
-            <a class="grid-card">
-                <img src="images/home_circle.jpg">
-                <div>
-                    <h4>Plaza Henest Dan</h4>
-                    <p>Plage des diamants<br>Paris 75001</p>
-                </div>
-            </a>
-        </div>
-        <a id="load-content" href="#">Voir plus...</a>
-        -->
+        <p><a href="QCM_algorithm/refuse_presta.php?service=<?= $current_service ?>">Refuser ce prestataire</a></p>
     </div>
 </main>
