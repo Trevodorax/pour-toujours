@@ -1,5 +1,5 @@
 <?php
-
+//  à mettre pour voir l'erreur php ini_set('display_errors', 1);
     //Writing the log
     function writeLogLine(bool $sucess, string $email){
     	$file = 'log.txt';
