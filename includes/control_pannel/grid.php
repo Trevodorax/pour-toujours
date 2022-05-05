@@ -59,7 +59,6 @@ function get_service_info($id_service){
 
 
 <main id="grid-main">
-    <?php var_dump($current_service); ?>
     <section id="mobile-control-nav">
         <p id="nav-opener">Mon panneau de contrôle</p>
         <nav>
