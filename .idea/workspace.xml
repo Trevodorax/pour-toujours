@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22163e9a-3a5f-47e0-8312-b49e07a1bae7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/download_info.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/includes/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/change_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/change_password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/check_sign_up.php" beforeDir="false" afterPath="$PROJECT_DIR$/check_sign_up.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/confirm_sign_up.php" beforeDir="false" afterPath="$PROJECT_DIR$/confirm_sign_up.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/create_account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/SCRIPT SQL - A JOUR.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/SCRIPT SQL - A JOUR.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/settings.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +41,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -53,6 +49,12 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\MAMP\htdocs\pour-toujours\.idea" />
+      <recent name="C:\MAMP\htdocs\pour-toujours\database" />
+      <recent name="C:\MAMP\htdocs\pour-toujours\images" />
+      <recent name="C:\MAMP\htdocs\pour-toujours\includes\FPDF" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\MAMP\htdocs\pour-toujours" />
     </key>
@@ -117,7 +119,10 @@
       <workItem from="1651135647951" duration="1460000" />
       <workItem from="1651155370098" duration="3172000" />
       <workItem from="1651346889054" duration="735000" />
-      <workItem from="1651674636277" duration="9578000" />
+      <workItem from="1651674636277" duration="9924000" />
+      <workItem from="1651692102159" duration="795000" />
+      <workItem from="1651748204305" duration="2522000" />
+      <workItem from="1651768286509" duration="4332000" />
     </task>
     <servers />
   </component>

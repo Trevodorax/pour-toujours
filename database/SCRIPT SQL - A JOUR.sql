@@ -4,16 +4,16 @@
 
 --Connexion à mySQL distant, création de la BDD et ATTRIBUTION DES DROITS AU USER
 
-mysql -u root -h 217.182.69.119 -p
+--mysql -u root -h 217.182.69.119 -p
 
 CREATE DATABASE POURTOUJOURS ;
 
 -- On vérifie si la db est bien créée
-SHOW DATABASES;
+--SHOW DATABASES;
 
 -- CONNEXION EN TANT QUE USER
 
-mysql -u TOUJOURS -h 217.182.69.119 -p
+--mysql -u TOUJOURS -h 217.182.69.119 -p
 
 
 -- On séléctionne la db PourToujours
@@ -42,7 +42,7 @@ CREATE TABLE CONVERSATION(
 	date_creation DATETIME NOT NULL DEFAULT NOW(),
 	personne1 INTEGER NOT NULL REFERENCES PERSONNE(id),
 	personne2 INTEGER NOT NULL REFERENCES PERSONNE(id),
-	dernier_message DATETIME NOT NULL DEFAULT NOW() REFERENCES MESSAGE(heure_envoi)
+	dernier_message DATETIME NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE MESSAGE(
@@ -141,4 +141,3 @@ CREATE TABLE INVITE(
 
 
 SHOW TABLES ;
-
