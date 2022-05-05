@@ -104,5 +104,5 @@
 </nav>
 <!-- ADDING THE DARKMODE IF THE COOKIE IS SET ON DARKMODE -->
 <body class="<?php echo wasDark() ? 'darkmode' : 'lightmode' ; ?>">
-<script src="scripts/darkmode.js"></script>
+
 
