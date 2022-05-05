@@ -13,27 +13,31 @@ function isLogged(){
         return true;
     }
 }
+
 function displayInfo($informations){
     foreach($informations as $key => $pro){
         $id_presta = $pro['id'] ;
         $email_presta = $pro['email'];
         $path = 'images/prestataires';
-        echo '
-        
-            <div class="presta-card">
-                <img src="'. $path . '/' . $pro['photoProfil'] . '">
-                <div>
-                    <h3><a href="pro_profile_for_user.php?pro=' . $id_presta . '">' . $pro['nomPrefere'] . '</a></h3>
-                    <h4>' . $pro['metier']. '</h4>
-                    <p>Departement : '. $pro['departement'].'</p>
-                    <a id="contact" href="control_pannel.php?page=messages&destinataire='. $email_presta .'">Contacter <img src="images/presta_contact_icon.svg"></a>
-                </div>
-            </div>' ;
+        echo '  <div class="presta-card-heart">
+                                
+         <div class="presta-card">
+             <img src="'. $path . '/' . $pro['photoProfil'] . '">
+            
+             <div>
+                 <h3><a href="pro_profile_for_user.php?pro=' . $id_presta . '">' . $pro['nomPrefere'] . '</a></h3>
+                 <h4>' . $pro['metier']. '</h4>
+                 <p>Departement : '. $pro['departement'].'</p>
+                 <a id="contact" href="control_pannel.php?page=messages&destinataire='. $email_presta .'">Contacter <img src="images/presta_contact_icon.svg"></a>
+             </div>
+         </div>' ;
+    
+         if ( isCustomer() && isLogged()){
+             echo '<img src="../images/heart_picto.svg" id="fav-'. $id_presta . '"onclick="changePicto(this,'. $id_presta .',' . $_SESSION['id'] .')" class="fav">';
+         }
 
-            if ( isCustomer() && isLogged()){
-                echo '<img src="images/heart_picto.svg">';
-            }
-        }
+         echo '</div>' ;
+                                }
     }
 
 

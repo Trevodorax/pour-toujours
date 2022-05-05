@@ -1,9 +1,7 @@
-<?php 
+<?php
     function wasDark(){
-        if (isset($_COOKIE['theme']) && $_COOKIE['theme'] == 'darkmode'){
-            return true ;
+            return isset($_COOKIE['theme']) && $_COOKIE['theme'] == 'darkmode' ;
         }
-    }   
 ?>
 
 <!DOCTYPE html>

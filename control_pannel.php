@@ -103,16 +103,8 @@ if(!isLogged()){
                 ?>
                 
             </div>
-            <div id="time-left">
-                <?php 
-                   echo isCustomer() ? '<img src="images/clock_icon.svg"> J-67' : '';
-                 ?>
-            </div>
         </div>
 
-        <?php 
-           
-        ?>
 
         <nav id="desktop-control-nav" class="<?php echo isCustomer() ? '' : 'pouf' ?>">
             <a href="control_pannel.php?page=home" class="<?php echo $current_page == "home" ? 'active-nav-item' : '' ?>"><img src="images/control_nav_pictos/picto_general.svg"><p>Mon&nbspmariage</p></a>
@@ -131,6 +123,6 @@ if(!isLogged()){
 
         <?php include('includes/footer.php'); ?>
         <script src="scripts/index.js"></script>
-        <script src="scripts/control_pannel.js"></script>               
+        <script src="scripts/control_pannel.js"></script>
     </body>
 </html>

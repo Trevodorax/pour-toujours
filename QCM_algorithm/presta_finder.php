@@ -1,13 +1,20 @@
 <?php
 
 session_start();
-
-// get this in db with a table of refused services per user
-$services_refus = "(0)";
-
-// get user preferences string
 include('../includes/db.php');
 
+// get refused services
+$q = 'SELECT service FROM REFUSE WHERE utilisateur = (SELECT id FROM UTILISATEUR WHERE personne = ?)';
+$req = $bdd->prepare($q);
+$req->execute([$_SESSION['id']]);
+$refus = $req->fetchAll(PDO::FETCH_ASSOC);
+$services_refus = "(0";
+foreach($refus as $id_refus) {
+    $services_refus = $services_refus . ', ' . $id_refus['service'];
+}
+$services_refus = $services_refus . ")";
+
+// get user preferences string
 $q = 'SELECT preferences_QCM FROM utilisateur WHERE personne = (SELECT id FROM personne WHERE email = :email)';
 $req = $bdd->prepare($q);
 $req->execute([
@@ -69,7 +76,7 @@ $photos_budget = $budget * $photos_part;
 
 /* GET THE RIGHT PRESTAS FOR USER PREFERENCES */
 // get the id of services with the lowest difference between user budget and price
-$q = "SELECT id, ABS(:budget - tarif) as difference FROM SERVICE WHERE type = :type AND id NOT IN" . $services_refus . "ORDER BY difference LIMIT 1 ";
+$q = "SELECT id, ABS(:budget - tarif) as difference FROM SERVICE WHERE type = :type AND id NOT IN " . $services_refus . " ORDER BY difference LIMIT 1 ";
 $req = $bdd->prepare($q);
 
 $req->execute([
@@ -89,7 +96,6 @@ $req->execute([
     'type' => 'L'
 ]);
 $lieu_service = $req->fetchAll()[0][0];
-
 $req->execute([
     'budget' => $tenue_budget,
     'type' => 'T'

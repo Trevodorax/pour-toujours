@@ -63,16 +63,16 @@ function get_service_info($id_service){
         <p id="nav-opener">Mon panneau de contrôle</p>
         <nav>
             <br>
-            <a href="#">Vue générale sur mon mariage</a>
-            <a href="#">Mes messages privés</a>
-            <a href="#">Mon lieu de mariage</a>
-            <a href="#">Mon animation</a>
-            <a href="#">Mes photos</a>
-            <a href="#">Mon repas</a>
-            <a href="#">Ma tenue</a>
-            <a href="#">Ma liste d'invités</a>
-            <a href="#">Mes favoris</a>
-            <a href="#">Mes paramètres</a>
+            <a href="control_pannel.php?page=home">Vue générale sur mon mariage</a>
+            <a href="control_pannel.php?page=messages">Mes messages privés</a>
+            <a href="control_pannel.php?page=grid&type=lieu">Mon lieu de mariage</a>
+            <a href="control_pannel.php?page=grid&type=animation">Mon animation</a>
+            <a href="control_pannel.php?page=grid&type=photos">Mes photos</a>
+            <a href="control_pannel.php?page=grid&type=repas">Mon repas</a>
+            <a href="control_pannel.php?page=grid&type=tenue">Ma tenue</a>
+            <a href="control_pannel.php?page=favoris">Ma liste d'invités</a>
+            <a href="control_pannel.php?page=invites">Mes favoris</a>
+            <a href="settings.php">Mes paramètres</a>
         </nav>
     </section>
     <h2><?= ucwords($_GET['type']) ?> pour le mariage :</h2>
@@ -107,38 +107,6 @@ function get_service_info($id_service){
         }
         ?>
 
-        <!--
-        <div id="grid-items">
-            <a class="grid-card">
-                <img src="images/home_circle.jpg">
-                <div>
-                    <h4>Plaza Henest Dan</h4>
-                    <p>Plage des diamants<br>Paris 75001</p>
-                </div>
-            </a>
-            <a class="grid-card">
-                <img src="images/home_circle.jpg">
-                <div>
-                    <h4>Plaza Henest Dan</h4>
-                    <p>Plage des diamants<br>Paris 75001</p>
-                </div>
-            </a>
-            <a class="grid-card">
-                <img src="images/home_circle.jpg">
-                <div>
-                    <h4>Plaza Henest Dan</h4>
-                    <p>Plage des diamants<br>Paris 75001</p>
-                </div>
-            </a>
-            <a class="grid-card">
-                <img src="images/home_circle.jpg">
-                <div>
-                    <h4>Plaza Henest Dan</h4>
-                    <p>Plage des diamants<br>Paris 75001</p>
-                </div>
-            </a>
-        </div>
-        <a id="load-content" href="#">Voir plus...</a>
-        -->
+        <p><a href="QCM_algorithm/refuse_presta.php?service=<?= $current_service ?>">Refuser ce prestataire</a></p>
     </div>
 </main>

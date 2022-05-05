@@ -12,3 +12,4 @@
     </div>
     <br><hr>
 </footer>
+<script src="scripts/darkmode.js"></script>

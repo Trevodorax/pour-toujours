@@ -40,22 +40,21 @@
         <p id="nav-opener">Mon panneau de contrôle</p>
         <nav>
             <br>
-            <a href="#">Vue générale sur mon mariage</a>
-            <a href="#">Mes messages privés</a>
-            <a href="#">Mon lieu de mariage</a>
-            <a href="#">Mon animation</a>
-            <a href="#">Mes photos</a>
-            <a href="#">Mon repas</a>
-            <a href="#">Ma tenue</a>
-            <a href="#">Ma liste d'invités</a>
-            <a href="#">Mes favoris</a>
-            <a href="#">Mes paramètres</a>
+            <a href="control_pannel.php?page=home">Vue générale sur mon mariage</a>
+            <a href="control_pannel.php?page=messages">Mes messages privés</a>
+            <a href="control_pannel.php?page=grid&type=lieu">Mon lieu de mariage</a>
+            <a href="control_pannel.php?page=grid&type=animation">Mon animation</a>
+            <a href="control_pannel.php?page=grid&type=photos">Mes photos</a>
+            <a href="control_pannel.php?page=grid&type=repas">Mon repas</a>
+            <a href="control_pannel.php?page=grid&type=tenue">Ma tenue</a>
+            <a href="control_pannel.php?page=favoris">Ma liste d'invités</a>
+            <a href="control_pannel.php?page=invites">Mes favoris</a>
+            <a href="settings.php">Mes paramètres</a>
         </nav>
     </section>
 
     <section id="vue-generale">
         <h2>Vue générale sur mon mariage</h2>
-        <p>Date : 28/05/22</p>
         <table>
             <tr>
                 <td>Mon lieu de mariage</td>
@@ -71,7 +70,7 @@
             </tr>
             <tr>
                 <td>Mon repas</td>
-                <td>Non défini</td>
+                <td>OK</td>
             </tr>
             <tr>
                 <td>Ma liste d'invités</td>
