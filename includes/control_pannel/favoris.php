@@ -69,16 +69,16 @@ function displayInfo($informations){
         <p id="nav-opener" class="<?php echo isCustomer()? '' : 'pouf' ?>">Mon panneau de contrôle</p>
         <nav class="<?php echo isCustomer()? '' : 'pouf' ?>">
             <br>
-            <a href="#">Vue générale sur mon mariage</a>
-            <a href="#">Mes messages privés</a>
-            <a href="#">Mon lieu de mariage</a>
-            <a href="#">Mon animation</a>
-            <a href="#">Mes photos</a>
-            <a href="#">Mon repas</a>
-            <a href="#">Ma tenue</a>
-            <a href="#">Ma liste d'invités</a>
-            <a href="#">Mes favoris</a>
-            <a href="#">Mes paramètres</a>
+            <a href="control_pannel.php?page=home">Vue générale sur mon mariage</a>
+            <a href="control_pannel.php?page=messages">Mes messages privés</a>
+            <a href="control_pannel.php?page=grid&type=lieu">Mon lieu de mariage</a>
+            <a href="control_pannel.php?page=grid&type=animation">Mon animation</a>
+            <a href="control_pannel.php?page=grid&type=photos">Mes photos</a>
+            <a href="control_pannel.php?page=grid&type=repas">Mon repas</a>
+            <a href="control_pannel.php?page=grid&type=tenue">Ma tenue</a>
+            <a href="control_pannel.php?page=favoris">Ma liste d'invités</a>
+            <a href="control_pannel.php?page=invites">Mes favoris</a>
+            <a href="settings.php">Mes paramètres</a>
         </nav>
     </section>
 

@@ -13,7 +13,6 @@ foreach($refus as $id_refus) {
     $services_refus = $services_refus . ', ' . $id_refus['service'];
 }
 $services_refus = $services_refus . ")";
-var_dump($services_refus);
 
 // get user preferences string
 $q = 'SELECT preferences_QCM FROM utilisateur WHERE personne = (SELECT id FROM personne WHERE email = :email)';
@@ -97,7 +96,6 @@ $req->execute([
     'type' => 'L'
 ]);
 $lieu_service = $req->fetchAll()[0][0];
-
 $req->execute([
     'budget' => $tenue_budget,
     'type' => 'T'
