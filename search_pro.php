@@ -76,9 +76,34 @@ function isLogged(){
 
                     <?php
 
+                        
+                        //What is customer 's id ?
+                        $q ='SELECT UTILISATEUR.id FROM UTILISATEUR WHERE personne = ?' ;
+                        $req = $bdd->prepare($q);
+                        $req->execute([
+                            $_SESSION['id']
+                            ]);
+                        
+                        $id_customer = $req->fetchAll(PDO::FETCH_ASSOC);
+
+
+                        //Checking if the user already have favoris to be able to add the full heart
+                        $q ='SELECT PRESTATAIRE.id FROM PRESTATAIRE 
+                            INNER JOIN FAVORI ON PRESTATAIRE.id = FAVORI.prestataire
+                                WHERE utilisateur = ?';
+                        $req = $bdd->prepare($q);
+                        $req->execute([$id_customer[0]['id']]);
+
+                        $favs = $req->fetchAll(PDO::FETCH_ASSOC);
+
                          //Display the cards about the service providers
-                         function displayInfo($informations){
+                         function displayInfo($informations, $favs_id){
                             foreach($informations as $key => $pro){
+                                
+                                //display full heart if the presta is already in the favoris
+                                // $image = $pro['id'] == $favs_id['id']? "images/heart_picto_full.svg" : "images/heart_picto.svg" ;
+                                $image = "images/heart_picto.svg";
+
                                 $id_presta = $pro['id'] ;
                                 $email_presta = $pro['email'];
                                 $path = 'images/prestataires';
@@ -96,11 +121,12 @@ function isLogged(){
                                     </div>' ;
     
                                     if ( isCustomer() && isLogged()){
-                                        echo '<img src="images/heart_picto.svg" id="fav-'. $id_presta . '"onclick="changePicto(this,'. $id_presta .',' . $_SESSION['id'] .')" class="fav">';
+                                        echo '<img src="'. $image .'" id="fav-'. $id_presta . '"onclick="changePicto(this,'. $id_presta .',' . $_SESSION['id'] .')" class="fav">';
                                     }
                                     echo '</div>' ;
                                 }
                             }
+                            
                         
                         //These are needed to filter results (needed this part for the control panel-grid)
 
@@ -119,7 +145,7 @@ function isLogged(){
                                     echo '<p>Il n\'y a pas de prestataires correspondant à ce filtre.</p>';
                                 }
 
-                                displayInfo($results);
+                                displayInfo($results, $favs);
 
                         } else {
 
@@ -131,7 +157,7 @@ function isLogged(){
                             if(count($results) == 0){
                                 echo '<p>Il n\'y a pas encore de prestataire sur le site.</p>';
                             }
-                            displayInfo($results);
+                            displayInfo($results, $favs);
                         }
                         
                     

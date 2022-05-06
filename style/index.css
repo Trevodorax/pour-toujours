@@ -55,6 +55,7 @@ p{
 }
 
 a{
+    cursor :pointer ;
     color: var(--grey2);
     text-decoration: none;
 }
