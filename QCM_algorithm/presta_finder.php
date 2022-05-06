@@ -15,7 +15,7 @@ foreach($refus as $id_refus) {
 $services_refus = $services_refus . ")";
 
 // get user preferences string
-$q = 'SELECT preferences_QCM FROM utilisateur WHERE personne = (SELECT id FROM personne WHERE email = :email)';
+$q = 'SELECT preferences_QCM FROM UTILISATEUR WHERE personne = (SELECT id FROM PERSONNE WHERE email = :email)';
 $req = $bdd->prepare($q);
 $req->execute([
     'email' => $_SESSION['email'],

@@ -30,7 +30,7 @@
                 <input type="submit">
             </form>
             <?php
-                $q = 'SELECT id, personne1, personne2 FROM conversation WHERE personne1 = :id OR personne2 = :id ORDER BY dernier_message DESC ';
+                $q = 'SELECT id, personne1, personne2 FROM CONVERSATION WHERE personne1 = :id OR personne2 = :id ORDER BY dernier_message DESC ';
                 $req = $bdd->prepare($q);
                 $req->execute([
                     'id' => $_SESSION['id']
@@ -45,7 +45,7 @@
                             $id_destinataire = $conversations[$key][1];
                         }
 
-                        $q = 'SELECT email, nomprefere FROM personne WHERE id = :id';
+                        $q = 'SELECT email, nomprefere FROM PERSONNE WHERE id = :id';
                         $req = $bdd->prepare($q);
                         $req->execute([
                             'id' => $id_destinataire
@@ -90,7 +90,7 @@
                                 exit;
                             }
 
-                            $q = 'SELECT id FROM conversation WHERE (personne1 = ? AND personne2 = ?) OR (personne1 = ? AND personne2 = ?)';
+                            $q = 'SELECT id FROM CONVERSATION WHERE (personne1 = ? AND personne2 = ?) OR (personne1 = ? AND personne2 = ?)';
                             $req = $bdd->prepare($q);
                             $req->execute([
                                 $destinataire[0][0],
@@ -101,7 +101,7 @@
                             $conversation = $req->fetchAll();
 
                             if (count($conversations) != 0) {
-                                $q = 'SELECT contenu, id_auteur FROM message WHERE conversation = :conversation';
+                                $q = 'SELECT contenu, id_auteur FROM MESSAGE WHERE conversation = :conversation';
                                 $req = $bdd->prepare($q);
                                 $req->execute([
                                     'conversation' => $conversation[0][0]

@@ -49,7 +49,7 @@
                                  FROM COMMENTAIRE
                                  GROUP BY prestataire
                                  ORDER BY AVG(note) DESC
-                                 LIMIT 3) as comm
+                                 LIMIT 5) as comm
                             ON presta.id = comm.prestataire';
 
                             $req = $bdd->prepare($q);

@@ -48,7 +48,7 @@ include('includes/db.php');
             }
             else{
             // check if phone number already exists
-            $q = 'SELECT id FROM personne WHERE numero_tel = :tel';
+            $q = 'SELECT id FROM PERSONNE WHERE numero_tel = :tel';
             $req = $bdd->prepare($q);
             $req->execute([
                 'tel' => $_POST['tel']
@@ -71,7 +71,7 @@ include('includes/db.php');
             exit;
         }
         // checking if email already exists
-        $q = 'SELECT id FROM personne WHERE email = :email';
+        $q = 'SELECT id FROM PERSONNE WHERE email = :email';
         $req = $bdd->prepare($q);
         $req->execute([
             'email' => $_POST['email']
@@ -125,7 +125,7 @@ include('includes/db.php');
         else {
             
              // checking if phone number is good
-             $q = 'SELECT id FROM prestataire WHERE telpro = :telpro';
+             $q = 'SELECT id FROM PRESTATAIRE WHERE telpro = :telpro';
              $req = $bdd->prepare($q);
              $req->execute([
                  'telpro' => $_POST['tel_pro']
@@ -147,7 +147,7 @@ include('includes/db.php');
         }
         else{
              // checking if email is correct
-            $q = 'SELECT id FROM prestataire WHERE emailpro = :emailpro';
+            $q = 'SELECT id FROM PRESTATAIRE WHERE emailpro = :emailpro';
             $req = $bdd->prepare($q);
             $req->execute([
                 'emailpro' => $_POST['email_pro']

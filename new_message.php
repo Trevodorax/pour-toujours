@@ -4,7 +4,7 @@
 
     $destinataire = htmlspecialchars($_POST['destinataire']);
 
-    $q = 'SELECT id FROM conversation WHERE (personne1 = ? AND personne2 = ?) OR (personne1 = ? AND personne2 = ?)';
+    $q = 'SELECT id FROM CONVERSATION WHERE (personne1 = ? AND personne2 = ?) OR (personne1 = ? AND personne2 = ?)';
     $req = $bdd->prepare($q);
     $req->execute([
         $destinataire,
@@ -18,7 +18,7 @@
 
     $now = date('Y-m-d H:i:s', time());
 
-    $q = "INSERT INTO message (contenu, heure_envoi, conversation, id_auteur) VALUES (:contenu, :heure_envoi, :conversation, :id_auteur)";
+    $q = "INSERT INTO MESSAGE (contenu, heure_envoi, conversation, id_auteur) VALUES (:contenu, :heure_envoi, :conversation, :id_auteur)";
     $req = $bdd->prepare($q);
     $results = $req->execute([
         'contenu' => $message,
@@ -27,7 +27,7 @@
         'id_auteur' => $_SESSION['id']
     ]);
 
-    $q = "UPDATE conversation SET dernier_message = ? WHERE ((personne1 = ? AND personne2 = ?) OR (personne1 = ? AND personne2 = ?))";
+    $q = "UPDATE CONVERSATION SET dernier_message = ? WHERE ((personne1 = ? AND personne2 = ?) OR (personne1 = ? AND personne2 = ?))";
     $req = $bdd->prepare($q);
     $results = $req->execute([
         $now,

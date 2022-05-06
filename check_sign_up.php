@@ -66,7 +66,7 @@
     $departement = $departement_number;
 
     // check if phone number already exists
-    $q = 'SELECT id FROM personne WHERE numero_tel = :tel';
+    $q = 'SELECT id FROM PERSONNE WHERE numero_tel = :tel';
     $req = $bdd->prepare($q);
     $req->execute([
         'tel' => htmlspecialchars($_POST['tel'])
@@ -94,7 +94,7 @@
     }
 
     // checking if email already exists
-    $q = 'SELECT id FROM personne WHERE email = :email';
+    $q = 'SELECT id FROM PERSONNE WHERE email = :email';
     $req = $bdd->prepare($q);
     $req->execute([
         'email' => htmlspecialchars($_POST['email'])
@@ -181,7 +181,7 @@
     $key = rand(100000000, 999999999);
 
     // creating a new person if everything looks nice
-    $q = "INSERT INTO personne(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement, cle) VALUES (:c_name, :f_name, :b_date, :genre, :email, :password, :tel, :departement, :cle)";
+    $q = "INSERT INTO PERSONNE(nomComplet, nomPrefere, date_naissance, genre, email, mot_de_passe, numero_tel, departement, cle) VALUES (:c_name, :f_name, :b_date, :genre, :email, :password, :tel, :departement, :cle)";
     $req = $bdd->prepare($q);
     $personne = $req->execute([
         'c_name' => htmlspecialchars($_POST['c_name']),
@@ -202,7 +202,7 @@
     }
 
     // getting the ID of the person we just created
-    $q = 'SELECT id FROM personne WHERE email = :email';
+    $q = 'SELECT id FROM PERSONNE WHERE email = :email';
     $req = $bdd->prepare($q);
     $req->execute([
         'email' => htmlspecialchars($_POST['email'])
@@ -222,7 +222,7 @@
         }
 
         // checking if phone number is good
-        $q = 'SELECT id FROM prestataire WHERE telpro = :telpro';
+        $q = 'SELECT id FROM PRESTATAIRE WHERE telpro = :telpro';
         $req = $bdd->prepare($q);
         $req->execute([
             'telpro' => htmlspecialchars($_POST['tel_pro'])
@@ -248,7 +248,7 @@
         }
 
         // checking if email is correct
-        $q = 'SELECT id FROM prestataire WHERE emailpro = :emailpro';
+        $q = 'SELECT id FROM PRESTATAIRE WHERE emailpro = :emailpro';
         $req = $bdd->prepare($q);
         $req->execute([
             'emailpro' => htmlspecialchars($_POST['email_pro'])
@@ -344,7 +344,7 @@
         }
 
         // creating a new presta linked to this personne
-        $q = "INSERT INTO prestataire (nomEntreprise, telpro, emailpro, metier, photoProfil, lienSiteWeb, personne) VALUES (:companyname, :telpro, :emailpro, :metier, :profilepicture, :linkwebsite, :personne)";
+        $q = "INSERT INTO PRESTATAIRE (nomEntreprise, telpro, emailpro, metier, photoProfil, lienSiteWeb, personne) VALUES (:companyname, :telpro, :emailpro, :metier, :profilepicture, :linkwebsite, :personne)";
         $req = $bdd->prepare($q);
         $prestataire = $req->execute([
             'companyname' => htmlspecialchars($_POST['company_name']),
@@ -357,7 +357,7 @@
         ]);
 
         if (!$prestataire){
-            $q = 'DELETE FROM personne WHERE id = ' . $id;
+            $q = 'DELETE FROM PERSONNE WHERE id = ' . $id;
             $req = $bdd->prepare($q);
             $result = $req->execute();
             header('location: create_account.php?message=Erreur lors de l\'inscription');
@@ -366,7 +366,7 @@
 
     }else{
         // creating a new user linked to this personne
-        $q = "INSERT INTO utilisateur (personne) VALUES(:idPersonne)";
+        $q = "INSERT INTO UTILISATEUR (personne) VALUES(:idPersonne)";
         $req = $bdd->prepare($q);
         $utilisateur = $req->execute([
             'idPersonne' => $id[0][0]

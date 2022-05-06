@@ -8,7 +8,8 @@ function isLogged(){
     }
 }
 
-// The user comes from a page where he clicked on the name of a pro, for exemple. We need to get something from this page to be able to 
+// The user comes from a page where he clicked on the name of a pro, for exemple.
+// We need to get something from this page to be able to 
 // display the informations about the correct pro.
 ?>
 
@@ -36,7 +37,7 @@ function isLogged(){
 
                     if (isset($id_presta)){
 
-                        $q = 'SELECT nomPrefere, email, departement, nomEntreprise, emailPro, telPro, metier, photoProfil, lienSiteWeb FROM prestataire INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id WHERE PRESTATAIRE.id = :id'; 
+                        $q = 'SELECT nomPrefere, email, departement, nomEntreprise, emailPro, telPro, metier, photoProfil, lienSiteWeb FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id WHERE PRESTATAIRE.id = :id'; 
                         $req = $bdd->prepare($q);            
                         $req->execute(['id' => $id_presta]);
                         $results = $req->fetchAll(PDO::FETCH_ASSOC);
@@ -144,7 +145,7 @@ function isLogged(){
             <section id="reviews">
 
             <?php 
-                $q = 'SELECT (SELECT nomPrefere FROM personne WHERE id = utilisateur) AS nom_client, note, contenu, date_envoi FROM COMMENTAIRE WHERE prestataire = :prestataire' ;
+                $q = 'SELECT (SELECT nomPrefere FROM PERSONNE WHERE id = utilisateur) AS nom_client, note, contenu, date_envoi FROM COMMENTAIRE WHERE prestataire = :prestataire' ;
                 $req = $bdd->prepare($q);
                 $req -> execute([
                     'prestataire' => $id_presta

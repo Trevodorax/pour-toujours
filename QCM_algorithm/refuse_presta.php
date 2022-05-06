@@ -4,7 +4,7 @@ session_start();
 include('../includes/db.php');
 
 // get user id
-$q = "SELECT id FROM utilisateur WHERE personne = ?";
+$q = "SELECT id FROM UTILISATEUR WHERE personne = ?";
 $req = $bdd->prepare($q);
 $req->execute([$_SESSION['id']]);
 $id_utilisateur = $req->fetchAll()[0][0];

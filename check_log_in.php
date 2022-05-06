@@ -30,7 +30,7 @@
 
     $email = htmlspecialchars($_POST['email']);
 
-    $q = 'SELECT id, nomprefere, nomcomplet, departement FROM personne WHERE email = :email AND mot_de_passe = :password';
+    $q = 'SELECT id, nomprefere, nomcomplet, departement FROM PERSONNE WHERE email = :email AND mot_de_passe = :password';
     $req = $bdd->prepare($q);
     $req->execute([
         'email' => $email,
@@ -48,7 +48,7 @@
     $result = $req->fetch();
 
     if ($result[0] == 1){
-        $q = 'SELECT emailPro FROM prestataire WHERE personne = :personne';
+        $q = 'SELECT emailPro FROM PRESTATAIRE WHERE personne = :personne';
         $req = $bdd->prepare($q);
         $req->execute([
             'personne' => $id[0][0]
@@ -70,7 +70,7 @@
         exit;
     }
 
-    $q = 'SELECT emailPro FROM prestataire WHERE personne = :personne';
+    $q = 'SELECT emailPro FROM PRESTATAIRE WHERE personne = :personne';
     $req = $bdd->prepare($q);
     $req->execute([
         'personne' => $id[0][0]

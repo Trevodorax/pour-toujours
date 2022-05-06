@@ -31,7 +31,7 @@ if (isset($_POST['pro']) && !empty($_POST['pro'])
 
         } else if($_POST['action'] == "delete") {
             //Statement to delete the association
-            $q = 'DELETE FROM FAVORI WHERE prestataire = ? AND utilisateur = ?';
+            $q = 'DELETE FROM FAVORI WHERE PRESTATAIRE = ? AND utilisateur = ?';
         }
         
             $req = $bdd->prepare($q);

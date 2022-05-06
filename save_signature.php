@@ -20,7 +20,7 @@ include('includes/db.php');
     $signature = base64_decode($transformSign[1]) ;
     $filename = $path . 'signature-'. time() .'.png';
      // saving the signature in the db : update because you can change ur signature.
-     $q = "UPDATE prestataire SET signature = :signature WHERE personne = 1";
+     $q = "UPDATE PRESTATAIRE SET signature = :signature WHERE personne = 1";
      $req = $bdd->prepare($q);
      $results = $req->execute([
          'signature' => $filename,

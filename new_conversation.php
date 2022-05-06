@@ -2,7 +2,7 @@
     session_start();
     include('includes/db.php');
     $email = htmlspecialchars($_POST['email']);
-    $q = 'SELECT id, email FROM personne WHERE email = :email';
+    $q = 'SELECT id, email FROM PERSONNE WHERE email = :email';
     $req = $bdd->prepare($q);
     $req->execute([
         'email' => $email
@@ -19,7 +19,7 @@
         exit;
     }
 
-    $q = "INSERT INTO conversation (personne1, personne2) VALUES (:personne1, :personne2)";
+    $q = "INSERT INTO CONVERSATION (personne1, personne2) VALUES (:personne1, :personne2)";
     $req = $bdd->prepare($q);
     $results = $req->execute([
         'personne1' => $_SESSION['id'],

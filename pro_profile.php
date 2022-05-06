@@ -39,7 +39,7 @@ if(isCustomer()){
 
                 echo ' <h2>' . $welcome_title . $_SESSION['nomPrefere'] .' ! <a href="settings.php"><img src="images/settings_icon.svg"></a><a href="control_pannel.php?page=messages"><img src="images/presta_contact_icon.svg"></a></h2>';
                 
-                $q = 'SELECT id, nomEntreprise, emailPro, telPro,metier, photoProfil, lienSiteWeb FROM prestataire WHERE personne = :personne'; 
+                $q = 'SELECT id, nomEntreprise, emailPro, telPro,metier, photoProfil, lienSiteWeb FROM PRESTATAIRE WHERE personne = :personne'; 
                 $req = $bdd->prepare($q);            
                 $req->execute(['personne' => $_SESSION['id']]);
                 $results = $req->fetchAll(PDO::FETCH_ASSOC);
@@ -262,7 +262,7 @@ if(isCustomer()){
             <section id="reviews">
 
             <?php 
-                $q = 'SELECT (SELECT nomPrefere FROM personne WHERE id = utilisateur) AS nom_client, note, contenu, date_envoi FROM COMMENTAIRE WHERE prestataire = :prestataire' ;
+                $q = 'SELECT (SELECT nomPrefere FROM PERSONNE WHERE id = utilisateur) AS nom_client, note, contenu, date_envoi FROM COMMENTAIRE WHERE prestataire = :prestataire' ;
                 $req = $bdd->prepare($q);
                 $req -> execute([
                     'prestataire' => $id_presta

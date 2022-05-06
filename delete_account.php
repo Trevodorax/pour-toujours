@@ -3,7 +3,7 @@
 include('includes/db.php');
 
 if (isset($_GET["id"]) && !empty($_GET['id'])) {
-    $q = 'DELETE FROM Personne WHERE id = :id';
+    $q = 'DELETE FROM PERSONNE WHERE id = :id';
         $req = $bdd->prepare($q);
         $req->execute(['id' => $_GET['id'] ]);
 
