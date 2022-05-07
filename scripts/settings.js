@@ -5,7 +5,6 @@
 form_section = document.getElementsByClassName("changing-forms");
 opener = document.getElementById("title");
 
-console.log(opener);
 opener.addEventListener('click', function(){
     form_section[0].classList.toggle('open-section');
 })
@@ -17,8 +16,7 @@ let clicks = 0 ;
 
 function deleteAccount(id,role){
     clicks ++ ;
-    console.log(clicks);
-    if (clicks < 5){
+    if (clicks < 2){
     alert("Oh-ho, vous voulez supprimer votre compte ? Impossible. Vous allez vous marier et être heureux, d'accord ?");
     } else {
     //Message to warn user about the deletion
@@ -33,7 +31,7 @@ function deleteAccount(id,role){
     request.onreadystatechange = function(){
 
         if ( request.readyState == 4){
-            alert(request.responseText) ;     
+            alert("Votre compte a été supprimé avec succès") ;    
         } 
     }
     request.send()

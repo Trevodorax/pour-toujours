@@ -1,5 +1,4 @@
 <?php 
-
 include('includes/db.php');
 
 if (isset($_GET["id"]) && !empty($_GET['id'])) {
@@ -31,13 +30,14 @@ if (isset($_GET["id"]) && !empty($_GET['id'])) {
     } else {
         //IF THE USER IS A PRO : 
 
-        $q ='SELECT PRESTATAIRE.id FROM PRESTATAIRE WHERE personne = ?' ;
+        $q ='SELECT PRESTATAIRE.id, photoProfil FROM PRESTATAIRE, PERSONNE WHERE personne = ? and PRESTATAIRE.personne = PERSONNE.id' ;
         $req = $bdd->prepare($q);
         $req->execute([
             $_GET['id']
             ]);
         $pro_id = $req->fetchAll(PDO::FETCH_ASSOC) ;
         $roleColumn = "PRESTATAIRE" ;
+        var_dump($pro_id);
 
         //DELETING HIS SERVICES
         // HIS PORTFOLIO,
@@ -70,6 +70,15 @@ if (isset($_GET["id"]) && !empty($_GET['id'])) {
          ]);
 
 
+         //DELETING THE IMAGES SAVED ON THE SERVER : 
+
+         $imagesToDelete = ["images/portfolios/" . $pro_id[0]['id'] . "/", ($pro_id[0]['photoProfil'] == 'default_pp.jpg') ? " " : "images/prestataires/" . $pro_id[0]['photoProfil']] ;
+         foreach($imagesToDelete as $image)
+         if (file_exists($image)){
+             $test = unlink($image);
+         }
+
+
     //deleting the personne table
     $q = 'DELETE FROM PERSONNE WHERE id = :id';
         $req = $bdd->prepare($q);
@@ -78,7 +87,10 @@ if (isset($_GET["id"]) && !empty($_GET['id'])) {
     if ($req){
         echo 'Compte supprimé' ;
     } else {
-        echo 'erreur lors de la suppression';
+        echo 'Erreur lors de la suppression';
     }
+
+    //Logging the user out.
+    include('log_out.php');
 }
 ?>

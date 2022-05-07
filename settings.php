@@ -1,6 +1,13 @@
 <?php session_start() ;
 
+
 include('includes/db.php');
+
+function isLogged(){
+    if( isset($_SESSION['email'])) {
+        return true;
+    }
+}
 
 function isCustomer(){
     if(empty($_SESSION['emailPro'])){
@@ -15,6 +22,10 @@ if (isCustomer()){
     $className = "pouf";
 } else{
     $className = " ";
+}
+
+if (!isLogged()) {
+    header('location: index.php?message=Vous n\'etes pas connecté.');
 }
 
 function getAvatar($id_personne) {
