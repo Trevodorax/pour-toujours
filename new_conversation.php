@@ -1,7 +1,7 @@
 <?php
     session_start();
     include('includes/db.php');
-    $email = htmlspecialchars($_POST['email']);
+    $email = htmlspecialchars($_GET['email']);
     $q = 'SELECT id, email FROM PERSONNE WHERE email = :email';
     $req = $bdd->prepare($q);
     $req->execute([

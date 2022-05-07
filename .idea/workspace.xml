@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22163e9a-3a5f-47e0-8312-b49e07a1bae7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/includes/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/SCRIPT SQL - A JOUR.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/SCRIPT SQL - A JOUR.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/create_account.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/control_pannel/messages.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/control_pannel/messages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/new_conversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/new_conversation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pro_profile_for_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/pro_profile_for_user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search_pro.php" beforeDir="false" afterPath="$PROJECT_DIR$/search_pro.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +58,8 @@
       <recent name="C:\MAMP\htdocs\pour-toujours\includes\FPDF" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\MAMP\htdocs\pour-toujours\images\prestataires" />
+      <recent name="C:\MAMP\htdocs\pour-toujours\scripts" />
       <recent name="C:\MAMP\htdocs\pour-toujours" />
     </key>
   </component>
@@ -122,7 +126,9 @@
       <workItem from="1651674636277" duration="9924000" />
       <workItem from="1651692102159" duration="795000" />
       <workItem from="1651748204305" duration="2522000" />
-      <workItem from="1651768286509" duration="4332000" />
+      <workItem from="1651768286509" duration="5289000" />
+      <workItem from="1651858222511" duration="2161000" />
+      <workItem from="1651949343509" duration="3372000" />
     </task>
     <servers />
   </component>

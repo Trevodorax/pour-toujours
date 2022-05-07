@@ -54,7 +54,7 @@ function isLogged(){
                 <div>
                     <?php 
                          if (isLogged()){
-                            echo ' <h2>' . $welcome_title . $results[0]['nomPrefere'] .' !<a href="control_pannel.php?page=messages&destinataire='. $results[0]['email'] . '"><img src="images/presta_contact_icon.svg"></a></h2>';
+                            echo ' <h2>' . $welcome_title . $results[0]['nomPrefere'] .' !<a href="new_conversation.php?email='. $results[0]['email'] . '"><img src="images/presta_contact_icon.svg"></a></h2>';
                          } else {
                              echo ' <h2>' . $welcome_title . $results[0]['nomPrefere'] .' !</h2>';
                          }

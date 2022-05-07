@@ -25,7 +25,7 @@
     <div class="message-page-content">
         <section id="messages-list">
             <button id="new-conv-form-appear" class="btn btn-primary" formmethod="post" formaction="" name="newconversation">Créer une nouvelle conversation</button>
-            <form id="new-conv-form" class="pouf" method="post" action="new_conversation.php">
+            <form id="new-conv-form" class="pouf" method="get" action="new_conversation.php">
                 <input type="email" name="email">
                 <input type="submit">
             </form>

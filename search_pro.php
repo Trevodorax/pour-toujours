@@ -123,7 +123,7 @@ function isLogged(){
                                             <h3><a href="pro_profile_for_user.php?pro=' . $id_presta . '">' . $pro['nomPrefere'] . '</a></h3>
                                             <h4>' . $pro['metier']. '</h4>
                                             <p>Departement : '. $pro['departement'].'</p>
-                                            <a id="contact" href="control_pannel.php?page=messages&destinataire='. $email_presta .'">Contacter <img src="images/presta_contact_icon.svg"></a>
+                                            <a id="contact" href="new_conversation.php?email='. $email_presta .'">Contacter <img src="images/presta_contact_icon.svg"></a>
                                         </div>
                                     </div>' ;
     

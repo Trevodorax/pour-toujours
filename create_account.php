@@ -48,6 +48,8 @@
 
                 <input type="password" name="password" class="required-input" placeholder=" Votre mot de passe">
 
+                <span style="color: #706881; font-size: 0.85em;">Le mot de passe doit contenir une majuscule, une minuscule un chiffre et un caractère spécial</span>
+
                 <input type="password" name="confirm_password" class="required-input" placeholder=" Confirmez votre mot de passe">
 
                 <select id="genre" name="genre">
