@@ -102,7 +102,7 @@ function displayInfo($informations){
 
                     //REQUEST FOR SERVICE CATEGORIES FILTERS : 
             
-                    $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE 
+                    $q ='SELECT DISTINCT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE 
                         INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id 
                             INNER JOIN SERVICE ON PRESTATAIRE.id = SERVICE.prestataire
                                 WHERE ' . $column_name . '= :content';

@@ -131,12 +131,15 @@ function isLogged(){
                         //These are needed to filter results (needed this part for the control panel-grid)
 
                         if(isset($_GET['type'])){
-
+                      
                                 //Request with filters if they exist
-                                $q ='SELECT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id WHERE metier = ?';
+                                $q ='SELECT DISTINCT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id 
+                                        INNER JOIN SERVICE ON PRESTATAIRE.id = SERVICE.prestataire
+                                            WHERE type = ?';
+
                                 $req = $bdd->prepare($q);
                                 $req->execute([
-                                    $_POST['content']
+                                    ucwords($_GET['type'])[0]
                                 ]);
                                 $results = $req->fetchAll(PDO::FETCH_ASSOC);
 
