@@ -114,7 +114,7 @@ function isLogged(){
                 <div id="show_services">
                     <!-- Request to show services from the service providers -->
                     <?php 
-                        $q ='SELECT id,nom,tarif,description,prestataire FROM SERVICE WHERE prestataire = :id';
+                        $q ='SELECT id,nom,tarif,type,description,prestataire FROM SERVICE WHERE prestataire = :id';
                         $req = $bdd->prepare($q);
                         $req -> execute([
                             'id' => $id_presta
@@ -127,10 +127,12 @@ function isLogged(){
                     }
 
                     foreach($results as $key => $service){
+                        $condition =   $service['type'] == "N" ? 'invité' : 'prestatation' ; 
+                       
                         echo '
                         <div class="service-card">
                         <h4>'. $service['nom'].'</h4>
-                        <p>Tarif :'. $service['tarif'].'/h</p>
+                        <p>Tarif : '. $service['tarif']. '€/'. $condition . '</p>
                         <p>Description : '. $service['description'].'</p>
                         </div>
                         ';
