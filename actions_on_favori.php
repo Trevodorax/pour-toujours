@@ -19,16 +19,15 @@ if (isset($_POST['pro']) && !empty($_POST['pro'])
         if ($req) {
             if (count($id_customer) != 1){
                 echo 'Il y a eu un problème.';
-            } else {      
-            echo 'OK 1';
             }
         }
 
-
+        //ADDING THE FAVORI RELATIONSHIP
         if($_POST['action'] == "add") {
             //Creating the favorite in the DB 
             $q = 'INSERT INTO FAVORI VALUES (?, ?)';
 
+        //DELETING THE FAVORI RELATIONSHIP
         } else if($_POST['action'] == "delete") {
             //Statement to delete the association
             $q = 'DELETE FROM FAVORI WHERE PRESTATAIRE = ? AND utilisateur = ?';

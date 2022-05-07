@@ -20,7 +20,7 @@ function changePicto(element, id_presta, id_customer){
   
 }
 
-
+//the last argument of the function makes it delete or add a favori
 function actOnFav(element, id_presta, id_customer,action){
     console.log(element, id_customer, id_presta, action);
 
@@ -39,4 +39,10 @@ function actOnFav(element, id_presta, id_customer,action){
     data = "pro=" + id_presta + "&customer=" + id_customer + "&action=" + action;
     request.send(data);
 
+}
+
+//delete the presta card from the favoris visually
+function eraseCard(element){
+    toDelete =  element.parentNode;
+    toDelete.remove();
 }

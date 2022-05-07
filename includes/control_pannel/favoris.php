@@ -20,7 +20,7 @@ function displayInfo($informations){
                     <a id="contact" href="control_pannel.php?page=messages&destinataire='. $email_presta .'">Contacter <img src="images/presta_contact_icon.svg"></a>
                 </div>
             </div>' ;
-            echo '<img src="images/heart_picto_full.svg" id="fav-'. $id_presta . '" onclick="changePicto(this,'. $id_presta .',' . $_SESSION['id'] .')" class="fav">';                               
+            echo '<img src="images/heart_picto_full.svg" id="fav-'. $id_presta . '" onclick="changePicto(this,'. $id_presta .',' . $_SESSION['id'] .') ; eraseCard(this)" class="fav">';                               
             echo '</div>' ;
     }
     echo '</section>' ;

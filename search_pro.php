@@ -94,15 +94,22 @@ function isLogged(){
                         $req = $bdd->prepare($q);
                         $req->execute([$id_customer[0]['id']]);
 
-                        $favs = $req->fetchAll(PDO::FETCH_ASSOC);
+                        $results= $req->fetchAll(PDO::FETCH_ASSOC);
+
+                        $favs = array() ;
+
+                        //creating a new array with the results from requests.
+                        foreach($results as $fav){
+                            array_push($favs, $fav['id']);                          
+                            }
 
                          //Display the cards about the service providers
                          function displayInfo($informations, $favs_id){
+                           
                             foreach($informations as $key => $pro){
                                 
                                 //display full heart if the presta is already in the favoris
-                                // $image = $pro['id'] == $favs_id['id']? "images/heart_picto_full.svg" : "images/heart_picto.svg" ;
-                                $image = "images/heart_picto.svg";
+                                $image = in_array($pro['id'], $favs_id) ? "images/heart_picto_full.svg" : "images/heart_picto.svg" ;
 
                                 $id_presta = $pro['id'] ;
                                 $email_presta = $pro['email'];
@@ -131,15 +138,18 @@ function isLogged(){
                         //These are needed to filter results (needed this part for the control panel-grid)
 
                         if(isset($_GET['type'])){
-                      
-                                //Request with filters if they exist
+
+                            //this specific page doesn't fit the method we used so we are applying a specific method for it.
+                            $category = $_GET['type'] == "repas" ? 'N' : ucwords($_GET['type'])[0] ;
+                               
+                            //Request with the service filter coming from the control_pannel grid page
                                 $q ='SELECT DISTINCT PRESTATAIRE.id, metier,photoProfil, nomPrefere, email, departement FROM PRESTATAIRE INNER JOIN PERSONNE ON PRESTATAIRE.personne = PERSONNE.id 
                                         INNER JOIN SERVICE ON PRESTATAIRE.id = SERVICE.prestataire
                                             WHERE type = ?';
 
                                 $req = $bdd->prepare($q);
                                 $req->execute([
-                                    ucwords($_GET['type'])[0]
+                                    $category
                                 ]);
                                 $results = $req->fetchAll(PDO::FETCH_ASSOC);
 
