@@ -131,13 +131,6 @@ CREATE TABLE DEMANDE(
 	PRIMARY KEY(mariage, service)
 );
 
-CREATE TABLE ADRESSE(
-	id INTEGER PRIMARY KEY auto_increment,
-	numeroRue INTEGER,
-	NomRue VARCHAR(150),
-	Ville VARCHAR(60),
-	code_postal CHAR(5)
-);
 
 CREATE TABLE INVITE(
 	id INTEGER PRIMARY KEY auto_increment,
