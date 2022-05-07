@@ -105,8 +105,11 @@ function get_service_info($id_service){
         }else{
             echo "<button class='big-red-button'><a href='search_pro.php?type=" . $_GET['type'] . "'>Aller voir les prestataires de la catégorie " . $_GET['type'] . "</a></button>";
         }
-        ?>
 
-        <p><a href="QCM_algorithm/refuse_presta.php?service=<?= $current_service ?>">Refuser ce prestataire</a></p>
+        if(isset($current_service)) {
+            echo '<p><a href="QCM_algorithm/refuse_presta.php?service=<?= $current_service ?>">Refuser ce prestataire</a></p>';
+        }
+
+        ?>
     </div>
 </main>

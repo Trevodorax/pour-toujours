@@ -31,15 +31,9 @@
 
             <div id="under-questions">
                 <p>Vous n'avez pas trouvé la réponse à votre question ?</p>
-                <p id="contactez-nous">Contactez-nous !</p>
+                <a id="contactez-nous" href="mailto:pourtoujours2k22@gmail.com">Contactez-nous !</a>
             </div>
-
-            <form action="mailto:phvcgdx@gmail.com" method="POST" enctype="multipart/form-data" name="email_form">
-                <input type="text" name="prenom" placeholder=" Votre prénom">
-                <input type="email" name="email" placeholder=" Votre e-mail">
-                <textarea name="mail_content" placeholder=" Votre message"></textarea>
-                <input type="submit" value="Envoyer un mail" class="big-red-button">
-            </form>
+            
         </main>
 
 

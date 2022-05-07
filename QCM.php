@@ -57,7 +57,7 @@
                         write_QCM_question("tenue", "Pour vous, les tenues sont :", ["Très importantes", "Importantes", "Peu importantes", "Pas importantes"], 7);
                         write_QCM_question("photos", "Pour vous, les photos sont :", ["Très importantes", "Importantes", "Peu importantes", "Pas importantes"], 8);
                         write_QCM_question("nb_invites", "Choisissez une fourchette de nombre d'invités :", ["0 - 20", "20 - 50", "50 - 100", "100 - plus"], 9);
-                        // modifier la ligne 32 en cas d'ajout de questions
+                        // modifier la ligne 42 en cas d'ajout de questions
                     ?>
                 </div>
 
