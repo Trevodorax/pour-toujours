@@ -9,7 +9,8 @@
     </head>
 
     <body>
-    <?php include('includes/header.php'); ?>
+    <?php include('includes/header.php'); 
+    include('includes/db.php'); ?>
     <main>
         <?php
         if (isset($_GET['message'])){
@@ -34,8 +35,16 @@
         </section>
         <section id="presentation">
             <div id="presentation-banner">
+
+                <?php 
+                $q='SELECT COUNT(PRESTATAIRE.id) AS pros FROM PRESTATAIRE';
+                $req= $bdd->query($q);
+                $result = $req->fetchAll(PDO::FETCH_ASSOC);
+                ?>
+
+
                 <div id="presentation-text">
-                    <h2>Présentez-nous vos critères et choisissez parmi nos 230 talentueux partenaires !</h2>
+                    <h2>Présentez-nous vos critères et choisissez parmi nos <?= $result[0]['pros'] ?> talentueux partenaires !</h2>
                     <h3>Commencez dès maintenant&nbsp&nbsp <img src="images/go_icon.svg"></h3>
                 </div>
                 <div id="prestataires-mieux-notes">
@@ -58,7 +67,7 @@
 
 
                             foreach($results as $prestataire){
-                                echo "<a href='" . $prestataire['id'] . "' class='outer-circle'><img src='images/prestataires/" . $prestataire['photoProfil'] . "'></a>";
+                                echo "<a href='pro_profile_for_user.php?pro=" . $prestataire['id'] . "' class='outer-circle'><img src='images/prestataires/" . $prestataire['photoProfil'] . "'></a>";
                             }
                         ?>
                     </div>
@@ -77,21 +86,21 @@
                     <h3>Modifiez</h3>
                     <div class="action-border">
                         <img src="images/invites_icon.svg">
-                        <p><a href="#">Votre liste d'invités</a></p>
+                        <p><a href="">Votre liste d'invités</a></p>
                     </div>
                 </div>
                 <div class="mobile-hidden">
                     <h3>Choisissez</h3>
                     <div class="action-border">
                         <img src="images/heart_picto.svg">
-                        <p><a href="#">Maintenant ou plus tard avec l'option favoris</a></p>
+                        <p><a href="">Maintenant ou plus tard avec l'option favoris</a></p>
                     </div>
                 </div>
                 <div>
                     <h3>Discutez</h3>
                     <div class="action-border">
                         <img src="images/bubble_icon.svg">
-                        <p><a href="#">Avec vos prestataires</a></p>
+                        <p><a href="">Avec vos prestataires</a></p>
                     </div>
                 </div>
 

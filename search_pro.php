@@ -11,7 +11,6 @@ function isLogged(){
         return true;
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +75,7 @@ function isLogged(){
 
                     <?php
 
-                        
+                        if (isLogged()){
                         //What is customer 's id ?
                         $q ='SELECT UTILISATEUR.id FROM UTILISATEUR WHERE personne = ?' ;
                         $req = $bdd->prepare($q);
@@ -102,6 +101,7 @@ function isLogged(){
                         foreach($results as $fav){
                             array_push($favs, $fav['id']);                          
                             }
+                        }
 
                          //Display the cards about the service providers
                          function displayInfo($informations, $favs_id){
@@ -109,7 +109,7 @@ function isLogged(){
                             foreach($informations as $key => $pro){
                                 
                                 //display full heart if the presta is already in the favoris
-                                $image = in_array($pro['id'], $favs_id) ? "images/heart_picto_full.svg" : "images/heart_picto.svg" ;
+                                $image = isLogged() && in_array($pro['id'], $favs_id) ? "images/heart_picto_full.svg" : "images/heart_picto.svg" ;
 
                                 $id_presta = $pro['id'] ;
                                 $email_presta = $pro['email'];
@@ -158,7 +158,12 @@ function isLogged(){
                                     echo '<p>Il n\'y a pas de prestataires correspondant à ce filtre.</p>';
                                 }
 
+                                if (isLogged()){                                    
                                 displayInfo($results, $favs);
+                                } else {
+                                    $useless = 0;
+                                    displayInfo($results, $useless);
+                                }
 
                         } else {
 
@@ -170,7 +175,14 @@ function isLogged(){
                             if(count($results) == 0){
                                 echo '<p>Il n\'y a pas encore de prestataire sur le site.</p>';
                             }
-                            displayInfo($results, $favs);
+                           
+                            if (isLogged()){                                    
+                                displayInfo($results, $favs);
+                            } else {
+                                $useless = 0;
+                                displayInfo($results, $useless);
+                            }
+
                         }
                         
                     

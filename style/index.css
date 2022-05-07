@@ -208,7 +208,7 @@ form input, form select, form textarea{
 /* ---------- HEADER & FOOTER ---------- */
 
 header{
-    height: 100px;
+    height: 80px;
     padding: 0 32px;
 
     display: flex;

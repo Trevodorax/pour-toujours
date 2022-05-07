@@ -142,9 +142,12 @@ function isLogged(){
                  </div>
             </section>
 
+
+            <section>
+
             <h3>Avis sur ce prestataire</h3>
             
-            <section id="reviews">
+            <div id="reviews">
 
             <?php 
                 $q = 'SELECT (SELECT nomPrefere FROM PERSONNE WHERE id = utilisateur) AS nom_client, note, contenu, date_envoi FROM COMMENTAIRE WHERE prestataire = :prestataire' ;
@@ -171,7 +174,35 @@ function isLogged(){
                     }
             ?> 
                     <!-- Adding a comment will be available at the end of the wedding on a "let us comments on ur experience" page -->
-            </section>
+            
+                </div>
+
+                <div class="add">
+                    <p id="opener-comment" class="title mt-3">Ajouter un commentaire sur ce prestataire</p>
+                    <form class="comment-form" action="add_comment.php?pro=<?= $id_presta . '&id=' . $_SESSION['id'] ?>" method="POST">
+                        <label for="content">Votre commentaire</label>
+                        <input type="text" name="content" required placeholder="EX: les pizzas étaient un peu salés mais propre et bien présentées.">
+                        <label for="grade">Votre note</label>
+                        <select name="grade" required>
+                            <?php
+                            for ( $i = 1 ; $i < 6 ; $i++) {
+                                echo '<option>'. $i .'</option>' ;
+                            }
+                            ?>
+                        </select>
+                        <?php 
+                            if(isset($_GET['message']) && !empty($_GET['message'])) {
+
+                                echo '<p id="error-message">'. $_GET['message'] . '</p>';
+                            } 
+
+                            ?>
+
+                        <input type="submit" class="btn btn-primary">
+                    </form>
+                </div>
+
+                </section>
         </main>
 
         <?php include('includes/footer.php'); ?>

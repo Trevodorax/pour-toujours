@@ -153,7 +153,7 @@ if(isCustomer()){
                         <input type="text" name="title" class="required-input" placeholder="ex: Patisseries en quantité (40+)" required>
                         <label for='description'>Description du service(255 caractères)</label>
                         <input type="text" name="description" class="required-input" required placeholder="ex: Préparation du jour pour le lendemain des patisseries, choix parmi : choux à la crème, mini-éclairs, madeleines" required>
-                        <label for='price'>Tarif du service (en €)</label>
+                        <label for='price'>Tarif du service (en €, par prestation ou par invité pour la nourriture)</label>
                         <input type="number" min=0 max=50000 name="price" class="required-input" placeholder="ex: 75" required>
 
                         <?php 
