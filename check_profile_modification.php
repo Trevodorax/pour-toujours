@@ -211,7 +211,6 @@ include('includes/db.php');
 
         $filename = $_FILES['image']['name'];
 
-        var_dump($filename);
         $array = explode('.', $filename);
         $extension = end($array);
 

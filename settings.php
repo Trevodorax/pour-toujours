@@ -1,4 +1,5 @@
 <?php session_start() ;
+
 include('includes/db.php');
 
 function isCustomer(){
@@ -63,7 +64,7 @@ function drawAvatar($avatar_specs) {
             <section id="settings-confidentialite">
                 <h3>Confidentialité</h3>
                 <p>Mentions légales</p>
-                <a  href="FAQ.php#contactez-nous"><p>Contactez l'équipe technique</p></a>
+                <a  href="FAQ.php"><p>Contactez l'équipe technique</p></a>
                 <p>Lier une nouvelle adresse e-mail à mon compte</p>
             </section>
 
@@ -109,9 +110,11 @@ function drawAvatar($avatar_specs) {
 
                     <section id="account-modification">
                         <a href="reset_password.php"><p>Modifier mon mot de passe</p></a>
-                      <a onclick="deleteAccount($_SESSION['id'])"><p>Supprimer mon compte</p></a>
+                      <a onclick="deleteAccount(<?php echo $_SESSION['id'] . ',' . (isCustomer() ? '1' : '0') ?>)"><p>Supprimer mon compte</p></a>
                       <a href="download_info.php" target="_blank"><p>Télécharger toutes mes informations (RGPD)</p></a>
                       <p id="title">Modifier mes informations personnelles</p>
+
+
 
                       <!-- REQUEST TO GET THE MISSING INFORMATIONS (NOT SET IN SESSION) ABOUT THE PROFILE -->
                         <?php
@@ -133,7 +136,10 @@ function drawAvatar($avatar_specs) {
                         $results= $req->fetchAll(PDO::FETCH_ASSOC);
                         ?>
 
+
                       <!-- Displaying old values AND Form to change them if need be -->
+
+
                       <div class="changing-forms">
                         <?php 
                                if(isset($_GET['message']) && !empty($_GET['message'])) {
