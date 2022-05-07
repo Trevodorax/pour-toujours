@@ -59,23 +59,28 @@ h2 img{
     flex-direction: column;
     justify-content: space-between;
 }
-#profile > img{
+.face > img{
     height: 300px;
     width: 200px;
     align-self: center;
     object-fit : cover;
 }
+
+.face{
+display: flex;
+flex-direction: column;
+}
+
 @media screen and (min-width: 700px){
-    #profile{
+
+    .face{
+        display: flex;
         flex-direction: row;
-    }
-    #profile > img{
-        height: 300px;
-        width: 200px;
+        justify-content: space-between;
+        }
+}
 
-        object-fit : cover;
-    }
-
+@media screen and (min-width: 1000px) {
     #signature{
         display:none;
     }

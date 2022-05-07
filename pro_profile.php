@@ -51,7 +51,8 @@ if(isCustomer()){
             <section id="profile">
                 <!-- All informations about the service provider 
                      We take some from the session directly and we go fetch the others -->
-                <div>
+                <div class="face">
+                     <div>
                     <?php 
                     echo '
                     <h3>' . $info_det .' informations :</h3>
@@ -67,6 +68,7 @@ if(isCustomer()){
 
                     <?php echo '<img src="images/prestataires/'. $results[0]['photoProfil'] . '">'
                     ?>
+                   </div>
                     
                     <section id="signature">
                         <div class="row">
@@ -204,7 +206,7 @@ if(isCustomer()){
                 <h3>Vos clients</h3>
 
                 <?php 
-                        //VERY LONG REQUEST BUT we need it
+                        //VERY LONG REQUEST BUT we need it to catch all informations about customers
                     $q ='SELECT PERSONNE.NomComplet, PERSONNE.email, MARIAGE.date , DEMANDE.service FROM PERSONNE 
                             INNER JOIN UTILISATEUR ON personne = PERSONNE.id
                                 INNER JOIN MARIAGE ON utilisateur = UTILISATEUR.id 
@@ -245,15 +247,6 @@ if(isCustomer()){
                 echo '</table>';
                 
                 ?>  
-                    <!-- Template for the table row  -->
-                    <!-- <tr>
-                        <td>Fredo Sananos</td>
-                        <td>2/09/22</td>
-                        <td>2</td>
-                        <td>f.sananes@gmail.com</td>
-                        <td><img src="images/presta_contact_icon.svg"></td>
-                    </tr> -->
-
               
             </section>
 
@@ -285,18 +278,6 @@ if(isCustomer()){
                         </div>';
                     }
             ?> 
-                    <!-- TEMPLATE COMMENTS CARDS -->
-                    <!-- <div>
-                        <p class="comment">Evelynn est d'un professionnel agréable, elle sait donner des directives claires pour un résultat émouvant.</p>
-                        <div class="rating">
-                            <img src="images/rating_red_star.svg">
-                            <img src="images/rating_red_star.svg">
-                            <img src="images/rating_red_star.svg">
-                            <img src="images/rating_black_star.svg">
-                            <img src="images/rating_black_star.svg">
-                        </div>
-                        <p>Alain - 2020</p>
-                    </div> -->
             </section>
         </main>
 
