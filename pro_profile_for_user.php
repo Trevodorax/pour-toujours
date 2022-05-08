@@ -96,7 +96,7 @@ function isLogged(){
                     
                     
                     if(count($results) == 0){
-                        echo '<p>Le prestataire n\'as pas encore ajouté d\'images</p>';
+                        echo '<p>Le prestataire n\'a pas encore ajouté d\'images</p>';
                     }
 
                     foreach($results as $key => $image){
@@ -123,7 +123,7 @@ function isLogged(){
                     
                     
                     if(count($results) == 0){
-                        echo '<p>Ce prestataire n\'as pas encore ajouté de services</p>';
+                        echo '<p>Ce prestataire n\'a pas encore ajouté de services</p>';
                     }
 
                     foreach($results as $key => $service){

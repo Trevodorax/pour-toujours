@@ -45,7 +45,7 @@
 
                 <div id="presentation-text">
                     <h2>Présentez-nous vos critères et choisissez parmi nos <?= $result[0]['pros'] ?> talentueux partenaires !</h2>
-                    <h3>Commencez dès maintenant&nbsp&nbsp <img src="images/go_icon.svg"></h3>
+                    <a href="create_account.php"><h3>Commencez dès maintenant&nbsp&nbsp <img src="images/go_icon.svg"></h3></a>
                 </div>
                 <div id="prestataires-mieux-notes">
                     <div id="prestataires-images">

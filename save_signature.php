@@ -29,7 +29,6 @@ include('includes/db.php');
     $success = file_put_contents(__DIR__.$filename , $signature);
 
 
-
     }
     else if (isset($FILES['signature.png'])){ 
         echo 'nope';
