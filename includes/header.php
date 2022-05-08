@@ -28,7 +28,7 @@
     </a>
     <nav>
         <?php
-            include('includes/db.php');
+            include('db.php');
             // check if user is connected
             if(isset($_SESSION['id'])){
                 // check if user is admin

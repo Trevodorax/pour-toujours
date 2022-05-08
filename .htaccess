@@ -1,0 +1,2 @@
+ErrorDocument 404 /pour-toujours/error404.php
+ErrorDocument 410 /pour-toujours/error410.php
