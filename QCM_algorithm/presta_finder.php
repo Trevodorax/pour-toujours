@@ -25,9 +25,9 @@ $preferences = $req->fetchAll()[0][0];
 // get budget
 $budget_cases = [
     '0' => 2000,
-    '1' => 4000,
-    '2' => 6000,
-    '3' => 8000
+    '1' => 6000,
+    '2' => 10000,
+    '3' => 14000
 ];
 
 $budget = $budget_cases[$preferences[2]];

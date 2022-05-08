@@ -75,6 +75,8 @@ function checkbox_verify(){
 
     // performing document modifications
     form_ready(all_set);
+
+    return all_set;
 }
 
 // function performs document modifications accordingly
