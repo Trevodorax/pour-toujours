@@ -19,7 +19,7 @@
                 }
             ?>
             <p class="pro-form">Vous pourrez présenter vos services en détail dans votre profil après vous être créer un compte.</p>
-            <form method="post" action ="check_sign_up.php" enctype="multipart/form-data">
+            <form method="post" action ="check_sign_up.php" enctype="multipart/form-data" onsubmit="return checkbox_verify()">
                 <input type="text" name="c_name" class="required-input" placeholder=" Votre nom complet" value="<?= isset($_COOKIE['nomcomplet']) ? $_COOKIE['nomcomplet'] : '' ?>">
 
                 <input type="text" name="f_name" class="required-input" placeholder=" Votre nom préféré" value="<?= isset($_COOKIE['nomprefere']) ? $_COOKIE['nomprefere'] : '' ?>">
