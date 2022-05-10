@@ -24,7 +24,7 @@
 <header id="desktop-header" class="mobile-hidden">
     <a href="index.php">
         <img src="images/pt_logo.svg">
-        <img src="images/<?php echo (wasDark() ? 'text_logo.svg' : 'easter_text_logo.svg') ?>">
+        <img id="logo_text" src="images/<?php echo (!wasDark() ? 'text_logo.svg' : 'easter_text_logo.svg') ?>">
     </a>
     <nav>
         <?php

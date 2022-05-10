@@ -75,7 +75,7 @@ function isLogged(){
 
                     <?php
 
-                        if (isLogged()){
+                        if (isLogged() && isCustomer()){
                         //What is customer 's id ?
                         $q ='SELECT UTILISATEUR.id FROM UTILISATEUR WHERE personne = ?' ;
                         $req = $bdd->prepare($q);
@@ -158,10 +158,10 @@ function isLogged(){
                                     echo '<p>Il n\'y a pas de prestataires correspondant à ce filtre.</p>';
                                 }
 
-                                if (isLogged()){                                    
+                                if (isLogged() && isCustomer()){                                    
                                 displayInfo($results, $favs);
                                 } else {
-                                    $useless = 0;
+                                    $useless = [0];
                                     displayInfo($results, $useless);
                                 }
 
@@ -176,10 +176,10 @@ function isLogged(){
                                 echo '<p>Il n\'y a pas encore de prestataire sur le site.</p>';
                             }
                            
-                            if (isLogged()){                                    
+                            if (isLogged() && isCustomer()){                                    
                                 displayInfo($results, $favs);
                             } else {
-                                $useless = 0;
+                                $useless = ['useless'];
                                 displayInfo($results, $useless);
                             }
 

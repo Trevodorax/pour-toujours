@@ -116,7 +116,7 @@
                     <p>Paul & Simon - 9/02/2022</p>
                 </div>
             </div>
-            <a href="#">Voir plus d'avis...</a>
+            <a href="images/easter_egg_du_dimanche.jpg">Voir plus d'avis...</a>
         </section>
     </main>
 
