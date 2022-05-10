@@ -50,7 +50,7 @@ function isLogged(){
             ?>
 
             <section id="profile">
-                <!--  -->
+                <div class="face">
                 <div>
                     <?php 
                          if (isLogged()){
@@ -78,6 +78,7 @@ function isLogged(){
                     
                 </div>
                 <?= '<img src="images/prestataires/' . $results[0]['photoProfil']. '">' ;?>
+                </div>
             </section>
 
             <section id="portfolio">

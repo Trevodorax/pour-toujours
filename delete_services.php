@@ -9,7 +9,7 @@ if(isset($_GET['column']) && !empty($_GET['column'])
 
         //REQUEST TO DELETE 
 
-        $q ='DELETE FROM '. htmlspecialchars($_GET['column']) . ' WHERE id = :id AND prestataire = :prestataire';
+        $q ='DELETE FROM '. strtoupper(htmlspecialchars($_GET['column'])) . ' WHERE id = :id AND prestataire = :prestataire';
         $req = $bdd->prepare($q);
         $req -> execute([
             'id' => (int) htmlspecialchars($_GET['id_service']),
