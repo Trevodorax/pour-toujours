@@ -8,7 +8,8 @@ INSERT INTO PERSONNE(
     email,
     mot_de_passe,
     numero_tel,
-    departement
+    departement,
+    estAdmin
 )
 VALUES(
     'Paul Gaudeaux',
@@ -18,7 +19,8 @@ VALUES(
     'phvcgdx@gmail.com',
     '919e4acd7a1714cd19c7c7157ea417ebe85098e16e6c992deec765cef201c404a903ddfa67e1af51a2a091a9a5d8643e1214fd62f48ac56b4c7cd3f91cca7d3e',
     '0682579783',
-    '75'
+    '75',
+    1
 );
 
 
